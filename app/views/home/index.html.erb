@@ -6,7 +6,6 @@
     <h1>
       首頁
     </h1>
-
     <% if user_signed_in? %>
       <li>
         <%= link_to('登出', destroy_user_session_path, method: :delete)%>
