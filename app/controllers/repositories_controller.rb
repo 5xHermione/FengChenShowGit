@@ -27,7 +27,7 @@ class RepositoriesController < ApplicationController
 
   def update
     if @repository.update(repository_params)
-      redirect_to repositories_path, notice: '專案內容以更新！'
+      redirect_to repositories_path, notice: '專案內容已更新！'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class RepositoriesController < ApplicationController
 
   def destroy
     @repository.destroy
-    redirect_to repositories_url, notice: '專案以刪除！'
+    redirect_to repositories_url, notice: '專案已刪除！'
   end
 
   private
