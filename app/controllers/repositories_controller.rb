@@ -2,7 +2,7 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
 
   def index
-    @repositories = Repository.all
+    @repositories = Repository.all.includes(:user)
   end
 
   def show
@@ -44,6 +44,6 @@ class RepositoriesController < ApplicationController
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description)
+      params.require(:repository).permit(:title, :description, :user_id)
     end
 end
