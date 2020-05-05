@@ -10,5 +10,10 @@
   <%= @repository.description %>
 </p>
 
+<p>
+  <strong>User:</strong>
+  <%= @repository.user.name %>
+</p>
+
 <%= link_to 'Edit', edit_repository_path(@repository) %> |
 <%= link_to 'Back', repositories_path %>
