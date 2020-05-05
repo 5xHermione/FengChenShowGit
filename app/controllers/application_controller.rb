@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
     # 相關資訊：https://www.rubydoc.info/github/plataformatec/devise/Devise/ParameterSanitizer
     devise_parameter_sanitizer.permit(:sign_up, keys: [])
   end
+
 end
