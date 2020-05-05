@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "/:user_name", to: "repositories#index"
-  get "/:user_name/:repository_title/:issue_id", to: "issue#index", as: "issues"
+  get "/:user_name/:repository_title/issues", to: "issues#index", as: "issues"
 end
 
 

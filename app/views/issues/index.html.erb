@@ -1,0 +1,23 @@
+<h1>專案issues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>標題</th>
+      <th>描述</th>
+      <th>屬於</th>
+      <th>狀態</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.name %></td>
+        <td><%= issue.description %></td>
+        <td><%= issue.repository %></td>
+        <td><%= issue.status%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
