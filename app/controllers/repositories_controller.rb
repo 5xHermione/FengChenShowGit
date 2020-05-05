@@ -2,7 +2,7 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
 
   def index
-    @repositories = Repository.all.includes(:user)
+    @repositories = current_user.repositories.includes(:user)
   end
 
   def show
@@ -17,6 +17,7 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository = Repository.new(repository_params)
+    @repository.user = current_user
 
     if @repository.save
       redirect_to repositories_path, notice: '已建立新專案！' 
