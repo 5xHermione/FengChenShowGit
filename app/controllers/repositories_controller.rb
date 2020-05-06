@@ -20,9 +20,8 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-    @repository = Repository.new(repository_params)
-    @repository.user = current_user
-
+    @repository = current_user.repositories.new(repository_params)
+    
     if @repository.save
       redirect_to repositories_path, notice: '已建立新專案！' 
     else
