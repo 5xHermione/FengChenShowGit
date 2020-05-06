@@ -44,7 +44,7 @@ class RepositoriesController < ApplicationController
 
   private
     def set_repository
-      @repository = Repository.find(params[:id])
+      @repository = Repository.find_by!(title: params[:repository_title])
     end
 
     def repository_params
