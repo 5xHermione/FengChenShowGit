@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   get "/:user_name/:repository_title/issues", to: "issues#index", as: "issues" # issue的index
   get "/:user_name/:repository_title/issues/new", to: "issues#new", as: "new_issues" #issue的new
   post "/:user_name/:repository_title/issues/create", to: "issues#create", as: "create_issues" #issue的create
-  get ":user_name/:repository_title/issues/:id", to: "issues#show", as: "show_issues" #issue的show
-  get ":user_name/:repository_title/issues/:id/edit", to: "issues#edit", as: "edit_issues" #issue的edit
+  get "/:user_name/:repository_title/issues/:id", to: "issues#show", as: "show_issues" #issue的show
+  get "/:user_name/:repository_title/issues/:id/edit", to: "issues#edit", as: "edit_issues" #issue的edit
   delete "/:user_name/:repository_title/issues/:id/destroy", to: "issues#destroy", as: "destroy_issues" #issue的destroy
   patch "/:user_name/:repository_title/issues/:id/update", to: "issues#update", as: "update_issues" #issue的update
 
