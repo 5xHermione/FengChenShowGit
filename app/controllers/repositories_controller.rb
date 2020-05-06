@@ -2,7 +2,11 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
 
   def index
-    @repositories = current_user.repositories.includes(:user)
+    if current_user
+      @repositories = current_user.repositories.includes(:user)
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show

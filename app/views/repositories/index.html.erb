@@ -18,7 +18,7 @@
         <td><%= repository.title %></td>
         <td><%= repository.description %></td>
         <td><%= repository.user.name %></td>
-        <td><%= link_to 'Show', repository %></td>
+        <td><%= link_to '查看 issue', "http://localhost:3000/#{current_user.name}/#{repository.title}/issues" %></td>
         <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
         <td><%= link_to 'Destroy', repository, method: :delete, data: { confirm: '確定刪除？' } %></td>
       </tr>
