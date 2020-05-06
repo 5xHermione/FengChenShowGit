@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-
-
   root "home#index"
 
   get "/:user_name", to: "repositories#index", as: "user" # repo的index
@@ -13,7 +11,6 @@ Rails.application.routes.draw do
   patch "/:user_name/:repository_title/update", to: "repositories#update", as: "update_repo"  # repo的update
   get "/:user_name/:repository_title/issues", to: "issues#index", as: "issues" # issue的index
 
-  resources :repositories
 end
 
 
