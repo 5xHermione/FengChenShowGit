@@ -1,4 +1,35 @@
-<h1>專案issues</h1>
+<h1>這裡是issues</h1>
+<div class="row">
+  <form class="form-inline my-2 my-lg-0 col-10">
+    <input
+      class="form-control mr-sm-2 col-10"
+      type="search"
+      placeholder="Search all issues"
+      aria-label="Search"
+    />
+  </form>
+  <a href="#" class="btn btn-success col-2">新增 issue</a>
+</div>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 
 <table>
   <thead>
@@ -12,12 +43,12 @@
 
   <tbody>
     <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.name %></td>
-        <td><%= issue.description %></td>
-        <td><%= issue.repository.title %></td>
-        <td><%= issue.status%> </td>
-      </tr>
+    <tr>
+      <td><%= issue.name %></td>
+      <td><%= issue.description %></td>
+      <td><%= issue.repository.title %></td>
+      <td><%= issue.status%></td>
+    </tr>
     <% end %>
   </tbody>
 </table>

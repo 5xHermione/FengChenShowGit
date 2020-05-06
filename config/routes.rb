@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/:user_name", to: "repositories#index"
   get "/:user_name/:repository_title", to: "repository#show"
   get "/:user_name/:repository_title/issues", to: "issues#index"
+  get "/:user_name/:repository_title/issues/new", to: "issues#new", as: "issue_new"
 end
 
 
