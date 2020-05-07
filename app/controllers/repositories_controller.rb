@@ -23,7 +23,7 @@ class RepositoriesController < ApplicationController
     @repository = current_user.repositories.new(repository_params)
     
     if @repository.save
-      redirect_to repositories_path, notice: '已建立新專案！' 
+      redirect_to user_path, notice: '已建立新專案！' 
     else
       render :new
     end
@@ -31,7 +31,7 @@ class RepositoriesController < ApplicationController
 
   def update
     if @repository.update(repository_params)
-      redirect_to repositories_path, notice: '專案內容已更新！'
+      redirect_to user_path, notice: '專案內容已更新！'
     else
       render :edit
     end
@@ -39,12 +39,12 @@ class RepositoriesController < ApplicationController
 
   def destroy
     @repository.destroy
-    redirect_to repositories_url, notice: '專案已刪除！'
+    redirect_to user_path, notice: '專案已刪除！'
   end
 
   private
     def set_repository
-      @repository = Repository.find(params[:id])
+      @repository = Repository.find_by!(title: params[:repository_title])
     end
 
     def repository_params

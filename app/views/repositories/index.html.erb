@@ -18,13 +18,13 @@
         <td><%= repository.title %></td>
         <td><%= repository.description %></td>
         <td><%= repository.user.name %></td>
-        <td><%= link_to '查看 issue', "http://localhost:3000/#{current_user.name}/#{repository.title}/issues" %></td>
-        <td><%= link_to 'Edit', edit_repository_path(repository) %></td>
-        <td><%= link_to 'Destroy', repository, method: :delete, data: { confirm: '確定刪除？' } %></td>
+        <td><%= link_to '查看 issue', issues_path(current_user.name, repository.title)%></td>
+        <td><%= link_to 'Edit', edit_repo_path(current_user.name, repository.title) %></td>
+        <td><%= link_to 'Destroy', destroy_repo_path(current_user.name, repository.title), method: :delete, data: { confirm: '確定刪除？' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<%= link_to 'New Repository', new_repository_path %>
+<%= link_to 'New Repository', new_repo_path(current_user.name) %>

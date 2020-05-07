@@ -1,6 +1,25 @@
 <h1>編輯專案</h1>
 
-<%= render 'form', repository: @repository %>
+<%= form_with model: @repository, url: update_repo_path, local: true do |form| %>
+  <% if @repository.errors.any? %>
+    <ul>
+      <% @repository.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<%= link_to 'Show', @repository %>
-<%= link_to 'Back', repositories_path %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

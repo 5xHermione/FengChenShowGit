@@ -20,6 +20,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">備用連結</a>
       </li>
+      <% if current_user%>
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -33,10 +34,18 @@
           ＋
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "新增專案", new_repository_path ,class: "dropdown-item"%>
-          <%= link_to "查看所有專案", repositories_path,class: "dropdown-item"%>
+          <%= link_to "新增專案", new_repo_path(current_user.name), class: "dropdown-item"%>
+          <%= link_to "查看所有專案", user_path(current_user.name), class: "dropdown-item"%>
         </div>
       </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "註冊", new_user_registration_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "登入", new_user_session_path, class: "nav-link"%>
+        </li>
+      <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input
