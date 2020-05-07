@@ -1,23 +1,39 @@
-<h1>專案issues</h1>
+<h1>這裡是issues</h1>
+<div class="row">
+  <form class="form-inline my-2 my-lg-0 col-10">
+    <input
+      class="form-control mr-sm-2 col-12"
+      type="search"
+      placeholder="目前沒有功能的 Search"
+      aria-label="Search"
+    />
+  </form>
+  <a href="#" class="btn btn-success col-2">新增 issue</a>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>標題</th>
-      <th>描述</th>
-      <th>屬於</th>
-      <th>狀態</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="issue-container my-5">
+  <div class="issue-title row p-2">
+    <div class="status-title col-2"><%= @issues.length %> open</div>
+    <div class="info-title col-6">sometitle</div>
+    <div class="description-title col-4">sometitle</div>
+  </div>
+  <% if @issues.length > 0 %>
     <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.name %></td>
-        <td><%= issue.description %></td>
-        <td><%= issue.repository.title %></td>
-        <td><%= issue.status%> </td>
-      </tr>
+    <div class="container">
+      <div class="row">
+        <div class="col-2 mt-2"><%= issue.status %>放狀態準備欄位</div>
+        <div class="col-6 row">
+          <a href="#" class="col-12"><%= issue.name %></a>
+          <p class="col-12">#<%= issue.id%> opened on <%= issue.created_at %></p>
+        </div>
+        <div class="col-4"><%= issue.description %>放其他東西的準備欄位</div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  <% else %>
+    <div class="text-center p-5">
+      <h3>There aren’t any open issues.</h3>
+      <h4>Try to create new issue?</h4>
+    </div>
+  <% end %>
+</div>
