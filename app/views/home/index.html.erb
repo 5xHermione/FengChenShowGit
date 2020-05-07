@@ -8,7 +8,7 @@
     </h1>
 
     <% if user_signed_in? %>
-        <%= link_to "前往 repo 列表", "http://localhost:3000/#{current_user.name}"%>
+        <%= link_to "前往 repo 列表", user_path(current_user.name) %>
       <li>
         <%= link_to('登出', destroy_user_session_path, method: :delete)%>
       </li>
