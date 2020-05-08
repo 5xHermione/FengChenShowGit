@@ -23,6 +23,13 @@ class RepositoriesController < ApplicationController
     @repository = current_user.repositories.new(repository_params)
     
     if @repository.save
+      title = @repository.title
+      bare_repo_dir = "#{title}.git"
+
+      full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{bare_repo_dir}"
+
+      `mkdir #{full_dir}`
+      `git --bare init #{full_dir}`
       redirect_to repositories_path, notice: '已建立新專案！' 
     else
       render :new
