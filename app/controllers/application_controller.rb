@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_repository
-    current_user.repositories.find_by(title: params[:repository_title])
+    current_user.repositories.find_by(id: session[:repository_id])
   end
 
 end

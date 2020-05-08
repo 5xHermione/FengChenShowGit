@@ -1,5 +1,5 @@
     <% if flash[:notice] %>
-      <h2 style="color: red;">
+      <h2>
         <%= flash[:notice] %>
       </h2>
     <% end %>
@@ -8,15 +8,16 @@
     </h1>
 
     <% if user_signed_in? %>
-        <%= link_to "前往 repo 列表", user_path(current_user.name) %>
+        <%= link_to "前往 repo 列表", repositories_path %>
       <li>
         <%= link_to('登出', destroy_user_session_path, method: :delete)%>
       </li>
     <% else %>
-      <li>
+      <div>
+
         <%= link_to('註冊', new_user_registration_path)%>
-      </li>
-      <li>
+      </div>
+      <div>
         <%= link_to('登入', new_user_session_path)%>
-      </li>
+      </div>
     <% end %>
