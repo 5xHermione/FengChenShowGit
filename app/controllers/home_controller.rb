@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
+
+  def index
+  end
+
   def resource_name
     :user
   end
