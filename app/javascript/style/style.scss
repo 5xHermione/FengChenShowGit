@@ -17,6 +17,24 @@
   }
 }
 
+#error_explanation {
+  h2 {
+    color: red;
+  }
+  ul {
+    li {
+      color: #f69523;
+    }
+  }
+}
+
 .unlogin,.container-field,.homepage {
-  background-color: #555555;
+
+}
+
+
+.field_with_errors {
+  input {
+    border: solid 3px red;
+  }
 }
