@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_05_05_120925) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "status"
-    t.integer "repository_id", null: false
+    t.bigint "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["repository_id"], name: "index_issues_on_repository_id"
