@@ -28,13 +28,20 @@
   }
 }
 
-.unlogin,.container-field,.homepage {
-
-}
-
-
 .field_with_errors {
   input {
     border: solid 3px red;
   }
+}
+
+.repository-wrap {
+  border: solid 1px #999999;
+}
+
+.title-bottom-line {
+  height: 2px;
+  width: 95%;
+  background-color:#999999;
+  position: relative;
+  left: 2.5%;
 }

@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
 
   def index
+    @repositories = current_user.repositories
   end
 
   def resource_name

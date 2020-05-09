@@ -5,10 +5,7 @@
     <% end %>
 
     <% if user_signed_in? %>
-        <%= link_to "前往 repo 列表", repositories_path %>
-      <li>
-        <%= link_to('登出', destroy_user_session_path, method: :delete)%>
-      </li>
+      <%= render 'shared/homepage'%>
     <% else %>
     <div class="container-field unlogin homepage">
       <div class="container">
