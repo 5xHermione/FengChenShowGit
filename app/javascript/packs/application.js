@@ -15,3 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "jquery"
 import $ from 'jquery'
 window.$ = $
+
+//fontawesome
+
+import "@fortawesome/fontawesome-free/css/all.css";
