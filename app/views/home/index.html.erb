@@ -3,21 +3,29 @@
         <%= flash[:notice] %>
       </h2>
     <% end %>
-    <h1>
-      首頁
-    </h1>
 
     <% if user_signed_in? %>
-        <%= link_to "前往 repo 列表", repositories_path %>
-      <li>
-        <%= link_to('登出', destroy_user_session_path, method: :delete)%>
-      </li>
+      <%= render 'shared/homepage'%>
     <% else %>
-      <div>
+    <div class="container-field unlogin homepage">
+      <div class="container">
+        <div class="row">
+          <div class="logo-container col-12 col-md-6 m-auto">
+            <h1>FengChenShowGit!</h1>
+            <img class="w-100" src="https://picsum.photos/500/400?random=1" alt="">
+          </div>
+          <div class="p-5 col-12 col-md-6">
+            <div class="card bg-light">
+              <div class="card-header">註冊</div>
+              <div class="card-body">
+                <div>
+                  <%= render 'devise/shared/new'%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <%= link_to('註冊', new_user_registration_path)%>
-      </div>
-      <div>
-        <%= link_to('登入', new_user_session_path)%>
-      </div>
     <% end %>
+
