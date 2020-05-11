@@ -34,8 +34,25 @@
   }
 }
 
-.repository-wrap {
+.overview-repository-wrap {
   border: solid 1px #999999;
+}
+
+.repositories-repository-wrap {
+  border: solid 1px #999999;
+  width:95%;
+  position: relative;
+  left:2.5%;
+  div {
+    i {
+      border: 1px solid #999999;
+      padding: 5px;
+      border-radius: 5px;
+      position: relative;
+      top: 14px;
+      font-size: 28px;
+    }
+  }
 }
 
 .title-bottom-line {
@@ -44,4 +61,5 @@
   background-color:#999999;
   position: relative;
   left: 2.5%;
+
 }
