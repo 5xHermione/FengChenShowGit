@@ -24,13 +24,14 @@ class RepositoriesController < ApplicationController
     @repository.errors.add(:is_public, "must select one") if params[:is_public].nil?
 
     if @repository.errors.any?
+
       render :new
     else
       if @repository.save
         title = @repository.title
         bare_repo_dir = "#{title}.git"
 
-        full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{bare_repo_dir}"
+        full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{current_user.name}/#{bare_repo_dir}"
 
         `mkdir #{full_dir}`
         `git --bare init #{full_dir}`
