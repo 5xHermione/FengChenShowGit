@@ -21,7 +21,7 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository = current_user.repositories.new(repository_params)
-    @repository.errors.add(:is_public, "must select one") if params[:public].nil?
+    @repository.errors.add(:is_public, "must select one") if params[:is_public].nil?
 
     if @repository.errors.any?
       render :new
