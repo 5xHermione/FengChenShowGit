@@ -1,3 +1,60 @@
-<h1>New Repository</h1>
+<div class="reponew-container">
+  <div class="reponew-title-wrap col-12">
+    <h3>Create a new repository</h3>
+    <div>Create a new repository
+    A repository contains all project files, including the revision history. Already have a project repository elsewhere?</div>
+  </div>
 
-<%= render 'form',repository: @repository %>
+  <%= form_with(model: @repository, local: true) do |form| %>
+    <% if @repository.errors.any? %>
+      <ul>
+        <% @repository.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <div class="col-12 reponew-info-wrap p-3">
+      <div class="col-12 row">
+        <div class="col-2 p-2">
+          <h6>Owner</h6>
+          <h6 class="btn btn-primary col-12"><%= current_user.name%></h6>
+        </div>
+        <span>/</span>
+        <div class="col-6 mt-2">
+          <h6><%= form.label :title, class: "m-0"%></h6>
+          <%= form.text_field :title, class: "form-control"%>
+        </div>
+        <p>Great repository names are short and memorable.</p>
+      </div>
+
+      <div class="reponew-decription-wrap col-12">
+        <h6><%= form.label :description %></h6>
+        <%= form.text_field :description, class: "form-control"%>
+      </div>
+    </div>
+    <div class="reponew-ispublic-wrap col-12">
+      <div class="row">
+        <%= radio_button_tag(:is_public, "true") %>
+        <i class="fas fa-lock-open"></i>
+        <div>
+          <%= label_tag(:is_public_true, "Public") %>
+          <p>Anyone can see this repository. Only you can commit.</p>
+        </div>  
+      </div>
+      <div class="row">
+        <%= radio_button_tag(:is_public, "false") %>
+        <i class="fas fa-lock"></i>
+        <div class="ml-2">
+          <%= label_tag(:is_public_false, "Private") %>
+          <p >Only you can see and commit to this repository.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mt-3 mb-5">
+      <div class="actions">
+        <%= form.submit "Create repository", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

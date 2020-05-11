@@ -21,18 +21,23 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository = current_user.repositories.new(repository_params)
-    
-    if @repository.save
-      title = @repository.title
-      bare_repo_dir = "#{title}.git"
+    @repository.errors.add(:is_public, "must select one") if params[:public].nil?
 
-      full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{bare_repo_dir}"
-
-      `mkdir #{full_dir}`
-      `git --bare init #{full_dir}`
-      redirect_to repositories_path, notice: '已建立新專案！' 
-    else
+    if @repository.errors.any?
       render :new
+    else
+      if @repository.save
+        title = @repository.title
+        bare_repo_dir = "#{title}.git"
+
+        full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{bare_repo_dir}"
+
+        `mkdir #{full_dir}`
+        `git --bare init #{full_dir}`
+        redirect_to repositories_path, notice: '已建立新專案！' 
+      else
+        render :new
+      end
     end
   end
 
@@ -56,6 +61,6 @@ class RepositoriesController < ApplicationController
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description, :user_id)
+      params.require(:repository).permit(:title, :description, :user_id, :is_public)
     end
 end
