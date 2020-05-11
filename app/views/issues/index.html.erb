@@ -1,4 +1,10 @@
 <h1>這裡是issues</h1>
+
+<div>
+  <%= render "shared/repo_navbar"%>
+</div>
+</br>
+
 <div class="row">
   <form class="form-inline my-2 my-lg-0 col-10">
     <input
@@ -8,7 +14,8 @@
       aria-label="Search"
     />
   </form>
-  <a href="#" class="btn btn-success col-2">新增 issue</a>
+  <%# <a href="#" class="btn btn-success col-2">新增 issue</a> %>
+    <%= link_to "新增issues", new_repository_issue_path , class:"btn btn-success col-2 "%>
 </div>
 
 <div class="issue-container my-5">
