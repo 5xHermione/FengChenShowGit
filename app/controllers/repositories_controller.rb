@@ -23,8 +23,8 @@ class RepositoriesController < ApplicationController
     @repository = current_user.repositories.new(repository_params)
     @repository.errors.add(:is_public, "must select one") if params[:is_public].nil?
 
-    if @repository.errors.any?
 
+    if @repository.errors.any?
       render :new
     else
       if @repository.save
@@ -32,9 +32,17 @@ class RepositoriesController < ApplicationController
         bare_repo_dir = "#{title}.git"
 
         full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{current_user.name}/#{bare_repo_dir}"
+        working_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{current_user.name}/#{title}"
 
+        #新增一個空的資料夾
         `mkdir #{full_dir}`
+        #在剛剛新增的空資料夾中建立一個 bare repo
+        #bare repo 可以被push clone
+        #bare repo 中是沒有檔案的
         `git --bare init #{full_dir}`
+        #要讓網頁可以使用檔案、可以 commit 、需要的是 working repo （也就是我們平常 git init 之後的創造出來的 git 目錄）
+        # 從 bare repo 中 clone 出一個 working repo，讓我們有檔案可以處理
+        `git clone #{full_dir}  #{working_dir}`
         redirect_to repositories_path, notice: 'You have created a repository.' 
       else
         render :new
