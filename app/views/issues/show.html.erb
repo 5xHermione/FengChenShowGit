@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @issue.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue.description %>
+</p>
+
+
+
+<%= link_to 'Update', edit_repository_issue_path(@issue) %> |
+<%= link_to 'Back', repositories_path %>
