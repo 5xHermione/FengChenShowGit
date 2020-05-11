@@ -7,7 +7,7 @@
     </ul>
   <% end %>
 
- <%= form_for(@issue , url: repository_issues_path , method: 'post') do |form|%>
+ <%= form_for(@issue , method: 'post') do |form|%>
 
   <div class="field">
     <%= form.label :title %>

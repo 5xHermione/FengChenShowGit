@@ -29,7 +29,19 @@ class IssuesController < ApplicationController
 
   def edit
     @issue = Issue.find(params[:id])
+    # byebug
   end
+
+  def update
+    @issue = Issue.find(params[:id])
+
+    if @issue.update(issue_params)
+      flash[:notice] = "issue已更新"
+      redirect_to repository_issue_path
+    else
+      render edit
+  end
+end
 
 
   private
