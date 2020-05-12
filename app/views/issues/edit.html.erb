@@ -1,17 +1,16 @@
-
 <div>
   <%= render "shared/repo_navbar"%>
 </div>
 </br>
-  <% if @issue.errors.any? %>
-    <ul>
-      <% @issue.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<% if @issue.errors.any? %>
+  <ul>
+    <% @issue.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
- <%= form_for([:repository, @issue]) do |form|%>
+<%= form_for([:repository, @issue]) do |form|%>
 
   <div class="field">
     <%= form.label :title %>

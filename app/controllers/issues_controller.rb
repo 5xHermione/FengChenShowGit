@@ -1,4 +1,7 @@
 class IssuesController < ApplicationController 
+  
+  before_action :set_issue, only: [:show, :edit, :update]
+
   def index
     @issues = current_repository.issues
   end
@@ -8,10 +11,7 @@ class IssuesController < ApplicationController
   end
 
   def create
-    # @issue = current_user.issues.build(issue_params)
     @issue = Repository.find_by(id: params[:repository_id]).issues.build(issue_params)
-    # @issue.update(user_id: current_user.id)
-    
 
     if @issue.save 
       redirect_to repository_issues_path, notice: '已建立新專案！' 
@@ -22,19 +22,18 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @issue = Issue.find(params[:id])
+    
     
   end
 
 
   def edit
-    @issue = Issue.find(params[:id])
+   
     # byebug
   end
 
   def update
-    @issue = Issue.find(params[:id])
-
+   
     if @issue.update(issue_params)
       flash[:notice] = "issue已更新"
       redirect_to repository_issue_path
@@ -51,6 +50,10 @@ end
     clean_params = params.require(:issue).permit(:name, :description)
   end
 
+  def set_issue
+    @issue = Issue.find(params[:id])
+  end
 
+ 
 
 end

@@ -1,11 +1,14 @@
-
-  <% if @issue.errors.any? %>
-    <ul>
-      <% @issue.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div>
+  <%= render "shared/repo_navbar"%>
+</div>
+</br>
+<% if @issue.errors.any? %>
+  <ul>
+    <% @issue.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
  <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
 
