@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to "FengChenShowGit！", root_path, class: "navbar-brand"%>
+<nav class="navbar navbar-expand-lg ">
+  <%= link_to "", root_path, class: "navbar-brand"%>
   <button
     class="navbar-toggler"
     type="button"
@@ -12,51 +12,63 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+    <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline my-2 my-sm-0 .btn_search" type="submit"><i class="fas fa-pen"></i>
+          </button>
+    </form>
+
+    
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if current_user%>
-      <li class="nav-item active">
-        <%= link_to "首頁", root_path, class: "nav-link"%>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">備用連結</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          ＋
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "新增專案", new_repository_path, class: "dropdown-item"%>
-          <%= link_to "查看所有專案", repositories_path, class: "dropdown-item"%>
-        </div>
-      </li>
+          <ul class="navbar-nav mr-auto">
+            <% if current_user%>
+            <li class="nav-item active">
+              <%= link_to "Top", root_path, class: "nav-link"%> 
+            </li>
+            <li class="nav-item">
+              <%= link_to "New repository", new_repository_path, class: "nav-link"%>
+            </li>
+             <li class="nav-item">
+              <%= link_to "My repositorie", repositories_path, class: "nav-link"%>
+            </li>
+          </ul>
+          <ul class="ul-inline my-2 my-lg-0 positioning">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "User Settings", new_repository_path, class: "dropdown-item user_set"%>
+                <%= link_to "Something else here", repositories_path, class: "dropdown-item user_set"%>
+              </div>
+            </li>
+          </ul>
+
+
       <% else %>
-        <li class="nav-item">
-          <%= link_to "註冊", new_user_registration_path, class: "nav-link"%>
+       <!--  <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline my-2 my-sm-0 .btn_search" type="submit"><i class="fas fa-pen"></i>
+          </button>
+        </form> -->
+        <li class="nav-item sp">
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%= link_to "登入", new_user_session_path, class: "nav-link"%>
+          <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
         </li>
       <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
+    
   </div>
 </nav>
