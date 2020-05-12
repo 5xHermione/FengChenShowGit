@@ -8,7 +8,6 @@
       <h4 class="my-2">ID：<%= current_user.id%></h4>
     </div>
     <div class="repositories-container col-12 col-md-9 row p-3">
-
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
@@ -20,6 +19,8 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="col-12 devise-edit-user-info">
+            <h2 class="mt-5">Profile</h2>
+            <div class="title-bottom-line"></div>
             <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {method: :put} do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
 

@@ -1,0 +1,30 @@
+.repoedit-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.repo-branch-info-wrap {
+  border: 1px solid #999999;
+  padding: 20px;
+  margin: 15px 0 50px 0;
+}
+
+.repoedit-container {
+  div {
+    form {
+      h2 {
+        color: red;
+      }
+      li {
+        color: #f69523;
+      }
+      .field {
+        label {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}

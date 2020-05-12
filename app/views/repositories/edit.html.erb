@@ -1,3 +1,56 @@
-<h1>編輯專案</h1>
+<div class="repoedit-container my-5">
+  <div class="col-12">
+    <h2 class="mt-5">Settings</h2>
+    <div class="title-bottom-line"></div>
+    <%= form_with(model: @repository, local: true) do |form| %>
+      <% if @repository.errors.any? %>
+      <h2>There is something wrong!</h2>
+        <% @repository.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      <% end %>
 
-<%= render 'form',repository: @repository %>
+      <div class="field row m-auto py-3">
+        <%= form.label :title , "Repository title", class: "col-4" %>
+        <%= form.text_field :title, class: "form-control col-7"%>
+      </div>
+
+      <div class="field row m-auto py-3">
+        <%= form.label :description, "Repository description", class: "col-4"  %>
+        <%= form.text_field :description, class: "form-control col-7"%>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Update repository", class: "btn btn-primary mx-3"%>
+      </div>
+    <% end %>
+
+    <div class="repo-branch-wrap">
+      <h2 class="mt-5">Branches</h2>
+      <div class="title-bottom-line"></div>
+      <div class="repo-branch-info-wrap col-12">
+        <div class="row my-2">
+          <h4 class="col-4">Default branch</h4>
+          <select name="" id="" class="mx-3">
+            <option value="111">預備欄位1</option>
+            <option value="222">預備欄位2</option>
+          </select>
+          <button class="btn btn-primary mx-3">Update</button>
+        </div>
+        <div class="row my-2">
+          <h4 class="col-4">Protect branch</h4>
+          <select name="" id="" class="mx-3">
+            <option value="111">預備欄位1</option>
+            <option value="222">預備欄位2</option>
+          </select>
+          <button class="btn btn-primary mx-3">Update</button>
+        </div>
+      </div>
+    </div>
+          
+    <h2 class="mt-5">Delete repository</h2>
+    <div class="title-bottom-line"></div>
+    <p class="my-3">Once you delete a repository, there is no going back. Please be certain.</p>
+    <%= button_to "Delete this repository", repository_path(@repository.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger my-2 mx-1"%>
+  </div>
+</div>
