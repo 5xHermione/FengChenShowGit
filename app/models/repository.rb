@@ -8,7 +8,7 @@ class Repository < ApplicationRecord
     # blank? 檢查東西是不是沒有或是空值
     # present? 檢查東西是不是存在
     if user.repositories.find_by(title: title).present?
-      errors.add(:title, "can't be exists!")
+      errors.add(:title, "can't exists!")
     end
   end
 end
