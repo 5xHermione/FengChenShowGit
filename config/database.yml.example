@@ -1,3 +1,4 @@
+# 請在 /config 資料夾中新建一個 database.yml 檔案 ，並把 database.yml.example 的內容複製進去裡面。
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
