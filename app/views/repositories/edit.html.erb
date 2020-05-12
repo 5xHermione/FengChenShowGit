@@ -4,7 +4,7 @@
     <div class="title-bottom-line"></div>
     <%= form_with(model: @repository, local: true) do |form| %>
       <% if @repository.errors.any? %>
-      <h2>have something wrong!</h2>
+      <h2>There is something wrong!</h2>
         <% @repository.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
