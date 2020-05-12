@@ -30,11 +30,23 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+　　address: "smtp.sendgrid.net",
+  　port: "587",
+    domain: "FengChenShowGit.com",
+    authentication: "plain",
+    user_name: "lawa0921",
+    password: "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",
+    enable_starttls_auto: true
+  }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
