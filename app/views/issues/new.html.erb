@@ -7,7 +7,7 @@
     </ul>
   <% end %>
 
- <%= form_for(@issue , method: 'post') do |form|%>
+ <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
 
   <div class="field">
     <%= form.label :title %>

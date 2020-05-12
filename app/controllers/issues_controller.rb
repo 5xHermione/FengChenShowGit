@@ -13,7 +13,7 @@ class IssuesController < ApplicationController
     # @issue.update(user_id: current_user.id)
     
 
-    if @issue.save
+    if @issue.save 
       redirect_to repository_issues_path, notice: '已建立新專案！' 
     else
       render :new
