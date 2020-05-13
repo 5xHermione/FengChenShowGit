@@ -10,11 +10,11 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    user_name = current_user.name
+    user_name = @repository.user.name
     repo_title = @repository.title
-    base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
+    @base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
     @current_path = "./#{user_name}/#{repo_title}"
-    Dir.chdir(base_path)
+    Dir.chdir(@base_path)
 
     @files = []
     @dirs = []
