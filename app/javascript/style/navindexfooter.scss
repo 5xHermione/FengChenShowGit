@@ -9,23 +9,23 @@
              width: 100%;
 }
 
-.navbar {
+.thisIsNavBar .navbar {
   background-color: #24292e;
   padding: 15px 50px 15px 50px;
 }
 
-.navbar-brand {
+.thisIsNavBar .navbar-brand {
   width: 40px;
   height: 40px;
   background-image: url("../../../pic/logo_SSS.png"); 
 }
 
-.navbar-nav .nav-link { 
+.thisIsNavBar .navbar-nav .nav-link { 
   color: #FFF; 
   padding: 2px 10px 4px 10px;
 }
 
-.navbar-nav .nav-link:hover {
+.thisIsNavBar .navbar-nav .nav-link:hover {
   color: #ccc;
 }
 
@@ -41,25 +41,25 @@
 
 
 /*頭像小三角的下拉選單*/
-.positioning {
+.thisIsNavBar .positioning {
   position: relative;
 }
 
-.dropdown-menu { 
+.thisIsNavBar .dropdown-menu { 
   position: absolute;
   left: -128px; 
 }
 
-.nav-link {
+.thisIsNavBar .nav-link {
   color: #fff;
   margin: 0 10px 0 10px;
 }
 
-.nav-link:hover {
+.thisIsNavBar .nav-link:hover {
   color: #aaa;
 }
 
-.nav-item img {
+.thisIsNavBar .nav-item img {
   width: 30px;
   height: 30px;
   border-radius: 5px;
@@ -110,30 +110,30 @@
 
 
 /*搜尋欄*/
-.form-inline input {
+.thisIsNavBar .form-inline input {
   background-color: #3f4448;
   height: 30px;
   border: none;
 }
 
-.btn-outline { 
+.thisIsNavBar .btn-outline { 
   border: solid 1px #3f4448;
   border-radius: 3px; 
    margin-right: 30px; 
  }
 
-.btn:hover {
+.thisIsNavBar .btn:hover {
   border-color: #999;
   color: #999;
 }
 
-.btn_search { 
+.thisIsNavBar .btn_search { 
   padding: 2px 6px;
   border-color: #3f4448;
   margin-right: 20px;
 }
 
-.btn {
+.thisIsNavBar .btn {
   color: #3f4448;
   padding: 2px 6px 2px 6px;
 }
