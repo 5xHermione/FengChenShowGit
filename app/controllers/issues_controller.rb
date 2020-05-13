@@ -14,7 +14,7 @@ class IssuesController < ApplicationController
     @issue = Repository.find_by(id: params[:repository_id]).issues.build(issue_params)
 
     if @issue.save 
-      redirect_to repository_issues_path, notice: '已建立新專案！' 
+      redirect_to repository_issues_path, notice: 'You have created an issue！' 
     else
       render :new
     end
@@ -29,13 +29,13 @@ class IssuesController < ApplicationController
 
   def edit
    
-    # byebug
+
   end
 
   def update
    
     if @issue.update(issue_params)
-      flash[:notice] = "issue已更新"
+      flash[:notice] = "This issue has updated."
       redirect_to repository_issue_path
     else
       render edit
