@@ -10,6 +10,23 @@ class RepositoriesController < ApplicationController
   end
 
   def show
+    user_name = current_user.name
+    repo_title = @repository.title
+    base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
+    @current_path = "./#{user_name}/#{repo_title}"
+    Dir.chdir(base_path)
+
+    @files = []
+    @dirs = []
+
+    Dir.entries(@current_path).each do |file|
+      if File.file?(@current_path+"/"+file)
+        @files << file
+      else
+        @dirs << file
+      end
+    end
+
   end
 
   def new
