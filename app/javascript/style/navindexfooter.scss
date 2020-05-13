@@ -1,0 +1,168 @@
+/*nav bar*/
+.back { 
+  background-image: url("https://github.com/images/modules/site/heroes/simple-codelines.svg");
+  width: 100%;
+}
+
+.backcolor { 
+  background-color: rgba(22, 25, 30, 0.9);
+             width: 100%;
+}
+
+.thisIsNavBar .navbar {
+  background-color: #24292e;
+  padding: 15px 50px 15px 50px;
+}
+
+.thisIsNavBar .navbar-brand {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../pic/logo_SSS.png"); 
+}
+
+.thisIsNavBar .navbar-nav .nav-link { 
+  color: #FFF; 
+  padding: 2px 10px 4px 10px;
+}
+
+.thisIsNavBar .navbar-nav .nav-link:hover {
+  color: #ccc;
+}
+
+.sp { 
+  border: solid 1px #fff; 
+  border-radius: 5px;  
+  margin: 0 20px 0 10px;
+}
+
+.sp:hover {
+  border-color: #ccc;
+}
+
+
+/*頭像小三角的下拉選單*/
+.thisIsNavBar .positioning {
+  position: relative;
+}
+
+.thisIsNavBar .dropdown-menu { 
+  position: absolute;
+  left: -128px; 
+}
+
+.thisIsNavBar .nav-link {
+  color: #fff;
+  margin: 0 10px 0 10px;
+}
+
+.thisIsNavBar .nav-link:hover {
+  color: #aaa;
+}
+
+.thisIsNavBar .nav-item img {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.user_set {
+  color: #24292e;
+}
+
+.user_set:hover { 
+  color: #999;
+  background-color: none; 
+}
+
+
+/*首頁的左邊位置*/
+.index_logo {
+  height: 240px;
+  width: 240px;
+  opacity:0.4
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-container h1 {
+  color: #fff;
+  font-size: 60px;
+  margin: 10px 0 30px 0;
+ }
+
+.logo-container h2 {
+  color: #b5b5b5;
+  font-size: 30px;
+}
+
+.logo-container p {
+  color: #b5b5b5;
+  font-size: 16px;
+}
+
+/*這裡只是留位置*/
+.green_spots {
+  widows: 300px;
+  height: 300px
+}
+
+
+/*搜尋欄*/
+.thisIsNavBar .form-inline input {
+  background-color: #3f4448;
+  height: 30px;
+  border: none;
+}
+
+.thisIsNavBar .btn-outline { 
+  border: solid 1px #3f4448;
+  border-radius: 3px; 
+   margin-right: 30px; 
+ }
+
+.thisIsNavBar .btn:hover {
+  border-color: #999;
+  color: #999;
+}
+
+.thisIsNavBar .btn_search { 
+  padding: 2px 6px;
+  border-color: #3f4448;
+  margin-right: 20px;
+}
+
+.thisIsNavBar .btn {
+  color: #3f4448;
+  padding: 2px 6px 2px 6px;
+}
+
+
+/*footer*/
+.foot { 
+  height: 70px;
+  width: 100%;
+  background-color: #24292e;
+  margin-bottom: 0;
+}
+
+.logo_name {
+  display: flex;
+  justify-content: center;
+  padding-top: 17px; 
+}
+
+.foot p { 
+  color: #3f4448 ;
+  display: inline-block;
+  padding-top: 7px;
+  padding-left: 15px; 
+}
+
+.foot .logo{ 
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-image: url("../../../pic/logo_gray.png"); 
+}
