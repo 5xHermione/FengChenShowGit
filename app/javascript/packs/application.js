@@ -19,3 +19,5 @@ window.$ = $
 //fontawesome
 
 import "@fortawesome/fontawesome-free/css/all.css";
+
+import "controllers"
