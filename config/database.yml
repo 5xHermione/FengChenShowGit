@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: FengChenShowGit_development2
+  database: FengChenShowGit_development
   
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

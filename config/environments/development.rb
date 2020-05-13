@@ -11,6 +11,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -33,22 +34,25 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-　　address: "smtp.sendgrid.net",
-  　port: "587",
-    domain: "FengChenShowGit.com",
-    authentication: "plain",
-    user_name: "lawa0921",
-    password: "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",
-    enable_starttls_auto: true
+    enabled: true,
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: ENV['SMTP_DOMAIN'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true,
+    openssl_verify_mode: "none"
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = true # 改成 false 可以讓信件即使無法寄出也不會顯示錯誤
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.perform_deliveries = true # 改成 false 可以讓開發模式不會寄信
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

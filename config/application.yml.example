@@ -1,0 +1,3 @@
+SMTP_DOMAIN: "domain name"
+SMTP_USERNAME: "user name"
+SMTP_PASSWORD: "password"
