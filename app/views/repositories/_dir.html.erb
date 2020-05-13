@@ -1,11 +1,35 @@
 <!-- _dir.html.erb -->
 
-<br>
-<% @dirs.each do |dir| %>
-  <a href="/<%= dir %>" style="color: #156687;"><%= dir %></a><br>
-<% end %>
-
-<% @files.each do |file| %>
-  <a href="/<%= file %>" style="color: #e04828;"><%= file %></a><br>
-<% end %>
+<div class="file-container">
+	
+	<br>
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<th>
+					Files
+				</th>
+			</tr>
+		</thead>
+		<% @dirs.each do |dir| %>
+				<tr>
+					<td>
+						<i class="fas fa-folder"></i>
+						<a href="/<%= dir %>" style="color: #156687;"><%= dir %></a>
+					</td>
+				</tr>
+		<% end %>
+		<% @files.each do |file| %>
+		  <tr>
+		  	<td>
+		  		<i class="far fa-file-alt"></i>
+		  		<a href="/<%= file %>" style="color: #e04828;"><%= file %></a>
+		  	</td>
+		  </tr>
+		<% end %>
+	</table>
+	
+	
+	
+</div>
 
