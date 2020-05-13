@@ -1,3 +1,3 @@
-SMTP_DOMAIN: "domain name"
-SMTP_USERNAME: "user name"
-SMTP_PASSWORD: "password"
+SMTP_DOMAIN: "domain name"  用於 config/initializers/devise.rb 與 application.rb
+SMTP_USERNAME: "user name"  用於 application.yml
+SMTP_PASSWORD: "password"   用於 application.yml
