@@ -1,3 +1,4 @@
+# 請在 /config 資料夾中新建一個 database.yml 檔案 ，並把 database.yml.example 的內容複製進去裡面。
 # SQLite. Versions 3.8.0 and up are supported.
 #   gem install sqlite3
 #
@@ -7,6 +8,9 @@
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+# turn on the comment below if you want to add your username
+# 如果需要加 username, 請打開下面的註解
+# username:
   timeout: 5000
 
 development:

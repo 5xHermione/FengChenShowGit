@@ -34,7 +34,7 @@ class RepositoriesController < ApplicationController
 
         `mkdir #{full_dir}`
         `git --bare init #{full_dir}`
-        redirect_to repositories_path, notice: '已建立新專案！' 
+        redirect_to repositories_path, notice: 'You have created a repository.' 
       else
         render :new
       end
@@ -43,7 +43,7 @@ class RepositoriesController < ApplicationController
 
   def update
     if @repository.update(repository_params)
-      redirect_to repositories_path, notice: '專案內容已更新！'
+      redirect_to repositories_path, notice: 'This repository has updated.'
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class RepositoriesController < ApplicationController
 
   def destroy
     @repository.destroy
-    redirect_to repositories_path, notice: '專案已刪除！'
+    redirect_to repositories_path, notice: 'This repository is deleted！'
   end
 
   private
