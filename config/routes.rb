@@ -5,22 +5,13 @@ Rails.application.routes.draw do
                         sign_up: 'register', 
                         sign_in: 'login', 
                         sign_out: 'logout'
-                      }, 
-                      controllers: {
-                        registrations: "user/registrations" 
                       }
   root "home#index"
+  get ':user_name', to: "home#logined", as: "logined"
 
-  # resources :repositories do
-  #   resources :issues
-  # end
-
-  scope '/:user_id' do
+  scope '/:user_name' do
     resources :repositories do
       resources :issues
     end
   end
-
 end
-# user save 的時候要存 slug 欄位。
-# routes 要傳 id 東西進去，他會去找 slug 欄位。

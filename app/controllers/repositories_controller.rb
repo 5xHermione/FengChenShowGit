@@ -56,11 +56,11 @@ class RepositoriesController < ApplicationController
 
   private
     def set_repository
-      @repository = Repository.find(params[:id])
+      @repository = Repository.friendly.find(params[:id])
       session[:repository_id] = @repository.id
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description, :user_id, :is_public)
+      params.require(:repository).permit(:title, :description, :user_id, :is_public, :slug)
     end
 end
