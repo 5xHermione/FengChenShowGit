@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-2 mt-2"><%= issue.status%>放狀態準備欄位</div>
         <div class="col-6 row"> 
-        <%= link_to issue.name,repository_issue_path(issue.repository_id , issue.id),class:"col-12" %>
+        <%= link_to issue.name, repository_issue_path(current_user.name, Repository.find(issue.repository_id).title , issue.id),class:"col-12" %>
           
           <p class="col-12">#<%= issue.id%> opened on <%= issue.created_at %></p>
         </div>
