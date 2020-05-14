@@ -22,8 +22,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    # byebug
-    
+
   end
 
 
@@ -36,7 +35,7 @@ class IssuesController < ApplicationController
    
     if @issue.update(issue_params)
       flash[:notice] = "This issue has updated."
-      redirect_to repository_issue_path
+      redirect_to repository_issue_path(@issue.repository , @issue)
     else
       render edit
   end
@@ -44,9 +43,8 @@ end
 
 def toggle_status
   issue = Issue.find(params[:id])
-  issue.status = !issue.status 
+  issue.toggle_status
   issue.save
-
   redirect_to repository_issue_path , flash: {notice: "已更新!"}
 end
 

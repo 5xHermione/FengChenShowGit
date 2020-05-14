@@ -1,18 +1,16 @@
 class Issue < ApplicationRecord
   validates :name, presence: true
   belongs_to :repository
-  
-  # def status_name
-  #   status ? "Yes" : "No"
-  # end
+
+  enum status: {publish: 'publish', close: 'close'}
 
   def toggle_status
-    if status == "Close"
-      status = "Reopen" 
-    else
-      status == "Reopen"
-      status = "Close"  
-    end
+    # if self.status == "Close"
+    #   self.status = "Reopen" 
+    # else
+    #   self.status = "Close"  
+    # end
+    self.status = self.publish? ? :close : :publish
   end
   
   # soft_delete

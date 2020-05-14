@@ -16,6 +16,6 @@
 </p>
 
 <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> |
-<%= link_to 'Update', edit_repository_issue_path(@issue) %> |
+<%= link_to 'Update', edit_repository_issue_path( @issue.repository , @issue) %> |
 <%= link_to 'Back', repositories_path %> |
 
