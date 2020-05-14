@@ -7,7 +7,7 @@ class Repository < ApplicationRecord
 
   extend FriendlyId
   friendly_id :title, use: :slugged
-
+  validates_exclusion_of :title, in: Blacklist.pluck(:name), message: ": This title is not allowed."
 
   def should_generate_new_friendly_id?
     title_changed?
