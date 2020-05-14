@@ -2,7 +2,6 @@ class Issue < ApplicationRecord
   validates :name, presence: true
   belongs_to :repository
 
-  
   def toggle_status
 
     if self.status == "Close"
@@ -10,7 +9,7 @@ class Issue < ApplicationRecord
     else
       self.status = "Close"  
     end
-  
+
   end
   
   # soft_delete

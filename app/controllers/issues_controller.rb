@@ -25,6 +25,8 @@ class IssuesController < ApplicationController
 
   end
 
+  end
+
   def edit
 
   end
