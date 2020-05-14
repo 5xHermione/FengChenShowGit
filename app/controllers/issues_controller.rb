@@ -52,7 +52,9 @@ class IssuesController < ApplicationController
     else
       render edit
   end
+  
 end
+
 
   private
   
