@@ -30,7 +30,7 @@
                 <div class="repositories-repository-wrap p-5 row">
                   <div class="col-10">
                     <h2>
-                      <%= link_to "#{repo.title}", repository_path(repo.id)%>
+                      <%= link_to "#{repo.title}", repository_path(current_user.name, repo)%>
                     </h2>
                     <div>
                       <%= repo.created_at%>
