@@ -10,9 +10,13 @@ class RepositoriesController < ApplicationController
   end
 
   def show
+
     user_name = @repository.user.name
     repo_title = @repository.title
-    @base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
+    Dir.chdir("/tmp/gitServer/#{user_name}/#{repo_title}")
+    `git pull`
+    
+    @base_path = "/tmp/gitServer"
     @current_repo_path = "./#{user_name}/#{repo_title}"
     @path = request.original_fullpath
     if @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)
@@ -20,8 +24,6 @@ class RepositoriesController < ApplicationController
     else
       @path = "."
     end 
-    # @path = "." if @path == ""
-    # p @path
 
     Dir.chdir(@base_path)
     Dir.chdir(@current_repo_path)
@@ -61,11 +63,11 @@ class RepositoriesController < ApplicationController
         title = @repository.title
         bare_repo_dir = "#{title}.git"
 
-        full_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{current_user.name}/#{bare_repo_dir}"
-        working_dir = "/Users/godzillalabear/Documents/Astro_Camp/gitServer/#{current_user.name}/#{title}"
+        full_dir = "/tmp/gitServer/#{current_user.name}/#{bare_repo_dir}"
+        working_dir = "/tmp/gitServer/#{current_user.name}/#{title}"
 
         #新增一個空的資料夾
-        `mkdir #{full_dir}`
+        `mkdir -p #{full_dir}`
         #在剛剛新增的空資料夾中建立一個 bare repo
         #bare repo 可以被push clone
         #bare repo 中是沒有檔案的
