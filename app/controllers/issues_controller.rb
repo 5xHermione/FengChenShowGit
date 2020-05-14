@@ -11,7 +11,7 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue = Repository.find_by(id: params[:repository_id]).issues.build(issue_params)
+    @issue = Repository.find_by(title: params[:repository_id]).issues.build(issue_params)
 
     if @issue.save 
       redirect_to repository_issues_path, notice: 'You have created an issue！' 
