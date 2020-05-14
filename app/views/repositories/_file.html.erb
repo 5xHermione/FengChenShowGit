@@ -1,0 +1,20 @@
+<!-- _file.html.erb -->
+
+<div class="dir-container">
+  <table class="table">
+	  <thead class="thead-light">
+		  <tr>
+			  <th>
+				  Files
+			  </th>
+		  </tr>
+		  <tr>
+			  <td>
+			  	<% @files.each do |line|  %>
+			  	  <p><%= line %><p>
+			  	<% end %>
+			  </td>
+		  </tr>
+	  </thead>
+  </table>
+</div>

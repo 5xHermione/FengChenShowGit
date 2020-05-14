@@ -21,4 +21,8 @@
 
 <%= link_to 'Back', repositories_path %>
 
-<%= render "dir"%>
+<% if @is_file%>
+  <%= render "file"%>
+<% else %>
+  <%= render "dir"%>
+<% end %>

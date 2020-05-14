@@ -13,11 +13,18 @@ class RepositoriesController < ApplicationController
 
     user_name = @repository.user.name
     repo_title = @repository.title
+
+    #synchronize git working repo 
     Dir.chdir("/tmp/gitServer/#{user_name}/#{repo_title}")
     `git pull`
-    
+
+    #set base path and repo path
     @base_path = "/tmp/gitServer"
     @current_repo_path = "./#{user_name}/#{repo_title}"
+    Dir.chdir(@base_path)
+    Dir.chdir(@current_repo_path)
+
+    #set directory path
     @path = request.original_fullpath
     if @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)
       @path = @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)[1]
@@ -25,22 +32,25 @@ class RepositoriesController < ApplicationController
       @path = "."
     end 
 
-    Dir.chdir(@base_path)
-    Dir.chdir(@current_repo_path)
-
     @files = []
     @dirs = []
 
-    Dir.entries(@path).each do |file|
-      if [".", "..", ".git"].include?"#{file}"
-      #rule out ".", "..", ".git"
-      elsif File.file?(@path+"/"+file)
-        @files << "#{@path}/#{file}"
-      else
-        @dirs << "#{@path}/#{file}"
+    @is_file = File.file?(@path)
+
+    if @is_file
+      @files = File.readlines(@path)
+    else
+      Dir.entries(@path).each do |file|
+        if [".", "..", ".git"].include?"#{file}"
+        #rule out ".", "..", ".git"
+        elsif File.file?(@path+"/"+file)
+          @files << "#{@path}/#{file}"
+        else
+          @dirs << "#{@path}/#{file}"
+        end
       end
-      # @path = @path + "/" + file
     end
+
 
   end
 
