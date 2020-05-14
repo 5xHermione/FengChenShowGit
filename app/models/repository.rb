@@ -1,8 +1,8 @@
 class Repository < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :user,
+                                                  message: ": This title already exitsts!" }
   belongs_to :user
   has_many :issues
-  validate :check_unique_title
   validates :title, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." }
 
   extend FriendlyId
@@ -21,3 +21,4 @@ class Repository < ApplicationRecord
     end
   end
 end
+
