@@ -6,6 +6,7 @@ ruby '2.6.5'
 gem 'figaro', '~> 1.1.1'
 gem 'foreman', '~> 0.87.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'friendly_id', '~> 5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use sqlite3 as the database for Active Record

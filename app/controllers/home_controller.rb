@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
-
+  
   def index
     @repositories = current_user.repositories if user_signed_in?
   end
