@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :repositories do
-    resources :issues
+    resources :issues do
+      member do
+        get :toggle_status
+      end
+    end
   end
 end

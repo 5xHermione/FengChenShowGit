@@ -22,7 +22,7 @@ class IssuesController < ApplicationController
   end
 
   def show
-    
+    # byebug
     
   end
 
@@ -42,6 +42,13 @@ class IssuesController < ApplicationController
   end
 end
 
+def toggle_status
+  issue = Issue.find(params[:id])
+  issue.status = !issue.status 
+  issue.save
+
+  redirect_to repository_issue_path , flash: {notice: "已更新!"}
+end
 
   private
   
