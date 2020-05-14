@@ -44,7 +44,7 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg">
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "User Settings", new_repository_path, class: "dropdown-item user_set"%>
+                    <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item user_set"%>
                     <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item user_set"%>
                   </div>
                 </li>
