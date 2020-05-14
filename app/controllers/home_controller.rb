@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     if user_signed_in? && User.find_by(name: params[:user_name])
       @repositories = current_user.repositories
     else
-      redirect_to root_path, notice: 'This account is not existed or password incorrect'
+      redirect_to root_path, notice: 'Please login first.'
     end
   end
 
