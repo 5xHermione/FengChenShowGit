@@ -15,11 +15,13 @@ class RepositoriesController < ApplicationController
     @base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
     @current_repo_path = "./#{user_name}/#{repo_title}"
     @path = request.original_fullpath
-    @path.slice!"/repositories/#{@repository.id}"
-    @path.slice!"/worktree/master"
-    @path[0] = ''
-    @path = "." if @path == ""
-    p @path
+    if @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)
+      @path = @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)[1]
+    else
+      @path = "."
+    end 
+    # @path = "." if @path == ""
+    # p @path
 
     Dir.chdir(@base_path)
     Dir.chdir(@current_repo_path)
@@ -28,10 +30,10 @@ class RepositoriesController < ApplicationController
     @dirs = []
 
     Dir.entries(@path).each do |file|
-      if File.file?(@path+"/"+file)
+      if [".", "..", ".git"].include?"#{file}"
+      #rule out ".", "..", ".git"
+      elsif File.file?(@path+"/"+file)
         @files << "#{@path}/#{file}"
-
-
       else
         @dirs << "#{@path}/#{file}"
       end
