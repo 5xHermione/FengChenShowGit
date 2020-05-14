@@ -13,18 +13,29 @@ class RepositoriesController < ApplicationController
     user_name = @repository.user.name
     repo_title = @repository.title
     @base_path = "/Users/godzillalabear/Documents/Astro_Camp/gitServer"
-    @current_path = "./#{user_name}/#{repo_title}"
+    @current_repo_path = "./#{user_name}/#{repo_title}"
+    @path = request.original_fullpath
+    @path.slice!"/repositories/#{@repository.id}"
+    @path.slice!"/worktree/master"
+    @path[0] = ''
+    @path = "." if @path == ""
+    p @path
+
     Dir.chdir(@base_path)
+    Dir.chdir(@current_repo_path)
 
     @files = []
     @dirs = []
 
-    Dir.entries(@current_path).each do |file|
-      if File.file?(@current_path+"/"+file)
-        @files << file
+    Dir.entries(@path).each do |file|
+      if File.file?(@path+"/"+file)
+        @files << "#{@path}/#{file}"
+
+
       else
-        @dirs << file
+        @dirs << "#{@path}/#{file}"
       end
+      # @path = @path + "/" + file
     end
 
   end
