@@ -2,7 +2,7 @@ class Repository < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :user,
                                                   message: ": This title already exitsts!" }
   belongs_to :user
-  has_many :issues, dependent: :delete_all
+  has_many :issues, dependent: :destroy
   validates :title, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." }
 
   extend FriendlyId
@@ -12,6 +12,8 @@ class Repository < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
+
+  scope :delete_all_repositories_and_issues, -> { where(current_user.repositories)}
 
   def check_unique_title
     # blank? 檢查東西是不是沒有或是空值
