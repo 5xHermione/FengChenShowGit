@@ -38,7 +38,7 @@ class RepositoriesController < ApplicationController
     @is_file = File.file?(@path)
 
     if @is_file
-      @files = File.readlines(@path)
+      @file_data = File.read(@path)
     else
       Dir.entries(@path).each do |file|
         if [".", "..", ".git"].include?"#{file}"
