@@ -51,6 +51,6 @@
     <h2 class="mt-5">Delete repository</h2>
     <div class="title-bottom-line"></div>
     <p class="my-3">Once you delete a repository, there is no going back. Please be certain.</p>
-    <%= button_to "Delete this repository", repository_path(@repository.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger my-2 mx-1"%>
+    <%= button_to "Delete this repository", repository_path, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger my-2 mx-1"%>
   </div>
 </div>

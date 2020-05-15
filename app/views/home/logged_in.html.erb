@@ -25,7 +25,7 @@
               <div class="p-3 col-6">
                 <div class="overview-repository-wrap p-5">
                   <h2>
-                    <%= link_to "#{repo.title}", repository_path(repo.id)%>
+                    <%= link_to "#{repo.title}", repository_path(id: repo)%>
                   </h2>
                   <div>
                     <%= repo.created_at%>

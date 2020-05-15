@@ -1,4 +1,4 @@
-<h2><%= current_user.name %>/<%=  current_user.repositories.find_by(id: params[:repository_id]).title %></h2>
+<h2><%= current_user.name %>/<%=  current_user.repositories.find_by(title: params[:repository_id]).title %></h2>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">

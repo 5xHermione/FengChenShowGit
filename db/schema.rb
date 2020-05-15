@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_092541) do
+ActiveRecord::Schema.define(version: 2020_05_14_161043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blacklists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "issues", force: :cascade do |t|
     t.string "name"
@@ -32,6 +38,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_092541) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.boolean "is_public", default: false
+    t.string "slug"
+    t.index ["slug"], name: "index_repositories_on_slug", unique: true
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
