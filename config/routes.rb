@@ -7,7 +7,7 @@ Rails.application.routes.draw do
                         sign_out: 'logout'
                       }
   root "home#index"
-  get ':user_name', to: "home#logined", as: "logined"
+  get ':user_name', to: "home#logged_in", as: "logged_in"
 
   scope '/:user_name' do
     resources :repositories do

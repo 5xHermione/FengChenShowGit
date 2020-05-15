@@ -4,11 +4,11 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       @repositories = current_user.repositories
-      redirect_to logined_path(current_user.name)
+      redirect_to logged_in_path(current_user.name)
     end
   end
 
-  def logined
+  def logged_in
     if user_signed_in? && User.find_by(name: params[:user_name])
       @repositories = current_user.repositories
     else
