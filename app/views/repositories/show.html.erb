@@ -1,3 +1,7 @@
+<div>
+  <%= render "shared/repo_navbar"%>
+</div>
+</br>
 <p id="notice"><%= notice %></p>
 
 <h2><%= current_user.name %>/<%=  @repository.title %></h2>
@@ -17,6 +21,5 @@
   <%= @repository.user.name %>
 </p>
 
-<%= link_to "issues", repository_issues_path(@repository) %>
-<%= link_to 'Edit', edit_repository_path(@repository) %> |
+
 <%= link_to 'Back', repositories_path %>

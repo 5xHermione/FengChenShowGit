@@ -34,9 +34,9 @@ class IssuesController < ApplicationController
     issue = Issue.find(params[:id])
     issue.toggle_status
     issue.save
-    if issue.toggle_status == :publish
+    if issue.toggle_status == 'Open'
       redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
-    else issue.toggle_status == :close
+    else issue.toggle_status == "Close"
       redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
     end
 
@@ -46,7 +46,7 @@ class IssuesController < ApplicationController
 
     if @issue.update(issue_params)
       flash[:notice] = "This issue has updated."
-      redirect_to repository_issue_path(@issue.repository , @issue)
+      redirect_to repository_issue_path(@issue.repository, @issue)
     else
       render edit
   end

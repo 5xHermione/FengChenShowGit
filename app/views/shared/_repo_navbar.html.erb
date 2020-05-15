@@ -2,16 +2,16 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <%= link_to "Code", new_repository_path, class: "nav-link" , ariaselected:"false"%>
+    <%= link_to "Code", repository_path(current_repository), class: "nav-link" , ariaselected:"false"%>
   </li>
   <li class="nav-item">
-    <%= link_to "Issues", repository_issues_path, class: "nav-link active" , ariaselected:"true"%>
+    <%= link_to "Issues", repository_issues_path(current_repository), class: "nav-link" , ariaselected:"true"%>
   </li>
   <li class="nav-item">
     <%= link_to "Pull requests", new_repository_path, class: "nav-link"%>
   </li>
     <li class="nav-item">
-    <%= link_to "Setting", new_repository_path, class: "nav-link"%>
+    <%= link_to "Setting", edit_repository_path(current_repository), class: "nav-link"%>
   </li>
 </ul>
 
