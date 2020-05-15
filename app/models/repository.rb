@@ -13,8 +13,6 @@ class Repository < ApplicationRecord
     slug.blank? || title_changed?
   end
 
-  scope :delete_all_repositories_and_issues, -> { where(current_user.repositories)}
-
   def check_unique_title
     # blank? 檢查東西是不是沒有或是空值
     # present? 檢查東西是不是存在
