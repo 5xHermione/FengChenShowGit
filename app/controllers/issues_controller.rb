@@ -25,14 +25,25 @@ class IssuesController < ApplicationController
 
   end
 
-
   def edit
-   
+
+  end
+
+  def toggle_status
+    
+    issue = Issue.find(params[:id])
+    issue.toggle_status
+    issue.save
+    if issue.toggle_status == :publish
+      redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
+    else issue.toggle_status == :close
+      redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
+    end
 
   end
 
   def update
-   
+
     if @issue.update(issue_params)
       flash[:notice] = "This issue has updated."
       redirect_to repository_issue_path(@issue.repository , @issue)
@@ -41,16 +52,8 @@ class IssuesController < ApplicationController
   end
 end
 
-def toggle_status
-  issue = Issue.find(params[:id])
-  issue.toggle_status
-  issue.save
-  redirect_to repository_issue_path , flash: {notice: "已更新!"}
-end
-
   private
   
-
   def issue_params
     clean_params = params.require(:issue).permit(:name, :description)
   end
@@ -58,7 +61,5 @@ end
   def set_issue
     @issue = Issue.find(params[:id])
   end
-
- 
 
 end
