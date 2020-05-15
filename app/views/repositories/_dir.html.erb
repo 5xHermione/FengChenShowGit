@@ -14,16 +14,16 @@
 		<% @dirs.each do |dir| %>
 				<tr>
 					<td>
-						<i class="fas fa-folder"></i>
-						<a href="/repositories/<%= @repository.id %>/worktree/master/<%= dir %>" style="color: #156687;"><%= dir %></a>
+						<i class="fas fa-folder" style="color: rgba(3,47,98,.5)"></i>
+						<a href="/repositories/<%= @repository.id %>/worktree/master/<%= dir %>" ><%= dir %></a>
 					</td>
 				</tr>
 		<% end %>
 		<% @files.each do |file| %>
 		  <tr>
 		  	<td>
-		  		<i class="far fa-file-alt"></i>
-		  		<a href="/repositories/<%= @repository.id %>/worktree/master/<%= file %>" style="color: #e04828;"><%= file %></a>
+		  		<i class="far fa-file-alt" style="color: rgba(3,47,98,.5)"></i>
+		  		<a href="/repositories/<%= @repository.id %>/worktree/master/<%= file %>" ><%= file %></a>
 		  	</td>
 		  </tr>
 		<% end %>
