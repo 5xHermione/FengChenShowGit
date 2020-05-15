@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+#syntax highlighting
+gem 'redcarpet', '~> 3.5'
+gem 'rouge', '~> 3.19'
+
 gem 'figaro', '~> 1.1.1'
 gem 'foreman', '~> 0.87.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'
