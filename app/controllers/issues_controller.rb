@@ -25,11 +25,6 @@ class IssuesController < ApplicationController
 
   end
 
-<<<<<<< HEAD
-  end
-
-=======
->>>>>>> issue開關初階段完成&issue路經修改調整
   def edit
 
   end
@@ -39,17 +34,11 @@ class IssuesController < ApplicationController
     issue = Issue.find(params[:id])
     issue.toggle_status
     issue.save
-<<<<<<< HEAD
+
     if issue.toggle_status == 'Open'
       redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
     else issue.toggle_status == "Close"
       redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
-=======
-    if issue.toggle_status == :publish
-      redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
-    else issue.toggle_status == :close
-      redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
->>>>>>> issue開關初階段完成&issue路經修改調整
     end
 
   end
@@ -65,10 +54,6 @@ class IssuesController < ApplicationController
   
 end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> issue開關初階段完成&issue路經修改調整
   private
   
   def issue_params
