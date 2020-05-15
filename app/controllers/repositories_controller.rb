@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_request_format 
   def index
     if current_user
       @repositories = current_user.repositories.order("id DESC").includes(:user)
@@ -26,8 +26,8 @@ class RepositoriesController < ApplicationController
 
     #set directory path
     @path = request.original_fullpath
-    if @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)
-      @path = @path.match(/^\/repositories\/.+\/worktree\/master\/(.+)/)[1]
+    if @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
+      @path = @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)[1]
     else
       @path = "."
     end 
@@ -50,7 +50,6 @@ class RepositoriesController < ApplicationController
         end
       end
     end
-
 
   end
 
@@ -113,5 +112,9 @@ class RepositoriesController < ApplicationController
 
     def repository_params
       params.require(:repository).permit(:title, :description, :user_id, :is_public, :slug)
+    end
+
+    def set_request_format
+      request.format = :html
     end
 end
