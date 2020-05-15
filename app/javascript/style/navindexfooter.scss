@@ -134,6 +134,7 @@
 }
 
 .thisIsNavBar .btn {
+
   color: #3f4448;
   padding: 2px 6px 2px 6px;
 }
@@ -165,4 +166,12 @@
   height: 40px;
   width: 40px;
   background-image: url("../../../pic/logo_gray.png"); 
+}
+
+.navbar-toggler {
+  background-color: #444;
+}
+
+.navbar-toggler-icon{
+  background-color: #fff;
 }

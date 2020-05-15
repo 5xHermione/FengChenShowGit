@@ -8,9 +8,13 @@
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+<<<<<<< HEAD:config/database.yml.example
 # turn on the comment below if you want to add your username
 # 如果需要加 username, 請打開下面的註解
 # username:
+=======
+  
+>>>>>>> 內頁配色:config/database.yml
   timeout: 5000
 
 development:
