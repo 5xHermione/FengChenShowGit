@@ -10,7 +10,7 @@ class Issue < ApplicationRecord
     else
       self.status = "Close"  
     end
-    
+  
   end
   
   # soft_delete

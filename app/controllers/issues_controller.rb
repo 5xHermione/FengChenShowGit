@@ -35,9 +35,9 @@ class IssuesController < ApplicationController
     issue.toggle_status
     issue.save
     if issue.toggle_status == 'Open'
-      redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
-    else issue.toggle_status == "Close"
       redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
+    else issue.toggle_status == "Close"
+      redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
     end
 
   end
