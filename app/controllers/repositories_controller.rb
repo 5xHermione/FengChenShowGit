@@ -3,7 +3,7 @@ class RepositoriesController < ApplicationController
 
   def index
     if current_user
-      @repositories = current_user.repositories.includes(:user)
+      @repositories = current_user.repositories.order("id DESC").includes(:user)
     else
       redirect_to new_user_session_path
     end
