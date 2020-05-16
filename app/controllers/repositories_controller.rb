@@ -57,6 +57,8 @@ class RepositoriesController < ApplicationController
   private
     def set_repository
       @repository = Repository.friendly.find(params[:id])
+      @repo_owner = User.find_by(name: params[:user_name])
+      raise '404' if @repo_owner.nil? || @repo_owner != @repository.user
       session[:repository_id] = @repository.id
     end
 
