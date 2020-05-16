@@ -3,7 +3,7 @@ class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update]
 
   def index
-    @issues = current_repository.issues
+    @issues = current_repository.issues.order("id DESC")
   end
 
   def new
@@ -12,7 +12,8 @@ class IssuesController < ApplicationController
 
   def create
     @issue = Repository.find_by(title: params[:repository_id]).issues.build(issue_params)
-
+    @issue.repository_issue_index = current_repository.issues.count + 1
+    
     if @issue.save 
       redirect_to repository_issues_path, notice: 'You have created an issue！' 
     else
