@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   scope '/:user_name' do
     resources :repositories do
-      resources :issues
+      resources :issues do
+        member do
+          get :toggle_status
+        end
+      end
     end
   end
 end

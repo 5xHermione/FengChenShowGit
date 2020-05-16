@@ -5,5 +5,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true,
                                    format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." }
-  validates_exclusion_of :name, in: Blacklist.pluck(:name), message: ": Please change another user name."
+  # validates_exclusion_of :name, in: Blacklist.pluck(:name), message: ": Please change another user name."
 end
