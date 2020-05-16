@@ -52,9 +52,9 @@ class IssuesController < ApplicationController
                                         id: @issue.id)
     else
       render edit
-  end
+    end
   
-end
+  end
 
   private
   
