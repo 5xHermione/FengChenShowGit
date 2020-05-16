@@ -55,6 +55,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'kaminari', '~> 1.2'
+  #deploy
+  gem 'capistrano', '~> 3.4', require: false
 end
 
 group :test do
