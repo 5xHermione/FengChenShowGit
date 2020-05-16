@@ -7,7 +7,8 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-
+server '128.199.107.166', user: 'deploy', roles: %w{app web db}
+set :deploy_to, '/home/deploy/fengchenshowgit'
 
 # role-based syntax
 # ==================
