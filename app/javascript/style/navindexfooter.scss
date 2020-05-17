@@ -41,15 +41,11 @@
 
 
 /*頭像小三角的下拉選單*/
-.thisIsNavBar .positioning {
-  position: relative;
-}
 
-.thisIsNavBar .dropdown-menu { 
-  position: absolute;
-  left: -128px; 
+/*.thisIsNavBar #navbarSupportedContent {
+  padding-top: 20px;
 }
-
+*/
 .thisIsNavBar .nav-link {
   color: #fff;
   margin: 0 10px 0 10px;
@@ -72,6 +68,14 @@
 .user_set:hover { 
   color: #999;
   background-color: none; 
+}
+
+.thisIsNavBar #navbarDropdown {
+  margin-left: 0; 
+}
+
+.thisIsNavBar .ul-inline {
+  padding-left: 0;
 }
 
 
@@ -113,6 +117,8 @@
 .thisIsNavBar .form-inline input {
   background-color: #3f4448;
   height: 30px;
+  width: 200px;
+  margin-right: 5px; 
   border: none;
 }
 
@@ -134,10 +140,15 @@
 }
 
 .thisIsNavBar .btn {
-
   color: #3f4448;
   padding: 2px 6px 2px 6px;
 }
+
+.thisIsNavBar .form-inline {
+  /*padding-top: 20px;*/
+  padding-left: 20px;
+}
+
 
 
 /*footer*/
@@ -168,10 +179,15 @@
   background-image: url("../../../pic/logo_gray.png"); 
 }
 
-.navbar-toggler {
-  background-color: #444;
+/*.thisIsNavBar .navbar-toggler {
+  border: solid 1px #3f4448;
+  padding: 4px;
+  width: 50px;
+  background-color: #24292e;
+
 }
 
 .navbar-toggler-icon{
-  background-color: #fff;
-}
+ padding-top: 4px;
+ color: #3f4448;
+}*/

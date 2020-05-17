@@ -1,7 +1,7 @@
 /*可共用*/
-.repo_navbar { 
-	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbs.jpg");
+.repo_navbar {
+	background-color: #f9fbef;
+	background-image: url("../../../pic/issueBK.png"); 
 }
 .id_name {
 	padding-top: 30px;
@@ -17,21 +17,26 @@
 .id_name i {
   color: #aaa;
   margin-right: 3px;
-  color: #573c39;
+  color: #494f35;
 }
 .userId {
 	display: inline;
-	font-weight: bold;
-	color: #573c39;
+	font-weight: lighter;
+	color: #494f35;
 	font-size: 18px;
 }
 
 .thisIsIssuesShow .fileName {
-	color: #573c39;
+	color: #494f35;
 }
 
 .thisIsIssuesShow .repo_navbar .nav-link {
-	color: #573c39;
+	color: #777e5d;
+	text-shadow:
+		-2px -2px 0 #fff,
+		 2px -2px 0 #fff,
+		-2px  2px 0 #fff,
+		 2px  2px 0 #fff,
 }
 
 .fileName {
@@ -43,15 +48,6 @@
 .repo_navbar .nav-link { 
 	color: #586069;
 	border-bottom: none;
-}
-
-.thisIsIssuesShow .nav-tabs .nav-link {
-	font-weight: normal;
-	border: none;
-}
-
-.thisIsIssuesShow .nav-tabs .nav-link:hover {
-	font-weight: bold;
 }
 
 .thisIsIssuesShow .nav-link.active {
@@ -73,7 +69,7 @@
 }
 
 .thisIsIssuesShow input {
-	background-color: #fff7ee;
+	background-color: #f9fbef;
 }
 
 .thisIsIssuesShow .nav-tabs {
@@ -87,13 +83,13 @@
 }
 
 .thisIsIssuesShow .btn {
-	background-color: #573c39;
+	background-color: #777e5d;
 	border: none;
 	color: #fff;
 }
 
 .thisIsIssuesShow .btn:hover {
-	background-color: #af7973;
+	background-color: #494f35;
 }
 
 .thisIsIssuesShow .formInput {
@@ -124,7 +120,7 @@
 .thisIsIssuesShow .open {
 	margin: 0; 
 	padding: 15px;
-	background-color: #cd6d55;
+	background-color: #ecc471;
 	color: #fff;
 }
 
@@ -133,7 +129,7 @@
 }
 
 .thisIsIssuesShow .item:hover { 
-  background-color: #e5dfd7;
+  background-color: #e7f1db;
 }
 
 .thisIsIssuesShow .row {
@@ -150,13 +146,13 @@
 }
 
 .thisIsIssuesShow .container span{
-	color: #573c39;
+	color: #494f35;
 	font-family: 微軟正黑體;
 	font-weight: bold;
 }
 
 .thisIsIssuesShow div.col-2.mt-2 i{
-	color: #cd6d55;
+	color: #ecc471;
 }
 
 .thisIsIssuesShow p.col-12 {
