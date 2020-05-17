@@ -57,6 +57,8 @@ group :development do
   gem 'kaminari', '~> 1.2'
   #deploy
   gem 'capistrano', '~> 3.4', require: false
+  gem 'capistrano-rails', '~> 1.5'
+  gem 'capistrano-passenger', '~> 0.2.0'
 end
 
 group :test do
