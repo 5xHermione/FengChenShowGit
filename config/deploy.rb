@@ -22,7 +22,7 @@ set :passenger_restart_with_touch, true
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/application.yml'
+append :linked_files, 'config/database.yml', 'config/application.yml', 'config/secrets.yml'
 
 
 # Default value for linked_dirs is []
