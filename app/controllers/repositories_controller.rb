@@ -10,7 +10,7 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-
+    # @is_new_repo = true
     user_name = @repository.user.name
     repo_title = @repository.title
 
@@ -20,10 +20,11 @@ class RepositoriesController < ApplicationController
 
     #set base path and repo path
     @base_path = "/tmp/gitServer"
-    @current_repo_path = "./#{user_name}/#{repo_title}"
+    @current_repo_path = "/#{user_name}/#{repo_title}"
     Dir.chdir(@base_path)
-    Dir.chdir(@current_repo_path)
+    Dir.chdir("." + @current_repo_path)
 
+    # to a method path
     #set directory path
     @path = request.original_fullpath
     if @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
@@ -31,6 +32,11 @@ class RepositoriesController < ApplicationController
     else
       @path = "."
     end 
+
+    # if show_file?
+    #   render "comme/file"
+    # else
+
 
     @files = []
     @dirs = []
