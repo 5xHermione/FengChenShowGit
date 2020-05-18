@@ -1,9 +1,9 @@
-/*可共用*/
-.repo_navbar { 
+.thisIsIssuesShow .repo_navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbs.jpg");
+	background-image: url("../../../pic/issueBKbss.jpg");
 }
-.id_name {
+
+.enjoy .id_name {
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
@@ -14,54 +14,16 @@
 		-2px  2px 0 #fff,
 		 2px  2px 0 #fff,
 }
-.id_name i {
-  color: #aaa;
-  margin-right: 3px;
-  color: #573c39;
-}
-.userId {
-	display: inline;
-	font-weight: bold;
-	color: #573c39;
-	font-size: 18px;
+
+.enjoy .repo_navbar .nav-link {
+	text-shadow:
+		-1px -1px 0 #fff,
+		 1px -1px 0 #fff,
+		-1px  1px 0 #fff,
+		 1px  1px 0 #fff,
 }
 
-.thisIsIssuesShow .fileName {
-	color: #573c39;
-}
-
-.thisIsIssuesShow .repo_navbar .nav-link {
-	color: #573c39;
-}
-
-.fileName {
-	display: inline;
-	color: #24292e;
-	font-size: 18px;
-}
-
-.repo_navbar .nav-link { 
-	color: #586069;
-	border-bottom: none;
-}
-
-.thisIsIssuesShow .nav-tabs .nav-link {
-	font-weight: normal;
-	border: none;
-}
-
-.thisIsIssuesShow .nav-tabs .nav-link:hover {
-	font-weight: bold;
-}
-
-.thisIsIssuesShow .nav-link.active {
-	border-bottom: none;
-	border-color: #e0d7d2;
-}
-
-.fas .fa-code {
-  color: #777e5d;
-}
+/*=================== .enjoy ======================*/
 
 
 .thisIsIssuesShow .col-2.mt-2 {
@@ -74,6 +36,7 @@
 
 .thisIsIssuesShow input {
 	background-color: #fff7ee;
+	border-radius: 8px;
 }
 
 .thisIsIssuesShow .nav-tabs {
@@ -87,13 +50,15 @@
 }
 
 .thisIsIssuesShow .btn {
-	background-color: #573c39;
+	background-color: #642e4e;
 	border: none;
 	color: #fff;
+	border-radius: 8px;
+	padding: 8px;
 }
 
 .thisIsIssuesShow .btn:hover {
-	background-color: #af7973;
+	background-color: #f58454;
 }
 
 .thisIsIssuesShow .formInput {
@@ -110,30 +75,41 @@
 
 .thisIsIssuesShow .issue-container {
 	border-color: #e0d7d2;
+	border: none;
+}
+
+.thisIsIssuesShow .issue-container .container {
+	border-left: 1px solid #e0d7d2;
+	border-right: 1px solid #e0d7d2;
+	border-bottom: 1px solid #e0d7d2;
 }
 
 .thisIsIssuesShow .row {
 	border-color: #e0d7d2;
 	margin: 5px 0 0 0; 
-}
-
-.thisIsIssuesShow .issue-container .container {
-	border-bottom: solid 1px #e0d7d2;
+	/*border-bottom: solid 1px #e0d7d2;*/
 }
 
 .thisIsIssuesShow .open {
 	margin: 0; 
 	padding: 15px;
-	background-color: #cd6d55;
+	background-color: #ef3e38;
 	color: #fff;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 }
 
+/*.thisIsIssuesShow .issue-title .row .p-2 .open {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+*/
 .thisIsIssuesShow .item { 
   padding-top: 10px;
 }
 
 .thisIsIssuesShow .item:hover { 
-  background-color: #e5dfd7;
+  background-color: #eefeff;
 }
 
 .thisIsIssuesShow .row {
@@ -156,7 +132,7 @@
 }
 
 .thisIsIssuesShow div.col-2.mt-2 i{
-	color: #cd6d55;
+	color: #ffcc1e;
 }
 
 .thisIsIssuesShow p.col-12 {

@@ -24,23 +24,6 @@
                                                 repository_id: current_repository.title,
                                                 "status" => "close")%>
   </div>
-  <!-- conflict -->
-    </br>
-
-    <div class="row formIput">
-      <form class="form-inline my-2 my-lg-0 col-7 col-md-10">
-        <input
-          class="form-control mr-md-2 col-12"
-          type="search"
-          placeholder="目前沒有功能的 Search"
-          aria-label="Search"
-        />
-      </form>
-      <%# <a href="#" class="btn btn-success col-2">新增 issue</a> %>
-        <%= link_to "New issue", new_repository_issue_path , class:"btn col-md-2 col-5" %>
-    </div>
-<!-- conflict -->
-
   <% if @issues.length > 0 %>
     <% @issues.each do |issue| %>
       <div class="container">
