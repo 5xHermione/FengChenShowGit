@@ -1,45 +1,21 @@
-<div>
-  <%= render "shared/repo_navbar"%>
-</div>
-<br/>
-<div class="row">
-  <form class="form-inline my-2 my-lg-0 col-10">
-    <input
-      class="form-control mr-sm-2 col-12"
-      type="search"
-      placeholder="目前沒有功能的 Search"
-      aria-label="Search"
-    />
-  </form>
-  <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
-</div>
-<div class="issue-container my-5">
-  <div class="issue-title row p-2">
-    <div class="status-title col-2"><%= @issues.length %> records</div>
-    <%= link_to  'open', repository_issues_path(user_name: current_user.name,
-                                                repository_id: current_repository.title,
-                                                "status" => "open")%> |
+<div class="thisIsIssuesShow enjoy">
 
-    <%= link_to  'close', repository_issues_path(user_name: current_user.name,
-                                                repository_id: current_repository.title,
-                                                "status" => "close")%>
-  </div>
-  <!-- conflict -->
+
+    <div>
+      <%= render "shared/repo_navbar"%>
+    </div>
     </br>
-
     <div class="row formIput">
       <form class="form-inline my-2 my-lg-0 col-7 col-md-10">
         <input
-          class="form-control mr-md-2 col-12"
+          class="form-control mr-sm-2 col-12"
           type="search"
           placeholder="目前沒有功能的 Search"
           aria-label="Search"
         />
       </form>
-      <%# <a href="#" class="btn btn-success col-2">新增 issue</a> %>
-        <%= link_to "New issue", new_repository_issue_path , class:"btn col-md-2 col-5" %>
+      <%= link_to "New issue", new_repository_issue_path , class:"btn col-5 col-md-2" %>
     </div>
-<!-- conflict -->
 
   <% if @issues.length > 0 %>
     <% @issues.each do |issue| %>
