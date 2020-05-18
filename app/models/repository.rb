@@ -1,4 +1,5 @@
 class Repository < ApplicationRecord
+  blacklists = ["edit", "login", "logout", "password", "new", "cancel", "register", "confirmation", "repositories", "issues", "rails"]
   validates :title, presence: true, uniqueness: { scope: :user,
                                                   message: ": This title already exitsts!" }
   belongs_to :user
@@ -7,7 +8,7 @@ class Repository < ApplicationRecord
 
   extend FriendlyId
   friendly_id :title, use: :slugged
-  validates_exclusion_of :title, in: Blacklist.select(:name), message: ": Please change another repository title."
+  validates_exclusion_of :title, in: blacklists, message: ": Please change another repository title."
   before_save :convert_slug_to_same_title
 
   def should_generate_new_friendly_id?
