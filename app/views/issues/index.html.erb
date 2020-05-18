@@ -40,3 +40,9 @@
     </div>
   <% end %>
 </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+<%= paginate @issues, window: 2 %>
+</ul>
+</nav>

@@ -3,7 +3,7 @@ class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update]
 
   def index
-    @issues = current_repository.issues.order("id DESC")
+    @issues = current_repository.issues.order("id DESC").page(params[:page]).per(5)
   end
 
   def new
