@@ -4,6 +4,11 @@
 	background-image: url("../../../pic/issueBKbs.jpg");
 }
 
+.thisIsSettingsNaveBar .repo_navbar { 
+	/*background-image: url("../../../pic/issueBK.png"); */
+	background-image: url("../../../pic/issueBKbsss.jpg");
+}
+
 .enjoy .id_name {
 	padding-top: 30px;
 	padding-left: 10px;
