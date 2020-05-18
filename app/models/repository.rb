@@ -7,17 +7,16 @@ class Repository < ApplicationRecord
 
   extend FriendlyId
   friendly_id :title, use: :slugged
-  validates_exclusion_of :title, in: Blacklist.pluck(:name), message: ": Please change another repository title."
+  validates_exclusion_of :title, in: Blacklist.select(:name), message: ": Please change another repository title."
+  before_save :convert_slug_to_same_title
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
   end
 
-  def check_unique_title
-    # blank? 檢查東西是不是沒有或是空值
-    # present? 檢查東西是不是存在
-    if user.repositories.find_by(title: title).present?
-      errors.add(:title, ": This title already exitsts!")
-    end
+  private
+
+  def convert_slug_to_same_title
+    self.slug = title if slug != title
   end
 end
