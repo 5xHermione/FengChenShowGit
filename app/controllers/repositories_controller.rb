@@ -11,32 +11,26 @@ class RepositoriesController < ApplicationController
 
   def show
     # @is_new_repo = true
+    #set base path and repo path
     user_name = @repository.user.name
     repo_title = @repository.title
+    @base_path = ENV["GIT_SERVER_PATH"]
+    @current_repo_path = "/#{user_name}/#{repo_title}"
+
 
     #synchronize git working repo 
-    Dir.chdir("/tmp/gitServer/#{user_name}/#{repo_title}")
-    `git pull`
+    `git -C #{@base_path}#{@current_repo_path} pull`
+    
 
-    #set base path and repo path
-    @base_path = "/tmp/gitServer"
-    @current_repo_path = "/#{user_name}/#{repo_title}"
-    Dir.chdir(@base_path)
-    Dir.chdir("." + @current_repo_path)
 
     # to a method path
     #set directory path
     @path = request.original_fullpath
     if @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
-      @path = @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)[1]
+      @path = "#{@base_path}#{@current_repo_path}"+"/"+@path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)[1]
     else
-      @path = "."
-    end 
-
-    # if show_file?
-    #   render "comme/file"
-    # else
-
+      @path = "#{@base_path}#{@current_repo_path}/."
+    end
 
     @files = []
     @dirs = []
@@ -50,13 +44,12 @@ class RepositoriesController < ApplicationController
         if [".", "..", ".git"].include?"#{file}"
         #rule out ".", "..", ".git"
         elsif File.file?(@path+"/"+file)
-          @files << "#{@path}/#{file}"
+          @files << "#{@path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
         else
-          @dirs << "#{@path}/#{file}"
+          @dirs << "#{@path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
         end
       end
     end
-
   end
 
   def new
@@ -78,8 +71,8 @@ class RepositoriesController < ApplicationController
         title = @repository.title
         bare_repo_dir = "#{title}.git"
 
-        full_dir = "/tmp/gitServer/#{current_user.name}/#{bare_repo_dir}"
-        working_dir = "/tmp/gitServer/#{current_user.name}/#{title}"
+        full_dir = "#{ENV["GIT_SERVER_PATH"]}/#{current_user.name}/#{bare_repo_dir}"
+        working_dir = "#{ENV["GIT_SERVER_PATH"]}/#{current_user.name}/#{title}"
 
         #新增一個空的資料夾
         `mkdir -p #{full_dir}`

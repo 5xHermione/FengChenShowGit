@@ -8,7 +8,7 @@
   	<h3>
   		Push an existing repository from the command line
   	</h3>
-  	<%= markdown("```\ngit remote add origin #{@base_path+@current_repo_path+".git"}
+  	<%= markdown("```\ngit remote add origin #{ENV["GIT_PUSH_INSTRUCT"]+@current_repo_path+".git"}
 git push -u origin master\n ```") %>
   </div>
 </div>
