@@ -1,6 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
-  before_action :set_request_format 
+  before_action :set_request_format
+  before_action :set_repo_file_path, only: [:show] 
   def index
     if current_user
       @repositories = current_user.repositories.order("id DESC").includes(:user)
@@ -11,18 +12,10 @@ class RepositoriesController < ApplicationController
 
   def show
     # @is_new_repo = true
-    #set base path and repo path
-    user_name = @repository.user.name
-    repo_title = @repository.title
-    @base_path = ENV["GIT_SERVER_PATH"]
-    @current_repo_path = "/#{user_name}/#{repo_title}"
-
 
     #synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
     
-
-
     # to a method path
     #set directory path
     @path = request.original_fullpath
@@ -115,5 +108,13 @@ class RepositoriesController < ApplicationController
 
     def set_request_format
       request.format = :html
+    end
+
+    def set_repo_file_path
+      #set base path and repo path
+      user_name = current_user.name
+      repo_title = @repository.title
+      @base_path = ENV["GIT_SERVER_PATH"]
+      @current_repo_path = "/#{user_name}/#{repo_title}"
     end
 end
