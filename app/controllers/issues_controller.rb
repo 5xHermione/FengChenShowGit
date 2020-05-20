@@ -1,9 +1,11 @@
 class IssuesController < ApplicationController 
   
   before_action :set_issue, only: [:show, :edit, :update]
-
+  
   def index
-    @issues = current_repository.issues.order("id DESC").page(params[:page]).per(5)
+    params[:status] = "open" if params[:status] == nil
+    @issues = current_repository.issues.where(status: params[:status]).order("id DESC").page(params[:page]).per(5)
+     # 資料來源kaminari: https://github.com/kaminari/kaminari  page(params[:page]).per(5)  五頁切換
   end
 
   def new
@@ -36,13 +38,14 @@ class IssuesController < ApplicationController
     issue.toggle_status
     issue.save
 
-    if issue.toggle_status == 'Open'
+    if issue.toggle_status == 'open'
       redirect_to repository_issue_path, flash: {notice: "This issue has closed!"}
-    else issue.toggle_status == "Close"
+    else 
       redirect_to repository_issue_path, flash: {notice: "This issue has opened again!"}
     end
 
   end
+
 
   def update
 
@@ -68,3 +71,6 @@ class IssuesController < ApplicationController
   end
 
 end
+
+
+[:status]

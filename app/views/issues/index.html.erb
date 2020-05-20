@@ -1,7 +1,7 @@
 <div>
   <%= render "shared/repo_navbar"%>
 </div>
-</br>
+<br>
 <div class="row">
   <form class="form-inline my-2 my-lg-0 col-10">
     <input
@@ -13,12 +13,18 @@
   </form>
   <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
 </div>
-
 <div class="issue-container my-5">
   <div class="issue-title row p-2">
-    <div class="status-title col-2"><%= @issues.length %> open</div>
-    <div class="info-title col-6">sometitle</div>
-    <div class="description-title col-4">sometitle</div>
+    <div class="status-title col-2"><%= @issues.length %> records</div>
+      <%= link_to  'open', repository_issues_path(user_name: current_user.name,
+                                                repository_id: current_repository.title,
+                                                "status" => "open")%> |
+
+      <%= link_to  'close', repository_issues_path(user_name: current_user.name,
+                                                repository_id: current_repository.title,
+                                                "status" => "close")%>
+    <%# <div class="info-title col-6">sometitle</div>
+    <div class="description-title col-4">sometitle</div> %>
   </div>
   <% if @issues.length > 0 %>
     <% @issues.each do |issue| %>
