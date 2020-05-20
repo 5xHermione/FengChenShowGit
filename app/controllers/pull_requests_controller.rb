@@ -14,7 +14,7 @@ class PullRequestsController < ApplicationController
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
     
     if @pull_request.save 
-      redirect_to repository_pull_requests_path, notice: 'You have created an pull request！' 
+      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: 'You have created a pull request！' 
     else
       render :new
     end
@@ -28,8 +28,7 @@ class PullRequestsController < ApplicationController
 
   def update
     if @pull_request.update(pull_request_params)
-      flash[:notice] = "This pull request has updated."
-      redirect_to repository_pull_requests_path
+      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: "This pull request has updated."
     else
       render :edit
     end
