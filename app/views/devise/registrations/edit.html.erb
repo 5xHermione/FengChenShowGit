@@ -55,6 +55,13 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, class: "form-control" %>
               </div>
+              
+              <div class="field my-3">
+                <%= f.label :avatar %>
+                <%= image_tag(@user.avatar_url) if @user.avatar? %>
+                <%= f.file_field :avatar %>
+                <%= f.hidden_field :avatar_cache %>
+              </div>
 
               <div class="actions">
                 <%= f.submit "Update", class: "btn btn-primary my-3 p-2"%>
