@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_080030) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "candidates", force: :cascade do |t|
-    t.string "name"
-    t.string "party"
-    t.integer "age"
-    t.text "politics"
-    t.integer "votes", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.text "description"
