@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_080030) do
     t.text "description"
     t.string "status", default: "open"
     t.bigint "repository_id", null: false
+    t.integer "repository_pull_request_index"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["repository_id"], name: "index_pull_requests_on_repository_id"

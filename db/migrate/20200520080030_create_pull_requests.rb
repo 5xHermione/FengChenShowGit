@@ -5,6 +5,7 @@ class CreatePullRequests < ActiveRecord::Migration[6.0]
       t.text :description
       t.string :status, default: "open"
       t.references :repository, null: false, foreign_key: true
+      t.integer :repository_pull_request_index
 
       t.timestamps
     end
