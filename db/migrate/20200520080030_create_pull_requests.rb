@@ -9,6 +9,5 @@ class CreatePullRequests < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    drop_table :candidates
   end
 end
