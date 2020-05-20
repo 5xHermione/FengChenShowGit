@@ -1,4 +1,6 @@
 class PullRequestsController < ApplicationController
+  before_action :set_pull_request, only: [:show, :edit, :update]
+
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
   end
@@ -18,8 +20,27 @@ class PullRequestsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @pull_request.update(pull_request_params)
+      flash[:notice] = "This pull request has updated."
+      redirect_to repository_pull_requests_path
+    else
+      render :edit
+    end
+  end
+
   private
   def pull_request_params
     params.require(:pull_request).permit(:name, :description)
+  end
+
+  def set_pull_request
+    @pull_request = PullRequest.find(params[:id])
   end
 end
