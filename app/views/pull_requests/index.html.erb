@@ -1,0 +1,42 @@
+<div>
+  <%= render "shared/repo_navbar"%>
+</div>
+</br>
+<div class="row">
+  <form class="form-inline my-2 my-lg-0 col-10">
+    <input
+      class="form-control mr-sm-2 col-12"
+      type="search"
+      placeholder="目前沒有功能的 Search"
+      aria-label="Search"
+    />
+  </form>
+  <%= link_to "New pull request", new_repository_pull_request_path , class:"btn btn-success col-2 "%>
+</div>
+
+<div class="issue-container my-5">
+  <div class="issue-title row p-2">
+    <div class="status-title col-2"><%= @pull_requests.length %> open</div>
+    <div class="info-title col-6">sometitle</div>
+    <div class="description-title col-4">sometitle</div>
+  </div>
+  <% if @pull_requests.any? %>
+    <% @pull_requests.each do |pull_request| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-2 mt-2"><%= pull_request.status%></div>
+        <div class="col-6 row"> 
+        <%= link_to pull_request.name,repository_issue_path(id: pull_request.id),class:"col-12" %>        
+          <p class="col-12">#<%= pull_request.repository_issue_index %> opened on <%= pull_request.created_at %></p>
+        </div>
+        <div class="col-4"><%= pull_request.description %></div>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <div class="text-center p-5">
+      <h3>There aren’t any open pull requests.</h3>
+      <h4>Try to create new pull requests?</h4>
+    </div>
+  <% end %>
+</div>

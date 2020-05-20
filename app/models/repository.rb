@@ -3,6 +3,7 @@ class Repository < ApplicationRecord
                                                   message: ": This title already exitsts!" }
   belongs_to :user
   has_many :issues, dependent: :destroy
+  has_many :pull_requests, dependent: :destroy
   validates :title, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." }
 
   extend FriendlyId

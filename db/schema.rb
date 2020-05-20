@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_101839) do
+ActiveRecord::Schema.define(version: 2020_05_20_080030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "blacklists", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "name"
+    t.string "party"
+    t.integer "age"
+    t.text "politics"
+    t.integer "votes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,6 +40,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_101839) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "repository_issue_index"
     t.index ["repository_id"], name: "index_issues_on_repository_id"
+  end
+
+  create_table "pull_requests", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "status", default: "open"
+    t.bigint "repository_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["repository_id"], name: "index_pull_requests_on_repository_id"
   end
 
   create_table "repositories", force: :cascade do |t|
@@ -62,4 +82,5 @@ ActiveRecord::Schema.define(version: 2020_05_15_101839) do
   end
 
   add_foreign_key "issues", "repositories"
+  add_foreign_key "pull_requests", "repositories"
 end

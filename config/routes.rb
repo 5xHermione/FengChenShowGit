@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   scope '/:user_name' do
     resources :repositories do
+      resources :pull_requests
       resources :issues do
         member do
           get :toggle_status
