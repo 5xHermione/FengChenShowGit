@@ -5,7 +5,7 @@ class IssuesController < ApplicationController
   def index
     params[:status] = "open" if params[:status] == nil
     @issues = current_repository.issues.where(status: params[:status]).order("id DESC").page(params[:page]).per(5)
-    #資料來源kaminari: https://github.com/kaminari/kaminari  page(params[:page]).per(5)  五筆切換一頁
+    #資料來源kaminari: https://github.com/kaminari/kaminari  page(params[:page]).per(5)  25筆切換一頁
   end
 
   def new
@@ -73,4 +73,3 @@ class IssuesController < ApplicationController
 end
 
 
-[:status]

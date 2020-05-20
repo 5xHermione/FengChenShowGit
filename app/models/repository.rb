@@ -23,7 +23,7 @@ class Repository < ApplicationRecord
   private
 
   def convert_slug_to_same_title
-    self.slug = title if slug != title
+    self.slug = title 
   end
 
 end
