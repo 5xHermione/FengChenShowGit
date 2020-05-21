@@ -21,3 +21,18 @@ window.$ = $
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import "controllers"
+
+//clipboard
+import "clipboard"
+import ClipboardJS from "clipboard/dist/clipboard.min.js"
+
+
+$(document).on("turbolinks:load", function(){
+  new ClipboardJS('.btn');
+  $('.collapse').collapse()
+
+})
+
+$( document ).ready(function() {
+ 
+});
