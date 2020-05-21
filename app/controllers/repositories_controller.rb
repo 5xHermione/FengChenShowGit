@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format
-  before_action :set_repo_file_path, only: [:show] 
+
   def index
     if current_user
       @repositories = current_user.repositories.order("id DESC").includes(:user)
@@ -11,37 +11,41 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    # @is_new_repo = true
+    set_repo_file_path
 
-    #synchronize git working repo 
+    # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
+
+    is_new_repo = true if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
     
-    # to a method path
-    #set directory path
-    @path = request.original_fullpath
-    if @path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
-      @path = "#{@base_path}#{@current_repo_path}"+"/"+@path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)[1]
+    # get folder path from url
+    path = request.original_fullpath
+    if path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
+      path = "#{@base_path}#{@current_repo_path}"+"/"+path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)[1]
     else
-      @path = "#{@base_path}#{@current_repo_path}/."
+      path = "#{@base_path}#{@current_repo_path}/."
     end
 
-    @files = []
-    @dirs = []
+    files = []
+    dirs = []
 
-    @is_file = File.file?(@path)
-
-    if @is_file
-      @file_data = File.read(@path)
+    is_file = File.file?(path)
+    if is_new_repo
+      render :how_to_push
+    elsif is_file
+      file_data = File.read(path)
+      render :file , locals: {file_data: file_data}
     else
-      Dir.entries(@path).each do |file|
+      Dir.entries(path).each do |file|
         if [".", "..", ".git"].include?"#{file}"
         #rule out ".", "..", ".git"
-        elsif File.file?(@path+"/"+file)
-          @files << "#{@path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+        elsif File.file?(path+"/"+file)
+          files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
         else
-          @dirs << "#{@path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
         end
       end
+      render :dir, locals: {dirs: dirs, files: files}
     end
   end
 
@@ -61,19 +65,18 @@ class RepositoriesController < ApplicationController
       render :new
     else
       if @repository.save
-        title = @repository.title
-        bare_repo_dir = "#{title}.git"
+        set_repo_file_path
 
-        full_dir = "#{ENV["GIT_SERVER_PATH"]}/#{current_user.name}/#{bare_repo_dir}"
-        working_dir = "#{ENV["GIT_SERVER_PATH"]}/#{current_user.name}/#{title}"
+        full_dir = "#{@base_path}/#{@current_repo_path}.git"
+        working_dir = "#{@base_path}/#{@current_repo_path}"
 
-        #新增一個空的資料夾
+        # 新增一個空的資料夾
         `mkdir -p #{full_dir}`
-        #在剛剛新增的空資料夾中建立一個 bare repo
+        # 在剛剛新增的空資料夾中建立一個 bare repo
         #bare repo 可以被push clone
         #bare repo 中是沒有檔案的
         `git --bare init #{full_dir}`
-        #要讓網頁可以使用檔案、可以 commit 、需要的是 working repo （也就是我們平常 git init 之後的創造出來的 git 目錄）
+        # 要讓網頁可以使用檔案、可以 commit 、需要的是 working repo （也就是我們平常 git init 之後的創造出來的 git 目錄）
         # 從 bare repo 中 clone 出一個 working repo，讓我們有檔案可以處理
         `git clone #{full_dir}  #{working_dir}`
         redirect_to repositories_path, notice: 'You have created a repository.' 
@@ -111,7 +114,7 @@ class RepositoriesController < ApplicationController
     end
 
     def set_repo_file_path
-      #set base path and repo path
+      # set git server path and repo path
       user_name = current_user.name
       repo_title = @repository.title
       @base_path = ENV["GIT_SERVER_PATH"]

@@ -1,5 +1,5 @@
-<!-- _dir.html.erb -->
-
+<!-- dir.html.erb -->
+<%= render "show"%>
 <div class="dir-container">
   <br>
   <table class="table">
@@ -10,7 +10,7 @@
 		</th>
 	  </tr>
 	</thead>
-	<% @dirs.each do |dir| %>
+	<% dirs.each do |dir| %>
 	  <tr>
 		<td>
 	  <i class="fas fa-folder" style="color: rgba(3,47,98,.5)"></i>
@@ -18,7 +18,7 @@
 		</td>
 	  </tr>
 	<% end %>
-	<% @files.each do |file| %>
+	<% files.each do |file| %>
 	  <tr>
 		<td>
 		  <i class="far fa-file-alt" style="color: rgba(3,47,98,.5)"></i>

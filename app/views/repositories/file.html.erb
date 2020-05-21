@@ -1,5 +1,5 @@
-<!-- _file.html.erb -->
-
+<!-- file.html.erb -->
+<%= render "show"%>
 <div class="dir-container">
   <table class="table">
 	  <thead class="thead-light">
@@ -10,7 +10,7 @@
 		  </tr>
 		  <tr>
 			  <td>
-				<%= markdown("```\n"+@file_data+"```\n") %>
+				<%= markdown("```\n"+file_data+"```\n") %>
 			  </td>
 		  </tr>
 	  </thead>

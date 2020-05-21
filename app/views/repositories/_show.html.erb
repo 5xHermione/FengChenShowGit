@@ -21,10 +21,4 @@
 
 <%= link_to 'Back', repositories_path %>
 
-<% if  @is_file %>
-  <%= render "file" %>
-<% elsif @dirs == [] && @files == [] %>
-  <%= render "how_to_push" %>
-<% else %>
-  <%= render "dir" %>
-<% end %>
+
