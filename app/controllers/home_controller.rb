@@ -9,13 +9,14 @@ class HomeController < ApplicationController
   end
 
   def logged_in
-    if user_signed_in? && User.find_by(name: params[:user_name])
+    if user_signed_in?
       @repositories = current_user.repositories
     else
       redirect_to root_path, notice: 'Please login first.'
     end
   end
 
+  # 這三個方法來自 devise ，使用在首頁的註冊及登入表單
   def resource_name
     :user
   end
