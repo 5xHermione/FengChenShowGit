@@ -30,22 +30,26 @@ class RepositoriesController < ApplicationController
     dirs = []
 
     is_file = File.file?(path)
-    if is_new_repo
-      render :how_to_push
-    elsif is_file
-      file_data = File.read(path)
-      render :file , locals: {file_data: file_data}
-    else
-      Dir.entries(path).each do |file|
-        if [".", "..", ".git"].include?"#{file}"
-        #rule out ".", "..", ".git"
-        elsif File.file?(path+"/"+file)
-          files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
-        else
-          dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+    if current_user == find_user
+      if is_new_repo
+        render :how_to_push
+      elsif is_file
+        file_data = File.read(path)
+        render :file , locals: {file_data: file_data}
+      else
+        Dir.entries(path).each do |file|
+          if [".", "..", ".git"].include?"#{file}"
+          #rule out ".", "..", ".git"
+          elsif File.file?(path+"/"+file)
+            files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          else
+            dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          end
         end
+        render :dir, locals: {dirs: dirs, files: files}
       end
-      render :dir, locals: {dirs: dirs, files: files}
+    else
+      render :empty_repo
     end
   end
 
