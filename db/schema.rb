@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 2020_05_15_101839) do
     t.index ["repository_id"], name: "index_issues_on_repository_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "repositories", force: :cascade do |t|
     t.string "title"
     t.text "description"
