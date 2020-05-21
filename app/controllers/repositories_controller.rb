@@ -61,6 +61,6 @@ class RepositoriesController < ApplicationController
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description, :user_id, :is_public, :slug)
+      params.require(:repository).permit(:title, :description, :is_public)
     end
 end

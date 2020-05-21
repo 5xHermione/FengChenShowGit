@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_080030) do
   create_table "issues", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "status"
+    t.string "status", default: "open"
     t.bigint "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
