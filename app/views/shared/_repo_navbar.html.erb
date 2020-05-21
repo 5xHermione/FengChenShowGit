@@ -8,7 +8,7 @@
     <%= link_to "Issues", repository_issues_path(repository_id: current_repository), class: "nav-link" , ariaselected:"true"%>
   </li>
   <li class="nav-item">
-    <%= link_to "Pull requests", new_repository_path, class: "nav-link"%>
+    <%= link_to "Pull requests", repository_pull_requests_path(repository_id: current_repository), class: "nav-link"%>
   </li>
     <li class="nav-item">
     <%= link_to "Setting", edit_repository_path(id: current_repository), class: "nav-link"%>
