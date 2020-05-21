@@ -115,7 +115,7 @@ class RepositoriesController < ApplicationController
 
     def set_repo_file_path
       # set git server path and repo path
-      user_name = current_user.name
+      user_name = User.find_by(name: params[:user_name]).name
       repo_title = @repository.title
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"

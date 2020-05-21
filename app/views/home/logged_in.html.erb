@@ -34,12 +34,15 @@
               </div>
             <% end %>
           <div class="green-wrap col-12">
-
             <div class="green_spots">
               <h2>這裡是留給綠點點的位置</h2>
             </div>
-            
           </div>
+            <div>
+              <% @users.each do |user| %>
+                <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
