@@ -1,0 +1,32 @@
+<!-- dir.html.erb -->
+<%= render "show"%>
+<div class="dir-container">
+  <br>
+  <table class="table">
+	<thead class="thead-light">
+	  <tr>
+		<th>
+		  Folders
+		</th>
+	  </tr>
+	</thead>
+	<% dirs.each do |dir| %>
+	  <tr>
+		<td>
+	  <i class="fas fa-folder" style="color: rgba(3,47,98,.5)"></i>
+	  <a href="/<%= @repository.user.name %>/repositories/<%= @repository.id %>/worktree/master/<%= dir %>" > <%= dir.match(/^.+\/(.+)$/)[1] %> </a>
+		</td>
+	  </tr>
+	<% end %>
+	<% files.each do |file| %>
+	  <tr>
+		<td>
+		  <i class="far fa-file-alt" style="color: rgba(3,47,98,.5)"></i>
+		  <a href="/<%= @repository.user.name %>/repositories/<%= @repository.id %>/worktree/master/<%= file %>" ><%= file.match(/^.+\/(.+)$/)[1]  %></a>
+		</td>
+	  </tr>
+	<% end %>
+  </table>
+	
+</div>
+

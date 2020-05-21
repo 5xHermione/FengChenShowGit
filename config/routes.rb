@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  get "/:user_name/repositories/:id/worktree/master/*file", to: "repositories#show" 
+
 end

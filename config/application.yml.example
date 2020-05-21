@@ -1,3 +1,11 @@
-SMTP_DOMAIN: "domain name"  用於 config/initializers/devise.rb 與 application.rb
-SMTP_USERNAME: "user name"  用於 application.yml
-SMTP_PASSWORD: "password"   用於 application.yml
+SMTP_DOMAIN: "domain name"  # 用於 config/initializers/devise.rb 與 application.rb
+SMTP_USERNAME: "user name"  # 用於 application.yml
+SMTP_PASSWORD: "password"   # 用於 application.yml
+
+
+development:
+  GIT_SERVER_PATH: "/tmp/gitServer"
+  GIT_PUSH_INSTRUCT: "/tmp/gitServer"
+production:
+  GIT_SERVER_PATH: "/opt/git"
+  GIT_PUSH_INSTRUCT: "root@128.199.107.166:/opt/git"
