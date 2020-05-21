@@ -1,12 +1,12 @@
-  <div class="thisIsUsresIndex">
+<div class="thisIsUsresIndex">
       <div class="container my-5">
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
               <img class="w-100" src="https://picsum.photos/400/400?random=1" alt="">
             </div>
-            <h4 class="my-2">NAME：<%= current_user.name%></h4>
-            <h4 class="my-2">ID：<%= current_user.id%></h4>
+            <h4 class="my-2">NAME：<%= find_user.name%></h4>
+            <h4 class="my-2">ID：<%= find_user.id%></h4>
           </div>
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
@@ -38,14 +38,17 @@
               <h2>這裡是留給綠點點的位置</h2>
             </div>
           </div>
-            <div>
-              <% @users.each do |user| %>
-                <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
-              <% end %>
-            </div>
+          <h2 class="col-12">Other users</h2>
+            <% @users.each do |user| %>
+              <div class="col-12 p-3">
+                <div class="overview-user-wrap col-12">
+                  <h2>
+                    <%= link_to "another user:#{user.name}", logged_in_path(user_name: user.name)%>
+                  </h2>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
-
-
-  </div>
+</div>
