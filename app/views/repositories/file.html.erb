@@ -2,17 +2,17 @@
 <%= render "show"%>
 <div class="dir-container">
   <table class="table">
-	  <thead class="thead-light">
-		  <tr>
-			  <th>
-				  Files
-			  </th>
-		  </tr>
-		  <tr>
-			  <td>
-				<%= markdown("```\n"+file_data+"```\n") %>
-			  </td>
-		  </tr>
-	  </thead>
+	<thead class="thead-light">
+	  <tr>
+		<th>
+		  Files
+		</th>
+	  </tr>
+	  <tr>
+		<td>
+		  <%= markdown("```\n"+file_data+"```\n") %>
+		</td>
+	  </tr>
+	</thead>
   </table>
 </div>
