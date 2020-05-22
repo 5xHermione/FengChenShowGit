@@ -41,15 +41,11 @@
 
 
 /*頭像小三角的下拉選單*/
-.thisIsNavBar .positioning {
-  position: relative;
-}
 
-.thisIsNavBar .dropdown-menu { 
-  position: absolute;
-  left: -128px; 
+/*.thisIsNavBar #navbarSupportedContent {
+  padding-top: 20px;
 }
-
+*/
 .thisIsNavBar .nav-link {
   color: #fff;
   margin: 0 10px 0 10px;
@@ -74,6 +70,14 @@
   background-color: none; 
 }
 
+.thisIsNavBar #navbarDropdown {
+  margin-left: 0; 
+}
+
+.thisIsNavBar .ul-inline {
+  padding-left: 0;
+}
+
 
 /*首頁的左邊位置*/
 .index_logo {
@@ -83,18 +87,17 @@
 }
 
 .logo-container {
+  padding-top: 30px;
   text-align: center;
 }
 
 .logo-container h1 {
   color: #fff;
-  font-size: 60px;
   margin: 10px 0 30px 0;
  }
 
 .logo-container h2 {
   color: #b5b5b5;
-  font-size: 30px;
 }
 
 .logo-container p {
@@ -113,13 +116,15 @@
 .thisIsNavBar .form-inline input {
   background-color: #3f4448;
   height: 30px;
+  width: 200px;
+  margin-right: 5px; 
   border: none;
 }
 
 .thisIsNavBar .btn-outline { 
   border: solid 1px #3f4448;
   border-radius: 3px; 
-   margin-right: 30px; 
+  margin-right: 30px; 
  }
 
 .thisIsNavBar .btn:hover {
@@ -137,6 +142,12 @@
   color: #3f4448;
   padding: 2px 6px 2px 6px;
 }
+
+.thisIsNavBar .form-inline {
+  /*padding-top: 20px;*/
+  padding-left: 20px;
+}
+
 
 
 /*footer*/
@@ -166,3 +177,16 @@
   width: 40px;
   background-image: url("../../../pic/logo_gray.png"); 
 }
+
+/*.thisIsNavBar .navbar-toggler {
+  border: solid 1px #3f4448;
+  padding: 4px;
+  width: 50px;
+  background-color: #24292e;
+
+}
+
+.navbar-toggler-icon{
+ padding-top: 4px;
+ color: #3f4448;
+}*/

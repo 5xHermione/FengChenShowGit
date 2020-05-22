@@ -1,8 +1,10 @@
   <div class="thisIsNavBar">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg navbar-light">
+  
       <%= link_to "", root_path, class: "navbar-brand"%>
+
       <button
-        class="navbar-toggler"
+        class="navbar-toggler collapsed"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -13,23 +15,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline my-2 my-sm-0 .btn_search" type="submit"><i class="fas fa-pen"></i>
-              </button>
-        </form>
-
-        
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <% if current_user%>
                 <li class="nav-item active">
+                   <form class="form-inline my-2 my-lg-0">
+                        <input
+                          class="form-control mr-sm-2"
+                          type="search"
+                          placeholder="Search"
+                          aria-label="Search"
+                        />
+                        <button class="btn btn-outline my-2 my-sm-0 .btn_search" type="submit"><i class="fas fa-pen"></i>
+                        </button>
+                   </form>
+                </li>
+                <li class="nav-item">
                   <%= link_to "Top", root_path, class: "nav-link"%> 
                 </li>
                 <li class="nav-item">
@@ -39,7 +40,7 @@
                   <%= link_to "My repositories", repositories_path(current_user.name), class: "nav-link"%>
                 </li>
               </ul>
-              <ul class="ul-inline my-2 my-lg-0 positioning">
+              <ul class="ul-inline my-2 my-lg-0 ">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg">
                   </a>
@@ -52,26 +53,15 @@
 
 
           <% else %>
-           <!--  <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline my-2 my-sm-0 .btn_search" type="submit"><i class="fas fa-pen"></i>
-              </button>
-            </form> -->
             <li class="nav-item sp">
               <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
             </li>
             <li class="nav-item">
               <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
             </li>
-          <% end %>
-        </ul>
-        
+          <% end %>   
       </div>
-    </nav>
 
+    </nav>
+    
   </div> 

@@ -1,52 +1,59 @@
-<div>
-  <%= render "shared/repo_navbar"%>
-</div>
-<br/>
-<div class="row">
-  <form class="form-inline my-2 my-lg-0 col-10">
-    <input
-      class="form-control mr-sm-2 col-12"
-      type="search"
-      placeholder="目前沒有功能的 Search"
-      aria-label="Search"
-    />
-  </form>
-  <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
-</div>
-<div class="issue-container my-5">
-  <div class="issue-title row p-2">
-    <div class="status-title col-2"><%= @issues.length %> records</div>
-    <%= link_to  'open', repository_issues_path(user_name: current_user.name,
-                                                repository_id: current_repository.title,
-                                                "status" => "open")%> |
+<div class="thisIsIssuesShow enjoy">
 
-    <%= link_to  'close', repository_issues_path(user_name: current_user.name,
-                                                repository_id: current_repository.title,
-                                                "status" => "close")%>
-  </div>
-  <% if @issues.length > 0 %>
-    <% @issues.each do |issue| %>
-      <div class="container">
-        <div class="row">
-          <div class="col-2 mt-2"><%= issue.status%></div>
-          <div class="col-6 row"> 
-            <%= link_to issue.name,repository_issue_path(id: issue.id),class:"col-12" %>        
-            <p class="col-12">#<%= issue.repository_issue_index %> opened on <%= issue.created_at %></p>
-          </div>
-          <div class="col-4"><%= issue.description %></div>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="text-center p-5">
-      <h3>There aren’t any open issues.</h3>
-      <h4>Try to create new issue?</h4>
+
+    <div>
+      <%= render "shared/repo_navbar"%>
     </div>
-  <% end %>
-</div>
+    <br/>
+    <div class="row">
+      <form class="form-inline my-2 my-lg-0 col-10">
+        <input
+          class="form-control mr-sm-2 col-12"
+          type="search"
+          placeholder="目前沒有功能的 Search"
+          aria-label="Search"
+        />
+      </form>
+      <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
+    </div>
+    <div class="issue-container my-5">
+      <div class="issue-title row p-2 open">
+        <div class="status-title col-2 ">
+        <%= @issues.length %> records</div>
+        <%= link_to  'open', repository_issues_path(user_name: current_user.name,
+                                                    repository_id: current_repository.title,
+                                                    "status" => "open")%> |
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <%= paginate @issues, window: 2 %>
-  </ul>
-</nav>
+        <%= link_to  'close', repository_issues_path(user_name: current_user.name,
+                                                    repository_id: current_repository.title,
+                                                    "status" => "close")%>
+      </div>
+      <% if @issues.length > 0 %>
+        <% @issues.each do |issue| %>
+          <div class="container item">
+            <div class="row">
+              <div class="col-2 mt-2"><i class="fas fa-meteor"></i><%= issue.status%></div>
+              <div class="col-6 row"> 
+                <%= link_to issue.name,repository_issue_path(id: issue.id),class:"col-12" %>        
+                <p class="col-12">#<%= issue.repository_issue_index %> opened on <%= issue.created_at %></p>
+              </div>
+              <div class="col-4"><%= issue.description %></div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="text-center p-5">
+          <h3>There isn’t any open issue.</h3>
+          <h4>Try to create a new issue?</h4>
+        </div>
+      <% end %>
+    </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <%= paginate @issues, window: 2 %>
+      </ul>
+    </nav>
+
+
+</div>
