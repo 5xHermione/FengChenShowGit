@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   
   def index
     if user_signed_in?
-      @repositories = current_user.repositories
+      @repositories = current_user.repositories.order("id DESC")
       @users = User.all.order("RANDOM()").limit(5)
 
       redirect_to logged_in_path(current_user.name)
@@ -11,8 +11,12 @@ class HomeController < ApplicationController
   end
 
   def logged_in
-    if user_signed_in? && User.find_by(name: params[:user_name])
-      @repositories = find_user.repositories
+    if user_signed_in?
+      if current_user == find_user
+        @repositories = repositories_order
+      else
+        @repositories = repositories_order.select{ |repo| repo.is_public == true }
+      end
       @users = User.all.order("RANDOM()").limit(5)
     else
       redirect_to root_path, notice: 'Please login first.'

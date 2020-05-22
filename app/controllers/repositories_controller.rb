@@ -4,7 +4,11 @@ class RepositoriesController < ApplicationController
 
   def index
     if current_user
-      @repositories = find_user.repositories.order("id DESC").includes(:user)
+      if current_user == find_user
+        @repositories = repositories_order
+      else
+        @repositories = repositories_order.select{ |repo| repo.is_public == true }
+      end
     else
       redirect_to new_user_session_path
     end
@@ -64,10 +68,10 @@ class RepositoriesController < ApplicationController
     @repository = current_user.repositories.new(repository_params)
     @repository.errors.add(:is_public, "must select one") if params[:is_public].nil?
 
-
     if @repository.errors.any?
       render :new
     else
+      @repository.is_public = params[:is_public]
       if @repository.save
         set_repo_file_path
 

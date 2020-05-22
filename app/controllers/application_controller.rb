@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def find_user
     User.find_by(name: params[:user_name])
   end
+
+  def repositories_order
+    find_user.repositories.order("id DESC")
+  end
 end
