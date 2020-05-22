@@ -4,7 +4,7 @@ class RepositoriesController < ApplicationController
 
   def index
     if current_user
-      @repositories = current_user.repositories.order("id DESC").includes(:user)
+      @repositories = find_user.repositories.order("id DESC").includes(:user)
     else
       redirect_to new_user_session_path
     end
@@ -119,7 +119,7 @@ class RepositoriesController < ApplicationController
 
     def set_repo_file_path
       # set git server path and repo path
-      user_name = User.find_by(name: params[:user_name]).name
+      user_name = find_user.name
       repo_title = @repository.title
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"

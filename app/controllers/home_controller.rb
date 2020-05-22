@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def logged_in
     if user_signed_in? && User.find_by(name: params[:user_name])
-      @repositories = User.find_by(name: params[:user_name]).repositories
+      @repositories = find_user.repositories
       @users = User.all.order("RANDOM()").limit(5)
     else
       redirect_to root_path, notice: 'Please login first.'

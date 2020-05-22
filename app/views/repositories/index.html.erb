@@ -4,14 +4,14 @@
             <div class="avatar-wrap">
               <img class="w-100" src="https://picsum.photos/400/400?random=1" alt="">
             </div>
-            <h4 class="my-2">NAME：<%= current_user.name%></h4>
-            <h4 class="my-2">ID：<%= current_user.id%></h4>
+            <h4 class="my-2">NAME：<%= find_user.name %></h4>
+            <h4 class="my-2">ID：<%= find_user.id %></h4>
           </div>
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
               <ul class="nav">
                 <li class="nav-item">
-                  <%= link_to "Overview", root_path, class: "nav-link"%>
+                  <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to "Repositories", repositories_path, class: "nav-link" %>
