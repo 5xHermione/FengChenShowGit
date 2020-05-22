@@ -1,0 +1,20 @@
+<div>
+  <%= render "shared/repo_navbar"%>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>name:</strong>
+  <%= @pull_request.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pull_request.description %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_repository_pull_request_path(id: @pull_request.id) %> |
+<%= link_to 'Back', repository_pull_requests_path %> | 

@@ -11,7 +11,6 @@ default: &default
 # turn on the comment below if you want to add your username
 # 如果需要加 username, 請打開下面的註解
 # username:
-
   timeout: 5000
 
 development:
