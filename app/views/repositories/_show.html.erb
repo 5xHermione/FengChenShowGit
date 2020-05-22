@@ -1,47 +1,5 @@
-<<<<<<< HEAD
+
 <div class="thisIsShareRepoNaveBar enjoy"> 
-
-	<div>
-	  <%= render "shared/repo_navbar"%>
-	</div>
-	</br>
-	<p id="notice"><%= notice %></p>
-
-	<p>
-	  <strong>Title:</strong>
-	  <%= @repository.title %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
-	  <%= @repository.description %>
-	</p>
-
-	<p>
-	  <strong>User:</strong>
-	  <%= @repository.user.name %>
-	</p>
-
-  <div class="container">
-    <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Clone or Download
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body col-4">
-        <h3>Clone with SSH</h3> 
-        <p>Use a password protected SSH key.</p>
-        <input id="copyLink" value= "<%= @repository.user.name %>/<%= @repository.title %>">
-        <button class="btn btn btn-primary col-4" data-clipboard-target="#copyLink">Copy</button>
-      </div>
-    </div>
-  </div>
-
-	<%= link_to 'Back', repositories_path %>
-
-</div>
-=======
 
 <div>
   <%= render "shared/repo_navbar"%>
@@ -94,4 +52,4 @@
 
 
 <%= link_to 'Back', repositories_path %>
->>>>>>> issue-show 切版
+
