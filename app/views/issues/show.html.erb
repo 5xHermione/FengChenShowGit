@@ -2,22 +2,98 @@
   <%= render "shared/repo_navbar"%>
 </div>
 <br/>
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>name:</strong>
-  <%= @issue.name %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="issue-group col-10">
+      <p id="notice"><%= notice %></p>
+      <p>
+        <h1><%= @issue.name %></h1>
+      </p>
+      <p>
+        <strong>Description:</strong>
+        <%= @issue.description %>
+      </p>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @issue.description %>
-</p>
+    <button type="button" class="btn btn-secondary" id="edit-btn">
+    <%= link_to 'Edit', edit_repository_issue_path(user_name: current_user.name,
+                                                    repository_id: @issue.repository.title,
+                                                    id: @issue.id) %>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5 ml-4 col-10">
+<div class="card">
+  <div class="card-header">
+    Developer
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <div class="media">
+        <img src="https://picsum.photos/60/60?random=1" class="mr-3" alt="...">
+        <div class="media-body">
+          Find an error .
+        </div>
+      </div>
+    </blockquote>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-10 offset">
+    <ul class="timeline">
+      <li>
+        <a target="_blank" href="https://www.totoprayogo.com/#">Developer</a>
+        <a href="#" class="float-right"></a>
+        <p>added this to 待處理 To Do in FengChenShowGit  22 hours ago</p>
+      </li>
+      <li>
+        <a href="#">Developer</a>
+        <a href="#" class="float-right"></a>
+        <p>moved this from 待處理 To Do to 處理中 In Progress in FengChenShowGit 17 hours ago</p>
+      </li>
+      <li>
+        <a href="#">Developer</a>
+        <a href="#" class="float-right"></a>
+        <p>moved this from 處理中 In Progress to 完成待驗收 in FengChenShowGit 16 hours ago</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+      Developer
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class="media">
+          <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+          <div class="media-body">
+            Ok .
+          </div>
+        </div>
+      </blockquote>
+    </div>
+  </div>
+
+<div class="text-area-container">
+  <div class="form-group">
+    <label for="exampleFormControlTextarea2">Small textarea</label>
+    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+    <button type="button" class="btn btn-secondary">
+      <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
+    </button>
+    <button type="button" class="btn btn-secondary">
+     <%=link_to "comment" %> 
+    </button>
+  </div>
+</div>
+</div>
 
 
 
-<%= link_to 'Update', edit_repository_issue_path(user_name: current_user.name,
-                                                repository_id: @issue.repository.title,
-                                                id: @issue.id) %> |
-<%= link_to 'Back', repository_issues_path %> |
-<%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
+

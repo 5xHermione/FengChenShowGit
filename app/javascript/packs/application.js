@@ -29,10 +29,15 @@ import ClipboardJS from "clipboard/dist/clipboard.min.js"
 
 $(document).on("turbolinks:load", function(){
   new ClipboardJS('.btn');
-  $('.collapse').collapse()
+  $('.collapse').collapse('hide')
+
 
 })
 
-$( document ).ready(function() {
- 
-});
+
+// $( document ).ready(function() {
+//   $("a").click(function(event){
+//     event.preventDefault();
+//   });
+// });
+
