@@ -23,6 +23,7 @@ class HomeController < ApplicationController
     end
   end
 
+  # 這三個方法來自 devise ，使用在首頁的註冊及登入表單
   def resource_name
     :user
   end
