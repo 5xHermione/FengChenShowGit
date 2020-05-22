@@ -1,13 +1,22 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format
+  skip_before_action :set_request_format, only: [:index]
 
   def index
     if current_user
       if current_user == find_user
         @repositories = repositories_order
+        respond_to do |format|
+          format.json { render json: @repositories }
+          format.html { render :index }
+        end
       else
         @repositories = repositories_order.select{ |repo| repo.is_public == true }
+        respond_to do |format|
+          format.json { render json: @repositories }
+          format.html { render :index }
+        end
       end
     else
       redirect_to new_user_session_path
