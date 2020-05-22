@@ -1,0 +1,79 @@
+/*可共用*/
+.thisIsShareRepoNaveBar .repo_navbar { 
+	/*background-image: url("../../../pic/issueBK.png"); */
+	background-image: url("../../../pic/issueBKbs.jpg");
+}
+
+.thisIsSettingsNaveBar .repo_navbar { 
+	/*background-image: url("../../../pic/issueBK.png"); */
+	background-image: url("../../../pic/issueBKbsss.jpg");
+}
+
+.enjoy .id_name {
+	padding-top: 30px;
+	padding-left: 10px;
+	margin: 0 0 40px 0;
+	color: #494f35;
+}
+.enjoy .id_name i {
+  color: #aaa;
+  margin-right: 3px;
+  color: #573c39;
+}
+.enjoy .userId {
+	display: inline;
+	font-weight: bold;
+	color: #573c39;
+	font-size: 18px;
+}
+
+.enjoy .fileName {
+	color: #573c39;
+}
+
+.enjoy .thisIsIssuesShow .id_name {
+	padding-top: 30px;
+	padding-left: 10px;
+	margin: 0 0 40px 0;
+	color: #494f35;
+} 
+
+.enjoy .repo_navbar .nav-link {
+	color: #573c39;
+	text-shadow:
+}
+
+.enjoy .fileName {
+	display: inline;
+	color: #24292e;
+	font-size: 18px;
+}
+
+.enjoy .repo_navbar .nav-link { 
+	color: #492b2c;
+	border-bottom: none;
+}
+
+.enjoy .nav-tabs .nav-link {
+	font-weight: normal;
+	border: none;
+}
+
+.enjoy .nav-tabs .nav-link:hover {
+	font-weight: bold;
+}
+
+.enjoy .nav-link.active {
+	border-bottom: none;
+	border-color: #e0d7d2;
+}
+
+.enjoy .fas .fa-code {
+  color: #777e5d;
+}
+
+
+
+.thisIsNavBar .card .bg-light .col-6 .m-auto .p-0 {
+	max-width: 100%;
+}

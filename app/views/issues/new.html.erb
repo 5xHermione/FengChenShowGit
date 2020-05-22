@@ -1,7 +1,7 @@
 <div>
   <%= render "shared/repo_navbar"%>
 </div>
-<br/>
+
 <% if @issue.errors.any? %>
   <ul>
     <% @issue.errors.full_messages.each do |message| %>
@@ -11,6 +11,7 @@
 <% end %>
 
 <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :name %>

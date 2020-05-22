@@ -1,19 +1,33 @@
-<h2><%= find_user.name %>/<%= current_repository.title %></h2>
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <%= link_to "Code", repository_path(id: current_repository), class: "nav-link" , ariaselected:"false"%>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Issues", repository_issues_path(repository_id: current_repository), class: "nav-link" , ariaselected:"true"%>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Pull requests", new_repository_path, class: "nav-link"%>
-  </li>
+<div class="repo_navbar">
+  <div class="id_name">
+    <i class="fas fa-book"></i>
+    <h2 class="userId"><%= find_user.name %></h2> 
+    <h2 class="fileName"><%=  current_repository.title %></h2>
+  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-    <%= link_to "Setting", edit_repository_path(id: current_repository), class: "nav-link"%>
-  </li>
-</ul>
+      <%= link_to repository_path(id: current_repository), class: "nav-link" , ariaselected:"false" do %>
+       <i class="fas fa-code"></i><span> Code</span>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to repository_issues_path(repository_id: current_repository), class: "nav-link" , ariaselected:"true" do %>
+       <i class="fas fa-exclamation-circle"></i><span> Issues</span>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_repository_path, class: "nav-link" do %>
+        <i class="fas fa-code-branch"></i><span> Pull requests</span>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to edit_repository_path(id: current_repository), class: "nav-link" do %>
+        <i class="fas fa-cog"></i><span> Setting</span>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
 
 
 

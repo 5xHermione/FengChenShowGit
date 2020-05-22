@@ -7,6 +7,7 @@ class Repository < ApplicationRecord
                     exclusion: { in: blacklists, message: ": Please change another repository title."}
   belongs_to :user
   has_many :issues, dependent: :destroy
+  has_many :pull_requests, dependent: :destroy
 
   friendly_id :title, use: :slugged
   before_save :convert_slug_to_same_title

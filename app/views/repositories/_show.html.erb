@@ -1,24 +1,26 @@
-<div>
-  <%= render "shared/repo_navbar"%>
+<div class="thisIsShareRepoNaveBar enjoy"> 
+
+	<div>
+	  <%= render "shared/repo_navbar"%>
+	</div>
+	</br>
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <strong>Title:</strong>
+	  <%= @repository.title %>
+	</p>
+
+	<p>
+	  <strong>Description:</strong>
+	  <%= @repository.description %>
+	</p>
+
+	<p>
+	  <strong>User:</strong>
+	  <%= @repository.user.name %>
+	</p>
+
+	<%= link_to 'Back', repositories_path %>
+
 </div>
-</br>
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @repository.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @repository.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @repository.user.name %>
-</p>
-
-<%= link_to 'Back', repositories_path %>
-
-
