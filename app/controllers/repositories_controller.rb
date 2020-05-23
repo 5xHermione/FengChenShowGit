@@ -1,7 +1,6 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
-  before_action :set_request_format
-  skip_before_action :set_request_format, only: [:index]
+  before_action :set_request_format, only: [:show]
 
   def index
     if current_user
@@ -29,7 +28,11 @@ class RepositoriesController < ApplicationController
     # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
 
-    is_new_repo = true if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
+    if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
+      is_new_repo = true 
+    else
+      is_new_repo = false
+    end
     
     # get folder path from url
     path = request.original_fullpath
@@ -43,27 +46,27 @@ class RepositoriesController < ApplicationController
     dirs = []
 
     is_file = File.file?(path)
-    if current_user == find_user
-      if is_new_repo
-        render :how_to_push
-      elsif is_file
-        file_data = File.read(path)
-        render :file , locals: {file_data: file_data}
-      else
-        Dir.entries(path).each do |file|
-          if [".", "..", ".git"].include?"#{file}"
-          #rule out ".", "..", ".git"
-          elsif File.file?(path+"/"+file)
-            files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
-          else
-            dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
-          end
-        end
-        render :dir, locals: {dirs: dirs, files: files}
-      end
+    
+    if is_new_repo && current_user == find_user
+      render :how_to_push
+    elsif is_new_repo && current_user != find_user
+        render :empty_repo
+    elsif is_file
+      file_data = File.read(path)
+      render :file , locals: {file_data: file_data}
     else
-      render :empty_repo
+      Dir.entries(path).each do |file|
+        if [".", "..", ".git"].include?"#{file}"
+        #rule out ".", "..", ".git"
+        elsif File.file?(path+"/"+file)
+          files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+        else
+          dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+        end
+      end
+      render :dir, locals: {dirs: dirs, files: files, repository: @repository}
     end
+    
   end
 
   def new
