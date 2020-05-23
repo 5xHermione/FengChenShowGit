@@ -1,10 +1,9 @@
 <div class="thisIsIssuesShow enjoy">
 
-
     <div>
       <%= render "shared/repo_navbar"%>
     </div>
-    <br/>
+
     <div class="row">
       <form class="form-inline my-2 my-lg-0 col-10">
         <input
@@ -20,11 +19,11 @@
       <div class="issue-title row p-2 open">
         <div class="status-title col-2 ">
         <%= @issues.length %> records</div>
-        <%= link_to  'open', repository_issues_path(user_name: current_user.name,
+        <%= link_to  'open', repository_issues_path(user_name: find_user.name,
                                                     repository_id: current_repository.title,
                                                     "status" => "open")%> |
 
-        <%= link_to  'close', repository_issues_path(user_name: current_user.name,
+        <%= link_to  'close', repository_issues_path(user_name: find_user.name,
                                                     repository_id: current_repository.title,
                                                     "status" => "close")%>
       </div>
@@ -34,7 +33,7 @@
             <div class="row">
               <div class="col-2 mt-2"><i class="fas fa-meteor"></i><%= issue.status%></div>
               <div class="col-6 row"> 
-                <%= link_to issue.name,repository_issue_path(id: issue.id),class:"col-12" %>        
+                <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
                 <p class="col-12">#<%= issue.repository_issue_index %> opened on <%= issue.created_at %></p>
               </div>
               <div class="col-4"><%= issue.description %></div>

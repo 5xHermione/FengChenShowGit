@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include MarkdownHelper
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :current_repository
+  helper_method :current_repository, :find_user
   
   def configure_permitted_parameters
     # 相關資訊：https://www.rubydoc.info/github/plataformatec/devise/Devise/ParameterSanitizer
@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
 
   private
   def current_repository
-    current_user.repositories.find_by(id: session[:repository_id])
+    find_user.repositories.find_by(id: session[:repository_id])
   end
 
+  def find_user
+    User.find_by(name: params[:user_name])
+  end
+
+  def repositories_order
+    find_user.repositories.order("id DESC")
+  end
 end

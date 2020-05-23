@@ -1,10 +1,23 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format
+  skip_before_action :set_request_format, only: [:index]
 
   def index
     if current_user
-      @repositories = current_user.repositories.order("id DESC").includes(:user)
+      if current_user == find_user
+        @repositories = repositories_order
+        respond_to do |format|
+          format.json { render json: @repositories }
+          format.html { render :index }
+        end
+      else
+        @repositories = repositories_order.select{ |repo| repo.is_public == true }
+        respond_to do |format|
+          format.json { render json: @repositories }
+          format.html { render :index }
+        end
+      end
     else
       redirect_to new_user_session_path
     end
@@ -30,22 +43,26 @@ class RepositoriesController < ApplicationController
     dirs = []
 
     is_file = File.file?(path)
-    if is_new_repo
-      render :how_to_push
-    elsif is_file
-      file_data = File.read(path)
-      render :file , locals: {file_data: file_data}
-    else
-      Dir.entries(path).each do |file|
-        if [".", "..", ".git"].include?"#{file}"
-        #rule out ".", "..", ".git"
-        elsif File.file?(path+"/"+file)
-          files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
-        else
-          dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+    if current_user == find_user
+      if is_new_repo
+        render :how_to_push
+      elsif is_file
+        file_data = File.read(path)
+        render :file , locals: {file_data: file_data}
+      else
+        Dir.entries(path).each do |file|
+          if [".", "..", ".git"].include?"#{file}"
+          #rule out ".", "..", ".git"
+          elsif File.file?(path+"/"+file)
+            files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          else
+            dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          end
         end
+        render :dir, locals: {dirs: dirs, files: files}
       end
-      render :dir, locals: {dirs: dirs, files: files}
+    else
+      render :empty_repo
     end
   end
 
@@ -60,10 +77,10 @@ class RepositoriesController < ApplicationController
     @repository = current_user.repositories.new(repository_params)
     @repository.errors.add(:is_public, "must select one") if params[:is_public].nil?
 
-
     if @repository.errors.any?
       render :new
     else
+      @repository.is_public = params[:is_public]
       if @repository.save
         set_repo_file_path
 
@@ -115,7 +132,7 @@ class RepositoriesController < ApplicationController
 
     def set_repo_file_path
       # set git server path and repo path
-      user_name = current_user.name
+      user_name = find_user.name
       repo_title = @repository.title
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"
