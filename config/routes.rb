@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get ':user_name', to: "home#logged_in", as: "logged_in"
 
   scope '/:user_name' do
+    resources :relationships, only: [:index, :create, :destroy]
     resources :repositories do
       resources :pull_requests
       resources :issues do
