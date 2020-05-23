@@ -3,8 +3,7 @@ class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update]
   
   def index
-    params[:status] = "open" if params[:status] == nil
-    @issues = current_repository.issues.where(status: params[:status]).order("id DESC").page(params[:page]).per(5)
+    @issues = list_issues
     #資料來源kaminari: https://github.com/kaminari/kaminari  page(params[:page]).per(5)  25筆切換一頁
   end
 
@@ -70,6 +69,16 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
   end
 
+  def list_issues
+    params[:status] = "open" if params[:status].blank?
+    issues_sql = current_repository.issues
+                                   .where(status: params[:status])
+                                   .order("id DESC")
+    if params[:search]
+      issues_sql = issues_sql.where('name LIKE ?', "%#{params[:search]}%")
+    end
+    issues_sql.page(params[:page]).per(5)
+  end
 end
 
 
