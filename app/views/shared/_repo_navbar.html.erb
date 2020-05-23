@@ -16,7 +16,7 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_repository_path, class: "nav-link" do %>
+      <%= link_to repository_pull_requests_path(repository_id: current_repository), class: "nav-link" do %>
         <i class="fas fa-code-branch"></i><span> Pull requests</span>
       <% end %>
     </li>
