@@ -10,10 +10,6 @@
       <p>
         <h1><%= @issue.name %></h1>
       </p>
-      <p>
-        <strong>Description:</strong>
-        <%= @issue.description %>
-      </p>
     </div>
 
     <button type="button" class="btn btn-secondary" id="edit-btn">
@@ -34,7 +30,7 @@
       <div class="media">
         <img src="https://picsum.photos/60/60?random=1" class="mr-3" alt="...">
         <div class="media-body">
-          Find an error .
+          <%= @issue.description %>
         </div>
       </div>
     </blockquote>
