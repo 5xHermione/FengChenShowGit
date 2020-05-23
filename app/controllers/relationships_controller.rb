@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-
+  # 參考自：https://dev.to/knheidorn/rails-crash-course-building-follower-following-relationship-4kjl
   def index
     @active_relationships = find_user.active_relationships
     @passive_relationships = find_user.passive_relationships
@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
     else
       flash[:notice] = "Follow Unsuccessful"
     end
-    redirect_to logged_in_path
+    redirect_to root_path
   end
 
   def destroy
@@ -22,7 +22,7 @@ class RelationshipsController < ApplicationController
       @relationship.destroy
       flash[:notice] = "Unfollowed"
     end
-    redirect_to logged_in_path
+    redirect_to root_path
   end
 
 end

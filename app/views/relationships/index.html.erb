@@ -31,9 +31,9 @@
         </div>
         <div class="col-12">
           <% @active_relationships.each do |follower|%>
-            <h2>
-              <%= follower.followed_user.name %>
-            </h2>
+            <h4> 
+              <%= link_to "#{follower.followed_user.name}", logged_in_path(user_name: follower.followed_user.name)%>
+            </h4>
           <% end %>
         </div>
       </div>
