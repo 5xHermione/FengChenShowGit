@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_repository
-    find_user.repositories.find_by(id: session[:repository_id])
+    find_user.repositories.find_by(title: session[:repository_title])
   end
 
   def find_user

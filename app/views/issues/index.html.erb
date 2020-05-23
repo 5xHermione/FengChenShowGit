@@ -1,18 +1,15 @@
 <div class="thisIsIssuesShow enjoy">
+  <div>
+    <%= render "shared/repo_navbar"%>
+  </div>
+  <br/>
+  <div class="row"> 
+    <form class="form-inline my-2 my-lg-0 col-10">
+      <%= form_tag repository_issues_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search issues" , class:"issue-search col-12" %>
+      <% end %>
+    </form>
 
-    <div>
-      <%= render "shared/repo_navbar"%>
-    </div>
-
-    <div class="row">
-      <form class="form-inline my-2 my-lg-0 col-10">
-        <input
-          class="form-control mr-sm-2 col-12"
-          type="search"
-          placeholder="目前沒有功能的 Search"
-          aria-label="Search"
-        />
-      </form>
       <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
     </div>
     <div class="issue-container my-5">
@@ -53,6 +50,5 @@
         <%= paginate @issues, window: 2 %>
       </ul>
     </nav>
-
 
 </div>

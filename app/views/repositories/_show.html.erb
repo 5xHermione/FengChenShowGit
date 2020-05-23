@@ -1,26 +1,55 @@
+
 <div class="thisIsShareRepoNaveBar enjoy"> 
 
-	<div>
-	  <%= render "shared/repo_navbar"%>
-	</div>
-	</br>
-	<p id="notice"><%= notice %></p>
-
-	<p>
-	  <strong>Title:</strong>
-	  <%= @repository.title %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
-	  <%= @repository.description %>
-	</p>
-
-	<p>
-	  <strong>User:</strong>
-	  <%= @repository.user.name %>
-	</p>
-
-	<%= link_to 'Back', repositories_path %>
-
+<div>
+  <%= render "shared/repo_navbar"%>
 </div>
+</br>
+<div class="container">
+  <div class="row">
+    <div class="show-content col-8">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Title:</strong>
+        <%= @repository.title %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @repository.description %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= @repository.user.name %>
+      </p>
+    </div>
+    <div class="btn-copy col-4">
+      <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Clone or Download
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <h3>Clone with SSH</h3> 
+          <p>Use a password protected SSH key.</p>
+          <div class="row">
+            <div class="collapse-title col-8">
+              <input id="copyLink" class="copyLink" value= "root@128.199.107.166:<%= @repository.user.name %>/<%= @repository.title %>">
+            </div>
+            <div class="collapse-btn col-4">
+              <button class="btn btn btn-primary" data-clipboard-target="#copyLink">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%= link_to 'Back', repositories_path %>
+
