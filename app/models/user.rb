@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :followed_users, through: :active_relationships, source: :followed_users
   has_many :follower_users, through: :passive_relationships, source: :follower_users
 
+
   validates :email, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "format does not match."},
                     presence: true, uniqueness: true
   validates :name, presence: true, 

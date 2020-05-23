@@ -48,9 +48,15 @@
                   <h2>
                     <%= link_to "another user:#{user.name}", logged_in_path(user_name: user.name)%>
                   </h2>
-                  <h2>
-                    <%= link_to "Follow", relationships_path(user_name: user.name), method: "POST" %>
-                  </h2>
+                  <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
+                    <h2>
+                      <%= link_to "Follow", relationships_path(user_name: user.name), method: "POST" %>
+                    </h2>
+                  <% else %>
+                    <h2>
+                      <%= link_to "Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
+                    </h2>
+                  <% end %>
                 </div>
               </div>
             <% end %>

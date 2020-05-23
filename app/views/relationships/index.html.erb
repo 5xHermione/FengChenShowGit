@@ -30,7 +30,6 @@
           </form>
         </div>
         <div class="col-12">
-          <%= current_user.name %>
           <% @active_relationships.each do |follower|%>
             <h2>
               <%= follower.followed_user.name %>

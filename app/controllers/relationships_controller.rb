@@ -1,12 +1,12 @@
 class RelationshipsController < ApplicationController
+
   def index
     @active_relationships = find_user.active_relationships
     @passive_relationships = find_user.passive_relationships
   end
 
   def create
-    byebug
-    @followed_user = User.find(params[:relationship][:followed_user])
+    @followed_user = User.find_by(name: params[:user_name])
     @relationship = current_user.active_relationships.new(followed_id: @followed_user.id)
     if @relationship.save
       flash[:notice] = "Follow Successful"
@@ -17,5 +17,12 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
+    @relationship = Relationship.find(params[:id])
+    if @relationship.follower_user == current_user
+      @relationship.destroy
+      flash[:notice] = "Unfollowed"
+    end
+    redirect_to logged_in_path
   end
+
 end
