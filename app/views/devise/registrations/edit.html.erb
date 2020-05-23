@@ -57,10 +57,10 @@
               </div>
 
               <div class="field my-3">
-                <%= f.label :image %>
+                <%= f.label :avatar %>
                 <%= image_tag(@user.image_url) if @user.image? %>
                 <%= f.file_field :image %>
-                <%= f.hidden_field :image_cache %>
+                <%#= f.hidden_field :image_cache %>
               </div>
 
               <div class="actions">
