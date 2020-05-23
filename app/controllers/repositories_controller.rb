@@ -118,8 +118,8 @@ class RepositoriesController < ApplicationController
 
   private
     def set_repository
-      @repository = Repository.friendly.find(params[:id])
-      session[:repository_id] = @repository.id
+      @repository = find_user.repositories.friendly.find(params[:id])
+      session[:repository_title] = @repository.title
     end
 
     def repository_params
