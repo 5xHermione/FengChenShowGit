@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_080030) do
+ActiveRecord::Schema.define(version: 2020_05_23_041802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_080030) do
     t.integer "user_id"
     t.boolean "is_public", default: false
     t.string "slug"
-    t.index ["slug"], name: "index_repositories_on_slug", unique: true
+    t.index ["slug"], name: "index_repositories_on_slug"
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
