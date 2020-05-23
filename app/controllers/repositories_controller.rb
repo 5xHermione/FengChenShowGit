@@ -64,7 +64,7 @@ class RepositoriesController < ApplicationController
           dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
         end
       end
-      render :dir, locals: {dirs: dirs, files: files}
+      render :dir, locals: {dirs: dirs, files: files, repository: @repository}
     end
     
   end
