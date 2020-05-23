@@ -55,9 +55,14 @@
   color: #aaa;
 }
 
-.thisIsNavBar .nav-item img {
+.thisIsNavBar .avatarsmall {
+  display: inline;
+}
+
+.thisIsNavBar .avatarsmall img{
   width: 30px;
   height: 30px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
@@ -177,16 +182,3 @@
   width: 40px;
   background-image: url("../../../pic/logo_gray.png"); 
 }
-
-/*.thisIsNavBar .navbar-toggler {
-  border: solid 1px #3f4448;
-  padding: 4px;
-  width: 50px;
-  background-color: #24292e;
-
-}
-
-.navbar-toggler-icon{
- padding-top: 4px;
- color: #3f4448;
-}*/
