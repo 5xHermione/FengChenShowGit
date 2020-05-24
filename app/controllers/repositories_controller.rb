@@ -74,6 +74,7 @@ class RepositoriesController < ApplicationController
   end
 
   def edit
+    redirect_to repository_path if current_user != find_user
   end
 
   def create
