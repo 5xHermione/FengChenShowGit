@@ -17,7 +17,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # gem 'sqlite3', '~> 1.4'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'carrierwave', '~> 2.0'
+gem 'rmagick', '~> 4.1', '>= 4.1.2'
 
 
 group :development, :test do
