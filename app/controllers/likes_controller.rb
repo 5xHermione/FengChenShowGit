@@ -4,12 +4,14 @@ class LikesController < ApplicationController
   end
 
   def create
-    if @liked_repository = current_user.liked_repositories.create(current_repository.id)
+    liked_repository = find_user.repositories.find_by(title: params[:repository_id])
+    like_relationship = Like.new(repository_id: liked_repository.id, user_id: current_user.id)
+    if like_relationship.save
       flash[:notice] = "Like success"
     else
       flash[:notice] = "Like unsuccess"
     end
-    redirect_to repository_path
+    redirect_to repository_path(id: current_repository)
   end
 
   def destroy

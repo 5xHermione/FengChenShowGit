@@ -32,11 +32,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_043642) do
     t.index ["repository_id"], name: "index_issues_on_repository_id"
   end
 
-  create_table "likes", force: :cascade do |t|
+  create_table "likes", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "repository_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["repository_id"], name: "index_likes_on_repository_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
