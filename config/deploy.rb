@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.13.0"
 
-set :application, "FengChenShowGit"
+set :application, "fengchenshowgit"
 set :repo_url, "git@github.com:5xHermione/FengChenShowGit.git"
 set :passenger_restart_with_touch, true
 
