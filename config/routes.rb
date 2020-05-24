@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get ':user_name', to: "home#logged_in", as: "logged_in"
 
   scope '/:user_name' do
+    resources :likes, only: [:index]
     resources :repositories do
-      resources :likes, only: [:index, :create, :destroy]
+      resources :likes, only: [:create, :destroy]
       resources :pull_requests
       resources :issues do
         member do

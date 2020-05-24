@@ -9,6 +9,7 @@ class Repository < ApplicationRecord
   has_many :issues, dependent: :destroy
   has_many :pull_requests, dependent: :destroy
   has_many :users, through: :likes
+  has_many :likes
 
   friendly_id :title, use: :slugged
   before_save :convert_slug_to_same_title
