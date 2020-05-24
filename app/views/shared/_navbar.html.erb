@@ -42,7 +42,11 @@
               </ul>
               <ul class="ul-inline my-2 my-lg-0 ">
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatarsmall">
+                      <%= image_tag(current_user.image_url) if current_user.image? %>
+                      <!-- <img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg"> -->
+                    </div>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item user_set"%>
