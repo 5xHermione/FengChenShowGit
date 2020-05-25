@@ -44,7 +44,12 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatarsmall">
-                      <%= image_tag(current_user.image_url) if current_user.image? %>
+                      <% if @user.image? %>
+                        <%= image_tag(@user.image_url) %>
+                      <% else %>
+                        <img src="https://images.plurk.com/445Ndlyr43rlc9GZ8cBzZv.png">
+                      <% end %>
+                      <%#= image_tag(current_user.image_url) if current_user.image? %>
                       <!-- <img src="https://images.plurk.com/6XtoEdMzzfp1Jq6GIZPjgw.jpg"> -->
                     </div>
                   </a>
