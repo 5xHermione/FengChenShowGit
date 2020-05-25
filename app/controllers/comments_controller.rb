@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    Comment.find(params[:id]).destroy
+    if params[:pull_request_id]
+      redirect_to repository_pull_request_path(id: params[:pull_request_id])
+    else
+      redirect_to repository_issue_path(id: params[:issue_id])
+    end
   end
 
   private

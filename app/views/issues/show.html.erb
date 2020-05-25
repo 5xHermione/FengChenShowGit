@@ -93,7 +93,7 @@
     <h2><%= c.user.name %></h2>
     <h3><%= c.content %></h3>
     <% if c.user == current_user %>
-      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, issue_id: @issue, id: c), method: "DELETE" %></div>
+      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?" } %></div>
     <% end %>
   <% end %>
 
