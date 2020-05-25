@@ -31,7 +31,7 @@
               <div class="col-2 mt-2"><i class="fas fa-meteor"></i><%= issue.status%></div>
               <div class="col-6 row"> 
                 <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
-                <p class="col-12">#<%= issue.repository_issue_index %> opened on <%= issue.created_at %></p>
+                <p class="col-12">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
               </div>
               <div class="col-4"><%= issue.description %></div>
             </div>
