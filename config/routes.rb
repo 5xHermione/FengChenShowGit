@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   scope '/:user_name' do
     resources :repositories do
-      resources :pull_requests
+      resources :pull_requests do
+        resources :comments, only:[:create, :update, :destroy]
+      end
       resources :issues do
+        resources :comments, only:[:create, :update, :destroy]
         member do
           get :toggle_status
         end

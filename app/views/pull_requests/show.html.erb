@@ -14,6 +14,22 @@
   <%= @pull_request.description %>
 </p>
 
+<%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
+  <% if @comment.errors.any? %>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= f.label :content, class: "m-0"%>
+  <%= f.text_field :content, class: "form-control"%>
+
+  <div class="actions">
+    <%= f.submit "Create comment", class: "btn btn-success" %>
+  </div>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_repository_pull_request_path(id: @pull_request.id) %> |

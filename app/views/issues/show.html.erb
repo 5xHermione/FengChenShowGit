@@ -76,18 +76,18 @@
     </div>
   </div>
 
-<div class="text-area-container">
-  <div class="form-group">
-    <label for="exampleFormControlTextarea2">Small textarea</label>
-    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
-    <button type="button" class="btn btn-secondary">
-      <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
-    </button>
-    <button type="button" class="btn btn-secondary">
-      <%=link_to "comment" %> 
-    </button>
+  <div class="text-area-container">
+    <div class="form-group">
+      <label for="exampleFormControlTextarea2">Small textarea</label>
+      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+      <button type="button" class="btn btn-secondary">
+        <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
+      </button>
+      <button type="button" class="btn btn-secondary">
+        <%=link_to "comment" %> 
+      </button>
+    </div>
   </div>
-</div>
 </div>
 
 

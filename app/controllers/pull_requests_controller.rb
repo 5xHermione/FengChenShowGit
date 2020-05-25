@@ -21,6 +21,8 @@ class PullRequestsController < ApplicationController
   end
 
   def show
+    @comments = @pull_request.comments
+    @comment = @pull_request.comments.new
   end
 
   def edit
