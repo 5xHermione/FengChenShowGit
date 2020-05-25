@@ -13,12 +13,12 @@ class RelationshipsController < ApplicationController
     relationship = current_user.active_relationships.new(followed_id: followed_user.id)
 
     if followed_user == current_user
-      redirect_to root_path, notice: "You can't follow yourself"
+      redirect_to root_path, notice: "You can't follow yourself!"
     else
       if relationship.save
-        redirect_to root_path, notice: "Follow Successful"
+        redirect_to root_path, notice: "Follow Successful!"
       else
-        redirect_to root_path, notice: "Follow Unsuccessful"
+        redirect_to root_path, notice: "Failed to follow!"
       end
     end
   end
