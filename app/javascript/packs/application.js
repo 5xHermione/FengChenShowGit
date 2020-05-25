@@ -6,6 +6,7 @@ require("style");
 require("popper.js");
 
 
+
 //bootstrap 
 
 import "bootstrap"
@@ -15,6 +16,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "jquery"
 import $ from 'jquery'
 window.$ = $
+require("scripts");
 
 //fontawesome
 
@@ -27,16 +29,11 @@ import "clipboard"
 import ClipboardJS from "clipboard/dist/clipboard.min.js"
 
 
+
 $(document).on("turbolinks:load", function(){
   // https://github.com/zenorocha/clipboard.js  copy用插件
   new ClipboardJS('.btn');
   $('.collapse').collapse('hide')
 })
 
-
-// $( document ).ready(function() {
-//   $("a").click(function(event){
-//     event.preventDefault();
-//   });
-// });
 
