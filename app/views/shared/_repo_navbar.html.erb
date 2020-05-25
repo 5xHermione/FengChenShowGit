@@ -23,11 +23,13 @@
         <i class="fas fa-code-branch"></i><span> Pull requests</span>
       <% end %>
     </li>
-    <li class="nav-item">
-      <%= link_to edit_repository_path(id: current_repository), class: "nav-link" do %>
-        <i class="fas fa-cog"></i><span> Setting</span>
-      <% end %>
-    </li>
+    <% if current_user == find_user %>
+      <li class="nav-item">
+        <%= link_to edit_repository_path(id: current_repository), class: "nav-link" do %>
+          <i class="fas fa-cog"></i><span> Setting</span>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </div>
 
