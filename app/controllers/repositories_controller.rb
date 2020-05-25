@@ -3,24 +3,18 @@ class RepositoriesController < ApplicationController
   before_action :set_request_format, only: [:show]
 
   def index
-    if current_user
-      if current_user == find_user
-        @repositories = repositories_order
-        respond_to do |format|
-          format.json { render json: @repositories }
-          format.html { render :index }
-        end
-      else
-        @repositories = repositories_order.select{ |repo| repo.is_public == true }
-        respond_to do |format|
-          format.json { render json: @repositories }
-          format.html { render :index }
-        end
-      end
-    else
-      redirect_to new_user_session_path
+    return redirect_to new_user_session_path if current_user.blank?
+
+    @repositories = repositories_order
+    @repositories = @repositories.where(is_public: true) if current_user != find_user
+    @repositories = @repositories.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
+
+    respond_to do |format|
+      # format.json { render json: @repositories }
+      format.html { render :index }
     end
   end
+
 
   def show
     set_repo_file_path
@@ -74,6 +68,7 @@ class RepositoriesController < ApplicationController
   end
 
   def edit
+    redirect_to repository_path if current_user != find_user
   end
 
   def create
@@ -141,3 +136,5 @@ class RepositoriesController < ApplicationController
       @current_repo_path = "/#{user_name}/#{repo_title}"
     end
 end
+
+
