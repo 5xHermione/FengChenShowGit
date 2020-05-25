@@ -16,7 +16,6 @@ class LikesController < ApplicationController
 
   def destroy
     like_relationship = Like.find_by(repository_id: current_repository.id, user_id: current_user.id)
-    byebug
     if like_relationship.destroy
       flash[:notice] = "Unlike success"
     else

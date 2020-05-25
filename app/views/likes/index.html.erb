@@ -25,8 +25,10 @@
             <div class="title-bottom-line"></div>
             <h3 class="col-12 my-3">Like repositories</h3>
               <% @liked_repositories.each do |repo| %>
-                <h2>Owner: <%= repo.user.name %></h2>
-                <h2><%= repo.title %></h2>
+                <div class="col-12">
+                  <h2>Owner: <%= repo.user.name %></h2>
+                  <h4><%= link_to repo.title, repository_path(user_name: repo.user.name, id: repo.title) %></h4>
+                </div>
               <% end %>
           </div>
         </div>
