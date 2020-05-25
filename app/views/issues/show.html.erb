@@ -89,6 +89,11 @@
     </div>
   </div>
 
+  <% @comments.each do |c| %>
+    <h2><%= c.user.name %></h2>
+    <h3><%= c.content %></h3>
+  <% end %>
+
   <%= form_with(model: @comment, url: repository_issue_comments_path(issue_id: @issue), local: true, method: "POST") do |f|%>
   <% if @comment.errors.any? %>
     <ul>

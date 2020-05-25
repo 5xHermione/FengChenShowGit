@@ -22,7 +22,7 @@ class PullRequestsController < ApplicationController
 
   def show
     @comments = @pull_request.comments
-    @comment = @pull_request.comments.new
+    @comment = Comment.new
   end
 
   def edit
