@@ -41,10 +41,11 @@ $().ready(function(){
         $(this).css("border-color","")
         $('.notice4').text('')      
       }else{
-          $('.notice4').text('請輸入英文大小寫"_"')
+          $('.notice4').text('請輸入數字英文大小寫"_"')
           $(this).css("border-color","red")
       }
     })
+
   })
 })
 
