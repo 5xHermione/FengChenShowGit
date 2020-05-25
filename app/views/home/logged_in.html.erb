@@ -18,7 +18,10 @@
                   <%= link_to "Repositories", repositories_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Followers", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
             </div>

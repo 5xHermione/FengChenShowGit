@@ -33,7 +33,7 @@
           </form>
         </div>
         <div class="col-12">
-          <% @following_users.each do |user|%>
+          <% @followers.each do |user|%>
             <h4> 
               <%= link_to "#{ user.name}", logged_in_path(user_name: user.name)%>
             </h4>

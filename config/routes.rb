@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   scope '/:user_name' do
     resources :relationships, only: [:index, :create, :destroy]
+    get "relationships/followers", to: "relationships#followers", as: "followers"
     resources :repositories do
       resources :pull_requests
       resources :issues do

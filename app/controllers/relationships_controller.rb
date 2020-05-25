@@ -1,8 +1,11 @@
 class RelationshipsController < ApplicationController
   # 參考自：https://dev.to/knheidorn/rails-crash-course-building-follower-following-relationship-4kjl
   def index
-    @active_relationships = find_user.active_relationships
-    @passive_relationships = find_user.passive_relationships
+    @following_users = find_user.following_users
+  end
+
+  def followers
+    @followers = find_user.followers
   end
 
   def create
