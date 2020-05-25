@@ -48,7 +48,7 @@
 */
 .thisIsNavBar .nav-link {
   color: #fff;
-  margin: 0 10px 0 10px;
+  margin: 0 6px 0 6px;
 }
 
 .thisIsNavBar .nav-link:hover {
@@ -83,6 +83,21 @@
   padding-left: 0;
 }
 
+.thisIsNavBar .navbar-toggler {
+  border-color: #444; 
+}
+
+.thisIsNavBar .navbar-toggler:cilck {
+  border-color: #666; 
+}
+
+.thisIsNavBar .navbar-toggler-icon {
+   color: #fff;
+}
+
+.thisIsNavBar ul li{
+  list-style: none;
+}
 
 /*首頁的左邊位置*/
 .index_logo {
