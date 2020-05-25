@@ -1,7 +1,7 @@
 
 $().ready(function(){
   
-  $(document).click(function(){
+  $(document).on("click change", function(){
     let rule1 = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/;
     $("#user_email").blur(function(){
       if(rule1.test($(this).val())){
