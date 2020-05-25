@@ -92,6 +92,9 @@
   <% @comments.each do |c| %>
     <h2><%= c.user.name %></h2>
     <h3><%= c.content %></h3>
+    <% if c.user == current_user %>
+      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, issue_id: @issue, id: c), method: "DELETE" %></div>
+    <% end %>
   <% end %>
 
   <%= form_with(model: @comment, url: repository_issue_comments_path(issue_id: @issue), local: true, method: "POST") do |f|%>
