@@ -9,20 +9,24 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    @followed_user = User.find_by(name: params[:user_name])
-    @relationship = current_user.active_relationships.new(followed_id: @followed_user.id)
-    if @relationship.save
-      flash[:notice] = "Follow Successful"
+    followed_user = User.find_by(name: params[:user_name])
+    relationship = current_user.active_relationships.new(followed_id: followed_user.id)
+
+    if followed_user == current_user
+      redirect_to root_path, notice: "You can't follow yourself"
     else
-      flash[:notice] = "Follow Unsuccessful"
+      if relationship.save
+        redirect_to root_path, notice: "Follow Successful"
+      else
+        redirect_to root_path, notice: "Follow Unsuccessful"
+      end
     end
-    redirect_to root_path
   end
 
   def destroy
-    @relationship = Relationship.find(params[:id])
-    if @relationship.follower_user == current_user
-      @relationship.destroy
+    relationship = Relationship.find(params[:id])
+    if relationship.follower_user == current_user
+      relationship.destroy
       flash[:notice] = "Unfollowed"
     end
     redirect_to root_path
