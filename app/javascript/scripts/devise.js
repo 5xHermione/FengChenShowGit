@@ -2,6 +2,7 @@
 $().ready(function(){
   
   $(document).on("click change", function(){
+    
     let rule1 = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/;
     $("#user_email").blur(function(){
       if(rule1.test($(this).val())){
@@ -44,8 +45,22 @@ $().ready(function(){
           $(this).css("border-color","red")
       }
     })
+
+    if(($("#user_name").val() != "")&&($("#user_name").val()!= null)){
+      
+      return true;
+  }else if(($("#user_name").val() == "" )||($("#user_name").val()== null)){
+      $('.notice4').text('')  
+      return false;
+  }
+
+
   })
 })
+
+ 
+
+
 
 
 
