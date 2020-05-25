@@ -72,6 +72,22 @@
   color: #777e5d;
 }
 
+
+.enjoy .user_name {
+	margin-top: 15px!important;
+	font-family: "Arial";
+}
+
+.enjoy .user_id {
+	color: #6c6f6c;
+	font-family: "Arial";
+	font-size: 20px;
+	margin-top: -8px!important;
+}
+
+
+
+
 /* ===================頭貼===================== */
 .avatar-wrap img {
   width: 100%;

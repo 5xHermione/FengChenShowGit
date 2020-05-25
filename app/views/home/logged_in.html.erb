@@ -1,12 +1,12 @@
-<div class="thisIsUsresIndex">
+<div class="thisIsUsresIndex enjoy">
       <div class="container my-5">
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
               <%= image_tag(current_user.image_url) if current_user.image? %>
             </div>
-            <h4 class="my-2">NAME：<%= find_user.name%></h4>
-            <h4 class="my-2">ID：<%= find_user.id%></h4>
+            <h4 class="my-2 user_name">NAME：<%= find_user.name%></h4>
+            <h4 class="my-2 user_id">ID：<%= find_user.id%></h4>
           </div>
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
@@ -18,15 +18,17 @@
                   <%= link_to "Repositories", repositories_path, class: "nav-link" %>
                 </li>
               </ul>
+              <div class="line">
+                <div class="title-bottom-line"></div>
+              </div>
             </div>
-            <div class="title-bottom-line"></div>
-            <h3 class="col-12 my-3">Popular repositories</h3>
+            <h3 class="col-12 my-3 popu">Popular repositories</h3>
             <% @repositories.each do |repo|%>
               <div class="p-3 col-6">
                 <div class="overview-repository-wrap p-5">
-                  <h2>
+                  <h4>
                     <%= link_to "#{repo.title}", repository_path(id: repo)%>
-                  </h2>
+                  </h4>
                   <div>
                     <%= repo.created_at%>
                   </div>
