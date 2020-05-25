@@ -31,13 +31,13 @@
     <% if current_user.liked_repositories.find_by(id: current_repository.id).nil? %>
       <li class="nav-item ml-auto">
         <%= link_to repository_likes_path(repository_id: current_repository), class: "nav-link", method: "POST" do %>
-          <i class="far fa-heart"></i><span> Like</span>
+          <i class="far fa-star"></i><span> Star </span>
         <% end %>
       </li>
     <% else %>
       <li class="nav-item ml-auto">
         <%= link_to repository_like_path(repository_id: current_repository, id: current_user.liked_repositories.find_by(id: current_repository.id)), class: "nav-link", method: "DELETE" do %>
-          <i class="fas fa-heart"></i><span> Unlike</span>
+          <i class="fas fa-star"></i><span> Unstar </span>
         <% end %>
       </li>
     <% end %>
