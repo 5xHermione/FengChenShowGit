@@ -3,12 +3,19 @@ $(document).on("turbolinks:load", function () {
   let cancelButton = $(".comment-cancel-button");
 
   editButton.click(function () {
-    $(".comment-info-container").hide();
-    $(".comment-edit-container").show();
+    let $this = $(this)
+    let $parent = $this.parents('.comment-info-container:eq(0)')
+    let $editContainer = $parent.next(".comment-edit-container:eq(0)");
+    $parent.hide();
+    $editContainer.show();
   });
 
   cancelButton.click(function () {
-    $(".comment-edit-container").hide();
-    $(".comment-info-container").show();
+    let $this = $(this)
+    let $parent = $this.parents('.comment-edit-container')
+    let $infoContainer = $parent.prev('.comment-info-container')
+    $parent.hide();
+    $infoContainer.show();
   });
+
 });
