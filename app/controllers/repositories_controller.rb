@@ -5,7 +5,7 @@ class RepositoriesController < ApplicationController
   def index
     return redirect_to new_user_session_path if current_user.blank?
 
-    @user = current_user
+    @user = find_user
     @repositories = repositories_order
     @repositories = @repositories.where(is_public: true) if current_user != find_user
     @repositories = @repositories.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
@@ -65,7 +65,6 @@ class RepositoriesController < ApplicationController
   end
 
   def new
-    @user = current_user
     @repository = Repository.new
   end
 

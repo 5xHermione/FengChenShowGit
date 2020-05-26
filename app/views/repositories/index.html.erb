@@ -6,12 +6,7 @@
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
-              <% if @user.image? %>
-                <%= image_tag(@user.image_url) %>
-              <% else %>
-                <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-              <% end %>
-              <!--  <%= image_tag(current_user.image_url) if current_user.image? %> -->
+              <%= image_tag(current_user.image_url) if current_user.image? %>
               <%#= image_tag(current_user.image_url) if current_user.image? %>
             </div>
             <h4 class="my-2">NAME：<%= find_user.name %></h4>
