@@ -1,10 +1,10 @@
 /*可共用*/
-.this-is-share-repo-navebar .repo_navbar { 
+.this-is-share-repo-navebar .repo-navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
 	background-image: url("../../../pic/issueBKbs.jpg");
 }
 
-.this-is-share-repo-navebar .repo_navbar { 
+.this-is-share-repo-navebar .repo-navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
 	background-image: url("../../../pic/issueBKbsss.jpg");
 }
@@ -38,7 +38,7 @@
 	color: #494f35;
 } 
 
-.public .repo_navbar .nav-link {
+.public .repo-navbar .nav-link {
 	color: #573c39;
 	text-shadow:
 }
@@ -49,7 +49,7 @@
 	font-size: 18px;
 }
 
-.public .repo_navbar .nav-link { 
+.public .repo-navbar .nav-link { 
 	color: #492b2c;
 	border-bottom: none;
 }
