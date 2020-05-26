@@ -1,86 +1,102 @@
 /*可共用*/
-.thisIsShareRepoNaveBar .repo_navbar { 
+.this-is-share-repo-navebar .repo-navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
 	background-image: url("../../../pic/issueBKbs.jpg");
 }
 
-.thisIsSettingsNaveBar .repo_navbar { 
+.this-is-settings-navebar .repo-navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbsss.jpg");
+	background-image: url("../../../pic/issueBKbss.jpg");
 }
 
-.enjoy .id_name {
+.public .id-name {
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
 	color: #494f35;
 }
-.enjoy .id_name i {
+.public .id-name i {
   color: #aaa;
   margin-right: 3px;
   color: #573c39;
 }
-.enjoy .userId {
+.public .userId {
 	display: inline;
 	font-weight: bold;
 	color: #573c39;
 	font-size: 18px;
 }
 
-.enjoy .fileName {
+.public .fileName {
 	color: #573c39;
 }
 
-.enjoy .thisIsIssuesShow .id_name {
+.public .issue-show .id-name {
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
 	color: #494f35;
 } 
 
-.enjoy .repo_navbar .nav-link {
+.public .repo-navbar .nav-link {
 	color: #573c39;
 }
 
-.enjoy .fileName {
+.public .fileName {
 	display: inline;
 	color: #24292e;
 	font-size: 18px;
 }
 
-.enjoy .repo_navbar .nav-link { 
+.public .repo-navbar .nav-link { 
 	color: #492b2c;
 	border-bottom: none;
 }
 
-.enjoy .nav-tabs .nav-link {
+.public .nav-tabs .nav-link {
 	font-weight: normal;
 	border: none;
 }
 
-.enjoy .nav-tabs .nav-link:hover {
+.public .nav-tabs .nav-link:hover {
 	font-weight: bold;
 }
 
-.enjoy .nav-link.active {
+.public .nav-link.active {
 	border-bottom: none;
 	border-color: #e0d7d2;
 }
 
-.enjoy .fas .fa-code {
+.public .fas .fa-code {
   color: #777e5d;
 }
 
+
+.public .user-name {
+	margin-top: 15px!important;
+	font-family: "Arial";
+}
+
+.public .user-id {
+	color: #6c6f6c;
+	font-family: "Arial";
+	font-size: 20px;
+	margin-top: -8px!important;
+}
+
+
+
+
 /* ===================頭貼===================== */
 .avatar-wrap img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
 
 
 
-.thisIsNavBar .card .bg-light .col-6 .m-auto .p-0 {
+.this-is-navbar .card .bg-light .col-6 .m-auto .p-0 {
 	max-width: 100%;
 }

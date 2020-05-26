@@ -9,23 +9,23 @@
              width: 100%;
 }
 
-.thisIsNavBar .navbar {
+.this-is-navbar .navbar {
   background-color: #24292e;
   padding: 15px 50px 15px 50px;
 }
 
-.thisIsNavBar .navbar-brand {
+.this-is-navbar .navbar-brand {
   width: 40px;
   height: 40px;
   background-image: url("../../../pic/logo_SSS.png"); 
 }
 
-.thisIsNavBar .navbar-nav .nav-link { 
+.this-is-navbar .navbar-nav .nav-link { 
   color: #FFF; 
   padding: 2px 10px 4px 10px;
 }
 
-.thisIsNavBar .navbar-nav .nav-link:hover {
+.this-is-navbar .navbar-nav .nav-link:hover {
   color: #ccc;
 }
 
@@ -42,24 +42,24 @@
 
 /*頭像小三角的下拉選單*/
 
-/*.thisIsNavBar #navbarSupportedContent {
+/*.this-is-navbar #navbarSupportedContent {
   padding-top: 20px;
 }
 */
-.thisIsNavBar .nav-link {
+.this-is-navbar .nav-link {
   color: #fff;
-  margin: 0 10px 0 10px;
+  margin: 0 6px 0 6px;
 }
 
-.thisIsNavBar .nav-link:hover {
+.this-is-navbar .nav-link:hover {
   color: #aaa;
 }
 
-.thisIsNavBar .avatarsmall {
+.this-is-navbar .avatarsmall {
   display: inline;
 }
 
-.thisIsNavBar .avatarsmall img{
+.this-is-navbar .avatarsmall img{
   width: 30px;
   height: 30px;
   object-fit: cover;
@@ -75,14 +75,29 @@
   background-color: none; 
 }
 
-.thisIsNavBar #navbarDropdown {
-  margin-left: 0; 
+.this-is-navbar #navbarDropdown {
+  margin-left: 95px; 
 }
 
-.thisIsNavBar .ul-inline {
+.this-is-navbar .ul-inline {
   padding-left: 0;
 }
 
+.this-is-navbar .navbar-toggler {
+  border-color: #444; 
+}
+
+.this-is-navbar .navbar-toggler:cilck {
+  border-color: #666; 
+}
+
+.this-is-navbar .navbar-toggler-icon {
+   color: #fff;
+}
+
+.this-is-navbar ul li{
+  list-style: none;
+}
 
 /*首頁的左邊位置*/
 .index_logo {
@@ -118,7 +133,7 @@
 
 
 /*搜尋欄*/
-.thisIsNavBar .form-inline input {
+.this-is-navbar .form-inline input {
   background-color: #3f4448;
   height: 30px;
   width: 200px;
@@ -126,29 +141,29 @@
   border: none;
 }
 
-.thisIsNavBar .btn-outline { 
+.this-is-navbar .btn-outline { 
   border: solid 1px #3f4448;
   border-radius: 3px; 
   margin-right: 30px; 
  }
 
-.thisIsNavBar .btn:hover {
+.this-is-navbar .btn:hover {
   border-color: #999;
   color: #999;
 }
 
-.thisIsNavBar .btn_search { 
+.this-is-navbar .btn_search { 
   padding: 2px 6px;
   border-color: #3f4448;
   margin-right: 20px;
 }
 
-.thisIsNavBar .btn {
+.this-is-navbar .btn {
   color: #3f4448;
   padding: 2px 6px 2px 6px;
 }
 
-.thisIsNavBar .form-inline {
+.this-is-navbar .form-inline {
   /*padding-top: 20px;*/
   padding-left: 20px;
 }

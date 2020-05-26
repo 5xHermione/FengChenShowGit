@@ -1,4 +1,4 @@
-<div class="enjoy">
+<div class="logged-in-my-repo public">
 
 
       <div class="container my-5">
@@ -12,8 +12,8 @@
               <% end %>
               <%#= image_tag(current_user.image_url) if current_user.image? %>
             </div>
-            <h4 class="my-2">NAME：<%= find_user.name %></h4>
-            <h4 class="my-2">ID：<%= find_user.id %></h4>
+            <h4 class="my-2 user-name"><i class="far fa-smile"></i> NAME：<%= find_user.name %></h4>
+            <p class="my-2 user-id">ID：<%= find_user.id %></p>
           </div>
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
