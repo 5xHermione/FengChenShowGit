@@ -89,17 +89,22 @@
     </div>
   </div>
 
-  <% @comments.each do |c| %>
-    <h2><%= c.user.name %></h2>
-    <h3><%= c.content %></h3>
-    <h4><%= time_ago_in_words(c.created_at) %> ago </h4>
+<% @comments.each do |c| %>
+
+  <div class="comment-info-container">
+    <h4><%= c.user.name %></h4>
+    <h4><%= c.content %></h4>
+    <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
 
     <% if c.user == current_user %>
-      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?" } %></div>
-      <div class="btn btn-primary">Edit</div>
+      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn btn-danger comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+      <div class="btn btn-primary comment-edit-button">Edit</div>
     <% end %>
+  </div>
 
+  <div class="comment-edit-container" style="display: none;">
     <%= form_with(model: c, url: repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), method: "PUT") do |f| %>
+
       <% if c.errors.any? %>
         <ul>
           <% c.errors.full_messages.each do |message| %>
@@ -108,32 +113,37 @@
         </ul>
       <% end %>
 
-        <%= f.label :content, class: "m-0"%>
-        <%= f.text_field :content, class: "form-control"%>
+      <%= f.label :content, class: "m-0"%>
+      <%= f.text_field :content, class: "form-control"%>
 
-        <div class="actions">
-          <%= f.submit "Update comment", class: "btn btn-success" %>
-        </div>
-        <div class="btn btn-danger">Cancel</div>
-      <% end %>
+      <div class="actions">
+        <%= f.submit "Update comment", class: "btn btn-success" %>
+      </div>
+      <div class="btn btn-danger comment-cancel-button">
+        Cancel
+      </div>
+    <% end %>
+  </div>
+<% end %>
+  
+
+<div class="comment-new-container">
+  <%= form_with(model: @comment, url: repository_issue_comments_path(issue_id: @issue), local: true, method: "POST") do |f|%>
+
+    <% if @comment.errors.any? %>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
 
-  <%# render "shared/comment_new", locals: { comment: @comment, path_url: Proc.new { |parent| repository_issue_comments_path(issue_id: parent )}, parent: @issue  %>
+    <%= f.label :content, class: "m-0"%>
+    <%= f.text_field :content, class: "form-control"%>
 
-  <%= form_with(model: @comment, url: repository_issue_comments_path(issue_id: @issue), local: true, method: "POST") do |f|%>
-  <% if @comment.errors.any? %>
-    <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <%= f.label :content, class: "m-0"%>
-  <%= f.text_field :content, class: "form-control"%>
-
-  <div class="actions">
-    <%= f.submit "Create comment", class: "btn btn-success" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Create comment", class: "btn btn-success" %>
+    </div>
   <% end %>
 </div>
 
