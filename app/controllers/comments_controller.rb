@@ -12,15 +12,13 @@ class CommentsController < ApplicationController
   end
 
   def update
+    Comment.find(params[:id]).update(comment_params)
+    redirect_path
   end
 
   def destroy
     Comment.find(params[:id]).destroy
-    if params[:pull_request_id]
-      redirect_to repository_pull_request_path(id: params[:pull_request_id])
-    else
-      redirect_to repository_issue_path(id: params[:issue_id])
-    end
+    redirect_path
   end
 
   private
@@ -34,6 +32,14 @@ class CommentsController < ApplicationController
       flash[:notice] = 'You have created a comment.'
     else
       flash[:notice] = 'something wrong.'
+    end
+  end
+
+  def redirect_path
+    if params[:pull_request_id]
+      redirect_to repository_pull_request_path(id: params[:pull_request_id])
+    else
+      redirect_to repository_issue_path(id: params[:issue_id])
     end
   end
 end
