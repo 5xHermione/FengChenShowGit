@@ -8,6 +8,7 @@ Rails.application.routes.draw do
                      }
   root "home#index"
   get ':user_name', to: "home#logged_in", as: "logged_in"
+  resources :sshkeys, only:[:new, :create, :destroy]
 
   scope '/:user_name' do
     resources :relationships, only: [:index, :create, :destroy]
