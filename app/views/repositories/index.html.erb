@@ -5,8 +5,8 @@
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
-              <% if @user.image? %>
-                  <%= image_tag(@user.image_url) %>
+              <% if find_user.image? %>
+                  <%= image_tag(find_user.image_url) %>
               <% else %>
                   <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
               <% end %>
@@ -18,7 +18,7 @@
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
               <ul class="nav">
-                <li class="nav-item">
+                <li class="nav-item mx-3">
                   <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
                 </li>
                 <li class="nav-item mx-3">
@@ -33,6 +33,9 @@
                   <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
+              <div class="line">
+                <div class="title-bottom-line"></div>
+              </div>
             </div>
             <div class="title-bottom-line"></div>
               <form class="form-inline my-3 lg-0 col-12">
@@ -45,9 +48,9 @@
               <div class="p-3 col-12">
                 <div class="repositories-repository-wrap p-5 row">
                   <div class="col-10">
-                    <h2>
+                    <h4>
                       <%= link_to "#{repo.title}", repository_path(id: repo)%>
-                    </h2>
+                    </h4>
                     <div>
                       Create <%= time_ago_in_words(repo.created_at) %> ago
                     </div>

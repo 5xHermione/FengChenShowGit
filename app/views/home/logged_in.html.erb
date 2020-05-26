@@ -8,7 +8,6 @@
               <% else %>
                   <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
               <% end %>
-              <%#= image_tag(current_user.image_url) if current_user.image? %>
             </div>
             <h4 class="my-2 user-name"><i class="far fa-smile"></i> NAME：<%= find_user.name%></h4>
             <h4 class="my-2 user-id">ID：<%= find_user.id%></h4>
@@ -16,7 +15,7 @@
           <div class="repositories-container col-12 col-md-9 row p-3">
             <div class="repositories-title col-12">
               <ul class="nav">
-                <li class="nav-item">
+                <li class="nav-item mx-3">
                   <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
                 </li>
                 <li class="nav-item mx-3">

@@ -85,6 +85,73 @@
 }
 
 
+/* ===================ligged_in開始的小nav bar===================== */
+.public .nav {
+	 font-weight: bold;
+}
+
+.public .overview-repository-wrap a:hover {
+  text-decoration: none;
+}
+
+.public .overview-repository-wrap a {
+  font-size: 18px;
+  color: #0374d7;
+}
+
+.public .overview-repository-wrap div {
+  font-size: 12px;
+}
+
+.public .repositories-repository-wrap a{
+	font-size: 18px;
+  color: #0374d7;
+}
+
+.public .p-3 {
+  padding: 1rem 0 0 1rem!important;
+}
+
+.public .user-info-container{
+	margin-right: 15px;
+}
+
+.public .mx-3 {
+  margin-left: 0!important;
+}
+
+.public .nav-link {
+  color: #492b2c;
+}
+
+.public .nav-item:active {
+  border-bottom: solid 2px #e36209;
+}
+
+.public .popu {
+	margin-top: 25px !important;
+	margin-bottom: 0 !important;
+  font-size: 20px;
+  color: #492b2c;
+}
+
+.public .line {
+  height: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.public .line .title-bottom-line {
+  padding-right: 0;
+  height: 2px;
+  width: 100%;
+  background-color:#999999;
+  position: relative;
+}
+
+.public .repositories-title {
+  padding-right: 0;
+}
 
 
 /* ===================頭貼===================== */
