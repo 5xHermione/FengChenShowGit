@@ -3,7 +3,12 @@
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
-              <%= image_tag(current_user.image_url) if current_user.image? %>
+              <% if find_user.image? %>
+                  <%= image_tag(find_user.image_url) %>
+              <% else %>
+                  <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+              <% end %>
+              <%#= image_tag(current_user.image_url) if current_user.image? %>
             </div>
             <h4 class="my-2 user-name"><i class="far fa-smile"></i> NAME：<%= find_user.name%></h4>
             <h4 class="my-2 user-id">ID：<%= find_user.id%></h4>
@@ -16,6 +21,14 @@
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to "Repositories", repositories_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
+                <li>
+                  <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
               <div class="line">
@@ -47,6 +60,15 @@
                   <h2>
                     <%= link_to "another user:#{user.name}", logged_in_path(user_name: user.name)%>
                   </h2>
+                  <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
+                    <h2>
+                      <%= link_to "Follow", relationships_path(user_name: user.name), method: "POST" %>
+                    </h2>
+                  <% else %>
+                    <h2>
+                      <%= link_to "Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
+                    </h2>
+                  <% end %>
                 </div>
               </div>
             <% end %>

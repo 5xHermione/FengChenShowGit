@@ -2,9 +2,11 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
 
+
   def index
     return redirect_to new_user_session_path if current_user.blank?
 
+    @user = find_user
     @repositories = repositories_order
     @repositories = @repositories.where(is_public: true) if current_user != find_user
     @repositories = @repositories.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
@@ -68,6 +70,7 @@ class RepositoriesController < ApplicationController
   end
 
   def edit
+    redirect_to repository_path if current_user != find_user
   end
 
   def create

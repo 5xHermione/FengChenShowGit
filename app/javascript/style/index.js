@@ -7,5 +7,3 @@ import "./repo-nav.scss";
 import "./public.scss";
 import "./issue_show.scss";
 import "./logged_in_index.scss";
-
-
