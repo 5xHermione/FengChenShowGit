@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       else
         @repositories = repositories_order.select{ |repo| repo.is_public == true }
       end
-      @users = User.all.order("RANDOM()").limit(5)
+      @users = User.where("id != ?", current_user.id).order("RANDOM()").limit(10)
     else
       redirect_to root_path, notice: 'Please login first.'
     end
