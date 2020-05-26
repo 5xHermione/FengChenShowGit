@@ -9,13 +9,13 @@
 	background-image: url("../../../pic/issueBKbss.jpg");
 }
 
-.public .id_name {
+.public .id-name {
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
 	color: #494f35;
 }
-.public .id_name i {
+.public .id-name i {
   color: #aaa;
   margin-right: 3px;
   color: #573c39;
@@ -31,7 +31,7 @@
 	color: #573c39;
 }
 
-.public .issue-show .id_name {
+.public .issue-show .id-name {
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
@@ -73,12 +73,12 @@
 }
 
 
-.public .user_name {
+.public .user-name {
 	margin-top: 15px!important;
 	font-family: "Arial";
 }
 
-.public .user_id {
+.public .user-id {
 	color: #6c6f6c;
 	font-family: "Arial";
 	font-size: 20px;
