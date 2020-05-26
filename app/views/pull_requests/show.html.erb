@@ -17,10 +17,29 @@
   <% @comments.each do |c| %>
     <h2><%= c.user.name %></h2>
     <h3><%= c.content %></h3>
+
     <% if c.user == current_user %>
-      <div><%= link_to "delete", repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request,id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+      <div><%= link_to "delete", repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+      <div class="btn btn-primary">Edit</div>
     <% end %>
-  <% end %>
+
+      <%= form_with(model: c, url: repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), method: "PUT") do |f| %>
+      <% if c.errors.any? %>
+        <ul>
+          <% c.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+        <%= f.label :content, class: "m-0"%>
+        <%= f.text_field :content, class: "form-control"%>
+
+        <div class="actions">
+          <%= f.submit "Update comment", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    <% end %>
 
 <%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
   <% if @comment.errors.any? %>
