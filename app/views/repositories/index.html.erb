@@ -6,7 +6,7 @@
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
             <div class="avatar-wrap">
-              <img class="w-100" src="https://picsum.photos/400/400?random=1" alt="">
+              <%= image_tag(current_user.image_url) if current_user.image? %>
             </div>
             <h4 class="my-2">NAME：<%= find_user.name %></h4>
             <h4 class="my-2">ID：<%= find_user.id %></h4>
@@ -25,16 +25,18 @@
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
+                <li>
+                  <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
             </div>
             <div class="title-bottom-line"></div>
-            <div class="col-12">
-              <form class="form-inline my-3 lg-0">
-                <input class="form-control mr-sm-2 col-9" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              <form class="form-inline my-3 lg-0 col-12">
+                <%= form_tag repositories_path, method: :get do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search..." , class:"repo-search col-10" %>
+                <button class="btn btn-outline-success my-2 my-sm-0 ml-5 " type="submit"><i class="fas fa-search"></i></button>
+                <% end %>
               </form>
-            </div>
             <% @repositories.each do |repo|%>
               <div class="p-3 col-12">
                 <div class="repositories-repository-wrap p-5 row">
