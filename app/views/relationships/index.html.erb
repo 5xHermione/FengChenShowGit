@@ -1,0 +1,46 @@
+<div class="enjoy">
+  <div class="container my-5">
+    <div class="row">
+      <div class="user-info-container col-12 col-md-3">
+        <div class="avatar-wrap">
+          <img class="w-100" src="https://picsum.photos/400/400?random=1" alt="">
+        </div>
+        <h4 class="my-2">NAME：<%= find_user.name %></h4>
+        <h4 class="my-2">ID：<%= find_user.id %></h4>
+      </div>
+      <div class="repositories-container col-12 col-md-9 row p-3">
+        <div class="repositories-title col-12">
+          <ul class="nav">
+            <li class="nav-item">
+              <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
+            </li>
+            <li class="nav-item mx-3">
+              <%= link_to "Repositories", repositories_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item mx-3">
+              <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+            </li>
+            <li class="nav-item mx-3">
+              <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+        <div class="title-bottom-line"></div>
+        <div class="col-12">
+          <form class="form-inline my-3 lg-0">
+            <input class="form-control mr-sm-2 col-9" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="col-12">
+          <% @following_users.each do |user|%>
+            <h4> 
+              <%= link_to "#{ user.name}", logged_in_path(user_name: user.name)%>
+            </h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
