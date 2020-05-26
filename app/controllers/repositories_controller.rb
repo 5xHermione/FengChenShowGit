@@ -2,6 +2,7 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
 
+
   def index
     return redirect_to new_user_session_path if current_user.blank?
 
