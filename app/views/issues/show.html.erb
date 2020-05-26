@@ -92,6 +92,8 @@
   <% @comments.each do |c| %>
     <h2><%= c.user.name %></h2>
     <h3><%= c.content %></h3>
+    <h4><%= time_ago_in_words(c.created_at) %> ago </h4>
+
     <% if c.user == current_user %>
       <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?" } %></div>
       <div class="btn btn-primary">Edit</div>
