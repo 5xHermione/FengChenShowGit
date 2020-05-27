@@ -1,24 +1,24 @@
-# README
+# 豐臣秀Git 使用說明
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 版本：2.6.5
+* Rail 版本：6.0.2.2
+* 資料庫：postgres
 
-Things you may want to cover:
+* 開發團隊：
 
-* Ruby version
+  *林季霆
+  轉職前是：公司管理人
+  想說的話：準父親、苗栗的半個野人。野人還俗記進行中...待續。
 
-* System dependencies
+  聯絡方式：Gi
+  *鄭羽珊
+  轉職前是：英文小老師
+  想說的話：夢想成為一個又溫柔又強大又會 coding 的哥吉拉。
 
-* Configuration
+  *林俊廷
+  轉職前是：UI / UX 設計師
+  想說的話：程式這條旅途很長遠，但至少踏出了一步
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  *邱詠絮
+  轉職前是：設計企劃
+  想說的話：朋友看到我 coding 以為世界末日，事實上地球依然轉得好好w
