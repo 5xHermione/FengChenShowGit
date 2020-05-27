@@ -6,6 +6,8 @@ SMTP_PASSWORD: "password"   # 用於 application.yml
 development:
   GIT_SERVER_PATH: "/tmp/gitServer"
   GIT_PUSH_INSTRUCT: "/tmp/gitServer"
+  AUTHORIZED_KEYS_PATH: "/Users/godzillalabear/.ssh/authorized_keys"
 production:
   GIT_SERVER_PATH: "/opt/git"
   GIT_PUSH_INSTRUCT: "root@128.199.107.166:/opt/git"
+  AUTHORIZED_KEYS_PATH: "/home/git/.ssh/authorized_keys"
