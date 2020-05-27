@@ -197,3 +197,28 @@
   }
 }
 
+/*===============其他使用者頭像===============*/
+.user-index .other-user-wrap {
+  display: flex;
+  margin-left: 20px;
+  padding: 30px 10px 20px 10px;
+  border: solid 1px #ccc;;
+  border-radius: 8px;
+}
+
+.other-user-avatar{
+  width: 10vw;
+  margin: auto;
+}
+
+.other-user-avatar img{
+  width: 10vw;
+}
+
+.user-index .other-user-information {
+  margin: auto;
+}
+
+.user-index .other-user-information h2{
+  font-size: 20px;
+}
