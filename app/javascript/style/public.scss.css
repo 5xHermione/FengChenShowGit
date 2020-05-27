@@ -74,15 +74,14 @@
 
 .public .user-name {
 	margin-top: 15px!important;
-	font-family: "Arial";
 }
 
 .public .user-id {
 	color: #6c6f6c;
-	font-family: "Arial";
-	font-size: 20px;
-	margin-top: -8px!important;
+	font-size: 22px;
+	margin-top: 0px!important;
 }
+
 
 
 /* ===================ligged_in開始的小nav bar===================== */
@@ -153,6 +152,9 @@
   padding-right: 0;
 }
 
+.public .row {
+	margin-left: 0;
+}
 
 /* ===================頭貼===================== */
 .avatar-wrap img {
