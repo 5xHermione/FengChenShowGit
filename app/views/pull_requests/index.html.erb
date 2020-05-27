@@ -27,7 +27,7 @@
         <div class="col-2 mt-2"><%= pull_request.status%></div>
         <div class="col-6 row"> 
         <%= link_to pull_request.name,repository_pull_request_path(id: pull_request.id),class:"col-12" %>        
-          <p class="col-12">#<%= pull_request.repository_pull_request_index %> opened <%= time_ago_in_words(pull request.created_at) %> ago </p>
+          <p class="col-12">#<%= pull_request.repository_pull_request_index %> opened <%= time_ago_in_words(pull_request.created_at) %> ago </p>
         </div>
         <div class="col-4"><%= pull_request.description %></div>
       </div>
