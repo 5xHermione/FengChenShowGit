@@ -4,7 +4,7 @@ class SshkeysController < ApplicationController
   end
 
   def create
-    @sshkey = User.find(current_user.id).sshkeys.build(ssh_key_params)
+    @sshkey = current_user.sshkeys.build(ssh_key_params)
     if @sshkey.save
       update_authorized_keys
       redirect_to edit_user_registration_path, notice: "New SSH key is added!"
