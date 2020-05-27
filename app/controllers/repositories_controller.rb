@@ -12,7 +12,6 @@ class RepositoriesController < ApplicationController
     @repositories = @repositories.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
 
     respond_to do |format|
-      # format.json { render json: @repositories }
       format.html { render :index }
     end
   end
@@ -104,7 +103,14 @@ class RepositoriesController < ApplicationController
   end
 
   def update
+    old_repo_name = current_repository.title
     if @repository.update(repository_params)
+      #update repo name in gitServer
+      if old_repo_name != @repository.title
+        set_repo_file_path
+        `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}#{@current_repo_path}.git`
+        `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}#{@current_repo_path}`
+      end
       redirect_to repositories_path, notice: 'This repository has updated.'
     else
       render :edit
