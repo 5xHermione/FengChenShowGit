@@ -95,7 +95,7 @@ class RepositoriesController < ApplicationController
         # 要讓網頁可以使用檔案、可以 commit 、需要的是 working repo （也就是我們平常 git init 之後的創造出來的 git 目錄）
         # 從 bare repo 中 clone 出一個 working repo，讓我們有檔案可以處理
         `git clone #{full_dir}  #{working_dir}`
-        redirect_to repositories_path, notice: 'You have created a repository.' 
+        redirect_to repository_path(user_name: find_user.name, id: @repository.title), notice: 'You have created a repository.' 
       else
         render :new
       end
@@ -111,7 +111,7 @@ class RepositoriesController < ApplicationController
         `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}#{@current_repo_path}.git`
         `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}#{@current_repo_path}`
       end
-      redirect_to repositories_path, notice: 'This repository has updated.'
+      redirect_to repository_path(user_name: find_user.name, id: @repository.title), notice: 'This repository has updated.'
     else
       render :edit
     end
