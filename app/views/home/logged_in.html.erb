@@ -61,7 +61,7 @@
                     <% if user.image_url.nil?%>
                         <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
                     <% else %>
-                        <%= user.image_url%>
+                        <%= image_tag(user.image_url) %>
                     <% end %>
                   </div>
                   <h2>
