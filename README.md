@@ -1,4 +1,4 @@
-# 豐臣秀Git 使用說明
+# 豐臣秀Git
 
 * Ruby 版本：2.6.5
 * Rail 版本：6.0.2.2
@@ -39,12 +39,9 @@
 
   ### 林季霆
   * [Github](https://github.com/Lawa0921)
-  
   ### 鄭羽珊
   * [Github](https://github.com/godzillalabear)
-
   ### 林俊廷
   * [Github](https://github.com/Eric032333)
-
   ### 邱詠絮
   * [Github](https://github.com/123-Shelly)
