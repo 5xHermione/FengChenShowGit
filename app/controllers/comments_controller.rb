@@ -12,13 +12,23 @@ class CommentsController < ApplicationController
   end
 
   def update
-    Comment.find(params[:id]).update(comment_params)
-    redirect_path
+    comment = Comment.find(params[:id])
+    if comment.user.id == current_user.id
+      comment.update(comment_params)
+      redirect_path
+    else
+      redirect_path
+    end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_path
+    comment = Comment.find(params[:id])
+    if comment.user.id == current_user.id
+      comment.destroy
+      redirect_path
+    else
+      redirect_path
+    end
   end
 
   private
