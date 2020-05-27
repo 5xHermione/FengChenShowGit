@@ -172,3 +172,24 @@
 .this-is-navbar .card .bg-light .col-6 .m-auto .p-0 {
 	max-width: 100%;
 }
+
+
+/* ===================Serch 跟按鈕===================== */
+
+.public .yello-btn {
+	width: 60px;
+	border-radius: 8px;
+	color: #fff;
+	background-color: #f1be3f;
+}
+
+.public .yello-btn:hover {
+	background-color: #ffb794;
+}
+
+.public .pink-serch input {
+	height: 38px;
+	border-radius: 8px;
+	border: 1px solid #e0d7d2;
+	background-color: #ffe5ca;
+}

@@ -1,16 +1,16 @@
-<div class="enjoy">
+<div class="public">
   <div class="container my-5">
     <div class="row">
       <div class="user-info-container col-12 col-md-3">
-      <div class="avatar-wrap">
-        <% if find_user.image? %>
-            <%= image_tag(find_user.image_url) %>
-        <% else %>
-            <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-        <% end %>
-      </div>
-        <h4 class="my-2">NAME：<%= find_user.name %></h4>
-        <h4 class="my-2">ID：<%= find_user.id %></h4>
+        <div class="avatar-wrap">
+          <% if find_user.image? %>
+              <%= image_tag(find_user.image_url) %>
+          <% else %>
+              <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+          <% end %>
+        </div>
+        <h4 class="my-2 user-name">NAME：<%= find_user.name %></h4>
+        <h4 class="my-2 user-id">ID：<%= find_user.id %></h4>
       </div>
       <div class="repositories-container col-12 col-md-9 row p-3">
         <div class="repositories-title col-12">
@@ -31,12 +31,15 @@
               <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
             </li>
           </ul>
+          <div class="line">
+            <div class="title-bottom-line"></div>
+          </div>
         </div>
         <div class="title-bottom-line"></div>
         <div class="col-12">
-          <form class="form-inline my-3 lg-0">
+          <form class="form-inline my-3 lg-0 pink-serch">
             <input class="form-control mr-sm-2 col-9" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn yello-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
         <div class="col-12">

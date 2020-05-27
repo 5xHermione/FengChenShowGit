@@ -52,9 +52,9 @@
               <h2>這裡是留給綠點點的位置</h2>
             </div>
           </div>
-          <h2 class="col-12">Other users</h2>
+          <h2 class="col-12 popu"><i class="fas fa-award"></i> Other users</h2>
             <% @users.each do |user| %>
-              <div class="col-3 other-user-wrap">
+              <div class="col-3 other-user-wrap project-block">
                 <div class="other-user-information">
                   <div class="other-user-avatar">
                     <% if user.image_url.nil?%>
@@ -68,7 +68,7 @@
                   </h2>
                   <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
                     <h2>
-                      <%= link_to "Follow", relationships_path(user_name: user.name), method: "POST" %>
+                      <%= link_to " Follow", relationships_path(user_name: user.name), method: "POST", class: "far fa-star" %>
                     </h2>
                   <% else %>
                     <h2>

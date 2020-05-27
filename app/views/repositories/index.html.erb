@@ -10,7 +10,6 @@
               <% else %>
                   <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
               <% end %>
-              <%#= image_tag(current_user.image_url) if current_user.image? %>
             </div>
             <h4 class="my-2 user-name"><i class="far fa-smile"></i> NAME：<%= find_user.name %></h4>
             <p class="my-2 user-id">ID：<%= find_user.id %></p>
@@ -38,10 +37,10 @@
               </div>
             </div>
             <div class="title-bottom-line"></div>
-              <form class="form-inline my-3 lg-0 col-12">
+              <form class="form-inline my-3 lg-0 col-12 pink-serch">
                 <%= form_tag repositories_path, method: :get do %>
                 <%= text_field_tag :search, params[:search], placeholder: "Search..." , class:"repo-search col-10" %>
-                <button class="btn btn-outline my-2 my-sm-0 ml-5 " type="submit"><i class="fas fa-search"></i></button>
+                <button class="btn btn-outline my-2 my-sm-0 ml-5 yello-btn" type="submit"><i class="fas fa-search"></i></button>
                 <% end %>
               </form>
             <% @repositories.each do |repo|%>
