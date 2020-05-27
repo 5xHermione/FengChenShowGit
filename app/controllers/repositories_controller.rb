@@ -28,7 +28,6 @@ class RepositoriesController < ApplicationController
     else
       is_new_repo = false
       git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
-      git_dir = Git.open("#{@base_path}#{@current_repo_path}")
       @branches = git_bare.branches.local
     end
 
