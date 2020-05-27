@@ -23,6 +23,8 @@ class RepositoriesController < ApplicationController
 
     # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
+    git_dir = Git.open("#{@base_path}#{@current_repo_path}")
+    @branches = git_dir.branches.remote
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
       is_new_repo = true 
