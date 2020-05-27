@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:index, :create, :destroy]
     get "relationships/followers", to: "relationships#followers", as: "followers"
     resources :likes, only: [:index]
+    get "repository/:id/branch", to: "repositories#branch", as: "branch"
     resources :repositories do
       resources :likes, only: [:create, :destroy]
       resources :pull_requests do

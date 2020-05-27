@@ -2,7 +2,6 @@ class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
 
-
   def index
     return redirect_to new_user_session_path if current_user.blank?
 
@@ -17,21 +16,22 @@ class RepositoriesController < ApplicationController
     end
   end
 
-
   def show
     set_repo_file_path
 
     # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
-    git_dir = Git.open("#{@base_path}#{@current_repo_path}")
-    @branches = git_dir.branches.remote
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
       is_new_repo = true 
+      @branches = []
     else
       is_new_repo = false
+      git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
+      git_dir = Git.open("#{@base_path}#{@current_repo_path}")
+      @branches = git_bare.branches.local
     end
-    
+
     # get folder path from url
     path = request.original_fullpath
     if path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
@@ -116,6 +116,15 @@ class RepositoriesController < ApplicationController
   def destroy
     @repository.destroy
     redirect_to repositories_path, notice: 'This repository is deleted！'
+  end
+
+  def branch
+    user_name = find_user.name
+    repo_title = current_repository.title
+    base_path = ENV["GIT_SERVER_PATH"]
+    current_repo_path = "/#{user_name}/#{repo_title}"
+    `git -C #{base_path}#{current_repo_path} checkout #{params[:branch]}`
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title )
   end
 
   private
