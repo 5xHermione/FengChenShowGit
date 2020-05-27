@@ -7,5 +7,6 @@ development:
   GIT_SERVER_PATH: "/tmp/gitServer"
   GIT_PUSH_INSTRUCT: "/tmp/gitServer"
 production:
-  GIT_SERVER_PATH: "/opt/git"
-  GIT_PUSH_INSTRUCT: "root@128.199.107.166:/opt/git"
+  GIT_SERVER_PATH: "/home/git/gitServer"
+  GIT_PUSH_INSTRUCT: "git@128.199.71.110:/home/git/gitServer"
+
