@@ -112,7 +112,7 @@
 }
 
 .public .user-info-container{
-	margin-right: 15px;
+	/*margin-right: 15px;*/
 }
 
 .public .mx-3 {
@@ -154,6 +154,10 @@
 
 .public .row {
 	margin-left: 0;
+}
+
+.public .project-block:hover {
+  background-color: #fffdd5;
 }
 
 /* ===================頭貼===================== */
