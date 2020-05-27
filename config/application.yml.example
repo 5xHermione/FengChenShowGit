@@ -6,7 +6,9 @@ SMTP_PASSWORD: "password"   # 用於 application.yml
 development:
   GIT_SERVER_PATH: "/tmp/gitServer"
   GIT_PUSH_INSTRUCT: "/tmp/gitServer"
+  # 請在自己電腦裡的 .ssh 資料夾中建立一個名叫 authorized_keys 的檔案，並把 AUTHORIZED_KEYS_PATH 換成該檔案的絕對路徑
+  AUTHORIZED_KEYS_PATH: "/Users/godzillalabear/.ssh/authorized_keys"
 production:
   GIT_SERVER_PATH: "/home/git/gitServer"
   GIT_PUSH_INSTRUCT: "git@128.199.71.110:/home/git/gitServer"
-
+  AUTHORIZED_KEYS_PATH: "/home/git/.ssh/authorized_keys"
