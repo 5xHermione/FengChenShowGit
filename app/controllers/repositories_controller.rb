@@ -83,8 +83,8 @@ class RepositoriesController < ApplicationController
       if @repository.save
         set_repo_file_path
 
-        full_dir = "#{@base_path}/#{@current_repo_path}.git"
-        working_dir = "#{@base_path}/#{@current_repo_path}"
+        full_dir = "#{@base_path}#{@current_repo_path}.git"
+        working_dir = "#{@base_path}#{@current_repo_path}"
 
         # 新增一個空的資料夾
         `mkdir -p #{full_dir}`
@@ -118,6 +118,11 @@ class RepositoriesController < ApplicationController
   end
 
   def destroy
+    #destroy whole repo folder on git server
+    set_repo_file_path
+    `rm -rf #{@base_path}#{@current_repo_path}.git`
+    `rm -rf #{@base_path}#{@current_repo_path}`
+
     @repository.destroy
     redirect_to repositories_path, notice: 'This repository is deleted！'
   end
