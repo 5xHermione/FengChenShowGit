@@ -55,7 +55,7 @@
           </div>
           <h2 class="col-12 popu"><i class="fas fa-award"></i> Other users</h2>
             <% @users.each do |user| %>
-              <div class="col-3 other-user-wrap project-block">
+              <div class="col-12 other-user-wrap project-block">
                 <div class="other-user-information">
                   <div class="other-user-avatar">
                     <% if user.image_url.nil?%>
@@ -64,18 +64,22 @@
                         <%= image_tag(user.image_url) %>
                     <% end %>
                   </div>
-                  <h2>
-                    <%= link_to "another user:#{user.name}", logged_in_path(user_name: user.name)%>
-                  </h2>
-                  <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
-                    <h2>
-                      <%= link_to " Follow", relationships_path(user_name: user.name), method: "POST", class: "far fa-star" %>
-                    </h2>
-                  <% else %>
-                    <h2>
-                      <%= link_to "Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
-                    </h2>
-                  <% end %>
+                  <div class="information">
+                      <p>
+                        <%= link_to "User name: #{user.name}", logged_in_path(user_name: user.name)%>
+                      </p>
+                      <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
+                        <p>
+                          <i class="far fa-star"></i>
+                          <%= link_to " Follow", relationships_path(user_name: user.name), method: "POST"%>
+                        </p>
+                      <% else %>
+                        <p>
+                          <i class="fas fa-star"></i>
+                          <%= link_to " Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
+                        </p>
+                      <% end %>
+                  </div>
                 </div>
               </div>
             <% end %>

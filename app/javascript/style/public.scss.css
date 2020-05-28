@@ -84,9 +84,9 @@
 
 
 
-/* ===================ligged_in開始的小nav bar===================== */
+/* ===================logged_in開始的小nav bar===================== */
 .public .nav {
-	 font-weight: bold;
+  font-weight: bold;
 }
 
 .public .overview-repository-wrap a:hover {
