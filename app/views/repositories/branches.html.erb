@@ -11,7 +11,7 @@
         <th scope="row"><%= link_to "#{branch.name}", checkout_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST"%></th>
         <td>Update <%= time_ago_in_words(branch.gcommit.date) %> by <%= branch.gcommit.author.name %></td>
         <td>
-          <%= link_to branch_delete_path(user_name: find_user.name, id: current_repository.title, branch: branch.name) do %>
+          <%= link_to branch_delete_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST" do %>
             <i class="fas fa-trash"></i>
           <% end %>
         </td>

@@ -1,7 +1,8 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
-  before_action :set_git_bare_path, only: [:commits, :branches, :contributors]
+  before_action :set_git_bare_path, only: [:commits, :branches, :contributors, :branch_delete]
+  before_action :set_repo_file_path, only: [:branch_delete]
 
   def index
     return redirect_to new_user_session_path if current_user.blank?
@@ -148,6 +149,8 @@ class RepositoriesController < ApplicationController
   end
 
   def branch_delete
+    `git -C #{@base_path}#{@current_repo_path} branch -d #{params[:branch]}` 
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title )
   end
 
   private
