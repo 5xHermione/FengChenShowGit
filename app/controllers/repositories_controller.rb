@@ -1,6 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
+  before_action :set_git_bare_path, only: [:commits, :branches, :contributors]
 
   def index
     return redirect_to new_user_session_path if current_user.blank?
@@ -31,9 +32,9 @@ class RepositoriesController < ApplicationController
       is_new_repo = false
       git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
       @current_branch = git_bare.current_branch
-      @branches = git_bare.branches.remote
-      @commits = git_bare.log(9999).map{|log| log.sha[0..7]}.count
-      @contributors = git_bare.log(9999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
+      @branches = git_bare.branches.local
+      @commits = git_bare.log(99999).map{|log| log.sha[0..7]}.count
+      @contributors = git_bare.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
     end
 
     # get folder path from url
@@ -52,7 +53,7 @@ class RepositoriesController < ApplicationController
     if is_new_repo && current_user == find_user
       render :how_to_push
     elsif is_new_repo && current_user != find_user
-        render :empty_repo
+      render :empty_repo
     elsif is_file
       file_data = File.read(path)
       render :file , locals: {file_data: file_data}
@@ -132,12 +133,21 @@ class RepositoriesController < ApplicationController
   end
 
   def commits
+    @commits = @git_bare.log(99999)
   end
 
   def branches
+    @branches = @git_bare.branches.local
   end
 
   def contributors
+    @contributors = @git_bare.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
+    @contributors.each do |c|
+      @users << User.find_by(name: c)
+    end
+  end
+
+  def branch_delete
   end
 
   private
@@ -161,6 +171,9 @@ class RepositoriesController < ApplicationController
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"
     end
+
+    def set_git_bare_path
+      set_repo_file_path
+      @git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
+    end
 end
-
-

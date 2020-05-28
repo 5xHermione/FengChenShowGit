@@ -1,0 +1,21 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Your branches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @branches.sort_by{|b| b.gcommit.date}.reverse.each do |branch| %>
+      <tr>
+        <th scope="row"><%= link_to "#{branch.name}", checkout_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST"%></th>
+        <td>Update <%= time_ago_in_words(branch.gcommit.date) %> by <%= branch.gcommit.author.name %></td>
+        <td>
+          <%= link_to branch_delete_path(user_name: find_user.name, id: current_repository.title, branch: branch.name) do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
