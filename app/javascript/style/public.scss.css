@@ -111,10 +111,6 @@
   padding: 1rem 0 0 1rem!important;
 }
 
-.public .user-info-container{
-	/*margin-right: 15px;*/
-}
-
 .public .mx-3 {
   margin-left: 0!important;
 }
@@ -181,13 +177,16 @@
 	border-radius: 8px;
 	color: #fff;
 	background-color: #f1be3f;
+	margin: 0!important;
+  position: absolute;
+  right: 0;
 }
 
 .public .yello-btn:hover {
 	background-color: #ffb794;
 }
 
-.public .pink-serch input {
+.public .pink-search input {
 	height: 38px;
 	border-radius: 8px;
 	border: 1px solid #e0d7d2;
