@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :relationships, only: [:index, :create, :destroy]
     get "relationships/followers", to: "relationships#followers", as: "followers"
     resources :likes, only: [:index]
-    get "repository/:id/branch", to: "repositories#branch", as: "branch"
+    get "repository/:id/branches", to: "repositories#branches", as: "branches"
+    get "repository/:id/commits", to: "repositories#commits", as: "commits"
+    get "repository/:id/contributors", to: "repositories#contributors", as: "contributors"
+    get "repository/:id/checkout", to: "repositories#checkout", as: "checkout"
+    get "repository/:id/branch/diff", to: "repositories#branch_diff", as: "branch_diff"
+    get "repository/:id/commit/diff", to: "repositories#commit_diff", as: "commit_diff"
     resources :repositories do
       resources :likes, only: [:create, :destroy]
       resources :pull_requests do

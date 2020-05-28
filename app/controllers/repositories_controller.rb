@@ -21,14 +21,19 @@ class RepositoriesController < ApplicationController
 
     # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
+    @contributors = []
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
       is_new_repo = true 
       @branches = []
+      @commits = []
     else
       is_new_repo = false
       git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
-      @branches = git_bare.branches.local
+      @current_branch = git_bare.current_branch
+      @branches = git_bare.branches.remote
+      @commits = git_bare.log(9999).map{|log| log.sha[0..7]}.count
+      @contributors = git_bare.log(9999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
     end
 
     # get folder path from url
@@ -117,13 +122,22 @@ class RepositoriesController < ApplicationController
     redirect_to repositories_path, notice: 'This repository is deleted！'
   end
 
-  def branch
+  def checkout
     user_name = find_user.name
     repo_title = current_repository.title
     base_path = ENV["GIT_SERVER_PATH"]
     current_repo_path = "/#{user_name}/#{repo_title}"
     `git -C #{base_path}#{current_repo_path} checkout #{params[:branch]}`
     redirect_to repository_path(user_name: find_user.name, id: current_repository.title )
+  end
+
+  def commits
+  end
+
+  def branches
+  end
+
+  def contributors
   end
 
   private
@@ -143,7 +157,7 @@ class RepositoriesController < ApplicationController
     def set_repo_file_path
       # set git server path and repo path
       user_name = find_user.name
-      repo_title = @repository.title
+      repo_title = current_repository.title
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"
     end
