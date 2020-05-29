@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     get "repository/:id/branches", to: "repositories#branches", as: "branches"
     post "repository/:id/branches/delete", to: "repositories#branch_delete", as: "branch_delete"
     get "repository/:id/commits", to: "repositories#commits", as: "commits"
-    get "repository/:id/contributors", to: "repositories#contributors", as: "contributors"
     post "repository/:id/checkout", to: "repositories#checkout", as: "checkout"
     get "repository/:id/branch/diff", to: "repositories#branch_diff", as: "branch_diff"
     get "repository/:id/commit/diff", to: "repositories#commit_diff", as: "commit_diff"

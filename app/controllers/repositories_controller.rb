@@ -33,7 +33,7 @@ class RepositoriesController < ApplicationController
       is_new_repo = false
       git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
       @current_branch = git_bare.current_branch
-      @branches = git_bare.branches.local
+      @branches = git_bare.branches.remote
       @commits = git_bare.log(99999).map{|log| log.sha[0..7]}.count
       @contributors = git_bare.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
     end
@@ -138,19 +138,14 @@ class RepositoriesController < ApplicationController
   end
 
   def branches
-    @branches = @git_bare.branches.local
-  end
-
-  def contributors
-    @contributors = @git_bare.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
-    @contributors.each do |c|
-      @users << User.find_by(name: c)
-    end
+    @branches = @git_bare.branches.remote
   end
 
   def branch_delete
-    `git -C #{@base_path}#{@current_repo_path} branch -d #{params[:branch]}` 
-    redirect_to repository_path(user_name: find_user.name, id: current_repository.title )
+    `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
+    `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
+    `git -C #{@base_path}#{@current_repo_path} fetch -–all –p`
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title ), notice: 'Branch deleted successfully!'
   end
 
   private

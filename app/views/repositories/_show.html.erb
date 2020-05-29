@@ -15,10 +15,13 @@
         <%= link_to commits_path(user_name: find_user.name, id: @repository.id), class: "nav-link mx-auto" do %>
           <i class="fas fa-dot-circle"></i> <span> Commits </span> <%= @commits %>
         <% end %>
-        <%= link_to contributors_path(user_name: find_user.name, id: @repository.id), class: 'nav-link mx-auto' do %>
+        <div class="nav-link mx-auto">
           <i class="fas fa-user-friends"></i> <span> Contributors </span> <%= @contributors.count %>
-        <% end %>
+        </div>
       </ul>
+    </div>
+    <div>
+      Current branch: <%= @current_branch %>
     </div>
     <div class="show-content col-8">
       <p id="notice"><%= notice %></p>
