@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def branch_diff_default_branch(default_branch, branch, base_path, current_repo_path)
-    `git -C #{base_path}#{current_repo_path} diff #{default_branch}...#{branch}`
-  end
-
   def current_repository
     find_user.repositories.find_by(title: session[:repository_title])
   end

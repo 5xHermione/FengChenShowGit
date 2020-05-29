@@ -23,8 +23,10 @@
     <div>
       Current branch: <%= @current_branch %>
     </div>
-    <% @branches.each do |branch| %>
-
+    <% @pull_request_able.each do |branch| %>
+      <% if find_user == current_user%>
+        <div class="w-100">Create a pull request <%= link_to "#{branch}", new_repository_pull_request_path(repository_id: current_repository.title ,branch: branch) %> ? </div>
+      <% end %>
     <% end %>
     <div class="show-content col-8">
       <p id="notice"><%= notice %></p>
