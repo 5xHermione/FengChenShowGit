@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_133503) do
+ActiveRecord::Schema.define(version: 2020_05_29_091301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "blacklists", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -78,8 +72,18 @@ ActiveRecord::Schema.define(version: 2020_05_23_133503) do
     t.integer "user_id"
     t.boolean "is_public", default: false
     t.string "slug"
+    t.string "default_branch", default: "master"
     t.index ["slug"], name: "index_repositories_on_slug"
     t.index ["user_id"], name: "index_repositories_on_user_id"
+  end
+
+  create_table "sshkeys", force: :cascade do |t|
+    t.string "name"
+    t.text "key"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sshkeys_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,4 +109,5 @@ ActiveRecord::Schema.define(version: 2020_05_23_133503) do
   add_foreign_key "likes", "repositories"
   add_foreign_key "likes", "users"
   add_foreign_key "pull_requests", "repositories"
+  add_foreign_key "sshkeys", "users"
 end

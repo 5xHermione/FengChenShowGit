@@ -32,9 +32,11 @@ class RepositoriesController < ApplicationController
     else
       is_new_repo = false
       git_bare = Git.bare("#{@base_path}#{@current_repo_path}/.git")
+
+      @default_branch = @repository.default_branch
       @current_branch = git_bare.current_branch
       @branches = git_bare.branches.remote
-      @commits = git_bare.log(99999).map{|log| log.sha[0..7]}.count
+      @commits = git_bare.log(99999).count
       @contributors = git_bare.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
     end
 
