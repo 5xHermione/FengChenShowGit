@@ -1,0 +1,108 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="user-info-container col-12 col-md-3">
+      <div class="avatar-wrap">
+        <% if current_user.image? %>
+            <%= image_tag(current_user.image_url) %>
+        <% else %>
+            <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+        <% end %>
+      </div>
+      <h4 class="my-2"><i class="far fa-smile"></i> NAME：<%= current_user.name%></h4>
+      <h4 class="my-2">ID：<%= current_user.id%></h4>
+    </div>
+    <div class="repositories-container col-12 col-md-9 row p-3">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="sshkey-tab" data-toggle="tab" href="#sshkey" role="tab" aria-controls="sshkey" aria-selected="false">SSH Key</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="col-12 devise-edit-user-info">
+            <h2 class="mt-5">Profile</h2>
+            <div class="title-bottom-line"></div>
+            <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {method: :put} do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="field my-3">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="field my-3">
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                <% if @minimum_password_length %>
+                  <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+              </div>
+
+              <div class="field my-3">
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+              </div>
+
+              <div class="field my-3">
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+              </div>
+
+              <div class="field my-3">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+
+              <div class="field my-3">
+                <%= f.label :avatar %>
+                <%= image_tag(@user.image_url) if @user.image? %>
+                <%= f.file_field :image %>
+                <%#= f.hidden_field :image_cache %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Update", class: "btn btn-primary my-3 p-2"%>
+              </div>
+            <% end %>
+
+            <p class="my-3">You must remove yourself, transfer ownership, or delete these organizations before you can delete your user.</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="sshkey" role="tabpanel" aria-labelledby="sshkey-tab">
+          <div class="col-12 devise-edit-user-info">
+            <h2 class="mt-5">SSH key</h2>
+            <div class="title-bottom-line"></div>
+            <div class="my-3">
+              <%= button_to "New key", new_sshkey_path, method: :get, class: "btn btn-primary my-2" %>
+            </div>
+            <div class="sshkey-list my-3">
+              <% if current_user.sshkeys.any? %>
+                <% current_user.sshkeys.each do |ssh|%>
+                <div class="card">
+                  <div class="card-body">
+                    <p> <%= ssh.name %> </p>
+                    <p> Added on <%= ssh.created_at.to_date %></p>
+                    <%= button_to "Delete key",sshkey_path(ssh.id), method: :delete, class: "btn btn-danger my-2" %>
+                  </div>
+                </div>
+                <% end %>
+              <% else %>
+                <div class="text-center p-5">
+                  <h5 class="card-title">There isn't any SSH key.</h5>
+                  <p>Please add a new one by clicking the button above.</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
