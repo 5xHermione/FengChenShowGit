@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
-  before_action :set_git_bare_path, only: [:commits, :branches, :contributors, :branch_delete]
+  before_action :set_git_bare_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
   before_action :set_repo_file_path, only: [:branch_delete]
 
   def index
@@ -82,6 +82,7 @@ class RepositoriesController < ApplicationController
 
   def edit
     redirect_to repository_path if current_user != find_user
+    @branches = @git_bare.branches.remote
   end
 
   def create
@@ -116,7 +117,7 @@ class RepositoriesController < ApplicationController
 
   def update
     if @repository.update(repository_params)
-      redirect_to repositories_path, notice: 'This repository has updated.'
+      redirect_to repository_path(user_name: find_user.name, id:@repository.title), notice: 'This repository has updated.'
     else
       render :edit
     end
@@ -158,7 +159,7 @@ class RepositoriesController < ApplicationController
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description, :is_public)
+      params.require(:repository).permit(:title, :description, :is_public, :default_branch)
     end
 
     def set_request_format

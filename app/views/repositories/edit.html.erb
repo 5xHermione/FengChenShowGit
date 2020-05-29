@@ -8,7 +8,7 @@
       <div class="col-12">
         <h2 class="mt-5">Settings</h2>
         <div class="title-bottom-line"></div>
-        <%= form_with(model: @repository, local: true) do |form| %>
+        <%= form_with(model: @repository, local: true, url: repository_path(user_name: find_user.name)) do |form| %>
           <% if @repository.errors.any? %>
           <h2>There is something wrong!</h2>
             <% @repository.errors.full_messages.each do |message| %>
@@ -26,6 +26,10 @@
             <%= form.text_field :description, class: "form-control col-7"%>
           </div>
 
+          <div class="field row m-auto py-3">
+            <%= form.label :default_branch, "Repostory default branch"%>
+            <%= select("repository", "default_branch", @branches.collect {|b| b.name })%>
+          </div>
           <div class="actions">
             <%= form.submit "Update repository", class: "btn btn-primary mx-3"%>
           </div>
