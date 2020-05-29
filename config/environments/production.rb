@@ -60,13 +60,28 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "nagit_production"
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: '157.230.43.10', port: 80 }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    enabled: true,
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: ENV['SMTP_DOMAIN'],
+    user_name: ENV['SMTP_USERNAME'],
+    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true,
+    openssl_verify_mode: "none"
+  }
+  config.action_mailer.perform_caching = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = false # 改成 false 可以讓信件即使無法寄出也不會顯示錯誤
+  config.action_mailer.raise_delivery_errors = true # 改成 false 可以讓信件即使無法寄出也不會顯示錯誤
 
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
