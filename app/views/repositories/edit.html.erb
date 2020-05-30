@@ -26,6 +26,10 @@
             <%= form.text_field :description, class: "form-control col-7"%>
           </div>
 
+          <div class="field row m-auto py-3">
+            <%= form.label :default_branch, "Repostory default branch"%>
+            <%= select("repository", "default_branch", @branches.collect {|b| b.name })%>
+          </div>
           <div class="actions">
             <%= form.submit "Update repository", class: "btn btn-primary mx-3"%>
           </div>

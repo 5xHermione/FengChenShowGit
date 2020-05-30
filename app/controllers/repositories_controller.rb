@@ -1,7 +1,8 @@
 class RepositoriesController < ApplicationController
-  before_action :set_repository, only: [:show, :edit, :update, :destroy]
+  before_action :set_repository, only: [:show, :edit, :update, :destroy, :branch_delete, :branches]
   before_action :set_request_format, only: [:show]
-
+  before_action :set_git_remote_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
+  before_action :set_repo_file_path, only: [:branch_delete]
 
   def index
     return redirect_to new_user_session_path if current_user.blank?
@@ -16,19 +17,30 @@ class RepositoriesController < ApplicationController
     end
   end
 
-
   def show
     set_repo_file_path
 
     # synchronize git working repo 
     `git -C #{@base_path}#{@current_repo_path} pull`
+    @contributors = []
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
       is_new_repo = true 
+      @branches = []
+      @commits = 0
+      @pull_request_able = []
     else
       is_new_repo = false
+      git_file = Git.open("#{@base_path}#{@current_repo_path}")
+
+      @default_branch = @repository.default_branch
+      @current_branch = git_file.current_branch
+      @branches = git_file.branches.remote
+      @commits = git_file.log(99999).count
+      @contributors = git_file.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
+      @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path} diff #{@default_branch}...#{b}`.present?}
     end
-    
+
     # get folder path from url
     path = request.original_fullpath
     if path.match(/\/repositories\/.+\/worktree\/master\/(.+)/)
@@ -45,7 +57,7 @@ class RepositoriesController < ApplicationController
     if is_new_repo && current_user == find_user
       render :how_to_push
     elsif is_new_repo && current_user != find_user
-        render :empty_repo
+      render :empty_repo
     elsif is_file
       file_data = File.read(path)
       render :file , locals: {file_data: file_data}
@@ -70,6 +82,7 @@ class RepositoriesController < ApplicationController
 
   def edit
     redirect_to repository_path if current_user != find_user
+    @branches = @git_file.branches.remote
   end
 
   def create
@@ -81,7 +94,9 @@ class RepositoriesController < ApplicationController
     else
       @repository.is_public = params[:is_public]
       if @repository.save
+        session[:repository_title] = @repository.title
         set_repo_file_path
+        @repository.path = "#{@base_path}#{@current_repo_path}"
 
         full_dir = "#{@base_path}#{@current_repo_path}.git"
         working_dir = "#{@base_path}#{@current_repo_path}"
@@ -127,6 +142,32 @@ class RepositoriesController < ApplicationController
     redirect_to repositories_path, notice: 'This repository is deleted！'
   end
 
+  def checkout
+    set_repo_file_path
+    `git -C #{@base_path}#{@current_repo_path} checkout #{params[:branch]}`
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title )
+  end
+
+  def commits
+    @commits = @git_file.log(99999)
+  end
+
+  def branches
+    @branches = @git_file.branches.remote
+  end
+
+  def branch_delete
+    if params[:branch] != @repository.default_branch
+      `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
+      `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
+      `git -C #{@base_path}#{@current_repo_path} fetch -–all –p`
+      flash[:notice] = "Branch deleted successfully!"
+    else
+      flash[:notice] = "You can't delete default branch!"
+    end
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title)
+  end
+
   private
     def set_repository
       @repository = find_user.repositories.friendly.find(params[:id])
@@ -134,7 +175,7 @@ class RepositoriesController < ApplicationController
     end
 
     def repository_params
-      params.require(:repository).permit(:title, :description, :is_public)
+      params.require(:repository).permit(:title, :description, :is_public, :default_branch)
     end
 
     def set_request_format
@@ -144,10 +185,13 @@ class RepositoriesController < ApplicationController
     def set_repo_file_path
       # set git server path and repo path
       user_name = find_user.name
-      repo_title = @repository.title
+      repo_title = current_repository.title
       @base_path = ENV["GIT_SERVER_PATH"]
       @current_repo_path = "/#{user_name}/#{repo_title}"
     end
+
+    def set_git_remote_path
+      set_repo_file_path
+      @git_file = Git.open("#{@base_path}#{@current_repo_path}")
+    end
 end
-
-

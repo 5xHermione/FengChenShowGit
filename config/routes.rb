@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :relationships, only: [:index, :create, :destroy]
     get "relationships/followers", to: "relationships#followers", as: "followers"
     resources :likes, only: [:index]
+    get "repository/:id/branches", to: "repositories#branches", as: "branches"
+    post "repository/:id/branches/delete", to: "repositories#branch_delete", as: "branch_delete"
+    get "repository/:id/commits", to: "repositories#commits", as: "commits"
+    post "repository/:id/checkout", to: "repositories#checkout", as: "checkout"
+    get "repository/:id/commit/diff", to: "repositories#commit_diff", as: "commit_diff"
     resources :repositories do
       resources :likes, only: [:create, :destroy]
       resources :pull_requests do
