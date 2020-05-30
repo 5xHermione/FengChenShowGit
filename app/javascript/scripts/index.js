@@ -1,4 +1,4 @@
 
 import './comment.js'
-import './verification'
+import './verification.js'
 

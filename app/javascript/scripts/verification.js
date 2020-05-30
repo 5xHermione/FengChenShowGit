@@ -1,29 +1,31 @@
 $().ready(function(){
   $(document).on("click change", function(){
     
-    let rule1 = /^.{6,12}$/;
+    let rulePassword = /^.{6,12}$/;
     $(".password-signup").blur(function(){
-      if(rule1.test($(this).val())){
+      if(rulePassword.test($(this).val())){
         $(this).css("border-color","")
-        $('.notice2').text('')
+        $(".noticePassword").text("")
       }else{
-        $('.notice2').text('*請輸入6位數字以上')
-        $(this).css("border-color","red")
+        $(".noticePassword").text("*password must be more than 6 characters.")
+        $(this).css("border-color","#FF5151")
+        $(".noticePassword").css("color","#FF5151")
       }
     })
 
     $(".password-confirmation-signup").blur(function(){    
       if($(".password-signup").val()!=$(".password-confirmation-signup").val()){
-        $('.notice3').text('*與密碼不相同')
-        $(this).css("border-color","red")
+        $(".noticeConfirmation").text("*password confirmation should be same as password.")
+        $(this).css("border-color","#FF5151")
+        $(".noticeConfirmation").css("color","#FF5151")
       }else{ 
-        $('.notice3').text('')
+        $(".noticeConfirmation").text("")
         $(this).css("border-color","")
       }
     })
 
     $(".email-signup").blur(function(){
-      let rule2 = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/;
+      let ruleEmail = /^([\w\.\-]){1,64}\@([\w\.\-]){1,64}$/;
       let data = { email: $(".email-signup").val()}
       $.ajax({
         url: `/home/verification?email=${data.email}`,   
@@ -33,23 +35,25 @@ $().ready(function(){
         data: data, 
         success: function(response) {
           if (response){
-            if(rule2.test($(".email-signup").val())){
+            if(ruleEmail.test($(".email-signup").val())){
               $(".email-signup").css("border-color","")
-              $('.notice1').text('')
+              $(".noticeEmail").text("")
             }else{
-              $('.notice1').text('*請輸入email正確格式')
-              $(".email-signup").css("border-color","red")
+              $(".noticeEmail").text("*please enter the correct email format")
+              $(".email-signup").css("border-color","#FF5151")
+              $(".noticeEmail").css("color","#FF5151")
             }       
           }else{
-            $(".email-signup").css("border-color","red")
-            $(".notice1").text("*email已重複");
+            $(".email-signup").css("border-color","#FF5151")
+            $(".noticeEmail").text("*this email has been used.")
+            $(".noticeEmail").css("color","#FF5151")
           }     
         }
       })
     })
 
     $(".username-signup").blur(function(){
-      let rule3 = /^\w+$/;
+      let ruleUsername = /^\w+$/;
       let data = { name: $(".username-signup").val()}
       $.ajax({
         url: `/home/verification?name=${data.name}`,   
@@ -59,16 +63,18 @@ $().ready(function(){
         data: data, 
         success: function(response) {   
           if (response){ 
-            if(rule3.test($(".username-signup").val())){
+            if(ruleUsername.test($(".username-signup").val())){
               $(".username-signup").css("border-color","")
-              $('.notice4').text('')      
+              $(".noticeUserName").text("")      
             }else{
-              $('.notice4').text('請輸入數字英文大小寫"_"')
-              $(".username-signup").css("border-color","red")
+              $(".noticeUserName").text('please enter numbers or English')
+              $(".username-signup").css("border-color","#FF5151")
+              $(".noticeUserName").css("color","#FF5151")
             }               
           }else{ 
-            $(".username-signup").css("border-color","red")
-            $(".notice4").text("*name已重複");       
+            $(".username-signup").css("border-color","#FF5151")
+            $(".noticeUserName").text("*this name has been used.") 
+            $(".noticeUserName").css("color","#FF5151")      
           }     
         }
       })
