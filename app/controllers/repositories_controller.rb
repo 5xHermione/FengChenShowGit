@@ -32,7 +32,7 @@ class RepositoriesController < ApplicationController
       @pull_request_able = []
     else
       is_new_repo = false
-      git_file = Git.bare("#{@base_path}#{@current_repo_path}/.git")
+      git_file = Git.open("#{@base_path}#{@current_repo_path}")
 
       @default_branch = @repository.default_branch
       @current_branch = git_file.current_branch
@@ -176,6 +176,6 @@ class RepositoriesController < ApplicationController
 
     def set_git_remote_path
       set_repo_file_path
-      @git_file = Git.bare("#{@base_path}#{@current_repo_path}/.git")
+      @git_file = Git.open("#{@base_path}#{@current_repo_path}")
     end
 end
