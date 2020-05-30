@@ -160,7 +160,7 @@ class RepositoriesController < ApplicationController
     if params[:branch] != @repository.default_branch
       `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
       `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
-      `git -C #{@base_path}#{@current_repo_path} fetch -–all –p`
+      `git -C #{@base_path}#{@current_repo_path} fetch --all –p`
       flash[:notice] = "Branch deleted successfully!"
     else
       flash[:notice] = "You can't delete default branch!"
