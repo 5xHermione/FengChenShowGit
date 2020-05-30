@@ -1,5 +1,5 @@
 class RepositoriesController < ApplicationController
-  before_action :set_repository, only: [:show, :edit, :update, :destroy]
+  before_action :set_repository, only: [:show, :edit, :update, :destroy, :branch_delete, :branches]
   before_action :set_request_format, only: [:show]
   before_action :set_git_remote_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
   before_action :set_repo_file_path, only: [:branch_delete]
@@ -146,10 +146,15 @@ class RepositoriesController < ApplicationController
   end
 
   def branch_delete
-    `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
-    `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
-    `git -C #{@base_path}#{@current_repo_path} fetch -–all –p`
-    redirect_to repository_path(user_name: find_user.name, id: current_repository.title ), notice: 'Branch deleted successfully!'
+    if params[:branch] != @repository.default_branch
+      `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
+      `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
+      `git -C #{@base_path}#{@current_repo_path} fetch -–all –p`
+      flash[:notice] = "Branch deleted successfully!"
+    else
+      flash[:notice] = "You can't delete default branch!"
+    end
+    redirect_to repository_path(user_name: find_user.name, id: current_repository.title)
   end
 
   private
