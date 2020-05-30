@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy]
   before_action :set_request_format, only: [:show]
-  before_action :set_git_bare_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
+  before_action :set_git_remote_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
   before_action :set_repo_file_path, only: [:branch_delete]
 
   def index
@@ -174,7 +174,7 @@ class RepositoriesController < ApplicationController
       @current_repo_path = "/#{user_name}/#{repo_title}"
     end
 
-    def set_git_bare_path
+    def set_git_remote_path
       set_repo_file_path
       @git_file = Git.bare("#{@base_path}#{@current_repo_path}/.git")
     end
