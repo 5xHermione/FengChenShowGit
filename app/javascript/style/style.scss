@@ -34,10 +34,6 @@
   }
 }
 
-.overview-repository-wrap {
-  border: solid 1px #999999;
-}
-
 .reponew-container {
   max-width: 800px;
   margin: auto;
@@ -92,15 +88,15 @@
 }
 
 .user-index .p-3 h4 {
- line-height: 12px; 
+  line-height: 12px; 
 }
 
+
 .user-index .overview-repository-wrap {
-  border: solid 1px #ccc;
+  /*border-bottom: solid 1px #606060 ;
   width: 100%;
   position: relative;
-  padding: 18px!important;
-  border-radius: 5px;
+  padding: 18px!important;*/
   div {
     s {
       border: 1px solid #999999;
@@ -111,11 +107,6 @@
     }
   }
 }
-
-/*.user-index .overview-repository-wrap:hover {
-  background-color: #fffdd5;
-}*/
-
 
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
@@ -205,11 +196,12 @@
 .user-index .other-user-wrap {
   margin: 0;
   padding: 10px;
-  border-bottom: dashed 2px #ccc;;
+  border-bottom: dashed 1px #ccc;;
 }
 
 .user-index .other-user-information {
   display: flex;
+  position: relative;
   margin: auto;
 }
 
@@ -222,21 +214,35 @@
 
 .other-user-avatar img{
   width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 
 .user-index .information {
+  display: flex;
   margin: auto auto auto 0;
-  display: inline;
 }
 
 .user-index .other-user-information p{
-  margin: 0;
-  font-size: 18px;
+  padding-right: 30px;
+  font-size: 16px;
+  display:inline;
+  font-weight: bold;
+  color: #f1be3f;
 }
 
 .user-index .other-user-information a{
   text-decoration: none;
+  color: #573c39;
 }
 
+.user-index .follow {
+  position: absolute;
+  right: 19px;
+}
+
+.user-index .unfollow {
+  position: absolute;
+  right: 0;
+}
 

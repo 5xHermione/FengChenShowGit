@@ -7,7 +7,7 @@ module ApplicationHelper
 	# 	end
 	# end
 
-  #  def backcolor_class
+  # def backcolor_class
 	# 	if params[:controller]=="home" && params[:action] == "index" && !(user_signed_in?)
 	# 		return "backcolor"
 	# 	else
@@ -16,9 +16,9 @@ module ApplicationHelper
 	# end
 
 	def backcolor_class
-		return "" if user_signed_in?
-		return "backcolor" if homepage?
-		""
+	# 	return "" if user_signed_in?
+	# 	return "backcolor" if homepage?
+	# 	""
 	end
 
 

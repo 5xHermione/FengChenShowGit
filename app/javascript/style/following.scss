@@ -8,10 +8,39 @@
 	position: relative;
 }
 
-.following .repo-search {
-	padding-left: 15px;
-}
-
 .following .user-info-container {
 	padding-right: 15px;
 }
+
+/*.following .repo-search {
+	padding-left: 0;
+}*/
+
+.following .project-block {
+	display: flex;
+	margin-left: 15px;
+	margin-top: 30px;
+	padding-left: 15!important;
+	padding-right: 0!important;
+	padding-bottom: 0!important;
+  border-bottom: solid 1px #606060 ;
+}
+
+.following .project-block:hover {
+	background-color: #292c32;
+}
+
+.following-avatar {
+	height: 90px;
+	display: inline;
+}
+
+.following-avatar img {
+	height: 60%;
+  border-radius: 50%;
+}
+
+.following .my-following h4 {
+	display: inline;
+}
+

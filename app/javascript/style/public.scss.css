@@ -1,4 +1,10 @@
 /*可共用*/
+
+body {
+	background-color: rgba(41, 44, 50, 1);
+  width: 100%;
+}
+
 .this-is-share-repo-navebar .repo-navbar { 
 	/*background-image: url("../../../pic/issueBK.png"); */
 	background-image: url("../../../pic/issueBKbs.jpg");
@@ -13,10 +19,10 @@
 	padding-top: 30px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
-	color: #494f35;
+	color: #fff;
 }
 .public .id-name i {
-  color: #aaa;
+  color: #fff;
   margin-right: 3px;
   color: #573c39;
 }
@@ -73,12 +79,18 @@
 
 
 .public .user-name {
+	font-family: "Arial";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #fff;
 	margin-top: 15px!important;
 }
 
 .public .user-id {
-	color: #6c6f6c;
-	font-size: 22px;
+	font-family: "Arial";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #fff;
 	margin-top: 0px!important;
 }
 
@@ -89,26 +101,27 @@
   font-weight: bold;
 }
 
-.public .overview-repository-wrap a:hover {
+.public .project-block a:hover {
   text-decoration: none;
 }
 
-.public .overview-repository-wrap a {
+.public .project-block a {
+	font-family: "微軟正黑體";
+	font-weight: lighter;
+	letter-spacing: 0px;
   font-size: 18px;
-  color: #0374d7;
+  color: #52e69e;
 }
 
-.public .overview-repository-wrap div {
+.public .project-block div {
   font-size: 12px;
-}
-
-.public .repositories-repository-wrap a{
-	font-size: 18px;
-  color: #0374d7;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  color: #fff;
 }
 
 .public .p-3 {
-  padding: 1rem 0 0 1rem!important;
+  padding: 0 0 0 1rem!important;
 }
 
 .public .mx-3 {
@@ -116,12 +129,21 @@
 }
 
 .public .nav-link {
-  color: #492b2c;
+	font-family: "微軟正黑體";
+  font-weight: lighter;
+  letter-spacing: 0px;
+  font-size: 12px;
+  color: #fff;
 }
 
-.public .nav-item:active {
-  border-bottom: solid 2px #e36209;
+.public .nav-link:hover {
+	transition: 0.5s;
+  color: #52e69e;
 }
+
+/*.public .nav-item:active {
+  border-bottom: solid 2px #52e69e;
+}*/
 
 .public .popu {
 	margin-top: 25px !important;
@@ -152,9 +174,19 @@
 	margin-left: 0;
 }
 
+.public .project-block {
+  border-bottom: solid 1px #606060 ;
+  width: 100%;
+  position: relative;
+  padding: 18px!important;
+} 
+
 .public .project-block:hover {
-  background-color: #fffdd5;
+	transition: 0.5s;
+  background-color: #30333a;
 }
+
+
 
 /* ===================頭貼===================== */
 .avatar-wrap img {
@@ -172,23 +204,31 @@
 
 /* ===================Serch 跟按鈕===================== */
 
-.public .yello-btn {
-	width: 60px;
+.public .repo-btn {
+	width: 40px;
 	border-radius: 8px;
-	color: #fff;
-	background-color: #f1be3f;
+	color: #76787b;
+	background-color: #292c32;
+	border: 1px solid #76787b;
 	margin: 0!important;
   position: absolute;
   right: 0;
 }
 
-.public .yello-btn:hover {
-	background-color: #ffb794;
+.public .repo-btn:hover {
+	background-color: #52e69e;
+	transition: 0.4s;
 }
 
-.public .pink-search input {
+.public .repo-search input {
 	height: 38px;
 	border-radius: 8px;
-	border: 1px solid #e0d7d2;
-	background-color: #ffe5ca;
+	border: 1px solid #76787b;
+	background-color: #292c32;
+}
+
+
+
+.the-bottom {
+   border-bottom: solid 2px #52e69e;
 }

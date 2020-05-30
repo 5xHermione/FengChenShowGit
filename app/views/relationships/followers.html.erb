@@ -1,4 +1,4 @@
-<div class="following public">
+<div class="followers public">
 
 
   <div class="container my-5">
@@ -27,7 +27,7 @@
               <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
             </li>
             <li class="nav-item mx-3">
-              <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
+              <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link the-bottom" %>
             </li>
             <li>
               <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
@@ -39,16 +39,23 @@
         </div>
        
         <div class="col-12">
-          <form class="form-inline my-3 lg-0 pink-search">
-            <input class="form-control mr-sm-2 col-9" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn yello-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          <form class="form-inline my-3 lg-0 repo-search">
+            <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn repo-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
-        <div class="col-12">
+        <div class="col-12 my-followers project-block">
           <% @followers.each do |user|%>
-            <h4> 
-              <%= link_to "#{ user.name}", logged_in_path(user_name: user.name)%>
-            </h4>
+            <div class="followers-avatar">
+                <% if user.image_url.nil?%>
+                  <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+                <% else %>
+                  <%= image_tag(user.image_url) %>
+                 <% end %>
+            </div>
+            <p>
+              <%= link_to "User name: #{user.name}", logged_in_path(user_name: user.name)%>
+            </p>
           <% end %>
         </div>
       </div>

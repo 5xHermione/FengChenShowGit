@@ -21,7 +21,7 @@
                   <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Repositories", repositories_path, class: "nav-link" %>
+                  <%= link_to "Repositories", repositories_path, class: "nav-link the-bottom" %>
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
@@ -37,16 +37,18 @@
               </div>
             </div>
 
-              <form class="form-inline my-3 lg-0 col-12 pink-search">
-                <%= form_tag repositories_path, method: :get do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search..." , class:"repo-search col-10" %>
-                <button class="btn btn-outline my-2 my-sm-0 ml-5 yello-btn" type="submit"><i class="fas fa-search"></i></button>
-                <% end %>
-              </form>
+            <form class="form-inline my-3 lg-0 col-12 repo-search">
+              <%= form_tag repositories_path, method: :get do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search..." , class:"repo-search col-10" %>
+              <button class="btn btn-outline my-2 my-sm-0 ml-5 repo-btn" type="submit"><i class="fas fa-search"></i></button>
+              <% end %>
+            </form>
+
             <% @repositories.each do |repo|%>
               <div class="p-3 col-12">
                 <div class="repositories-repository-wrap p-5 row project-block">
                   <div class="col-10">
+                    
                     <h4>
                       <%= link_to "#{repo.title}", repository_path(id: repo)%>
                     </h4>
@@ -54,9 +56,9 @@
                       Create <%= time_ago_in_words(repo.created_at) %> ago
                     </div>
                   </div>
-                  <div class="col-2">
-                    <i class="far fa-star"></i>
-                  </div>
+                  <button class="star">        
+                    <p><i class="far fa-star"></i> Like</p>
+                  </button>
                 </div>
               </div>
             <% end %>
