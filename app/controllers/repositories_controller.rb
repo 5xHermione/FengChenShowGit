@@ -160,7 +160,7 @@ class RepositoriesController < ApplicationController
     if params[:branch] != @repository.default_branch
       `git -C #{@base_path}#{@current_repo_path} branch -D #{params[:branch]}`
       `git -C #{@base_path}#{@current_repo_path}.git branch -D #{params[:branch]}`
-      `git -C #{@base_path}#{@current_repo_path} fetch --all –p`
+      `git -C #{@base_path}#{@current_repo_path} fetch --all -p`
       flash[:notice] = "Branch deleted successfully!"
     else
       flash[:notice] = "You can't delete default branch!"
@@ -169,29 +169,16 @@ class RepositoriesController < ApplicationController
   end
 
   private
-    def set_repository
-      @repository = find_user.repositories.friendly.find(params[:id])
-      session[:repository_title] = @repository.title
-    end
+  def set_repository
+    @repository = find_user.repositories.friendly.find(params[:id])
+    session[:repository_title] = @repository.title
+  end
 
-    def repository_params
-      params.require(:repository).permit(:title, :description, :is_public, :default_branch)
-    end
+  def repository_params
+    params.require(:repository).permit(:title, :description, :is_public, :default_branch)
+  end
 
-    def set_request_format
-      request.format = :html
-    end
-
-    def set_repo_file_path
-      # set git server path and repo path
-      user_name = find_user.name
-      repo_title = current_repository.title
-      @base_path = ENV["GIT_SERVER_PATH"]
-      @current_repo_path = "/#{user_name}/#{repo_title}"
-    end
-
-    def set_git_remote_path
-      set_repo_file_path
-      @git_file = Git.open("#{@base_path}#{@current_repo_path}")
-    end
+  def set_request_format
+    request.format = :html
+  end
 end

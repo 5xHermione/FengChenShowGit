@@ -22,4 +22,16 @@ class ApplicationController < ActionController::Base
     find_user.repositories.order("id DESC")
   end
 
+  def set_repo_file_path
+    # set git server path and repo path
+    user_name = find_user.name
+    repo_title = current_repository.title
+    @base_path = ENV["GIT_SERVER_PATH"]
+    @current_repo_path = "/#{user_name}/#{repo_title}"
+  end
+
+  def set_git_remote_path
+    set_repo_file_path
+    @git_file = Git.open("#{@base_path}#{@current_repo_path}")
+  end
 end
