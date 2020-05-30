@@ -94,7 +94,11 @@ class RepositoriesController < ApplicationController
     else
       @repository.is_public = params[:is_public]
       if @repository.save
+        session[:repository_title] = @repository.title
         set_repo_file_path
+        @repository.path = "#{@base_path}#{@current_repo_path}"
+        
+        byebug
 
         full_dir = "#{@base_path}/#{@current_repo_path}.git"
         working_dir = "#{@base_path}/#{@current_repo_path}"
@@ -117,7 +121,7 @@ class RepositoriesController < ApplicationController
 
   def update
     if @repository.update(repository_params)
-      redirect_to repository_path(user_name: find_user.name, id:@repository.title), notice: 'This repository has updated.'
+      redirect_to repository_path(user_name: find_user.name, id: @repository.title), notice: 'This repository has updated.'
     else
       render :edit
     end
