@@ -98,8 +98,6 @@ class RepositoriesController < ApplicationController
         session[:repository_title] = @repository.title
         set_repo_file_path
         @repository.path = "#{@base_path}#{@current_repo_path}"
-        
-        byebug
 
         full_dir = "#{@base_path}/#{@current_repo_path}.git"
         working_dir = "#{@base_path}/#{@current_repo_path}"
