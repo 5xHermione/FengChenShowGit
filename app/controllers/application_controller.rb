@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include MarkdownHelper
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :current_repository, :find_user, :branch_diff_default_branch
+  helper_method :current_repository, :find_user
   
   def configure_permitted_parameters
     # 相關資訊：https://www.rubydoc.info/github/plataformatec/devise/Devise/ParameterSanitizer

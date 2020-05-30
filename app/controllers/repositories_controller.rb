@@ -28,7 +28,8 @@ class RepositoriesController < ApplicationController
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
       is_new_repo = true 
       @branches = []
-      @commits = []
+      @commits = 0
+      @pull_request_able = []
     else
       is_new_repo = false
       git_file = Git.bare("#{@base_path}#{@current_repo_path}/.git")
