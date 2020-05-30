@@ -4,7 +4,7 @@
 <div>
   <%= render "shared/repo_navbar"%>
 </div>
-</br>
+
 <div class="container">
   <div class="row">
     <div class="git-feature-bar col-12">
@@ -29,22 +29,7 @@
       <% end %>
     <% end %>
     <div class="show-content col-8">
-      <p id="notice"><%= notice %></p>
-
-      <p>
-        <strong>Title:</strong>
-        <%= @repository.title %>
-      </p>
-
-      <p>
-        <strong>Description:</strong>
-        <%= @repository.description %>
-      </p>
-
-      <p>
-        <strong>User:</strong>
-        <%= @repository.user.name %>
-      </p>
+    
     </div>
     <div class="btn-copy col-4">
       <p>
@@ -70,7 +55,4 @@
   </div>
 </div>
 
-
-
-<%= link_to 'Back', repositories_path %>
 

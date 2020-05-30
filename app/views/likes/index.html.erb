@@ -2,9 +2,13 @@
       <div class="container my-5">
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
-            <div class="avatar-wrap">
-              <img class="w-100" src="https://picsum.photos/400/400?random=1" alt="">
-            </div>
+          <div class="avatar-wrap">
+            <% if find_user.image? %>
+                <%= image_tag(find_user.image_url) %>
+            <% else %>
+                <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+            <% end %>
+          </div>
             <h4 class="my-2">NAME：<%= find_user.name%></h4>
             <h4 class="my-2">ID：<%= find_user.id%></h4>
           </div>
@@ -16,6 +20,12 @@
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to "Repositories", repositories_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
                 <li>
                   <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>

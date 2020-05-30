@@ -14,16 +14,22 @@
   <%= @pull_request.description %>
 </p>
 
-  <% @comments.each do |c| %>
-    <h2><%= c.user.name %></h2>
-    <h3><%= c.content %></h3>
+<% @comments.each do |c| %>
+
+  <div class="comment-info-container">
+    <h4><%= c.user.name %></h4>
+    <h4><%= c.content %></h4>
+    <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
 
     <% if c.user == current_user %>
-      <div><%= link_to "delete", repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
-      <div class="btn btn-primary">Edit</div>
+      <div><%= link_to "delete", repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), class: "btn btn-danger comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+      <div class="btn btn-primary comment-edit-button">Edit</div>
     <% end %>
+  </div>
 
-      <%= form_with(model: c, url: repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), method: "PUT") do |f| %>
+  <div class="comment-edit-container" style="display: none;">
+    <%= form_with(model: c, url: repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), method: "PUT") do |f| %>
+
       <% if c.errors.any? %>
         <ul>
           <% c.errors.full_messages.each do |message| %>
@@ -32,31 +38,39 @@
         </ul>
       <% end %>
 
-        <%= f.label :content, class: "m-0"%>
-        <%= f.text_field :content, class: "form-control"%>
+      <%= f.label :content, class: "m-0"%>
+      <%= f.text_field :content, class: "form-control"%>
 
-        <div class="actions">
-          <%= f.submit "Update comment", class: "btn btn-success" %>
-        </div>
-        <div class="btn btn-danger">Cancel</div>
-      <% end %>
+      <div class="actions">
+        <%= f.submit "Update comment", class: "btn btn-success" %>
+      </div>
+      <div class="btn btn-danger comment-cancel-button">
+        Cancel
+      </div>
     <% end %>
-
-<%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
-  <% if @comment.errors.any? %>
-    <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <%= f.label :content, class: "m-0"%>
-  <%= f.text_field :content, class: "form-control"%>
-
-  <div class="actions">
-    <%= f.submit "Create comment", class: "btn btn-success" %>
   </div>
 <% end %>
+  
+
+<div class="comment-new-container">
+  <%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
+
+    <% if @comment.errors.any? %>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.label :content, class: "m-0"%>
+    <%= f.text_field :content, class: "form-control"%>
+
+    <div class="actions">
+      <%= f.submit "Create comment", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
 
 
 

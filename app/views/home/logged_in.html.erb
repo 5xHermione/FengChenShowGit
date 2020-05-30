@@ -43,7 +43,7 @@
                     <%= link_to "#{repo.title}", repository_path(id: repo)%>
                   </h4>
                   <div>
-                    <%= repo.created_at%>
+                    Create <%= time_ago_in_words(repo.created_at) %> ago
                   </div>
                 </div>
               </div>
