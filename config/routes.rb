@@ -8,7 +8,12 @@ Rails.application.routes.draw do
                         sign_in: 'login', 
                         sign_out: 'logout'
                      }
-  root "home#index"
+  root "home#index" 
+  resources :home , only: [:index] do
+    collection do 
+      get :verification
+    end
+  end
   get ':user_name', to: "home#logged_in", as: "logged_in"
   resources :sshkeys, only:[:new, :create, :destroy]
 
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
       resources :issues do
         resources :comments, only:[:create, :update, :destroy]
         member do
-          get :toggle_status
+          get :toggle_status      
         end
       end
     end

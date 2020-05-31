@@ -1,2 +1,4 @@
-import './devise.js'
+
 import './comment.js'
+import './verification.js'
+
