@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   blacklists = ["edit", "login", "logout", "password", "new", "cancel", "register", "confirmation", "repositories", "issues", "rails"]
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable, :confirmable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable
   
   has_many :sshkeys
   has_many :repositories, dependent: :destroy
