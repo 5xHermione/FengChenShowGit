@@ -7,7 +7,7 @@ $().ready(function(){
         $(this).css("border-color","")
         $(".noticePassword").text("")
       }else{
-        $(".noticePassword").text("*password must be more than 6 characters.")
+        $(".noticePassword").text("Password must be more than 6 characters.")
         $(this).css("border-color","#FF5151")
         $(".noticePassword").css("color","#FF5151")
       }
@@ -15,7 +15,7 @@ $().ready(function(){
 
     $(".password-confirmation-signup").blur(function(){    
       if($(".password-signup").val()!=$(".password-confirmation-signup").val()){
-        $(".noticeConfirmation").text("*password confirmation should be same as password.")
+        $(".noticeConfirmation").text("Password confirmation should be same as password.")
         $(this).css("border-color","#FF5151")
         $(".noticeConfirmation").css("color","#FF5151")
       }else{ 
@@ -39,13 +39,13 @@ $().ready(function(){
               $(".email-signup").css("border-color","")
               $(".noticeEmail").text("")
             }else{
-              $(".noticeEmail").text("*please enter the correct email format")
+              $(".noticeEmail").text("Please enter the correct email format.")
               $(".email-signup").css("border-color","#FF5151")
               $(".noticeEmail").css("color","#FF5151")
             }       
           }else{
             $(".email-signup").css("border-color","#FF5151")
-            $(".noticeEmail").text("*this email has been used.")
+            $(".noticeEmail").text("This email has been used.")
             $(".noticeEmail").css("color","#FF5151")
           }     
         }
@@ -67,7 +67,7 @@ $().ready(function(){
               $(".username-signup").css("border-color","")
               $(".noticeUserName").text("")      
             }else{
-              $(".noticeUserName").text('please enter numbers or English')
+              $(".noticeUserName").text('User name only allows numbers, English letters and underscore.')
               $(".username-signup").css("border-color","#FF5151")
               $(".noticeUserName").css("color","#FF5151")
             }               
