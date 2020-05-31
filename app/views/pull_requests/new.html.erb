@@ -15,6 +15,7 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
+    <h1>#<%= @pull_request.repository_pull_request_index %></h1>
   </div>
 
   <div class="field">
@@ -26,3 +27,9 @@
     <%= form.submit %>
   </div>
 <% end %> 
+
+<% @commits.each do |commit|%>
+  <%= commit.message %>
+  <%= commit.sha %>
+  <%= commit.committer.name %>
+<% end %>

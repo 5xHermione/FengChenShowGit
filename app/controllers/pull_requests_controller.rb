@@ -1,12 +1,17 @@
 class PullRequestsController < ApplicationController
   before_action :set_pull_request, only: [:show, :edit, :update]
+  before_action :set_git_remote_path, only: [:new, :show, :create]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
   end
 
   def new
-    @pull_request = PullRequest.new
+    @pull_request = current_repository.pull_requests.new
+    @pull_request.name = params[:branch]
+    @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
   end
 
   def create
