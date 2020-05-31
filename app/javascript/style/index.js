@@ -9,3 +9,4 @@ import "./issue_show.scss";
 import "./repositories_nb.scss";
 import "./following.scss";
 import "./follower.scss";
+import "./code.scss";

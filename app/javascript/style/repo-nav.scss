@@ -1,29 +1,4 @@
 
-.issue-show .repo-navbar { 
-	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbsss.jpg");
-}
-
-.public .id_name {
-	padding-top: 30px;
-	padding-left: 10px;
-	margin: 0 0 40px 0;
-	color: #494f35;
-	text-shadow:
-		-2px -2px 0 #fff,
-		 2px -2px 0 #fff,
-		-2px  2px 0 #fff,
-		 2px  2px 0 #fff,
-}
-
-.public .repo-navbar .nav-link {
-	text-shadow:
-		-1px -1px 0 #fff,
-		 1px -1px 0 #fff,
-		-1px  1px 0 #fff,
-		 1px  1px 0 #fff,
-}
-
 /*=================== .public ======================*/
 
 
@@ -106,47 +81,4 @@
 	color: #fff;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-}
-
-/*.issue-show .issue-title .row .p-2 .open {
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-}
-*/
-.issue-show .item { 
-  padding-top: 10px;
-}
-
-.issue-show .item:hover { 
-  background-color: #eefeff;
-}
-
-.issue-show .row {
-	margin-top: 0;
-	padding-top: 10px;
-}
-
-.issue-show div.col-2.mt-2 {
-	margin-top: 0!important;
-}
-
-.issue-show div.col-6.row {
-	padding-top: 0;
-}
-
-.issue-show .container span{
-	color: #573c39;
-	font-family: 微軟正黑體;
-	font-weight: bold;
-}
-
-.issue-show div.col-2.mt-2 i{
-	color: #ffcc1e;
-}
-
-.issue-show p.col-12 {
-	padding-left: 0px; 
-}
-.issue-show a.col-12 {
-	padding-left: 0px; 
 }

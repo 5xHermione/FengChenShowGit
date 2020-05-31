@@ -1,0 +1,44 @@
+.dir-container {
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+.dir-container .table .thead-light th{
+	border: none;
+	background-color: #22252a;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.dir-container .table td {
+	border-bottom: 1px solid #606060;
+	border-color: #606060;
+	position: relative;
+}
+
+.dir-container .table tr {
+  
+}
+
+.file-btn {
+	position: absolute;
+	right: 0;
+}
+
+.code-file-btn {
+	font-family: "微軟正黑體";
+	font-weight: bolder!important;
+	font-size: 14px;
+	color: #292c32;
+	height: 40px;
+	background-color: #52e69e;
+	border: solid 1px #52e69e;
+	padding: 8px 15px 8px 15px;
+	border-radius: 8px;
+}
+
+.code-file-btn:hover {
+	transition: 0.5s;
+	color: #fff;
+	background-color: rgba(82,230,158,0.1);
+  
+}

@@ -5,62 +5,49 @@ body {
   width: 100%;
 }
 
-.this-is-share-repo-navebar .repo-navbar { 
-	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbs.jpg");
-}
-
-.this-is-settings-navebar .repo-navbar { 
-	/*background-image: url("../../../pic/issueBK.png"); */
-	background-image: url("../../../pic/issueBKbss.jpg");
-}
-
 .public .id-name {
-	padding-top: 30px;
+	font-family: "微軟正黑體";
+	font-weight: lighter;
+	font-size: 30px;
+	padding-top: 20px;
 	padding-left: 10px;
 	margin: 0 0 40px 0;
-	color: #fff;
 }
-.public .id-name i {
-  color: #fff;
-  margin-right: 3px;
-  color: #573c39;
+.repo-navbar .nav-tabs {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #505052;
 }
+
+
 .public .userId {
+	font-family: "微軟正黑體";
+	font-weight: lighter;
 	display: inline;
-	font-weight: bold;
-	color: #573c39;
-	font-size: 18px;
+	color: #52e69e;
+	font-size: 30px;
 }
 
 .public .fileName {
-	color: #573c39;
-}
-
-.public .issue-show .id-name {
-	padding-top: 30px;
-	padding-left: 10px;
-	margin: 0 0 40px 0;
-	color: #494f35;
-} 
-
-.public .repo-navbar .nav-link {
-	color: #573c39;
+	color: #52e69e;
 }
 
 .public .fileName {
 	display: inline;
-	color: #24292e;
+	color: #52e69e;
 	font-size: 18px;
 }
 
 .public .repo-navbar .nav-link { 
-	color: #492b2c;
+	color: #fff;
+	font-family: "微軟正黑體";
+	font-weight: lighter;
+	font-size: 12px;
 	border-bottom: none;
 }
 
 .public .nav-tabs .nav-link {
-	font-weight: normal;
+	font-family: "微軟正黑體";
+	font-weight: lighter;
 	border: none;
 }
 
@@ -77,9 +64,9 @@ body {
   color: #777e5d;
 }
 
-
 .public .user-name {
 	font-family: "Arial";
+	font-weight: lighter;
 	font-size: 20px;
 	letter-spacing: 0px;
 	color: #fff;
@@ -88,6 +75,7 @@ body {
 
 .public .user-id {
 	font-family: "Arial";
+	font-weight: lighter;
 	font-size: 20px;
 	letter-spacing: 0px;
 	color: #fff;
@@ -141,11 +129,17 @@ body {
   color: #52e69e;
 }
 
+.public .nav-link:active {
+	border-bottom: 1px solid #52e69e;
+}
+
 .public .popu {
 	margin-top: 25px !important;
 	margin-bottom: 0 !important;
   font-size: 20px;
-  color: #492b2c;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  color: #fff;
 }
 
 .public .line {
@@ -181,6 +175,8 @@ body {
 	transition: 0.5s;
   background-color: #30333a;
 }
+
+
 
 
 

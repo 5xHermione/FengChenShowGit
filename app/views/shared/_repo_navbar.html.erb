@@ -1,7 +1,6 @@
-<div class="repo-navbar">
+<div class="repo-navbar public">
   
-  <div class="id_name">
-    <i class="fas fa-book"></i>
+  <div class="id-name">
     <h2 class="userId"><%= find_user.name %></h2> 
     <h2 class="fileName"><%=  current_repository.title %></h2>
   </div>
@@ -9,7 +8,7 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist">
 
     <li class="nav-item">
-      <%= link_to repository_path(id: current_repository), class: "nav-link" , ariaselected:"false" do %>
+      <%= link_to repository_path(id: current_repository), class: "nav-link bottomline" , ariaselected:"false" do %>
         <i class="fas fa-code"></i><span> Code</span>
       <% end %>
     </li>
