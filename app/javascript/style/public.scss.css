@@ -141,10 +141,6 @@ body {
   color: #52e69e;
 }
 
-/*.public .nav-item:active {
-  border-bottom: solid 2px #52e69e;
-}*/
-
 .public .popu {
 	margin-top: 25px !important;
 	margin-bottom: 0 !important;
@@ -216,7 +212,7 @@ body {
 }
 
 .public .repo-btn:hover {
-	background-color: #52e69e;
+	background-color: rgba(82,230,158,0.1);
 	transition: 0.4s;
 }
 

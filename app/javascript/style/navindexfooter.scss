@@ -42,10 +42,6 @@
 
 /*頭像小三角的下拉選單*/
 
-/*.this-is-navbar #navbarSupportedContent {
-  padding-top: 20px;
-}
-*/
 .this-is-navbar .nav-link {
   color: #fff;
   margin: 0 6px 0 6px;
@@ -150,8 +146,7 @@
  }
 
 .this-is-navbar .btn:hover {
-  border-color: #999;
-  color: #999;
+  background-color: rgba(82,230,158,0.1);
 }
 
 .this-is-navbar .btn_search { 

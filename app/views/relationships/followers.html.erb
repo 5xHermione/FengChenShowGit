@@ -14,6 +14,7 @@
         <h4 class="my-2 user-name">NAME：<%= find_user.name %></h4>
         <h4 class="my-2 user-id">ID：<%= find_user.id %></h4>
       </div>
+
       <div class="repositories-container col-12 col-md-9 row p-3">
         <div class="repositories-title col-12">
           <ul class="nav">
@@ -44,21 +45,24 @@
             <button class="btn repo-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
-        <div class="col-12 my-followers project-block">
+
+        <div class="col-12 my-followers">
           <% @followers.each do |user|%>
-            <div class="followers-avatar">
+
+            <div class="followers-avatar project-block">
                 <% if user.image_url.nil?%>
                   <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
                 <% else %>
                   <%= image_tag(user.image_url) %>
-                 <% end %>
-            </div>
-            <p>
-              <%= link_to "User name: #{user.name}", logged_in_path(user_name: user.name)%>
-            </p>
-          <% end %>
+            <% end %>
+            <h4>
+              <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
+            </h4>
         </div>
+      <% end %>
       </div>
+
+       </div>
     </div>
   </div>
 

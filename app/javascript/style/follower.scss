@@ -1,3 +1,4 @@
+
 .followers .col-12 {
 	padding-right: 0;
 }
@@ -7,44 +8,27 @@
 	position: relative;
 }
 
-/*.followers .repo-search {
-	padding-left: 15px;
-}*/
-
 .followers .user-info-container {
 	padding-right: 15px;
 }
 
-.my-followers {
-	display: flex;
-}
-
-.followers .followers-avatar img {
-	height: 60%;
-  border-radius: 50%;
-}
-
-
 .followers .project-block {
-	display: flex;
-	margin-left: 15px;
-	margin-top: 30px;
-	padding-left: 15!important;
-	padding-right: 0!important;
-	padding-bottom: 0!important;
-  border-bottom: solid 1px #606060 ;
-}
-
-.followers .project-block:hover {
-	background-color: #292c32;
-}
+	padding-left: 10!important;
+	border-bottom: solid 1px #606060 ;}
 
 .followers-avatar {
-	height: 90px;
-	display: inline;
+	height: 120px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	
 }
 
+.followers-avatar img {
+	margin-right: 20px;
+	height: 100%;
+  border-radius: 50px;
+}
 
-.followers .my-following h4 {
+.followers .my-followers h4 {
 	display: inline;
 }
