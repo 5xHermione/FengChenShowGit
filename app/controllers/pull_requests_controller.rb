@@ -1,9 +1,10 @@
 class PullRequestsController < ApplicationController
   before_action :set_pull_request, only: [:show, :edit, :update]
-  before_action :set_git_remote_path, only: [:new, :show, :create]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
+    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present?}
   end
 
   def new
