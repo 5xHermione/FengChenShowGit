@@ -2,17 +2,49 @@
   <%= render "shared/repo_navbar"%>
 </div>
 
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>name:</strong>
-  <%= @pull_request.name %>
-</p>
+<div class="row">
+  <div class="col-12">
+    <span class="btn btn-success"><%= @pull_request.status %></span>
+    <span><%= @pull_request.name %></span>
+  </div>
+  <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
+</div>
+
+<%= render "shared/pull_request_bar"%>
 
 <p>
   <strong>Description:</strong>
   <%= @pull_request.description %>
 </p>
+
+<% @commits.each do |commit|%>
+  <div class="container">
+    <div class="row"> 
+      <div class="col-12">
+        <%= commit.committer.name %>
+      </div>
+      <div class="col-1">
+        <i class="fas fa-dot-circle"></i>
+      </div>
+      <div class="col-6">
+        <%= commit.message %>
+      </div>
+      <div class="col-3">
+        <%= time_ago_in_words(commit.date.utc) %>
+      </div>
+      <div class="col-2">
+        <%= commit.sha[0..7] %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
 
 <% @comments.each do |c| %>
 
