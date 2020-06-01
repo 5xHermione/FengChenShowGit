@@ -57,8 +57,6 @@
 	padding: 0 15px 0 0;
 }
 
-
-
 .issue-show .issue-container {
 	border-color: #e0d7d2;
 	border: none;
@@ -88,4 +86,12 @@
 
 .issue-show .col-3 {
 	color: #fff;
+}
+
+.issue-show .description {
+	padding-top: 7px;
+}
+
+.issue-show .ago {
+	font-size: 12px;
 }
