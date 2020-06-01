@@ -18,6 +18,8 @@ class PullRequestsController < ApplicationController
   def create
     @pull_request = Repository.find_by(slug: params[:repository_id]).pull_requests.build(pull_request_params)
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.compare_branch = params[:branch]
     
     if @pull_request.save 
       redirect_to repository_pull_requests_path(user_name: current_user.name), notice: 'You have created a pull request！' 

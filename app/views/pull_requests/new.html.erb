@@ -22,6 +22,10 @@
     <%= form.text_area :description, class:"form-control" %>
   </div>
 
+  <h1>
+    這裡是放 file_change 的地方
+  </h1>
+
   <% @commits.each do |commit|%>
     <div class="container">
       <div class="row"> 
@@ -43,6 +47,8 @@
       </div>
     </div>
   <% end %>
+
+  <%= hidden_field_tag :branch, params[:branch] %>
 
   <div class="actions">
     <%= form.submit %>
