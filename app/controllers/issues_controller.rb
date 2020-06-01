@@ -50,12 +50,7 @@ class IssuesController < ApplicationController
   def update
 
     if @issue.update(issue_params)
-    #   flash[:notice] = "This issue has updated."
-    #   redirect_to repository_issue_path(user_name: find_user.name, 
-    #                                     repository_id: @issue.repository.title,
-    #                                     id: @issue.id)
-    # else
-    #   render edit
+
     end
   
   end
