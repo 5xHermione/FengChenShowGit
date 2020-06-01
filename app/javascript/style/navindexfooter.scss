@@ -4,13 +4,8 @@
   width: 100%;
 }
 
-.backcolor { 
-  background-color: rgba(22, 25, 30, 0.9);
-             width: 100%;
-}
-
 .this-is-navbar .navbar {
-  background-color: #24292e;
+  background-color: #43454a;
   padding: 15px 50px 15px 50px;
 }
 
@@ -26,7 +21,7 @@
 }
 
 .this-is-navbar .navbar-nav .nav-link:hover {
-  color: #ccc;
+  color: #52e69e;
 }
 
 .sp { 
@@ -42,16 +37,13 @@
 
 /*頭像小三角的下拉選單*/
 
-/*.this-is-navbar #navbarSupportedContent {
-  padding-top: 20px;
-}
-*/
 .this-is-navbar .nav-link {
   color: #fff;
   margin: 0 6px 0 6px;
 }
 
 .this-is-navbar .nav-link:hover {
+  transition: 0.5s;
   color: #aaa;
 }
 
@@ -71,6 +63,7 @@
 }
 
 .user_set:hover { 
+  transition: 0.5s;
   color: #999;
   background-color: none; 
 }
@@ -138,33 +131,31 @@
   height: 30px;
   width: 200px;
   margin-right: 5px; 
-  border: none;
+  border: solid 1px #52e69e;
 }
 
 .this-is-navbar .btn-outline { 
-  border: solid 1px #3f4448;
+  border: solid 1px #52e69e;
   border-radius: 3px; 
   margin-right: 30px; 
  }
 
 .this-is-navbar .btn:hover {
-  border-color: #999;
-  color: #999;
+  transition: 0.5s;
+  background-color: rgba(82,230,158,0.1);
 }
 
 .this-is-navbar .btn_search { 
   padding: 2px 6px;
-  border-color: #3f4448;
   margin-right: 20px;
 }
 
 .this-is-navbar .btn {
-  color: #3f4448;
+  color: #52e69e;
   padding: 2px 6px 2px 6px;
 }
 
 .this-is-navbar .form-inline {
-  /*padding-top: 20px;*/
   padding-left: 20px;
 }
 
@@ -174,7 +165,7 @@
 .foot { 
   height: 70px;
   width: 100%;
-  background-color: #24292e;
+  background-color: #43454a;
   margin-bottom: 0;
 }
 
@@ -185,7 +176,7 @@
 }
 
 .foot p { 
-  color: #3f4448 ;
+  color: #292c32 ;
   display: inline-block;
   padding-top: 7px;
   padding-left: 15px; 

@@ -1,0 +1,49 @@
+.pull-request .btn {
+	background-color: #52e69e;
+	border: 1px solid #52e69e;
+	color: #292c32;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.pull-request .btn:hover {
+  transition: 0.4s;
+	color: #fff;
+	background-color: rgba(82,230,158,0.1);
+}
+
+.pull-request .open {
+	margin: 0; 
+	padding: 15px!important;
+	background-color: #22252a;
+	color: #fff;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom: 1px solid #606060;
+}
+
+.pull-request .container {
+	border-bottom: 1px solid #606060;
+	color: #fff;
+}
+
+.pull-request .the-tr{
+	padding: 12px 12px 0 12px;
+
+}
+
+.pull-request p{
+	color: #999999;
+}
+
+.pull-request .col-4 {
+	padding-top: 7px;
+}
+
+.pull-request .ago {
+	font-size: 12px;
+}
+
+
+
+
