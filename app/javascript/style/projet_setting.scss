@@ -1,16 +1,17 @@
 
 .projet-setting h2 {
 	color: #52e69e;
-	font-size: 30px;
-	font-family: "Arial";
-	font-weight: lighter;
+	font-size: 24px;
+	font-family: "Arial"!important;
+	font-weight: lighter!important;
 }
 
 .projet-setting .settings-title {
 	color: #fff;
-	font-size: 16px;
-	font-family: "微軟正黑體";
-	font-weight: lighter;
+	font-size: 18px!important;
+	font-family: "微軟正黑體"!important;
+	font-weight: lighter!important;
+	line-height: 40px!important;
 }
 
 .projet-setting .sele-branch {
@@ -18,10 +19,15 @@
 }
 
 .projet-setting .sele-branch label {
-	padding-right: 20px;
+	color: #fff;
+	font-size: 18px!important;
+	font-family: "微軟正黑體"!important;
+	font-weight: lighter!important;
+	padding-right: 37px;
 }
 
-.projet-setting .btn { 
+.projet-setting .btn {
+  border-radius: 8px; 
 	background-color: #52e69e;
   border-color:  #52e69e;
   color: #292c32;
@@ -44,4 +50,35 @@
 	border-left: none;
 	padding-bottom: 30px;
 	margin-bottom: 50px;
+}
+
+.projet-setting .btn-danger {
+	background-color: #e34c4c;
+  border-color:  #e34c4c;
+  color: #292c32;
+}
+
+.projet-setting .btn-danger:hover { 
+	background-color: rgba(227,76,76,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.projet-setting input {
+	border-radius: 8px;
+	border: 1px solid #76787b;
+	background-color: #292c32;
+}
+
+.projet-setting select {
+	border-radius: 8px!important;
+}
+
+.projet-setting p {
+	color: #fff;
+	font-size: 14px;
+	font-family: "微軟正黑體";
+	font-weight: lighter;
+	line-height: 40px;
+	padding-left: 25px;
 }
