@@ -1,0 +1,33 @@
+
+.followers .col-12 {
+	padding-right: 0;
+}
+.followers .form-inline {
+	padding-right: 0;
+	margin: auto;
+	position: relative;
+}
+
+.followers .user-info-container {
+	padding-right: 15px;
+}
+
+.followers .project-block {
+	padding-left: 10!important;
+	border-bottom: solid 1px #606060 ;}
+
+.followers-avatar {
+	height: 120px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.followers-avatar img {
+	margin-right: 20px;
+	height: 100%;
+  border-radius: 50px;
+}
+
+.followers .my-followers h4 {
+	display: inline;
+}

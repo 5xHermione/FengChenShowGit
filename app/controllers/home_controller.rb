@@ -10,6 +10,13 @@ class HomeController < ApplicationController
     end
   end
 
+  def verification
+    @verification = User.where(name: params[:name]).or(User.where(email: params[:email])).exists?
+    respond_to do |format|
+      format.json { render json: !@verification }
+    end 
+  end
+
   def logged_in
     if user_signed_in?
       if current_user == find_user

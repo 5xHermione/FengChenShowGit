@@ -13,16 +13,16 @@
 	<% dirs.each do |dir| %>
 	  <tr>
 		<td>
-	  <i class="fas fa-folder" style="color: rgba(3,47,98,.5)"></i>
-	  <a href="/<%= repository.user.name %>/repositories/<%= repository.title %>/worktree/master/<%= dir %>" > <%= dir.match(/^.+\/(.+)$/)[1] %> </a>
+	  <i class="fas fa-folder" style="color: rgba(255,255,255,.5)"></i>
+	  <a href="/<%= repository.user.name %>/repositories/<%= repository.title %>/worktree/master/<%= dir %>" style="color: rgba(255,255,255,1)"> <%= dir.match(/^.+\/(.+)$/)[1] %> </a>
 		</td>
 	  </tr>
 	<% end %>
 	<% files.each do |file| %>
 	  <tr>
 		<td>
-		  <i class="far fa-file-alt" style="color: rgba(3,47,98,.5)"></i>
-		  <a href="/<%= repository.user.name %>/repositories/<%= repository.title %>/worktree/master/<%= file %>" ><%= file.match(/^.+\/(.+)$/)[1]  %></a>
+		  <i class="far fa-file-alt" style="color: rgba(255,255,255,.5)"></i>
+		  <a href="/<%= repository.user.name %>/repositories/<%= repository.title %>/worktree/master/<%= file %>" style="color: rgba(255,255,255,1)"><%= file.match(/^.+\/(.+)$/)[1]  %></a>
 		</td>
 	  </tr>
 	<% end %>
