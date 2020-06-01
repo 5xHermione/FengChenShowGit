@@ -41,6 +41,7 @@ gem 'bcrypt_pbkdf', '~> 1.0', '>= 1.0.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'carrierwave', '~> 2.0'
 gem 'rmagick', '~> 4.1', '>= 4.1.2'
+gem 'kaminari', '~> 1.2'
 
 
 group :development, :test do
@@ -56,7 +57,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'kaminari', '~> 1.2'
   #deploy
   gem 'capistrano', '~> 3.4', require: false
   gem 'capistrano-rails', '~> 1.5'
