@@ -9,6 +9,7 @@
 
 server '157.230.43.10', user: 'git', roles: %w{app web db}
 set :deploy_to, '/home/deploy/fengchenshowgit'
+set :branch, "deploy_test"
 
 # role-based syntax
 # ==================
