@@ -3,7 +3,7 @@
 </div>
 
 <%# 這邊的路徑做 compare 時會需要改 %>
-<%= form_with(model: @pull_request, url: repository_pull_requests_path(user_name: find_user.name, repository_id: current_repository.title), local: true, method: :get) do |form| %>
+<%= form_with(model: @pull_request, url: repository_pull_requests_path(user_name: find_user.name, repository_id: current_repository.title, branch: params[:branch]), local: true, method: :get) do |form| %>
   <%= form.label :base_branch, "Base branch"%>
   <%= select("pull_request", "base_branch", @branches.collect {|b| b.name })%>
 

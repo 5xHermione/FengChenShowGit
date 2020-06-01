@@ -10,7 +10,7 @@
     <span class="btn btn-success"><%= @pull_request.status %></span>
     <span><%= @pull_request.name %></span>
   </div>
-  <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> form <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
+  <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
 </div>
 
 <%= render "shared/pull_request_bar"%>
