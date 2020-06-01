@@ -1,6 +1,6 @@
 class PullRequestsController < ApplicationController
   before_action :set_pull_request, only: [:show, :edit, :update, :commits]
-  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
@@ -15,6 +15,14 @@ class PullRequestsController < ApplicationController
     @pull_request.base_branch = @pull_request.repository.default_branch # 這行做 compare 會需要改
     @pull_request.compare_branch = params[:branch]                      # 這行可能可以不用改，看情況
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+  end
+
+  def compare
+    @pull_request = PullRequest.new
+    @branches = @git_file.branches.remote
+  end
+
+  def diff
   end
 
   def create

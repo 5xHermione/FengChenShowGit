@@ -33,6 +33,10 @@ Rails.application.routes.draw do
           get "commits", to: "pull_requests#commits", as: "commits"
         end
         resources :comments, only:[:create, :update, :destroy]
+        collection do
+          get :compare
+          post :diff
+        end
       end
       resources :issues do
         resources :comments, only:[:create, :update, :destroy]

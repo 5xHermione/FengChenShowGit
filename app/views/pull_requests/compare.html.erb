@@ -1,0 +1,11 @@
+<!-- compare.html.erb -->
+
+        <%= form_with(model: @pull_request,url: diff_repository_pull_requests_path, method: :post) do |form| %>
+          <div class="field row m-auto py-3">
+            <%= form.label :default_branch, "Compare branch"%>
+            <%= select("repository", "default_branch", @branches.collect {|b| b.name })%>
+          </div>
+          <div class="actions">
+            <%= form.submit "Update compare branch", class: "btn btn-primary mx-3"%>
+          </div>
+        <% end %>
