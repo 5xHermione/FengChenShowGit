@@ -14,22 +14,24 @@
     </div>
     <div class="issue-container my-5">
       <div class="issue-title row col-12 open">
-        <div class="status-title col-2">
+        <div class="status-title col-3">
         <%= @issues.length %> records</div>
-        <%= link_to  'open', repository_issues_path(user_name: find_user.name,
-                                                    repository_id: current_repository.title,
-                                                    "status" => "open"), class:"distance" %> |
-        
-        <%= link_to  'close', repository_issues_path(user_name: find_user.name,
-                                                    repository_id: current_repository.title,
-                                                    "status" => "close"),class:"distance" %>
-      </div>
+         <div class="open-and-close col-5">
+          <%= link_to  'open', repository_issues_path(user_name: find_user.name,
+                                                      repository_id: current_repository.title,
+                                                      "status" => "open"), class:"distance" %> |
+          
+          <%= link_to  'close', repository_issues_path(user_name: find_user.name,
+                                                      repository_id: current_repository.title,
+                                                      "status" => "close"),class:"distance" %>
+         </div>
+        </div>
       <% if @issues.length > 0 %>
         <% @issues.each do |issue| %>
           <div class="container item">
             <div class="row">
-              <div class="col-2 mt-2"><%= issue.status%></div>
-              <div class="row"> 
+              <div class="col-3 mt-3"><%= issue.status%></div>
+              <div class="row col-4"> 
                 <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
                 <p class="col-12">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
               </div>
