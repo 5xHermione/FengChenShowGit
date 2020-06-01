@@ -4,7 +4,7 @@ class PullRequestsController < ApplicationController
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
-    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present?}
+    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && PullRequest.find_by(compare_branch: b).nil?}
   end
 
   def new
