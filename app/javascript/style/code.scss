@@ -23,11 +23,6 @@
 	position: relative;
 }
 
-.file-btn {
-	position: absolute;
-	right: 0;
-}
-
 .code-file-btn {
 	font-family: "微軟正黑體";
 	font-weight: bolder!important;
@@ -38,6 +33,8 @@
 	border: solid 1px #52e69e;
 	padding: 8px 15px 8px 15px;
 	border-radius: 8px;
+	position: absolute;
+	right: 0;
 }
 
 .code-file-btn:hover {
