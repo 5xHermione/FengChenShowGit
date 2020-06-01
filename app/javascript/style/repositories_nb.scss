@@ -46,8 +46,9 @@
 	border: solid 1px #52e69e;
 	background-color: #292c32;
   height: 30px;
-  width: 60px;
-  border-radius: 10px;
+  width: 90px;
+	border-radius: 10px;
+	text-align: center;
 }
 
 .star:hover {
@@ -55,11 +56,18 @@
 	background-color: rgba(82,230,158,0.1);
 }
 
-.star p{
-  font-family: "微軟正黑體";
-	font-weight: lighter;
-	letter-spacing: 0px;
-  font-size: 12px;
-  color: #fff;
-  display: inline;
+.star a{
+	display: inline;
+	text-align: center;
+	i {
+		font-size: 10px;
+		color: #fff;
+	}
+	span {
+		font-size: 10px;
+		font-family: "微軟正黑體";
+		font-weight: lighter;
+		color: #fff;
+	}
 }
+
