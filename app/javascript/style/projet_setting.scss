@@ -1,3 +1,4 @@
+
 .projet-setting h2 {
 	color: #52e69e;
 	font-size: 30px;
@@ -10,4 +11,37 @@
 	font-size: 16px;
 	font-family: "微軟正黑體";
 	font-weight: lighter;
+}
+
+.projet-setting .sele-branch {
+	padding: 15px 15px 40px 15px!important;
+}
+
+.projet-setting .sele-branch label {
+	padding-right: 20px;
+}
+
+.projet-setting .btn { 
+	background-color: #52e69e;
+  border-color:  #52e69e;
+  color: #292c32;
+}
+
+.projet-setting .btn:hover { 
+	background-color: rgba(82,230,158,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.projet-setting .col-12 .bottom-line {
+	height: 40px;
+	border-bottom: 1px solid #76787b;
+}
+
+.projet-setting .repo-branch-info-wrap {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	padding-bottom: 30px;
+	margin-bottom: 50px;
 }
