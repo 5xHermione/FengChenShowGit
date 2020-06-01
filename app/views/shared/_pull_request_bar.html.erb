@@ -1,8 +1,11 @@
-<ul class="nav">
+<ul class="nav my-3">
   <li class="nav-item m-auto">
-    <%= link_to "Conversation", repository_pull_request_path(@pull_request)%>
+    <%= link_to "Conversation", repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request)%>
   </li>
   <li class="nav-item m-auto">
-    <%= link_to "Commits", commits_repository_pull_request_path(@pull_request) %>
+    <%= link_to "Commits", commits_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request) %>
+  </li>
+  <li class="nav-item m-auto">
+    <a>File Changes</a>
   </li>
 </ul>

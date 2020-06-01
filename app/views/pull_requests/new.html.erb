@@ -13,7 +13,7 @@
 <%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
 
   <div class="field">
-    <h1><%= form.label :name %>#<%= @pull_request.repository_pull_request_index %></h1>
+    <h1><%= form.label :name %></h1>
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
