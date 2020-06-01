@@ -12,7 +12,6 @@
 }
 .btn-secondary {
   background-color: #d4d9df;
-  margin-top: 20px;
 }
 
 
@@ -21,6 +20,20 @@
 }
 
 
+.issue_name_inactive h1 {
+  margin-bottom: -0.5rem;
+}
+
+.issue_name_active {
+  h1{
+    margin-bottom: -0.5rem;
+  }
+  display: none;
+}
+
+#issue_update{
+  display: none;
+}
 
 ul.timeline {
   list-style-type: none;

@@ -1,0 +1,6 @@
+<div class ="issue_namee">
+<h1><%= @issue.name %></h1>
+</div>
+  <%= form_for([:repository, @issue],remote: true) do |form|%>
+  <%= form.text_field :name%>
+<% end %>
