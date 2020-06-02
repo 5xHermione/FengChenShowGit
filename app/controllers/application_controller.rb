@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
 
   private
   def current_repository
-    find_user.repositories.find_by(title: session[:repository_title])
+    @current_repo ||= find_user.repositories.find_by(title: session[:repository_title])
   end
 
   def find_user
-    User.find_by(name: params[:user_name])
+    @user ||= User.find_by(name: params[:user_name])
   end
 
   def repositories_order
