@@ -1,0 +1,13 @@
+
+<div class="diff">
+  <div>
+    <%= render "shared/repo_navbar"%>
+  </div>
+  <div>
+  	<% @diff_files.each do |diff| %>
+  	  <div>
+  	   <%= diff %>
+  	  </div>
+  	<% end %>
+  </div>
+</div>

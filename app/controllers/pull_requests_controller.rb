@@ -1,6 +1,6 @@
 class PullRequestsController < ApplicationController
   before_action :set_pull_request, only: [:show, :edit, :update, :commits]
-  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
@@ -23,6 +23,15 @@ class PullRequestsController < ApplicationController
   end
 
   def diff
+    base_branch = params[:pull_request][:base_branch]
+    compare_branch = params[:pull_request][:compare_branch]
+    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
+    diff_pr.set_base_branch(base_branch)
+    diff_pr.set_compare_branch(compare_branch)
+    @diff_files = []
+    diff_pr.changed_file_name.each do |file_name|
+     @diff_files << diff_pr.diff_in_files(file_name)
+    end
   end
 
   def create

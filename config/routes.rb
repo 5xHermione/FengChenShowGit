@@ -35,7 +35,7 @@ Rails.application.routes.draw do
         resources :comments, only:[:create, :update, :destroy]
         collection do
           get :compare
-          post :diff
+          get :diff
         end
       end
       resources :issues do
