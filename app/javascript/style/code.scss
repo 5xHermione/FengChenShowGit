@@ -57,7 +57,33 @@
 .this-is-share-repo-navebar .current-branch {
 	font-size: 16px;
   font-family: "微軟正黑體";
-  font-weight: lighter;
+  font-weight: bolder;
   color: #52e69e;
   padding: 20px;
+}
+
+.this-is-share-repo-navebar .down {
+	position: relative;
+}
+.this-is-share-repo-navebar .card-body {
+	position: absolute;
+	top:60px;
+	right: 0;
+	background-color: #46484e;
+	color: #fff;
+}
+
+.this-is-share-repo-navebar .collapse-title {
+	padding-left: 0;
+}
+
+.this-is-share-repo-navebar .collapse-btn {
+	position: absolute;
+	bottom: 35px;
+	right: 20px;
+	height: 30px;
+}
+
+.this-is-share-repo-navebar .row {
+	z-index: 1;
 }
