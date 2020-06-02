@@ -52,7 +52,7 @@ class IssuesController < ApplicationController
     if @issue.update(issue_params)
 
     end
-  
+    
   end
 
   private
