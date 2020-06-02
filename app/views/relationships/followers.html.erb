@@ -44,11 +44,11 @@
         <div class="col-12 my-followers">
           <% @followers.each do |user|%>
             <div class="followers-avatar project-block">
-                <% if user.image_url.nil?%>
-                  <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-                <% else %>
-                  <%= image_tag(user.image_url) %>
-                <% end %>
+              <% if user.image_url.nil?%>
+                <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+              <% else %>
+                <%= image_tag(user.image_url) %>
+              <% end %>
               <h4>
                 <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
               </h4>
