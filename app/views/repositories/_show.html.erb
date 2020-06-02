@@ -20,8 +20,10 @@
         </div>
       </ul>
     </div>
-    <div>
-      Current branch: <%= @current_branch %>
+    
+    
+    <div class="current-branch">
+        <i class="fas fa-code-branch"></i> Current Branch : <%= @current_branch %>
     </div>
     <% @pull_request_able.each do |branch| %>
       <% if find_user == current_user%>
