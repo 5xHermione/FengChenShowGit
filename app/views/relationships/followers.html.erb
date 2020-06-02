@@ -1,24 +1,21 @@
 <div class="followers public">
-
-
   <div class="container my-5">
     <div class="row">
       <div class="user-info-container col-12 col-md-3">
         <div class="avatar-wrap">
           <% if find_user.image? %>
-              <%= image_tag(find_user.image_url) %>
+            <%= image_tag(find_user.image_url) %>
           <% else %>
-              <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+            <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
           <% end %>
         </div>
         <h4 class="my-2 user-name">Name：<%= find_user.name %></h4>
         <h4 class="my-2 user-id">ID：<%= find_user.id %></h4>
       </div>
-
       <div class="repositories-container col-12 col-md-9 row p-3">
         <div class="repositories-title col-12">
           <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item mx-3">
               <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
             </li>
             <li class="nav-item mx-3">
@@ -30,7 +27,7 @@
             <li class="nav-item mx-3">
               <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link the-bottom" %>
             </li>
-            <li>
+            <li class="nav-item mx-3">
               <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
             </li>
           </ul>
@@ -38,34 +35,27 @@
             <div class="title-bottom-line"></div>
           </div>
         </div>
-       
         <div class="col-12">
           <form class="form-inline my-3 lg-0 repo-search">
             <input class="form-control mr-sm-2 col-10" type="search" placeholder="Search" aria-label="Search">
             <button class="btn repo-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
-
         <div class="col-12 my-followers">
           <% @followers.each do |user|%>
-
             <div class="followers-avatar project-block">
-                <% if user.image_url.nil?%>
-                  <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-                <% else %>
-                  <%= image_tag(user.image_url) %>
-            <% end %>
-            <h4>
-              <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
-            </h4>
+              <% if user.image_url.nil?%>
+                <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+              <% else %>
+                <%= image_tag(user.image_url) %>
+              <% end %>
+              <h4>
+                <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
+              </h4>
+            </div>
+          <% end %>
         </div>
-      <% end %>
       </div>
-
-       </div>
     </div>
   </div>
-
-
 </div>
-
