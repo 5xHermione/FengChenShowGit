@@ -150,6 +150,7 @@ class RepositoriesController < ApplicationController
 
   def commits
     @commits = @git_file.log(99999)
+    @branches = @git_file.branches.remote.map{|b| b.name}
   end
 
   def branches

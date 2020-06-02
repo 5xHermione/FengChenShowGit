@@ -1,5 +1,21 @@
-<% @commits.each do |commit| %>
-  <div>
-    <%= commit.message %>
-  </div>
-<% end %>
+<%= render "shared/repo_navbar"%>
+<div class="commits-container">
+  <h3 class="my-3">Commits</h3>
+
+  <% @commits.each do |commit| %>
+    <div class="commit-info">
+      <div class="committer-name">
+        <%= commit.author.name %>
+      </div>
+      <div class="commit-message">
+        <%= commit.message %>
+      </div>
+      <div class="commit-date">
+        <%= time_ago_in_words(commit.date.utc) %>
+      </div>
+      <div class="commit-sha">
+        <%= commit.sha %>
+      </div>
+    </div>
+  <% end %>
+</div>
