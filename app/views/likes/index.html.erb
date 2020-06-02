@@ -7,7 +7,7 @@
             <% if find_user.image? %>
                 <%= image_tag(find_user.image_url) %>
             <% else %>
-                <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+                
             <% end %>
           </div>
             <h4 class="my-2 user-name">Name：<%= find_user.name%></h4>
@@ -38,9 +38,9 @@
             <div class="title-bottom-line"></div>
             <h3 class="col-12 my-3">Like repositories</h3>
               <% @liked_repositories.each do |repo| %>
-                <div class="col-12">
-                  <h2>Owner: <%= repo.user.name %></h2>
+                <div class="col-12 project-block">
                   <h4><%= link_to repo.title, repository_path(user_name: repo.user.name, id: repo.title) %></h4>
+                  <div>Owner : <%= repo.user.name %></div>
                 </div>
               <% end %>
           </div>
