@@ -1,11 +1,11 @@
 .logged-in-my-repo .col-10 {
-	padding-left: 0;
+  padding-left: 0;
 }
 
 .logged-in-my-repo .col-10 h4 {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	letter-spacing: 0px;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  letter-spacing: 0px;
   font-size: 18px;
   color: #52e69e;
 }
@@ -22,52 +22,52 @@
 }
 
 .logged-in-my-repo .row {
-	margin-left: 0;
+  margin-left: 0;
 }
 
 .logged-in-my-repo .form-inline {
-	padding-right: 0;
-	margin: auto;
-	position: relative;
+  padding-right: 0;
+  margin: auto;
+  position: relative;
 }
 
 .logged-in-my-repo .ml-5 {
-	margin: 0!important;
+  margin: 0!important;
   position: absolute;
   right: 0;
 }
 
 .logged-in-my-repo .repo-search {
-	padding-left: 15px;
+  padding-left: 15px;
 }
 
 /*====================like====================*/
 .star-container {
-	display: inline-block;
-	padding: 0;
-	margin-top: 10px;
-	line-height: 28px;
-	.star {
-	border: solid 1px #52e69e;
-	background-color: #292c32;
-  height: 30px;
-  width: 90px;
-	border-radius: 10px;
-	text-align: center;
-	display: inline-block;
-		i {
-		font-size: 12px;
-		color: #fff;
-		}
-		span {
-			font-size: 12px;
-			font-family: "微軟正黑體";
-			color: #fff;
-			font-weight: bolder;
-		}
-	}
-	.star:hover {
-	transition: 0.4s;
-	background-color: rgba(82,230,158,0.1);
-	}
+  display: inline-block;
+  padding: 0;
+  margin-top: 10px;
+  line-height: 28px;
+  .star {
+    border: solid 1px #52e69e;
+    background-color: #292c32;
+    height: 30px;
+    width: 90px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    i {
+      font-size: 12px;
+      color: #fff;
+    }
+    span {
+      font-size: 12px;
+      font-family: "微軟正黑體";
+      color: #fff;
+      font-weight: bolder;
+    }
+  }
+  .star:hover {
+    transition: 0.4s;
+    background-color: rgba(82,230,158,0.1);
+  }
 }
