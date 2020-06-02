@@ -1,28 +1,33 @@
-<div>
-  <%= render "shared/repo_navbar"%>
-</div>
-
-<% if @issue.errors.any? %>
-  <ul>
-    <% @issue.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :name %>
+<div class="new-issues">
+  <div>
+    <%= render "shared/repo_navbar"%>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <% if @issue.errors.any? %>
+    <ul>
+      <% @issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
+
+    <div class="field col-8">
+      <%= form.label :title %>
+    </div>
+    <div class="field">
+      <%= form.text_field :name %>
+    </div>
+    <br>
+    <div class="field col-8">
+      <%= form.label :description %>
+    </div>
+    <div class="field ">
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>

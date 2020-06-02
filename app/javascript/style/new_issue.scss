@@ -1,0 +1,38 @@
+.new-issues .field {
+	color: #fff;
+	display: inline; 
+}
+
+.new-issues .label {
+	color: #fff;
+}
+
+.new-issues input {
+	border-radius: 8px;
+	margin-top: 10px!important;
+	height: 40px;
+}
+
+.new-issues textarea {
+	border-radius: 8px;
+	margin-top: 10px!important;
+	height: 60px;
+}
+
+
+.new-issues .actions input {
+	font-family: "微軟正黑體";
+	font-size: 14px;
+	color: #292c32;
+	background-color: #52e69e;
+	border: solid 1px #52e69e;
+	padding: 8px 15px 8px 15px ;
+	border-radius: 8px;
+	margin: 20px 0 20px 15px!important;
+}
+
+.new-issues .actions input:hover {
+	transition: 0.5s;
+	color: #fff;
+	background-color: rgba(82,230,158,0.1);
+}

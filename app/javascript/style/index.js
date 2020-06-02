@@ -14,4 +14,5 @@ import "./public.scss";
 import "./projet_setting.scss";
 import "./projet_setting.scss";
 import "./repo_new.scss";
+import "./new_issue.scss";
 
