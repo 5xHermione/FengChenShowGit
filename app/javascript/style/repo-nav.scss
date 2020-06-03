@@ -16,6 +16,7 @@
 	border: solid 1px #76787b;
 	background-color: #292c32;
 	border-radius: 8px;
+	color: #fff;
 }
 
 .issue-show .my-2 {
@@ -94,4 +95,14 @@
 
 .issue-show .ago {
 	font-size: 12px;
+}
+
+.issue-show .distance{
+	color: #fff;
+	text-decoration: none;
+}
+
+.issue-show a {
+	color: #52e69e;
+	text-decoration: none;
 }
