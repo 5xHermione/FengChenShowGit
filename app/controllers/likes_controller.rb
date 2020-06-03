@@ -21,7 +21,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like_relationship = Like.find_by(repository_id: current_repository.id, user_id: current_user.id) || Like.find_by(repository_id: params[:repo_id], user_id: current_user.id)
+    like_relationship = Like.find_by(repository_id: current_repository, user_id: current_user.id) || Like.find_by(repository_id: params[:repo_id], user_id: current_user.id)
 
     if like_relationship.destroy
       flash[:notice] = "Unlike success!"
