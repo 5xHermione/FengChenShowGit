@@ -46,7 +46,6 @@ class PullRequestsController < ApplicationController
     diff_pr.changed_file_name.each do |file_name|
      @diff_files << diff_pr.diff_in_files(file_name)
     end
-    byebug
   end
 
   def create
