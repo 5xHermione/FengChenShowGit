@@ -8,11 +8,9 @@
   </div>
   <div>
   	<% @diff_files.each do |diff| %>
-  	  
-  	 <% diff.each do |line| %>
-  	  <div> <%= line[0] %> </div>
-	  <div> <%= line[1] %> </div>
-  	 <% end %>
+  	  <% diff.each do |line| %>
+        <div class="<%= line[0] %>"> <%= line[1] %>  </div>
+      <% end %>
   	 <br>
   	<% end %>
   </div>

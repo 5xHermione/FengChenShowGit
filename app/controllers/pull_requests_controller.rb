@@ -32,8 +32,8 @@ class PullRequestsController < ApplicationController
   def new
     @branches = @git_file.branches.remote
     @pull_request = current_repository.pull_requests.new
-    @pull_request.name = params[:branch]
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.name = params[:compare_branch]
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
     @pull_request.base_branch = params[:base_branch] 
     @pull_request.compare_branch = params[:compare_branch]
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
@@ -42,19 +42,19 @@ class PullRequestsController < ApplicationController
     diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
     diff_pr.set_base_branch(@pull_request.base_branch)
     diff_pr.set_compare_branch(@pull_request.compare_branch)
-    @diff_files = []
+    @pull_request.diff_files = []
     diff_pr.changed_file_name.each do |file_name|
-     @diff_files << diff_pr.diff_in_files(file_name)
+     @pull_request.diff_files << diff_pr.diff_in_files(file_name)
     end
   end
 
   def create
     @pull_request = find_user.repositories.find_by(slug: params[:repository_id]).pull_requests.build(pull_request_params)
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
-    @pull_request.compare_branch = params[:branch]
-    @pull_request.base_branch = @pull_request.repository.default_branch # 這行做 compare 會需要改
-    
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.compare_branch = params[:compare_branch]
+    @pull_request.base_branch = params[:base_branch]
+
     if @pull_request.save 
       redirect_to repository_pull_requests_path(user_name: current_user.name), notice: 'You have created a pull request！' 
     else

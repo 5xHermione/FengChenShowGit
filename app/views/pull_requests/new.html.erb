@@ -2,7 +2,6 @@
   <%= render "shared/repo_navbar"%>
 </div>
 
-<%# 這邊的路徑做 compare 時會需要改 %>
 <div>
   <div>
     <p> Base branch: <%= @pull_request.base_branch %> </p> 
@@ -19,7 +18,8 @@
 <% end %>
 
 <%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
-
+  <%= hidden_field_tag :base_branch, @pull_request.base_branch %>
+  <%= hidden_field_tag :compare_branch, @pull_request.compare_branch %>
   <div class="field">
     <h1><%= form.label :name %></h1>
     <%= form.text_field :name, class: "form-control"%>
@@ -32,18 +32,6 @@
   
   <div class="actions">
     <%= form.submit %>
-  </div>
-
-  <div>
-    <h3>File changes</h3>
-    <div>
-      <% @diff_files.each do |diff| %>
-        <% diff.each do |line| %>
-          <div class="<%= line[0] %>"> <%= line[1] %>  </div>
-        <% end %>
-        <br>
-      <% end %>
-    </div>
   </div>
 
   <% @commits.each do |commit|%>
@@ -68,6 +56,16 @@
     </div>
   <% end %>
 
-  <%= hidden_field_tag :branch, params[:branch] %>
+  <div>
+    <h3>File changes</h3>
+    <div>
+      <% @pull_request.diff_files.each do |diff| %>
+        <% diff.each do |line| %>
+          <div class="<%= line[0] %>"> <%= line[1] %>  </div>
+        <% end %>
+        <br>
+      <% end %>
+    </div>
+  </div>
 
 <% end %> 
