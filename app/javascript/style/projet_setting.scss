@@ -12,6 +12,7 @@
 	font-family: "微軟正黑體"!important;
 	font-weight: lighter!important;
 	line-height: 40px!important;
+	margin: 0;
 }
 
 .projet-setting .sele-branch {
@@ -68,7 +69,12 @@
 	border-radius: 8px;
 	border: 1px solid #76787b;
 	background-color: #292c32;
+	color: #fff;
 }
+
+.projet-setting .form-control:focus {
+	background-color: #292c32;
+} 
 
 .projet-setting select {
 	border-radius: 8px!important;
@@ -79,6 +85,5 @@
 	font-size: 14px;
 	font-family: "微軟正黑體";
 	font-weight: lighter;
-	line-height: 40px;
 	padding-left: 25px;
 }

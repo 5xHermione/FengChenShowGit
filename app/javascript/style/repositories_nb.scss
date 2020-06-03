@@ -23,6 +23,10 @@
   margin: auto;
   position: relative;
 }
+.logged-in-my-repo .repo-search {
+	padding-left: 15px;
+	color: #fff;
+}
 
 .logged-in-my-repo .ml-5 {
   margin: 0!important;
@@ -30,9 +34,11 @@
   right: 0;
 }
 
+
 .logged-in-my-repo .repo-search {
   padding-left: 15px;
 }
+
 
 /*====================like====================*/
 .star-container {

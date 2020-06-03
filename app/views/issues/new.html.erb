@@ -22,17 +22,12 @@
 
       <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
 
-        <!-- <div class="field col-8">
-          <%= form.label :title  %>
-        </div> -->
 
         <div class="field">
           <%= form.text_field :name, placeholder: "Title" %>
         </div>
         <br>
-        <!-- <div class="field col-8">
-          <%= form.label :description %>
-        </div> -->
+
         <div class="field">
           <%= form.text_area :description, placeholder: "Leave a commit" %>
         </div>
