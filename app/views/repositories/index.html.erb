@@ -56,9 +56,21 @@
                       Create <%= time_ago_in_words(repo.created_at) %> ago
                     </div>
                   </div>
-                  <button class="star">        
-                    <p><i class="far fa-star"></i> Like</p>
-                  </button>
+
+                  <% if current_user.liked_repositories.find_by(id: repo.id).nil? %>
+                    <%= link_to repository_likes_path(repository_id: repo), class: "star-container", method: "POST" do %>
+                      <div class="star">
+                        <i class="far fa-star"></i><span> <%= repo.likes.count %> </span>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to repository_like_path(repository_id: repo, id: current_user.liked_repositories.find_by(id: repo.id), repo_id: repo.id), class: " star-container", method: "DELETE" do %>
+                      <div class="star">                      
+                        <i class="fas fa-star"></i><span>  <%= repo.likes.count %> </span>
+                      </div>
+                    <% end %>
+                  <% end %>
+
                 </div>
               </div>
             <% end %>
