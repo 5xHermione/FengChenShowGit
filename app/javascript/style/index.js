@@ -11,4 +11,5 @@ import "./following.scss";
 import "./follower.scss";
 import "./code.scss";
 import "./pull_request.scss";
-import "./commits.scss"
+import "./commits.scss";
+import "./commit_diff.scss";
