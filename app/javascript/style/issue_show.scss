@@ -50,15 +50,50 @@
 }
 
 .comment-info-container{
-  // .card-header {
-  //   background-color: #3C3F44;
-  // }
-  .dropdown-menu .show{
-    margin-right: 20px;
-  }
   margin-top: 20px;
-
+  .card-header{
+    border-bottom: none;
+    background-color: #3C3F44;
+    position: relative;
+      .comment-more{
+        position: absolute;
+        right: 10px;
+      }
+      .bottom-line {  
+        height: 1px;
+        opacity:0.6;
+        background-color:  #ffffff;
+        background-image: linear-gradient(to right, #ccc, #ffffff, #ccc);
+      }
+  }  
+  .media img{
+    border-radius: 50%;
+  }
+  .media-body {
+    color: white;
+    p {
+      margin-bottom: 4px;
+    }
+  } 
+  .card {
+    border: none;
+  }
+  .card-body {
+    background-color:  #3C3F44;
+  }
+  .issue-comment-name{
+    color: #ffffff;
+  }
+  .issue-comment-edit{
+    justify-content:flex-end;
+    padding: 0 14px;
+  }
+  .update-comment{
+    margin-right: 10px;
+  }
 }
+
+
 
 
 ul.timeline {
