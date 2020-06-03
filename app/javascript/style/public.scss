@@ -450,6 +450,12 @@ body {
 	border-radius: 8px;
 	border: 1px solid #76787b;
 	background-color: #292c32;
+	outline: 0;
+	box-shadow: none;
+}
+
+.public .repo-search input:focus {
+  border: solid 1px #52e69e;
 }
 
 

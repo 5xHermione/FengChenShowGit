@@ -32,16 +32,14 @@
 
 }
 
-.pull-request p{
-	color: #999999;
-}
-
 .pull-request .col-4 {
-	padding-top: 7px;
+	padding-top: 0;
 }
 
 .pull-request .ago {
+	color: #999999;
 	font-size: 12px;
+	padding: 0;
 }
 
 .pull-request .form-control {
@@ -52,8 +50,9 @@
 	color: #fff;
 }
 
-.pull-request a {
+.pull-request .id {
 	color: #52e69e;
+	padding: 0;
 }
 
 .pull-request .sele {

@@ -4,7 +4,7 @@
   </div>
   <br/>
   <div class="row"> 
-    <form class="form-inline my-2 my-lg-0 col-10">
+    <form class="form-inline my-2 my-lg-0 col-10 repo-search">
       <%= form_tag repository_issues_path, method: :get do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search issues" , class:"issue-search col-12" %>
       <% end %>
