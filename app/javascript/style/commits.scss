@@ -2,7 +2,31 @@
   h3 {
     color: #ffffff;
   }
-  .commit-info {
-    color: #ffffff;
+  .commits-max-w{
+    max-width: 960px;
+    margin: auto;
+    .commit-info-container {
+      border-bottom: 1px solid #ffffff;
+      .commit-info-wrap {
+        color: #ffffff;
+      }
+      .commit-sha {
+        a {
+          font-family: "微軟正黑體";
+          background-color: #292c32;
+          border: 1px solid #52e69e;
+          color: #ffffff;
+          border-radius: 8px;
+          padding: 8px 15px;
+          font-size: 12px;
+          font-weight: bolder;
+        }
+        a:hover {
+          transition: 0.5s;
+          color: #fff;
+          background-color: rgba(82,230,158,0.1);
+        }
+      }
+    }
   }
 }
