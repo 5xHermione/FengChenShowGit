@@ -1,6 +1,9 @@
 class DiffPullRequest
-  def initialize(repo_path)
+  def initialize(repo_path, opts = {})
     @repo = repo_path
+    set_base_branch(opts[:base_branch]) if opts[:base_branch]
+    set_compare_branch(opts[:compare_branch]) if opts[:compare_branch]
+    changed_file_name
   end
 
   def set_base_branch(br)
@@ -28,10 +31,10 @@ class DiffPullRequest
   end
 
   def changed_file_name
-    %x`git -C #{@repo} diff --name-only #{@compare_branch} #{@base_branch}`.split("\n")
+    @changed_file_name = %x`git -C #{@repo} diff --name-only #{@compare_branch} #{@base_branch}`.split("\n")
   end
 
-  def diff_in_files(file_name)
+  def diff_in_file(file_name)
     #compare branch first, base branch after
     arr = []
     files = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
@@ -54,7 +57,14 @@ class DiffPullRequest
         arr << "unknown"
       end
     end
-    @diff = arr.zip(files)
+    diff = arr.zip(files)
   end
-  @diff
+
+  def diff_in_files
+    diffs = []
+    @changed_file_name.each do |file|
+      diffs << diff_in_file(file)
+    end
+    diffs
+  end
 end

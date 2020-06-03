@@ -15,13 +15,12 @@ class PullRequestsController < ApplicationController
   def diff
     @base_branch = params[:pull_request][:base_branch]
     @compare_branch = params[:pull_request][:compare_branch]
-    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}.git")
-    diff_pr.set_base_branch(@base_branch)
-    diff_pr.set_compare_branch(@compare_branch)
-    @diff_files = []
-    diff_pr.changed_file_name.each do |file_name|
-     @diff_files << diff_pr.diff_in_files(file_name)
-    end
+    diff_pr = DiffPullRequest.new(
+      "#{@base_path}#{@current_repo_path}.git",
+      base_branch: @base_branch,
+      compare_branch: @compare_branch
+    )
+    @diff_files = diff_pr.diff_in_files
     if @diff_files == []
       redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has no difference, please choose other branches.'
     else
@@ -39,13 +38,12 @@ class PullRequestsController < ApplicationController
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
 
     #diff files
-    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}.git")
-    diff_pr.set_base_branch(@pull_request.base_branch)
-    diff_pr.set_compare_branch(@pull_request.compare_branch)
-    @diff_files = []
-    diff_pr.changed_file_name.each do |file_name|
-     @diff_files << diff_pr.diff_in_files(file_name)
-    end
+    diff_pr = DiffPullRequest.new(
+      "#{@base_path}#{@current_repo_path}.git", 
+      base_branch: @pull_request.base_branch, 
+      compare_branch: @pull_request.compare_branch
+    )
+    @diff_files = diff_pr.diff_in_files
   end
 
   def create
