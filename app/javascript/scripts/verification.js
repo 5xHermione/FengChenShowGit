@@ -73,7 +73,7 @@ $().ready(function(){
             }               
           }else{ 
             $(".username-signup").css("border-color","#FF5151")
-            $(".noticeUserName").text("*this name has been used.") 
+            $(".noticeUserName").text("this name has been used.") 
             $(".noticeUserName").css("color","#FF5151")      
           }     
         }

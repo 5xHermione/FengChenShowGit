@@ -20,15 +20,15 @@
                   <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link the-bottom"%>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Repositories", repositories_path, class: "nav-link" %>
+                  <%= link_to "Repositories #{find_user.repositories.count}", repositories_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Following #{find_user.following_users.count}", relationships_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
-                <li>
-                  <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Followers #{find_user.followers.count}", followers_path(user_name: find_user.name), class: "nav-link" %>
+                <li class="nav-item mx-3">
+                  <%= link_to "Stars #{find_user.liked_repositories.count}", likes_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
               <div class="line">

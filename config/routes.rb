@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     resources :repositories do
       resources :likes, only: [:create, :destroy]
       resources :pull_requests do
+        member do
+          get "commits", to: "pull_requests#commits", as: "commits"
+        end
         resources :comments, only:[:create, :update, :destroy]
       end
       resources :issues do
