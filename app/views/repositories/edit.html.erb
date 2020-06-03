@@ -1,4 +1,4 @@
-<div class="this-is-settings-navebar public">
+<div class="projet-setting">
 
     <div>
       <%= render "shared/repo_navbar"%>
@@ -17,19 +17,20 @@
           <% end %>
 
           <div class="field row m-auto py-3">
-            <%= form.label :title , "Repository title", class: "col-4" %>
+            <%= form.label :title , "Repository title", class: "col-4 settings-title" %>
             <%= form.text_field :title, class: "form-control col-7"%>
           </div>
 
           <div class="field row m-auto py-3">
-            <%= form.label :description, "Repository description", class: "col-4"  %>
+            <%= form.label :description, "Repository description", class: "col-4 settings-title"  %>
             <%= form.text_field :description, class: "form-control col-7"%>
           </div>
 
-          <div class="field row m-auto py-3">
+          <div class="field row m-auto py-3 settings-title">
             <%= form.label :default_branch, "Repostory default branch"%>
             <%= select("repository", "default_branch", @branches.collect {|b| b.name })%>
           </div>
+          
           <div class="actions">
             <%= form.submit "Update repository", class: "btn btn-primary mx-3"%>
           </div>

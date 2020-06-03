@@ -12,3 +12,4 @@ import "./follower.scss";
 import "./code.scss";
 import "./pull_request.scss";
 import "./public.scss";
+import "./projet_setting.scss";
