@@ -1,5 +1,20 @@
 <%= render "shared/repo_navbar"%>
 <div class="commits-container">
+
+  <div class="git-feature-bar col-12">
+    <ul class="nav">
+      <%= link_to branches_path(user_name: find_user.name, id: current_repository.title), class: "nav-link mx-auto" do %>
+        <i class="fas fa-code-branch"></i> <span> Branches </span> <%= @branches.count %>
+      <% end %>
+      <%= link_to commits_path(user_name: find_user.name, id: current_repository.title), class: "nav-link mx-auto" do %>
+        <i class="fas fa-dot-circle"></i> <span> Commits </span> <%= @commits.count %>
+      <% end %>
+      <div class="nav-link mx-auto">
+        <i class="fas fa-user-friends"></i> <span> Contributors </span> <%= @contributors %>
+      </div>
+    </ul>
+  </div>
+
   <h3 class="my-3">Commits</h3>
 
   <% @commits.each do |commit| %>
@@ -14,7 +29,7 @@
         <%= time_ago_in_words(commit.date.utc) %>
       </div>
       <div class="commit-sha">
-        <%= link_to commit.sha[0..7], commit_diff_path(user_name: find_user.name,id: current_repository.title, sha: commit.sha)%>
+        <%= link_to commit.sha[0..7], commit_diff_path(user_name: find_user.name,id: current_repository.title, sha: commit.sha) %>
       </div>
     </div>
   <% end %>

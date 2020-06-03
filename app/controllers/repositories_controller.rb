@@ -151,6 +151,7 @@ class RepositoriesController < ApplicationController
   def commits
     @commits = @git_file.log(99999)
     @branches = @git_file.branches.remote.map{|b| b.name}
+    @contributors = @git_file.log(99999).map{|c| c.committer.name}.uniq.select{|n|n != "Github"}.count
   end
 
   def commit_diff
@@ -158,6 +159,9 @@ class RepositoriesController < ApplicationController
     @commit_parent = @commit.parent
     @commit_diff_str = @commit.diff_parent.patch
     @diff_status = @commit.diff_parent.stats
+    @branches = @git_file.branches.remote
+    @commits = @git_file.log(99999).count
+    @contributors = @git_file.log(99999).map{|c| c.committer.name}.uniq.select{|n|n != "Github"}.count
   end
 
   def branches
