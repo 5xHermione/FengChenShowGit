@@ -75,6 +75,9 @@
 .projet-setting .form-control:focus {
 	background-color: #292c32;
 	color: #fff;
+	outline: 0;
+	box-shadow: 0 0 0 0;
+  border: solid 1px #52e69e;
 } 
 
 .projet-setting select {
