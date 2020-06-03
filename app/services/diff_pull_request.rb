@@ -34,14 +34,14 @@ class DiffPullRequest
   def diff_in_files(file_name)
     #compare branch first, base branch after
     arr = []
-    files = %x`git -C #{@repo} diff #{@compare_branch} #{@base_branch} -- #{file_name}`.split("\n")
+    files = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
     files.each do |s|
       if s.match(/^diff/)
         arr << "file name"
       elsif s.match(/^index/)
         arr << "index"
       elsif s.match(/^\-\-\- /) || s.match(/^\+\+\+ /)
-        arr << ""
+        arr << "add_or_delete"
       elsif s.match(/^@@ /)
         arr << "line"
       elsif s.match(/^\s/)
@@ -51,10 +51,10 @@ class DiffPullRequest
       elsif s.match(/^\- /) 
         arr << "deletion"
       else
-        arr << ""
+        arr << "unknown"
       end
     end
-    @diff = Hash[*([arr, files].transpose.flatten)]
+    @diff = arr.zip(files)
   end
   @diff
 end
