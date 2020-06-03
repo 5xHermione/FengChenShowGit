@@ -20,11 +20,12 @@
           padding: 8px 15px;
           font-size: 12px;
           font-weight: bolder;
+          transition: 0.5s;
         }
         a:hover {
           transition: 0.5s;
-          color: #fff;
           background-color: rgba(82,230,158,0.1);
+          text-decoration: none;
         }
       }
     }
