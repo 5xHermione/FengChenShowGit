@@ -43,6 +43,24 @@
   display: none;
 }
 
+.issue_name_inactive {
+  h1 {
+    color: #52E69E;
+  }
+}
+
+.comment-info-container{
+  // .card-header {
+  //   background-color: #3C3F44;
+  // }
+  .dropdown-menu .show{
+    margin-right: 20px;
+  }
+  margin-top: 20px;
+
+}
+
+
 ul.timeline {
   list-style-type: none;
   position: relative;

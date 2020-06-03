@@ -53,68 +53,45 @@
 </div>
 
 
-<div class="row">
-  <div class="col-10 offset">
-    <ul class="timeline">
-      <li>
-        <a target="_blank" href="https://www.totoprayogo.com/#">Developer</a>
-        <a href="#" class="float-right"></a>
-        <p>added this to 待處理 To Do in FengChenShowGit  22 hours ago</p>
-      </li>
-      <li>
-        <a href="#">Developer</a>
-        <a href="#" class="float-right"></a>
-        <p>moved this from 待處理 To Do to 處理中 In Progress in FengChenShowGit 17 hours ago</p>
-      </li>
-      <li>
-        <a href="#">Developer</a>
-        <a href="#" class="float-right"></a>
-        <p>moved this from 處理中 In Progress to 完成待驗收 in FengChenShowGit 16 hours ago</p>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-      Developer
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <div class="media">
-          <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
-          <div class="media-body">
-            Ok .
-          </div>
-        </div>
-      </blockquote>
-    </div>
-  </div>
-
-  <div class="text-area-container">
-    <div class="form-group">
-      <label for="exampleFormControlTextarea2">Small textarea</label>
-      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
-      <button type="button" class="btn btn-secondary">
-        <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
-      </button>
-      <button type="button" class="btn btn-secondary">
-        <%=link_to "comment" %> 
-      </button>
-    </div>
-  </div>
-
+  
 <% @comments.each do |c| %>
 
   <div class="comment-info-container">
-    <h4><%= c.user.name %></h4>
-    <h4><%= c.content %></h4>
-    <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="issue-comment-name col-10">
+            <h4><%= c.user.name %></h4> 
+          </div>       
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <% if c.user == current_user %>
+              <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+              <div class="btn comment-edit-button">Edit</div>
+              <% end %>
+            </div>       
+          </div>
+        </div>
 
-    <% if c.user == current_user %>
-      <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn btn-danger comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
-      <div class="btn btn-primary comment-edit-button">Edit</div>
-    <% end %>
+
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <div class="media">
+            <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+            <div class="media-body">
+              <h4><%= c.content %></h4>
+              <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+      
+      
+    </div>
   </div>
 
   <div class="comment-edit-container" style="display: none;">
@@ -128,15 +105,54 @@
         </ul>
       <% end %>
 
-      <%= f.label :content, class: "m-0"%>
-      <%= f.text_field :content, class: "form-control"%>
 
-      <div class="actions">
-        <%= f.submit "Update comment", class: "btn btn-success" %>
+      <div class="comment-info-container">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="issue-comment-name col-10">
+                <h4><%= c.user.name %></h4> 
+              </div>       
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <% if c.user == current_user %>
+                  <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+                  <div class="btn comment-edit-button">Edit</div>
+                  <% end %>
+                </div>       
+              </div>
+            </div>
+
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <div class="media">
+                <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+                <div class="media-body">
+                  <h4>
+                    <%= f.text_field :content, class: "form-control"%>
+                  </h4>
+                  <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
+                </div>
+              </div>
+            </blockquote>
+            <div class="row">
+              <div class="actions">            
+                <%= f.submit "Update comment", class: "btn btn-success" %>
+              </div>
+              <div class="btn btn-danger comment-cancel-button">
+                Cancel
+              </div>
+              </div>
+            </div>
+          
+          
+        </div>
       </div>
-      <div class="btn btn-danger comment-cancel-button">
-        Cancel
-      </div>
+
     <% end %>
   </div>
 <% end %>
@@ -153,11 +169,17 @@
       </ul>
     <% end %>
 
-    <%= f.label :content, class: "m-0"%>
-    <%= f.text_field :content, class: "form-control"%>
+    
 
-    <div class="actions">
-      <%= f.submit "Create comment", class: "btn btn-success" %>
+    <div class="actions text-area-container">
+      <div class="form-group">
+        <%= f.label :content, class: "m-0"%>
+        <%= f.text_area :content, class: "form-control"%>
+        <button type="button" class="btn btn-secondary">
+          <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
+        </button>
+        <%= f.submit "Create comment", class: "btn btn-success" %>
+      </div>
     </div>
   <% end %>
 </div>
