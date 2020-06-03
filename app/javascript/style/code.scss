@@ -61,8 +61,14 @@
   padding: 20px;
 }
 
-.this-is-share-repo-navebar .down {
+.this-is-share-repo-navebar .file-btn{
 	position: relative;
+}
+
+.this-is-share-repo-navebar .down {
+	position: absolute;
+	width: 100%;
+
 }
 .this-is-share-repo-navebar .card-body {
 	position: absolute;
@@ -84,5 +90,15 @@
 }
 
 .this-is-share-repo-navebar .row {
-	z-index: 1;
+	z-index: 99;
+}
+
+.this-is-share-repo-navebar .other-branch {
+	color: #fff;
+	padding-left: 20px;
+}
+
+.this-is-share-repo-navebar .other-branch a{
+	color: #52e69e;
+	text-decoration: none;
 }
