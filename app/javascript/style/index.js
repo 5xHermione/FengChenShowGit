@@ -13,6 +13,7 @@ import "./pull_request.scss";
 import "./public.scss";
 import "./projet_setting.scss";
 import "./projet_setting.scss";
+import "./project_setting.scss";
 import "./repo_new.scss";
 import "./new_issue.scss";
 import "./like.scss";
