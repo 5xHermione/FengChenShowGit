@@ -26,7 +26,7 @@
               <%= commit.message %>
             </p>
             <div class="col-12">
-              <%= commit.author.name %> commit on <%= time_ago_in_words(commit.date.utc) %> ago
+              <%= commit.author.name %> commit <%= time_ago_in_words(commit.date.utc) %> ago
             </div>
           </div>
           <div class="commit-sha col-4">
