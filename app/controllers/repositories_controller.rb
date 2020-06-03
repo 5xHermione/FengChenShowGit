@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :set_repository, only: [:show, :edit, :update, :destroy, :branch_delete, :branches]
   before_action :set_request_format, only: [:show]
-  before_action :set_git_remote_path, only: [:commits, :branches, :contributors, :branch_delete, :edit]
+  before_action :set_git_remote_path, only: [:commits, :branches, :contributors, :branch_delete, :edit, :commit_diff]
   before_action :set_repo_file_path, only: [:branch_delete]
 
   def index
@@ -151,6 +151,13 @@ class RepositoriesController < ApplicationController
   def commits
     @commits = @git_file.log(99999)
     @branches = @git_file.branches.remote.map{|b| b.name}
+  end
+
+  def commit_diff
+    @commit = @git_file.gcommit("#{params[:sha]}")
+    @commit_parent = @commit.parent
+    @commit_diff_str = @commit.diff_parent.patch
+    @diff_status = @commit.diff_parent.stats
   end
 
   def branches

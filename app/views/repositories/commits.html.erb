@@ -14,7 +14,7 @@
         <%= time_ago_in_words(commit.date.utc) %>
       </div>
       <div class="commit-sha">
-        <%= commit.sha %>
+        <%= link_to commit.sha[0..7], commit_diff_path(user_name: find_user.name,id: current_repository.title, sha: commit.sha)%>
       </div>
     </div>
   <% end %>
