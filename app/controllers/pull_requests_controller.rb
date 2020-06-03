@@ -15,7 +15,7 @@ class PullRequestsController < ApplicationController
   def diff
     @base_branch = params[:pull_request][:base_branch]
     @compare_branch = params[:pull_request][:compare_branch]
-    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
+    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}.git")
     diff_pr.set_base_branch(@base_branch)
     diff_pr.set_compare_branch(@compare_branch)
     @diff_files = []
@@ -33,19 +33,20 @@ class PullRequestsController < ApplicationController
     @branches = @git_file.branches.remote
     @pull_request = current_repository.pull_requests.new
     @pull_request.name = params[:compare_branch]
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
     @pull_request.base_branch = params[:base_branch] 
     @pull_request.compare_branch = params[:compare_branch]
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
 
     #diff files
-    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
+    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}.git")
     diff_pr.set_base_branch(@pull_request.base_branch)
     diff_pr.set_compare_branch(@pull_request.compare_branch)
-    @pull_request.diff_files = []
+    @diff_files = []
     diff_pr.changed_file_name.each do |file_name|
-     @pull_request.diff_files << diff_pr.diff_in_files(file_name)
+     @diff_files << diff_pr.diff_in_files(file_name)
     end
+    byebug
   end
 
   def create
