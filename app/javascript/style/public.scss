@@ -1,8 +1,13 @@
 /*可共用*/
 
+html {
+	height: 100%;
+}
+
 body {
 	background-color: rgba(41, 44, 50, 1);
-  width: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .public .id-name {
