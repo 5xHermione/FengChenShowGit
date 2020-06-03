@@ -15,8 +15,4 @@ import "./projet_setting.scss";
 import "./projet_setting.scss";
 import "./repo_new.scss";
 import "./new_issue.scss";
-<<<<<<< HEAD
-
-=======
 import "./like.scss";
->>>>>>> 增加 localhost:3000/user/likes 樣式

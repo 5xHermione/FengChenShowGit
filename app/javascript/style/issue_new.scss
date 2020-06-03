@@ -10,13 +10,22 @@
 .new-issues input {
 	border-radius: 8px;
 	margin-top: 10px!important;
+	margin-left: 10px;
 	height: 40px;
+  padding-left: 10px;
+  background-color: #3f4448;
+	border: solid 1px #52e69e;
 }
 
 .new-issues textarea {
 	border-radius: 8px;
 	margin-top: 10px!important;
-	height: 60px;
+	margin: 10px;
+	height: 200px;
+	padding-left: 10px;
+	width: 50vw;
+	background-color: #3f4448;
+	border: solid 1px #52e69e;
 }
 
 
@@ -28,11 +37,27 @@
 	border: solid 1px #52e69e;
 	padding: 8px 15px 8px 15px ;
 	border-radius: 8px;
-	margin: 20px 0 20px 15px!important;
+	margin: 20px 0 20px 13px!important;
 }
 
 .new-issues .actions input:hover {
 	transition: 0.5s;
 	color: #fff;
 	background-color: rgba(82,230,158,0.1);
+}
+
+.new-issues .container {
+	width: 100vw;
+	display: flex;
+	margin-bottom: 40px; 
+}
+
+.new-issues .avatarsmall {
+	margin-top: 31px; 
+}
+
+.new-issues form {
+	border: solid 1px #606060;
+	margin: 10px;
+	padding: 5px;
 }

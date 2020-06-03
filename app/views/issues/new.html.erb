@@ -1,4 +1,4 @@
-<div class="new-issues">
+<div class="new-issues this-is-navbar">
   <div>
     <%= render "shared/repo_navbar"%>
   </div>
@@ -10,24 +10,35 @@
       <% end %>
     </ul>
   <% end %>
+  
+  <div class="container col-12">
+      <div class="avatarsmall">
+        <% if current_user.image? %>
+          <%= image_tag(current_user.image_url) %>
+        <% else %>
+          <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+        <% end %>
+      </div>
 
-  <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
+      <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
 
-    <div class="field col-8">
-      <%= form.label :title %>
-    </div>
-    <div class="field">
-      <%= form.text_field :name %>
-    </div>
-    <br>
-    <div class="field col-8">
-      <%= form.label :description %>
-    </div>
-    <div class="field ">
-      <%= form.text_area :description %>
-    </div>
+        <!-- <div class="field col-8">
+          <%= form.label :title  %>
+        </div> -->
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+        <div class="field">
+          <%= form.text_field :name, placeholder: "Title" %>
+        </div>
+        <br>
+        <!-- <div class="field col-8">
+          <%= form.label :description %>
+        </div> -->
+        <div class="field">
+          <%= form.text_area :description, placeholder: "Leave a commit" %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+  </div>
