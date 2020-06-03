@@ -4,10 +4,16 @@
     <%= render "shared/repo_navbar"%>
   </div>
   <div>
+  	<%= link_to "Create Pull Request", new_repository_pull_request_path(user_name: find_user.name, base_branch: @base_branch, compare_branch: @compare_branch), class: "btn btn-primary" %>
+  </div>
+  <div>
   	<% @diff_files.each do |diff| %>
-  	  <div>
-  	   <%= diff %>
-  	  </div>
+  	  
+  	 <% diff.each do |line| %>
+  	  <div> <%= line[0] %> </div>
+	  <div> <%= line[1] %> </div>
+  	 <% end %>
+  	 <br>
   	<% end %>
   </div>
 </div>

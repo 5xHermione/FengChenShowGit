@@ -7,27 +7,41 @@ class PullRequestsController < ApplicationController
     @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && PullRequest.find_by(compare_branch: b).nil?}
   end
 
-  def new
-    @branches = @git_file.branches.remote
-    @pull_request = current_repository.pull_requests.new
-    @pull_request.name = params[:branch]
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
-    @pull_request.base_branch = @pull_request.repository.default_branch # 這行做 compare 會需要改
-    @pull_request.compare_branch = params[:branch]                      # 這行可能可以不用改，看情況
-    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
-  end
-
   def compare
     @pull_request = PullRequest.new
     @branches = @git_file.branches.remote
   end
 
   def diff
-    base_branch = params[:pull_request][:base_branch]
-    compare_branch = params[:pull_request][:compare_branch]
+    @base_branch = params[:pull_request][:base_branch]
+    @compare_branch = params[:pull_request][:compare_branch]
     diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
-    diff_pr.set_base_branch(base_branch)
-    diff_pr.set_compare_branch(compare_branch)
+    diff_pr.set_base_branch(@base_branch)
+    diff_pr.set_compare_branch(@compare_branch)
+    @diff_files = []
+    diff_pr.changed_file_name.each do |file_name|
+     @diff_files << diff_pr.diff_in_files(file_name)
+    end
+    if @diff_files == []
+      redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has no difference, please choose other branches.'
+    else
+      
+    end
+  end
+
+  def new
+    @branches = @git_file.branches.remote
+    @pull_request = current_repository.pull_requests.new
+    @pull_request.name = params[:branch]
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.base_branch = params[:base_branch] 
+    @pull_request.compare_branch = params[:compare_branch]
+    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+
+    #diff files
+    diff_pr = DiffPullRequest.new("#{@base_path}#{@current_repo_path}")
+    diff_pr.set_base_branch(@pull_request.base_branch)
+    diff_pr.set_compare_branch(@pull_request.compare_branch)
     @diff_files = []
     diff_pr.changed_file_name.each do |file_name|
      @diff_files << diff_pr.diff_in_files(file_name)

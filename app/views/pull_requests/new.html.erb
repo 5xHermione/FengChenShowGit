@@ -3,13 +3,12 @@
 </div>
 
 <%# 這邊的路徑做 compare 時會需要改 %>
-<%= form_with(model: @pull_request, url: repository_pull_requests_path(user_name: find_user.name, repository_id: current_repository.title, branch: params[:branch]), local: true, method: :get) do |form| %>
-  <%= form.label :base_branch, "Base branch"%>
-  <%= select("pull_request", "base_branch", @branches.collect {|b| b.name })%>
-
-  <%= form.label :compare_branch, "compare branch"%>
-  <%= select("pull_request", "compare_branch", @branches.collect {|b| b.name })%>
-<% end %>
+<div>
+  <div>
+    <p> Base branch: <%= @pull_request.base_branch %> </p> 
+    <p> Compare branch: <%= @pull_request.compare_branch %> <p>
+  </div>
+</div>
 
 <% if @pull_request.errors.any? %>
   <ul>
@@ -30,10 +29,22 @@
     <%= form.label :description %>
     <%= form.text_area :description, class:"form-control" %>
   </div>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 
-  <h1>
-    這裡是放 file_change 的地方
-  </h1>
+  <div>
+    <h3>File changes</h3>
+    <div>
+      <% @diff_files.each do |diff| %>
+        <% diff.each do |line| %>
+          <div class="<%= line[0] %>"> <%= line[1] %>  </div>
+        <% end %>
+        <br>
+      <% end %>
+    </div>
+  </div>
 
   <% @commits.each do |commit|%>
     <div class="container">
@@ -59,7 +70,4 @@
 
   <%= hidden_field_tag :branch, params[:branch] %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %> 
