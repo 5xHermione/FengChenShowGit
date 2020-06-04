@@ -77,6 +77,7 @@
 	background-color: #e34c4c;
   border-color:  #e34c4c;
   color: #292c32;
+  z-index: 99;
 }
 
 .user-setting-edit .btn-danger:hover { 
@@ -125,10 +126,9 @@
 }
 
 .user-setting-edit .btn-avatar {
-  position: absolute;
   left: 15px;
-  bottom: -2vw;
-  width: 200px;
-  height: 200px;
+  padding: 10px;
+  width: 220px;
+  height: 55px;
   cursor: pointer;
 }
