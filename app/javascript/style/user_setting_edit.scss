@@ -4,6 +4,22 @@
 	font-family: "微軟正黑體";
 }
 
+.user-setting-edit h2 {
+	color: #52e69e;
+	margin: 40px 0 30px 0!important; 
+}
+
+.user-setting-edit p {
+	display: inline;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.user-setting-edit label {
+	margin: 5px 0 5px 0;
+	color: #52e69e;
+}
+
 .user-setting-edit .tab-content {
 	background-color: #3c3f44;
 	margin-left: 15px;
@@ -45,4 +61,29 @@
 	background-color: rgba(82,230,158,0.1);
 	color: #fff;
 	transition: 0.4s;
+}
+
+.user-setting-edit .card-body {
+	background-color: #3c3f44;
+	border: 1px solid #292c32;
+	display: flex;
+
+}
+
+.user-setting-edit .btn-danger {
+	margin: 0;
+	font-size: 12px; 
+	background-color: #e34c4c;
+  border-color:  #e34c4c;
+  color: #292c32;
+}
+
+.user-setting-edit .btn-danger:hover { 
+	background-color: rgba(227,76,76,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.user-setting-edit .sshN {
+	margin-top: 13px; 
 }

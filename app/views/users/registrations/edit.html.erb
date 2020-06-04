@@ -45,10 +45,10 @@
                   <% end %>
 
                   <div class="field my-3">
-                    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+                    <%= f.label :password %> <p>( leave blank if you don't want to change it )</p>
                     <%= f.password_field :password, autocomplete: "new-password", class: "form-control col-8" %>
                     <% if @minimum_password_length %>
-                      <em><%= @minimum_password_length %> characters minimum</em>
+                      <p><%= @minimum_password_length %> characters minimum</p>
                     <% end %>
                   </div>
 
@@ -58,7 +58,7 @@
                   </div>
 
                   <div class="field my-3">
-                    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+                    <%= f.label :current_password %> <p>( we need your current password to confirm your changes )</p>
                     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control col-8" %>
                   </div>
 
@@ -95,9 +95,9 @@
                     <% current_user.sshkeys.each do |ssh|%>
                     <div class="card">
                       <div class="card-body">
-                        <p> <%= ssh.name %> </p>
-                        <p> Added on <%= ssh.created_at.to_date %></p>
-                        <%= button_to "Delete key",sshkey_path(ssh.id), method: :delete, class: "btn btn-danger my-2" %>
+                        <p class="sshN col-3"> <%= ssh.name %> </p>
+                        <p class="sshN col-5"> Added on <%= ssh.created_at.to_date %></p>
+                        <%= button_to "Delete key",sshkey_path(ssh.id), method: :delete, class: "btn btn-danger my-2 col-12" %>
                       </div>
                     </div>
                     <% end %>
