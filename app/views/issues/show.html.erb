@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div class="issue-title col-8">
-      <div class="issue_name_inactive">
+      <div class="issue_name_inactive ">
         <h1><%= @issue.name %></h1>
       </div>
       <%= form_for([:repository, @issue],remote: true) do |form|%>
@@ -22,10 +22,10 @@
   </div>
 </div>
 
-<div class="container mt-5 mb-5 ml-4 col-10">
-<div class="card">
-  <div class="card-header">
-    Developer
+<div class="container mt-5 mb-5 ml-4 col-10 ">
+<div class=" issue_description card">
+  <div class="card-header issue-comment-name">
+    <h4>Developer</h4>
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
@@ -33,9 +33,10 @@
         <img src="https://picsum.photos/60/60?random=1" class="mr-3" alt="...">
         <div class="media-body">
           <div class="row">
-            <div class="issue_description col-8">
+            <div class="col-8">
               <div class="issue_description_inactive">
                 <h6><%= @issue.description %></h6>
+                <h6><%= time_ago_in_words(@issue.created_at) %>ago</h6>
               </div>
               <%= form_for([:repository, @issue],remote: true) do |form|%>
               <div class= "issue_description_active"><%= form.text_area :description ,type: "text_area" %></div> 
@@ -65,13 +66,13 @@
             <div class="bottom-line"></div> 
           </div>       
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split comment-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split comment-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
             </button>
         
             <div class="dropdown-menu">
               <% if c.user == current_user %>
-                <div><%= link_to "delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+                <div><%= link_to "Delete", repository_issue_comment_path(user_name: c.user.name, repository_id: current_repository.title , issue_id: @issue, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
                 <div class="btn comment-edit-button">Edit</div>
               <% end %>
             </div>       
@@ -85,7 +86,7 @@
           <div class="media">
             <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
             <div class="media-body">
-              <p><%= c.content %></p>
+              <p><%= c.content%></p>
               <h6><%= time_ago_in_words(c.created_at) %>ago</h6>
             </div>
           </div>
@@ -125,7 +126,7 @@
                 <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
                 <div class="media-body">
                   <h6>
-                    <%= f.text_field :content, class: "form-control"%>
+                    <%= f.text_area :content, class: "form-control"%>
                   </h6>
                   <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
                 </div>
@@ -167,10 +168,12 @@
       <div class="form-group">
         <%= f.label :content, class: "m-0"%>
         <%= f.text_area :content, class: "form-control"%>
-        <button type="button" class="btn btn-secondary">
-          <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
-        </button>
-        <%= f.submit "Create comment", class: "btn btn-success" %>
+        <div class="issue-comment-btn row">
+          <button type="button" class="issue-status-change btn btn-secondary">
+            <%=link_to @issue.toggle_status, toggle_status_repository_issue_path %> 
+          </button> 
+          <%= f.submit "Create comment", class: "comment-submit btn btn-success" %>         
+        </div>
       </div>
     </div>
   <% end %>

@@ -1,3 +1,6 @@
+h1 h2 h3 h4 h5 h6 p {
+  font-family: "微軟正黑體";
+}
 .text-area-container {
   margin-top: 50px;
 }
@@ -35,8 +38,18 @@
   display: none;
 }
 
+#issue_edit{
+  background-color: #52E69E;
+  color: #293231;
+  font-family: "微軟正黑體";
+}
+
 #issue_description_update{
   display: none;
+}
+#comment_content {
+  min-height: 10rem;
+  max-height: 10rem;
 }
 
 .issue_description_active{
@@ -48,24 +61,32 @@
     color: #52E69E;
   }
 }
+.issue_description {
+  background-color:  #3C3F44;
+} 
 
+.card-header{
+  border-bottom: none;
+  background-color: #3C3F44;
+  position: relative;
+    .comment-more{
+      position: absolute;
+      right: 10px;
+    }
+    .bottom-line {  
+      height: 1px;
+      opacity:0.6;
+      background-color:  #ffffff;
+      background-image: linear-gradient(to right, #ccc, #ffffff, #ccc);
+    }
+} 
+
+.issue-comment-name{
+  color: #ffffff;
+}
 .comment-info-container{
-  margin-top: 20px;
-  .card-header{
-    border-bottom: none;
-    background-color: #3C3F44;
-    position: relative;
-      .comment-more{
-        position: absolute;
-        right: 10px;
-      }
-      .bottom-line {  
-        height: 1px;
-        opacity:0.6;
-        background-color:  #ffffff;
-        background-image: linear-gradient(to right, #ccc, #ffffff, #ccc);
-      }
-  }  
+  margin-top: 30px;
+
   .media img{
     border-radius: 50%;
   }
@@ -81,15 +102,46 @@
   .card-body {
     background-color:  #3C3F44;
   }
-  .issue-comment-name{
-    color: #ffffff;
-  }
   .issue-comment-edit{
     justify-content:flex-end;
     padding: 0 14px;
   }
   .update-comment{
     margin-right: 10px;
+    .btn{
+      background-color: #52E69E;
+      color: #292c32;
+      font-family: "微軟正黑體";
+    }
+  }
+  .dropdown-toggle::after {
+    color: #ffffff;
+    border-top: .5em solid;
+    border-top-width: 0.5em;
+    border-top-style: solid;
+    border-top-color: initial;
+    border-right: .4em solid transparent;
+    border-right-width: 0.4em;
+    border-right-style: solid;
+    border-right-color: transparent;
+    border-bottom: 0;
+    border-bottom-width: 0px;
+    border-bottom-style: initial;
+    border-bottom-color: initial;
+    border-left: .4em solid transparent;
+    border-left-width: 0.4em;
+    border-left-style: solid;
+    border-left-color: transparent;
+  }
+}
+.issue-comment-btn {
+  justify-content: flex-end;
+  margin-top: 1rem;
+  .comment-submit {
+    margin-right: 1rem;
+  }
+  .issue-status-change {
+    margin-right: 1rem;
   }
 }
 
