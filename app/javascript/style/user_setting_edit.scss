@@ -1,0 +1,36 @@
+.user-setting-edit .repositories-container {
+	padding-right: 0!important;
+	color: #fff;
+	font-family: "微軟正黑體";
+}
+
+.user-setting-edit .tab-content {
+	background-color: #3c3f44;
+	margin-left: 15px;
+	border-top-right-radius: 8px; 
+	border-bottom-right-radius: 8px;  
+	border-bottom-left-radius: 8px;
+	padding-left: 20px; 
+	padding-bottom: 30px;
+}
+.user-setting-edit .avatar-wrap {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.user-setting-edit .user-setting-nav{
+	padding-left: 15px;
+}
+
+.user-setting-edit .form-control {
+	  color: #fff;
+    background-color: #292c32;
+    border-color: #292c32;
+    outline: 0;
+    box-shadow: 0 0 0 0 ;
+}
+
+.user-setting-edit .form-control:focus {
+    border-color: #52e69e;
+    background-color: #292c32;
+}
