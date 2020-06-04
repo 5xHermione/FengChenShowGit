@@ -67,11 +67,11 @@
                     <%= f.text_field :name, class: "form-control col-4" %>
                   </div>
 
-                  <div class="field my-3">
+                  <div class="field-avatar my-3">
                     <%= f.label :avatar %>
                     <br>
                     <%= image_tag(@user.image_url) if @user.image? %>
-                    <%= f.file_field :image %>
+                    <%= f.file_field :image, class: "btn-avatar" %>
                   </div>
 
                   <div class="actions">

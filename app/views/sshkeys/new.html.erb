@@ -1,39 +1,43 @@
-<div class="container my-5">
-  <div class="row">
-    <div class="user-info-container col-12 col-md-3">
-      <div class="avatar-wrap">
-        <% if current_user.image? %>
-          <%= image_tag(current_user.image_url) %>
-        <% else %>
-          <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-        <% end %>
-      </div>
-      <h4 class="my-2"><i class="far fa-smile"></i> NAME：<%= current_user.name%></h4>
-      <h4 class="my-2">ID：<%= current_user.id%></h4>
-    </div>
-    <div class="repositories-container col-12 col-md-9 row p-3">
-      <div class="ssh-title-wrap col-12">
-        <h3>
-          Add new SSH key
-        </h3>
-      </div>
-      <div>
-        <%= form_with(model: @sshkey, local: true) do |form| %>
-        <div class="col-12 mt-3">
-          <h6><%= form.label :keyname, class: "m-0"%></h6>
-          <%= form.text_field :name, class: "form-control"%>
+<div class="add-new-sshkey user-setting-edit public">   
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="user-info-container col-12 col-md-3">
+          <div class="avatar-wrap">
+            <% if current_user.image? %>
+              <%= image_tag(current_user.image_url) %>
+            <% else %>
+              <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+            <% end %>
+          </div>
+          <h4 class="my-2 user-name">Name：<%= current_user.name%></h4>
+          <h4 class="my-2 user-id">ID：<%= current_user.id%></h4>
         </div>
-        <div class="col-12 mt-3">
-          <h6><%= form.label :key, class: "m-0"%></h6>
-          <%= form.text_field :key, class: "form-control"%>
-        </div>
-        <div class="col-12 mt-3 mb-5">
-          <div class="actions">
-            <%= form.submit "Add new key", class: "btn btn-primary" %>
+        <div class="repositories-container col-12 col-md-9 row p-3">
+          <div class="ssh-title-wrap col-12">
+            <h2>
+              Add new SSH key
+            </h2>
+          </div>
+          <div>
+            <%= form_with(model: @sshkey, local: true) do |form| %>
+            <div class="col-12 mt-3">
+              <h6><%= form.label :keyname, class: "m-0"%></h6>
+              <%= form.text_field :name, class: "form-control" %>
+            </div>
+            <div class="col-12 mt-3">
+              <h6><%= form.label :key, class: "m-0"%></h6>
+              <%= form.text_field :key, class: "form-control"%>
+            </div>
+            <div class="col-12 mt-3 mb-5">
+              <div class="actions">
+                <%= form.submit "Add new key", class: "btn" %>
+              </div>
+            </div>
+            <% end %>
           </div>
         </div>
-        <% end %>
       </div>
     </div>
-  </div>
+
 </div>

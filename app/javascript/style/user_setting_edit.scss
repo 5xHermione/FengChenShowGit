@@ -23,6 +23,7 @@
 .user-setting-edit .tab-content {
 	background-color: #3c3f44;
 	margin-left: 15px;
+	border-top-left-radius: 8px; 
 	border-top-right-radius: 8px; 
 	border-bottom-right-radius: 8px;  
 	border-bottom-left-radius: 8px;
@@ -39,16 +40,16 @@
 }
 
 .user-setting-edit .form-control {
-	  color: #fff;
-    background-color: #292c32;
-    border-color: #292c32;
-    outline: 0;
-    box-shadow: 0 0 0 0 ;
+  color: #fff;
+  background-color: #292c32;
+  border-color: #292c32;
+  outline: 0;
+  box-shadow: 0 0 0 0 ;
 }
 
 .user-setting-edit .form-control:focus {
-    border-color: #52e69e;
-    background-color: #292c32;
+  border-color: #52e69e;
+  background-color: #292c32;
 }
 
 .user-setting-edit .btn {
@@ -86,4 +87,48 @@
 
 .user-setting-edit .sshN {
 	margin-top: 13px; 
+}
+
+.user-setting-edit .nav-tabs {
+	background-color: #292c32;
+	border: none;
+}
+
+.user-setting-edit #sshkey-tab {
+	background-color: #292c32;
+	color: #fff;
+}
+.user-setting-edit #sshkey-tab:hover {
+	color: #52e69e;
+}
+.user-setting-edit #sshkey-tab:focus {
+	background-color: #3c3f44;
+	color: #52e69e;
+}
+
+.user-setting-edit #profile-tab {
+	background-color: #292c32;
+	color: #fff;
+	border-top-right-radius: 8px; 
+	border-top-left-radius: 8px; 
+}
+.user-setting-edit #profile-tab:hover {
+	color: #52e69e;
+}
+.user-setting-edit #profile-tab:focus {
+	background-color: #3c3f44;
+	color: #52e69e;
+}
+
+.user-setting-edit .field-avatar  {
+  padding-bottom: 60px; 
+}
+
+.user-setting-edit .btn-avatar {
+  position: absolute;
+  left: 15px;
+  bottom: -2vw;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
 }
