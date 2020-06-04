@@ -7,7 +7,7 @@
 
         <div class="field form-group">
           <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control email-signup"%><span class="noticeEmail"></span>
         </div>
 
         <div class="field form-group">
@@ -15,21 +15,21 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %>
-          <%= f.password_field :password, autocomplete: "new-password",class: "form-control" %>
+          <%= f.password_field :password, autocomplete: "new-password",class: "form-control password-signup"%><span class="noticePassword"></span>
         </div>
 
         <div class="field form-group">
           <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control password-confirmation-signup"%><span class="noticeConfirmation"></span>
         </div>
 
         <div class="field form-group">
           <%= f.label :name %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control username-signup" %><span class="noticeUserName"></span>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class: "btn btn-primary" %>
+          <%= f.submit "Sign up", class: "btn btn-primary submitFrom" %>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
