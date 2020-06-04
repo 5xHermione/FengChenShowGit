@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         collection do
           get :compare
           get :diff
+          post :merge
         end
       end
       resources :issues do

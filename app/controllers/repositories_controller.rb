@@ -180,6 +180,10 @@ class RepositoriesController < ApplicationController
     redirect_to repository_path(user_name: find_user.name, id: current_repository.title)
   end
 
+  def merge
+    
+  end
+
   private
   def set_repository
     @repository = find_user.repositories.friendly.find(params[:id])
