@@ -3,7 +3,8 @@
   <div class="reponew-title-wrap col-12">
     <h3>Create a new repository</h3>
     <div>Create a new repository
-    A repository contains all project files, including the revision history. Already have a project repository elsewhere?</div>
+    A repository contains all project files, including the revision history. Already have a project repository elsewhere?
+    </div>
   </div>
 
   <%= form_with(model: @repository, local: true) do |form| %>
@@ -18,21 +19,22 @@
       <div class="col-12 row">
         <div class="col-2 p-2">
           <h6>Owner</h6>
-          <h6 class="btn btn-primary col-12"><%= current_user.name%></h6>
+          <h6 class="btn user-btn col-12"><%= current_user.name%></h6>
         </div>
-        <span>/</span>
+        <span> / </span>
         <div class="col-6 mt-2">
           <h6><%= form.label :title, class: "m-0"%></h6>
-          <%= form.text_field :title, class: "form-control"%>
+          <%= form.text_field :title, class: "form-control-dark"%>
         </div>
-        <p>Great repository names are short and memorable.</p>
+        <p class="great">Great repository names are short and memorable.</p>
       </div>
 
       <div class="reponew-decription-wrap col-12">
         <h6><%= form.label :description %></h6>
-        <%= form.text_field :description, class: "form-control"%>
+        <%= form.text_field :description, class: "form-control-dark"%>
       </div>
     </div>
+
     <div class="reponew-ispublic-wrap col-12">
       <div class="row">
         <%= radio_button_tag(:is_public, "true" , true ) %>
@@ -42,6 +44,7 @@
           <p>Anyone can see this repository. Only you can commit.</p>
         </div>  
       </div>
+
       <div class="row">
         <%= radio_button_tag(:is_public, "false") %>
         <i class="fas fa-lock"></i>
@@ -52,11 +55,13 @@
       </div>
     </div>
 
-    <div class="col-12 mt-3 mb-5">
+    <div class="col-12 mt-3 mb-5 the-btn">
       <div class="actions">
-        <%= form.submit "Create repository", class: "btn btn-success" %>
+        <%= form.submit "Create repository", class: "btn create-repository" %>
       </div>
     </div>
+
   <% end %>
   
 </div>
+
