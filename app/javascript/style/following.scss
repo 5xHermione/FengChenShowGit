@@ -5,10 +5,6 @@
 	position: relative;
 }
 
-.following .user-info-container {
-/*padding-right: 15px;*/
-}
-
 .following .project-block {
 	padding-left: 10!important;
 	border-bottom: solid 1px #606060 ;}
@@ -16,8 +12,7 @@
 .following-avatar {
 	height: 120px;
 	padding-bottom: 20px;
-	padding-top: 20px;
-	
+	padding-top: 20px;	
 }
 
 .following-avatar img {
@@ -30,6 +25,15 @@
 	display: inline;
 }
 
-.following .my-following{
+.following .my-following {
 	padding-right: 0px;
 }
+
+.following .repo-search {
+	padding: 0;
+}
+
+.following .form-control {
+	color: #fff;
+}
+

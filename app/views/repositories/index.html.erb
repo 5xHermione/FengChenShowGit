@@ -21,15 +21,15 @@
                   <%= link_to "Overview", logged_in_path(user_name: find_user.name), class: "nav-link"%>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Repositories", repositories_path, class: "nav-link the-bottom" %>
+                  <%= link_to "Repositories #{find_user.repositories.count}", repositories_path, class: "nav-link the-bottom" %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Following", relationships_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Following #{find_user.following_users.count}", relationships_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to "Followers", followers_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Followers #{find_user.followers.count}", followers_path(user_name: find_user.name), class: "nav-link" %>
                 <li class="nav-item mx-3">
-                  <%= link_to "Stars", likes_path(user_name: find_user.name), class: "nav-link" %>
+                  <%= link_to "Stars #{find_user.liked_repositories.count}", likes_path(user_name: find_user.name), class: "nav-link" %>
                 </li>
               </ul>
               <div class="line">
@@ -56,9 +56,21 @@
                       Create <%= time_ago_in_words(repo.created_at) %> ago
                     </div>
                   </div>
-                  <button class="star">        
-                    <p><i class="far fa-star"></i> Like</p>
-                  </button>
+
+                  <% if current_user.liked_repositories.find_by(id: repo.id).nil? %>
+                    <%= link_to repository_likes_path(repository_id: repo), class: "star-container", method: "POST" do %>
+                      <div class="star">
+                        <i class="far fa-star"></i><span> <%= repo.likes.count %> </span>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to repository_like_path(repository_id: repo, id: current_user.liked_repositories.find_by(id: repo.id), repo_id: repo.id), class: " star-container", method: "DELETE" do %>
+                      <div class="star">                      
+                        <i class="fas fa-star"></i><span>  <%= repo.likes.count %> </span>
+                      </div>
+                    <% end %>
+                  <% end %>
+
                 </div>
               </div>
             <% end %>

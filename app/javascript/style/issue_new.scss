@@ -1,0 +1,74 @@
+.new-issues .field {
+	color: #fff;
+	display: inline; 
+}
+
+.new-issues .label {
+	color: #fff;
+}
+
+.new-issues textarea {
+	border-radius: 8px;
+	margin: 0 12px 12px 12px;
+	height: 200px;
+	padding-left: 10px;
+	width: 50vw;
+	background-color: #3f4448;
+	border-style: none;
+	color: #fff;
+	outline: 0;
+}
+.new-issues textarea:focus {
+  border: 1px solid #52e69e;
+}
+
+
+.new-issues input {
+	font-family: "微軟正黑體";
+	font-size: 14px;
+	color: #292c32;
+	height: 40px;
+	background-color: #3f4448;
+	padding: 8px 15px 8px 12px ;
+	border-radius: 8px;
+	margin: 12px 0 22px 13px!important;
+	border-style: none;
+	color: #fff;
+	outline: 0;
+}
+.new-issues input:focus {
+  border: 1px solid #52e69e;
+}
+
+.new-issues .container {
+	width: 100vw;
+	display: flex;
+	margin-bottom: 40px; 
+}
+
+.new-issues .avatarsmall {
+	margin-top: 31px; 
+}
+
+.new-issues form {
+	border: solid 1px #606060;
+	margin: 10px;
+	padding: 5px;
+}
+
+.new-issues li {
+	color: #e34c4c;
+}
+
+.new-issues .actions input {
+	border: solid 1px #52e69e;
+	color: #292c32;
+	padding: 10px;
+	background-color: #52e69e!important;
+}
+
+.new-issues .actions input:hover {
+	transition: 0.5s;
+	color: #fff;
+	background-color: rgba(82,230,158,0.1)!important;;
+}

@@ -1,28 +1,40 @@
-<div>
-  <%= render "shared/repo_navbar"%>
-</div>
-
-<% if @issue.errors.any? %>
-  <ul>
-    <% @issue.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :name %>
+<div class="new-issues this-is-navbar">
+  <div>
+    <%= render "shared/repo_navbar"%>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <% if @issue.errors.any? %>
+    <ul>
+      <% @issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <div class="container col-12">
+      <div class="avatarsmall">
+        <% if current_user.image? %>
+          <%= image_tag(current_user.image_url) %>
+        <% else %>
+          <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+        <% end %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <%= form_for(([:repository, @issue]) , method: 'post') do |form|%>
+
+
+        <div class="field">
+          <%= form.text_field :name, placeholder: "Title" %>
+        </div>
+        <br>
+
+        <div class="field">
+          <%= form.text_area :description, placeholder: "Leave a commit" %>
+        </div>
+        
+        <br>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
   </div>
-<% end %>

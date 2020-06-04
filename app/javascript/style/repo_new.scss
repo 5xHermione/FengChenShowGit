@@ -1,0 +1,81 @@
+.reponew-container {
+	color: #fff;
+	font-family: "微軟正黑體";
+}
+.reponew-container h3{
+	color: #52e69e;
+	font-size: 24px;
+	font-family: "Arial"!important;
+}
+
+.reponew-container p {
+	font-size: 14px;
+}
+
+.reponew-container .reponew-info-wrap {
+	padding-left: 0!important;
+}
+
+.reponew-container .reponew-decription-wrap {
+	padding-left: 0!important;
+}
+
+.reponew-container .col-2{
+	padding-left: 0!important;
+}
+
+.reponew-container .the-btn {
+	padding-left: 0!important;
+}
+
+.reponew-container input {
+	border-radius: 8px;
+	border: 1px solid #76787b;
+	background-color: #292c32;
+	outline: 0;
+	padding-left: 10px;
+}
+.reponew-container input:focus {
+	border-color: #52e69e;
+}
+
+.reponew-container .user-btn {
+	background-color: #52e69e;
+  border-color:  #52e69e;
+  color: #292c32;
+}
+
+.reponew-container .user-btn:hover {
+	background-color: rgba(82,230,158,0.5);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.reponew-container .create-repository {
+	background-color: #52e69e;
+  border-color:  #52e69e;
+  color: #292c32;
+}
+
+.reponew-container .create-repository:hover { 
+	background-color: rgba(82,230,158,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.reponew-container h6 {
+	color: #52e69e;
+}
+
+.reponew-container label {
+	color: #52e69e;
+}
+
+.great {
+	margin-bottom: 40px; 
+}
+
+.reponew-container .form-control-dark {
+	color: #fff;
+	height: 36px;
+}
