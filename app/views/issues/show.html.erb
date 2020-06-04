@@ -35,7 +35,7 @@
           <div class="row">
             <div class="issue_description col-8">
               <div class="issue_description_inactive">
-                <%= @issue.description %>
+                <%= to_markdown(@issue.description)%>
               </div>
               <%= form_for([:repository, @issue],remote: true) do |form|%>
               <div class= "issue_description_active"><%= form.text_area :description ,type: "text_area" %></div> 
@@ -108,7 +108,7 @@
 
   <div class="comment-info-container">
     <h4><%= c.user.name %></h4>
-    <h4><%= c.content %></h4>
+    <h4><%= to_markdown(c.content)%></h4>
     <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
 
     <% if c.user == current_user %>
