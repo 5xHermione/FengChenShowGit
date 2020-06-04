@@ -34,3 +34,15 @@
     border-color: #52e69e;
     background-color: #292c32;
 }
+
+.user-setting-edit .btn {
+	background-color: #52e69e;
+  border-color:  #52e69e;
+  color: #292c32;
+}
+
+.user-setting-edit .btn:hover { 
+	background-color: rgba(82,230,158,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
