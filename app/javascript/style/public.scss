@@ -1,70 +1,68 @@
-<<<<<<< HEAD
-
 /*可共用*/
 
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	background-color: rgba(41, 44, 50, 1) !important;
-	width: 100%;
-	height: 100%;
+    background-color: rgba(41, 44, 50, 1) !important;
+    width: 100%;
+    height: 100%;
 }
 
 .public .id-name {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	font-size: 30px;
-	padding-top: 20px;
-	padding-left: 10px;
-	margin: 0 0 40px 0;
+    font-family: "微軟正黑體";
+    font-weight: lighter;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-left: 10px;
+    margin: 0 0 40px 0;
 }
 .repo-navbar .nav-tabs {
-	margin-bottom: 20px;
-	border-bottom: 1px solid #505052;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #505052;
 }
 
 
 .public .userId {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	display: inline;
-	color: #52e69e;
-	font-size: 30px;
+    font-family: "微軟正黑體";
+    font-weight: bolder;
+    display: inline;
+    color: #52e69e;
+    font-size: 30px;
 }
 
 .public .fileName {
-	color: #52e69e;
+    color: #52e69e;
 }
 
 .public .fileName {
-	display: inline;
-	color: #52e69e;
-	font-size: 18px;
+    display: inline;
+    color: #52e69e;
+    font-size: 18px;
 }
 
 .public .repo-navbar .nav-link { 
-	color: #fff;
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	font-size: 12px;
-	border-bottom: none;
+    color: #fff;
+    font-family: "微軟正黑體";
+    font-weight: lighter;
+    font-size: 12px;
+    border-bottom: none;
 }
 
 .public .nav-tabs .nav-link {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	border: none;
+    font-family: "微軟正黑體";
+    font-weight: lighter;
+    border: none;
 }
 
 .public .nav-tabs .nav-link:hover {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .public .nav-link.active {
-	border-bottom: none;
-	border-color: #e0d7d2;
+    border-bottom: none;
+    border-color: #e0d7d2;
 }
 
 .public .fas .fa-code {
@@ -72,21 +70,21 @@ body {
 }
 
 .public .user-name {
-	font-family: "Arial";
-	font-weight: lighter;
-	font-size: 20px;
-	letter-spacing: 0px;
-	color: #fff;
-	margin-top: 15px!important;
+    font-family: "Arial";
+    font-weight: lighter;
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #fff;
+    margin-top: 15px!important;
 }
 
 .public .user-id {
-	font-family: "Arial";
-	font-weight: lighter;
-	font-size: 20px;
-	letter-spacing: 0px;
-	color: #fff;
-	margin-top: 0px!important;
+    font-family: "Arial";
+    font-weight: lighter;
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #fff;
+    margin-top: 0px!important;
 }
 
 
@@ -101,9 +99,9 @@ body {
 }
 
 .public .project-block a {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	letter-spacing: 0px;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  letter-spacing: 0px;
   font-size: 18px;
   color: #52e69e;
 }
@@ -111,7 +109,7 @@ body {
 .public .project-block div {
   font-size: 12px;
   font-family: "微軟正黑體";
-  font-weight: lighter;
+  font-weight: bolder;
   color: #fff;
 }
 
@@ -124,7 +122,7 @@ body {
 }
 
 .public .nav-link {
-	font-family: "微軟正黑體";
+    font-family: "微軟正黑體";
   font-weight: lighter;
   letter-spacing: 0px;
   font-size: 12px;
@@ -132,20 +130,20 @@ body {
 }
 
 .public .nav-link:hover {
-	transition: 0.5s;
+    transition: 0.5s;
   color: #52e69e;
 }
 
 .public .nav-link:active {
-	border-bottom: 1px solid #52e69e;
+    border-bottom: 1px solid #52e69e;
 }
 
 .public .popu {
-	margin-top: 25px !important;
-	margin-bottom: 0 !important;
+    margin-top: 25px !important;
+    margin-bottom: 0 !important;
   font-size: 20px;
   font-family: "微軟正黑體";
-  font-weight: lighter;
+  font-weight: bolder;
   color: #fff;
 }
 
@@ -168,7 +166,7 @@ body {
 }
 
 .public .row {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .public .project-block {
@@ -179,7 +177,7 @@ body {
 } 
 
 .public .project-block:hover {
-	transition: 0.5s;
+    transition: 0.5s;
   background-color: #30333a;
 }
 
@@ -197,270 +195,41 @@ body {
 
 
 .this-is-navbar .card .bg-light .col-6 .m-auto .p-0 {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 
 /* ===================Search 跟按鈕===================== */
 
 .public .repo-btn {
-	width: 40px;
-	border-radius: 8px;
-	color: #76787b;
-	background-color: #292c32;
-	border: 1px solid #76787b;
-	margin: 0!important;
+    width: 40px;
+    border-radius: 8px;
+    color: #76787b;
+    background-color: #292c32;
+    border: 1px solid #76787b;
+    margin: 0!important;
   position: absolute;
   right: 0;
 }
 
 .public .repo-btn:hover {
-	background-color: rgba(82,230,158,0.1);
-	transition: 0.4s;
+    background-color: rgba(82,230,158,0.1);
+    transition: 0.4s;
 }
 
 .public .repo-search input {
-	height: 38px;
-	border-radius: 8px;
-	border: 1px solid #76787b;
-	background-color: #292c32;
-}
-
-
-
-.the-bottom {
-   border-bottom: solid 2px #52e69e;
-}
-=======
-/*可共用*/
-
-body {
-	background-color: rgba(41, 44, 50, 1);
-  width: 100%;
-}
-
-.public .id-name {
-	font-family: "微軟正黑體";
-	font-weight: bolder;
-	font-size: 30px;
-	padding-top: 20px;
-	padding-left: 10px;
-	margin: 0 0 40px 0;
-}
-.repo-navbar .nav-tabs {
-	margin-bottom: 20px;
-	border-bottom: 1px solid #505052;
-}
-
-
-.public .userId {
-	font-family: "微軟正黑體";
-	font-weight: bolder;
-	display: inline;
-	color: #52e69e;
-	font-size: 30px;
-}
-
-.public .fileName {
-	color: #52e69e;
-}
-
-.public .fileName {
-	display: inline;
-	color: #52e69e;
-	font-size: 18px;
-}
-
-.public .repo-navbar .nav-link { 
-	color: #fff;
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	font-size: 12px;
-	border-bottom: none;
-}
-
-.public .nav-tabs .nav-link {
-	font-family: "微軟正黑體";
-	font-weight: lighter;
-	border: none;
-}
-
-.public .nav-tabs .nav-link:hover {
-	font-weight: bold;
-}
-
-.public .nav-link.active {
-	border-bottom: none;
-	border-color: #e0d7d2;
-}
-
-.public .fas .fa-code {
-  color: #777e5d;
-}
-
-.public .user-name {
-	font-family: "Arial";
-	font-weight: lighter;
-	font-size: 20px;
-	letter-spacing: 0px;
-	color: #fff;
-	margin-top: 15px!important;
-}
-
-.public .user-id {
-	font-family: "Arial";
-	font-weight: lighter;
-	font-size: 20px;
-	letter-spacing: 0px;
-	color: #fff;
-	margin-top: 0px!important;
-}
-
-
-
-/* ===================logged_in開始的小nav bar===================== */
-.public .nav {
-  font-weight: bold;
-}
-
-.public .project-block a:hover {
-  text-decoration: none;
-}
-
-.public .project-block a {
-	font-family: "微軟正黑體";
-	font-weight: bolder;
-	letter-spacing: 0px;
-  font-size: 18px;
-  color: #52e69e;
-}
-
-.public .project-block div {
-  font-size: 12px;
-  font-family: "微軟正黑體";
-  font-weight: bolder;
-  color: #fff;
-}
-
-.public .p-3 {
-  padding: 0 0 0 1rem!important;
-}
-
-.public .mx-3 {
-  margin-left: 0!important;
-}
-
-.public .nav-link {
-	font-family: "微軟正黑體";
-  font-weight: lighter;
-  letter-spacing: 0px;
-  font-size: 12px;
-  color: #fff;
-}
-
-.public .nav-link:hover {
-	transition: 0.5s;
-  color: #52e69e;
-}
-
-.public .nav-link:active {
-	border-bottom: 1px solid #52e69e;
-}
-
-.public .popu {
-	margin-top: 25px !important;
-	margin-bottom: 0 !important;
-  font-size: 20px;
-  font-family: "微軟正黑體";
-  font-weight: bolder;
-  color: #fff;
-}
-
-.public .line {
-  height: 4px;
-  width: 100%;
-  position: relative;
-}
-
-.public .line .title-bottom-line {
-  padding-right: 0;
-  height: 2px;
-  width: 100%;
-  background-color:#999999;
-  position: relative;
-}
-
-.public .repositories-title {
-  padding-right: 0;
-}
-
-.public .row {
-	margin-left: 0;
-}
-
-.public .project-block {
-  border-bottom: solid 1px #606060;
-  width: 100%;
-  position: relative;
-  padding: 18px!important;
-} 
-
-.public .project-block:hover {
-	transition: 0.5s;
-  background-color: #30333a;
-}
-
-
-
-
-
-/* ===================頭貼===================== */
-.avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.this-is-navbar .card .bg-light .col-6 .m-auto .p-0 {
-	max-width: 100%;
-}
-
-
-/* ===================Search 跟按鈕===================== */
-
-.public .repo-btn {
-	width: 40px;
-	border-radius: 8px;
-	color: #76787b;
-	background-color: #292c32;
-	border: 1px solid #76787b;
-	margin: 0!important;
-  position: absolute;
-  right: 0;
-}
-
-.public .repo-btn:hover {
-	background-color: rgba(82,230,158,0.1);
-	transition: 0.4s;
-}
-
-.public .repo-search input {
-	height: 38px;
-	border-radius: 8px;
-	border: 1px solid #76787b;
-	background-color: #292c32;
-	outline: 0;
-	box-shadow: none;
+    height: 38px;
+    border-radius: 8px;
+    border: 1px solid #76787b;
+    background-color: #292c32;
+    outline: 0;
+    box-shadow: none;
 }
 
 .public .repo-search input:focus {
   border: solid 1px #52e69e;
 }
 
-
-
 .the-bottom {
    border-bottom: solid 2px #52e69e;
 }
->>>>>>> 修改標題粗體及Clone的下拉選單
