@@ -68,7 +68,7 @@ class PullRequestsController < ApplicationController
     @pull_request.commits = @commits_sha
 
     `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.compare_branch}`
-    @have_conflicts =  `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`
+    @have_conflicts = `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`
     `git -C #{@base_path}#{@current_repo_path} merge --abort`
     `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
   end
@@ -94,7 +94,7 @@ class PullRequestsController < ApplicationController
     `git -C #{@base_path}#{@current_repo_path} merge #{@pull_request.compare_branch}`
     @pull_request.status = "Merged"
     @pull_request.save
-    byebug
+    `git -C #{@base_path}#{@current_repo_path} push origin #{@pull_request.base_branch}`
     redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been merged"
   end
 

@@ -18,6 +18,8 @@
 
 <%= render "shared/pull_request_bar"%>
 
+<%= @have_conflicts %>
+
 <p>
   <strong>Description:</strong>
   <%= to_markdown(@pull_request.description)%>
@@ -112,8 +114,5 @@
 <%= link_to 'Edit', edit_repository_pull_request_path(id: @pull_request.id) %> |
 <%= link_to 'Back', repository_pull_requests_path %> | 
 
-<% if @have_conflicts.length > 20 %>
-  <div>Have some conflicts please resolve them</div>
-<% else %>
-  <%= link_to 'Merge pull request', merge_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST' %>
-<% end %>
+
+<%= link_to 'Merge pull request', merge_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST' %>
