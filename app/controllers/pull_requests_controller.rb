@@ -1,5 +1,5 @@
 class PullRequestsController < ApplicationController
-  before_action :set_pull_request, only: [:show, :edit, :update, :commits]
+  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge]
   before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff]
 
   def index
@@ -66,6 +66,11 @@ class PullRequestsController < ApplicationController
     @comments = @pull_request.comments
     @comment = Comment.new
     @pull_request.commits = @commits_sha
+
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.compare_branch}`
+    @have_conflicts =  `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`
+    `git -C #{@base_path}#{@current_repo_path} merge --abort`
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
   end
 
   def edit
@@ -81,6 +86,10 @@ class PullRequestsController < ApplicationController
 
   def commits
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+  end
+
+  def merge
+    
   end
 
   private
