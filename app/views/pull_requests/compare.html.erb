@@ -1,0 +1,20 @@
+<!-- compare.html.erb -->
+<div class="compare_branch">
+  <div>
+    <%= render "shared/repo_navbar"%>
+  </div>
+
+  <%= form_with(model: @pull_request,url: diff_repository_pull_requests_path, method: :get, local: true) do |form| %>
+    <div class="field row m-auto py-3">
+      <%= form.label :base_branch, "Base branch "%>
+      <%= select("pull_request", "base_branch", @branches.collect {|b| b.name })%>
+    </div>
+    <div class="field row m-auto py-3">
+      <%= form.label :compare_branch, "Compare branch "%>
+      <%= select("pull_request", "compare_branch", @branches.collect {|b| b.name })%>
+    </div>
+    <div class="actions">
+      <%= form.submit "New pull request", class: "btn btn-primary mx-3"%>
+    </div>
+  <% end %>
+</div>

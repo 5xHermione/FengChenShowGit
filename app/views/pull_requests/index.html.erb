@@ -13,14 +13,13 @@
           aria-label="Search"
         />
       </form>
-      <%= link_to_if @pull_request_able.any?, "New pull request", new_repository_pull_request_path , class:"btn btn-success col-2"%>
+      <%= link_to_if @pull_request_able.any?, "New pull request", compare_repository_pull_requests_path , class:"btn btn-success col-2"%>
     </div>
 
     <div class=" my-5">
       <div class="issue-title row p-2 open">
         <div class="status-title col-3"><%= @pull_requests.length %> open</div>
-        <!-- <div class="info-title col-6">sometitle</div> -->
-        <div class="description-title col-4">sometitle</div>
+        <div class="description-title col-4">title</div>
       </div>
       <% if @pull_requests.any? %>
         <% @pull_requests.each do |pull_request| %>
