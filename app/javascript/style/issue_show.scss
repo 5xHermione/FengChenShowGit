@@ -22,18 +22,6 @@ h1 h2 h3 h4 h5 h6 p {
   height: 100%;
 }
 
-
-.issue_name_inactive h1 {
-  margin-bottom: -0.5rem;
-}
-
-.issue_name_active {
-  h1{
-    margin-bottom: -0.5rem;
-  }
-  display: none;
-}
-
 #issue_update{
   display: none;
 }
@@ -47,9 +35,19 @@ h1 h2 h3 h4 h5 h6 p {
 #issue_description_update{
   display: none;
 }
+
 #comment_content {
   min-height: 10rem;
   max-height: 10rem;
+}
+
+
+
+.issue_name_active {
+  h1{
+    margin-bottom: -0.5rem;
+  }
+  display: none;
 }
 
 .issue_description_active{
@@ -59,6 +57,7 @@ h1 h2 h3 h4 h5 h6 p {
 .issue_name_inactive {
   h1 {
     color: #52E69E;
+    margin-bottom: -0.5rem;
   }
 }
 .issue_description {
