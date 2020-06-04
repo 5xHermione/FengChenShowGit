@@ -1,0 +1,35 @@
+.commits-container {
+  h3 {
+    color: #ffffff;
+  }
+  .commits-max-w{
+    max-width: 960px;
+    margin: auto;
+    .commit-info-container {
+      border-bottom: 1px solid #ffffff;
+      .commit-info-wrap {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: lighter;
+      }
+      .commit-sha {
+        a {
+          font-family: "微軟正黑體";
+          background-color: #292c32;
+          border: 1px solid #52e69e;
+          color: #ffffff;
+          border-radius: 8px;
+          padding: 8px 15px;
+          font-size: 12px;
+          font-weight: bolder;
+          transition: 0.5s;
+        }
+        a:hover {
+          transition: 0.5s;
+          background-color: rgba(82,230,158,0.1);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
