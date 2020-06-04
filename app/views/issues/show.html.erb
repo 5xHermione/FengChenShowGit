@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div class="container mt-5 mb-5 ml-4 col-10 ">
+<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-5 mb-5 mx-auto">
 <div class="issue_description comment-info-container card">
   <div class="card-header issue-comment-name">
     <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split comment-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>   
@@ -41,7 +41,9 @@
                 <p><%= @issue.description %></p>  
               </div>
               <%= form_for([:repository, @issue],remote: true) do |form|%>
-              <div class= "issue_description_active"><p><%= form.text_area :description ,type: "text_area" %></p></div> 
+              <div class= "issue_description_active">
+                <p><%= form.text_area :description ,type: "text_area", class:"area form-control" %></p>
+              </div> 
               <h6><%= time_ago_in_words(@issue.created_at) %>ago</h6>
             </div>   
           </div>

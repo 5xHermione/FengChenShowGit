@@ -67,7 +67,7 @@ h6{
   }
 }
 
-.issue_description_active{
+.media-body .issue_description_active{
   display: none;
   .issue_description {
     background-color:  #3C3F44;
@@ -75,6 +75,13 @@ h6{
   textarea {
     width: 100%;
     min-height: 10rem;
+    background-color: #3C3F44 ;
+    color: #ffffff;
+  }
+
+  .area.form-control:focus {
+    border-color: #52E69E;
+    box-shadow: 0 0 4px rgba(82, 230, 159, 0.502);
   }
 }
 
