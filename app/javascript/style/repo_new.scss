@@ -5,11 +5,14 @@
 .reponew-container h3{
 	color: #52e69e;
 	font-size: 24px;
-	font-family: "Arial"!important;
+	font-family: "微軟正黑體"!important;
+	font-weight: bolder;
 }
 
 .reponew-container p {
-	font-size: 14px;
+	font-size: 16px!important;
+	font-weight: lighter;
+	margin: 0;
 }
 
 .reponew-container .reponew-info-wrap {
@@ -18,6 +21,8 @@
 
 .reponew-container .reponew-decription-wrap {
 	padding-left: 0!important;
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
 
 .reponew-container .col-2{
@@ -64,10 +69,15 @@
 }
 
 .reponew-container h6 {
+	font-family: "微軟正黑體";
+	font-size: 16px;
 	color: #52e69e;
+	font-weight: bolder;
 }
 
 .reponew-container label {
+	font-family: "微軟正黑體";
+	font-size: 16px;
 	color: #52e69e;
 }
 
@@ -78,4 +88,9 @@
 .reponew-container .form-control-dark {
 	color: #fff;
 	height: 36px;
+}
+
+.reponew-container .reponew-ispublic-wrap {
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
