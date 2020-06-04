@@ -1,6 +1,6 @@
 class PullRequestsController < ApplicationController
   before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge]
-  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :merge]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
@@ -89,7 +89,13 @@ class PullRequestsController < ApplicationController
   end
 
   def merge
-    
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
+    `git -C #{@base_path}#{@current_repo_path} merge #{@pull_request.compare_branch}`
+    @pull_request.status = "Merged"
+    @pull_request.save
+    byebug
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been merged"
   end
 
   private

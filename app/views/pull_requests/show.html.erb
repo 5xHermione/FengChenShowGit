@@ -2,12 +2,15 @@
   <%= render "shared/repo_navbar"%>
 </div>
 
-
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="col-12">
-    <span class="btn btn-success"><%= @pull_request.status %></span>
+    <% if @pull_request.status == "open" %>
+      <span class="btn btn-success"><%= @pull_request.status %></span>
+    <% elsif @pull_request.status == "Merged"%>
+      <span class="btn btn-primary"><%= @pull_request.status%></span>
+    <% else %>
+      <span class="btn btn-danger"><%= @pull_request.status%></span>
+    <% end %>
     <span><%= @pull_request.name %></span>
   </div>
   <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
@@ -108,3 +111,9 @@
 
 <%= link_to 'Edit', edit_repository_pull_request_path(id: @pull_request.id) %> |
 <%= link_to 'Back', repository_pull_requests_path %> | 
+
+<% if @have_conflicts.length > 20 %>
+  <div>Have some conflicts please resolve them</div>
+<% else %>
+  <%= link_to 'Merge pull request', merge_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST' %>
+<% end %>
