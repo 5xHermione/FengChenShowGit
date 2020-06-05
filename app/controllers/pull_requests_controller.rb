@@ -48,6 +48,7 @@ class PullRequestsController < ApplicationController
 
   def create
     @pull_request = find_user.repositories.find_by(slug: params[:repository_id]).pull_requests.build(pull_request_params)
+    @pull_request.user = current_user
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
     @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
     @pull_request.compare_branch = params[:compare_branch]

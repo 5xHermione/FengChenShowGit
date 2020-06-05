@@ -3,6 +3,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable
   
   has_many :sshkeys
+  has_many :pull_requests, dependent: :destroy
+  has_many :issues, dependent: :destroy
   has_many :repositories, dependent: :destroy
   has_many :commments, dependent: :destroy
   # 相關資料：https://rails.ruby.tw/association_basics.html，2-10 自連接部分

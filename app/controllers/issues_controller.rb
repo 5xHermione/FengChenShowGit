@@ -13,6 +13,7 @@ class IssuesController < ApplicationController
 
   def create
     @issue = find_user.repositories.find_by(slug: params[:repository_id]).issues.build(issue_params)
+    @issue.user = current_user
     @issue.repository_issue_index = current_repository.issues.count + 1
     
     if @issue.save 

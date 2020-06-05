@@ -33,7 +33,13 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <div class="media">
-        <img src="https://picsum.photos/60/60?random=1" class="mr-3" alt="...">
+        <div class="media-avatar-wrap">
+          <% if @issue.user.image? %>
+            <%= image_tag(find_user.image_url) %>
+          <% else %>
+            <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+          <% end %>
+        </div>
         <div class="media-body">
           <div class="row">
             <div class="col-12">
