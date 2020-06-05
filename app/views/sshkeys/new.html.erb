@@ -1,6 +1,6 @@
 <div class="add-new-sshkey user-setting-edit public">   
 
-    <div class="container my-5">
+    <div class="container my-5 co1-12">
       <div class="row">
         <div class="user-info-container col-12 col-md-3">
           <div class="avatar-wrap">
@@ -19,7 +19,7 @@
               Add new SSH key
             </h2>
           </div>
-          <div>
+          <div class="co1-12">
             <%= form_with(model: @sshkey, local: true) do |form| %>
             <div class="col-12 mt-3">
               <h6><%= form.label :keyname, class: "m-0"%></h6>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-12 mt-3">
               <h6><%= form.label :key, class: "m-0"%></h6>
-              <%= form.text_field :key, class: "form-control"%>
+              <%= form.text_area :key, class: "form-control the-key" %>
             </div>
             <div class="col-12 mt-3 mb-5">
               <div class="actions">
