@@ -17,3 +17,5 @@ import "./project_setting.scss";
 import "./repo_new.scss";
 import "./issue_new.scss";
 import "./like.scss";
+import "./user_setting_edit.scss";
+import "./new_ssh_key.scss";
