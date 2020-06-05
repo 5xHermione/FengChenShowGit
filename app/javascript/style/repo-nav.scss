@@ -31,7 +31,6 @@
 .issue-show .form-control {
 	border: 1px solid #606060;
 	margin: 0;
-
 }
 
 .issue-show .btn {
@@ -40,6 +39,7 @@
 	color: #292c32;
 	border-radius: 8px;
 	padding: 8px;
+	line-height: 14px;
 }
 
 .issue-show .btn:hover {
@@ -104,5 +104,10 @@
 
 .issue-show a {
 	color: #52e69e;
+	text-decoration: none;
+}
+
+.issue-show .open-colse {
+	color: #fff;
 	text-decoration: none;
 }

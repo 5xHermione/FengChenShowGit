@@ -30,7 +30,7 @@
         <% @issues.each do |issue| %>
           <div class="container item">
             <div class="row">
-              <div class="col-6 mt-3"><%= issue.status%></div>
+              <div class="col-3 mt-3 open-colse"><%= issue.status%></div>
               <div class="row col-6"> 
                 <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
                 <p class="col-12 ago">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
