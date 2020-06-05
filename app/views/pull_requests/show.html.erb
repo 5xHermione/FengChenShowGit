@@ -4,170 +4,168 @@
 
 
 <p id="notice"><%= notice %></p>
-
-<div class="row">
-  <div class="col-12">
-    <span class="btn btn-success"><%= @pull_request.status %></span>
-    <span><%= @pull_request.name %></span>
+<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-5 mb-5 mx-auto"> 
+  <div class="row">
+    <div class="col-12">
+      <span class="btn btn-success"><%= @pull_request.status %></span>
+      <span><%= @pull_request.name %></span>
+    </div>
+    <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
   </div>
-  <div class="mx-3"><%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %> </div>
-</div>
 
-<%= render "shared/pull_request_bar"%>
+  <%= render "shared/pull_request_bar"%>
 
-<p>
-  <strong>Description:</strong>
-  <%= to_markdown(@pull_request.description)%>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= to_markdown(@pull_request.description)%>
+  </p>
 
-<% @commits.each do |commit|%>
+
+
+
+  <% @commits.each do |commit|%>
   <div class="container">
-    <div class="row"> 
-      <div class="col-12">
-        <%= commit.committer.name %>
-      </div>
-      <div class="col-1">
-        <i class="fas fa-dot-circle"></i>
-      </div>
-      <div class="col-6">
-        <%= commit.message %>
-      </div>
-      <div class="col-3">
-        <%= time_ago_in_words(commit.date.utc) %>
-      </div>
-      <div class="col-2">
-        <%= commit.sha[0..7] %>
+    <div class="row">
+      <div class="col-md-10">
+        <ul class="timeline list-group list-group-flush">
+          <li>
+            <div class="row list-item">
+              <p><%= commit.committer.name %></p>
+              <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
+            </div>
+              <div class="row list-item number">
+                <p><%= commit.message %></p>
+                <p><%= commit.sha[0..7] %></p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-<% end %>
+
+  <% end %>
 
 
 
 
+  
 
-
-  ----------------------------------------
-  <% @comments.each do |c| %>
-    <div class="comment-info-container">
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="issue-comment-name col-12">
-              <h4><%= c.user.name %></h4>
-              <div class="bottom-line"></div> 
-            </div>       
-            <div class="btn-group">
-              <% if c.user == current_user %>
-                <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split comment-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu">
-                  <div><%= link_to "Delete",  repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
-                  <div class="btn comment-edit-button">Edit</div>
-                </div>
-              <% end %>       
-            </div>
-          </div>      
-        </div>
-
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <div class="media">
-              <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
-              <div class="media-body">
-                <p><%= to_markdown(c.content)%></p>
-                <h6><%= time_ago_in_words(c.created_at) %>ago</h6>
+    <% @comments.each do |c| %>
+      <div class="comment-info-container">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="issue-comment-name col-12">
+                <h4><%= c.user.name %></h4>
+                <div class="bottom-line"></div> 
+              </div>       
+              <div class="btn-group">
+                <% if c.user == current_user %>
+                  <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split comment-more" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <div><%= link_to "Delete",  repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), class: "btn comment-delete-button", data: {method: "DELETE", confirm: "Are you sure you want to delete?"} %></div>
+                    <div class="btn comment-edit-button">Edit</div>
+                  </div>
+                <% end %>       
               </div>
-            </div>
-          </blockquote>
+            </div>      
+          </div>
+
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <div class="media">
+                <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+                <div class="media-body">
+                  <p><%= to_markdown(c.content)%></p>
+                  <h6><%= time_ago_in_words(c.created_at) %>ago</h6>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+            
         </div>
-          
       </div>
-    </div>
 
-    <div class="comment-edit-container" style="display: none;">
-      <%= form_with(model: c, url: repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), method: "PUT") do |f| %>
+      <div class="comment-edit-container" style="display: none;">
+        <%= form_with(model: c, url: repository_pull_request_comment_path(user_name: c.user.name, repository_id: current_repository.title , pull_request_id: @pull_request, id: c), method: "PUT") do |f| %>
 
-        <% if c.errors.any? %>
+          <% if c.errors.any? %>
+            <ul>
+              <% c.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <div class="comment-info-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="issue-comment-name col-12">
+                    <h4><%= c.user.name %></h4>
+                    <div class="bottom-line"></div> 
+                  </div>       
+                </div>
+
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <div class="media">
+                    <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+                    <div class="media-body">
+                      <h6>
+                        <%= f.text_area :content, class: "area form-control"%>
+                      </h6>
+                      <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
+                    </div>
+                  </div>
+                </blockquote>
+                <div class="issue-comment-edit row">
+                  <div class="update-comment actions">            
+                    <%= f.submit "Update comment", class: "btn btn-success" %>
+                  </div>
+                  <div class="btn btn-danger comment-cancel-button">
+                    Cancel
+                  </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+      
+
+    <div class="comment-new-container">
+      <%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
+
+        <% if @comment.errors.any? %>
           <ul>
-            <% c.errors.full_messages.each do |message| %>
+            <% @comment.errors.full_messages.each do |message| %>
               <li><%= message %></li>
             <% end %>
           </ul>
         <% end %>
 
-        <div class="comment-info-container">
-          <div class="card">
-            <div class="card-header">
-              <div class="row">
-                <div class="issue-comment-name col-12">
-                  <h4><%= c.user.name %></h4>
-                  <div class="bottom-line"></div> 
-                </div>       
-              </div>
+        
 
+        <div class="actions text-area-container">
+          <div class="form-group">
+            <%= f.label :content, class: "m-0"%>
+            <%= f.text_area :content, class: "area form-control"%>
+            <div class="issue-comment-btn row">
+              
+              
+              <%= f.submit "Create comment", class: "comment-submit btn btn-success" %>         
             </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <div class="media">
-                  <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
-                  <div class="media-body">
-                    <h6>
-                      <%= f.text_area :content, class: "area form-control"%>
-                    </h6>
-                    <h6><%= time_ago_in_words(c.created_at) %> ago </h6>
-                  </div>
-                </div>
-              </blockquote>
-              <div class="issue-comment-edit row">
-                <div class="update-comment actions">            
-                  <%= f.submit "Update comment", class: "btn btn-success" %>
-                </div>
-                <div class="btn btn-danger comment-cancel-button">
-                  Cancel
-                </div>
-                </div>
-              </div>
           </div>
         </div>
       <% end %>
     </div>
-  <% end %>
-    
-
-  <div class="comment-new-container">
-    <%= form_with(model: @comment, url: repository_pull_request_comments_path(pull_request_id: @pull_request), local: true, method: "POST") do |f|%>
-
-      <% if @comment.errors.any? %>
-        <ul>
-          <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      
-
-      <div class="actions text-area-container">
-        <div class="form-group">
-          <%= f.label :content, class: "m-0"%>
-          <%= f.text_area :content, class: "area form-control"%>
-          <div class="issue-comment-btn row">
-            
-            
-            <%= f.submit "Create comment", class: "comment-submit btn btn-success" %>         
-          </div>
-        </div>
-      </div>
-    <% end %>
   </div>
-</div>
-
-
-
-
-
 
 <%= link_to 'Edit', edit_repository_pull_request_path(id: @pull_request.id) %> |
 <%= link_to 'Back', repository_pull_requests_path %> | 
+</div>

@@ -1,0 +1,63 @@
+h1,h2,h3,h4,h5,h6,p {
+  font-family: "微軟正黑體"; 
+}
+h4{
+  font-weight : 400;
+}
+h6{
+  font-weight : 200;
+}
+
+
+.list-group {
+  padding-bottom: 1rem;
+  li {
+    .list-item{
+      margin-bottom: 1rem;
+    }
+    .list-item p{
+      margin-bottom: 0rem;
+      margin-left: 1rem;
+      color: #ffffff ;
+      font-family: "微軟正黑體";
+      opacity: 0.6;
+      }  
+  }
+}
+
+
+
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+ul.timeline:before {
+  content: ' ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 9;
+}
+ul.timeline > li {
+  margin: 0;
+  padding-left: 4rem;
+  
+}
+ul.timeline > li:before {
+  content: ' ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #52e69e ;
+  left: 22px;
+  width: 16px;
+  height: 16px;
+  z-index: 400;
+}
+
+
+
