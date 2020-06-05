@@ -97,7 +97,7 @@
                       <div class="card-body">
                         <p class="sshN col-3"> <%= ssh.name %> </p>
                         <p class="sshN col-5"> Added on <%= ssh.created_at.to_date %></p>
-                        <%= button_to "Delete key",sshkey_path(ssh.id), method: :delete, class: "btn btn-danger my-2 col-12" %>
+                        <%= button_to "Delete",sshkey_path(ssh.id), method: :delete, class: "btn btn-danger my-2 col-12" %>
                       </div>
                     </div>
                     <% end %>
