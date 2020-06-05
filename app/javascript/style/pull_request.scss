@@ -27,7 +27,7 @@
 	color: #fff;
 }
 
-.pull-request .the-tr{
+.pull-request .the-tr {
 	padding: 12px 12px 0 12px;
 
 }
@@ -40,6 +40,14 @@
 	color: #999999;
 	font-size: 12px;
 	padding: 0;
+}
+
+.pull-request .col-12 {
+  padding-left: 0!important;
+}
+
+.pull-request .row {
+  padding-left: 0!important;
 }
 
 .pull-request .form-control {
@@ -77,6 +85,21 @@
 .pull-request .text-center h4 {
 	font-size: 20px;
 	font-weight: lighter!important;
+}
+
+.pull-request .new-pr {
+	height: 42px;
+	background-color: #3c3f44;
+	border-radius: 8px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	color: #e3e3e4;
+	line-height: 3vw;
+}
+
+.pull-request .content {
+	padding: 0!important;
 }
 
 
