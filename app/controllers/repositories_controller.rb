@@ -65,13 +65,11 @@ class RepositoriesController < ApplicationController
       Dir.entries(path).each do |file|
         if [".", "..", ".git"].include?"#{file}"
         #rule out ".", "..", ".git"
-        last_commit_message = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{file}`
-        last_commit_time = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{file}`
 
         elsif File.file?(path+"/"+file)
-          files << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{file}`, `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{file}`]
+          files << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{path}/#{file}`, `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{path}/#{file}`]
         else
-          dirs << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{file}`, `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{file}`]
+          dirs << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{path}/#{file}`, `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{path}/#{file}`]
         end
       end
       render :dir, locals: {dirs: dirs, files: files, repository: @repository}
