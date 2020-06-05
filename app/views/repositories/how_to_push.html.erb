@@ -1,14 +1,18 @@
 <!-- how_to_push.html.erb -->
-<%= render "show"%>
-<div class="push-instruction-container my-5">
-  <div class="box-header">
-  	<h3>Instructions</h3>
-  </div>
-  <div class="box-row">
-  	<h3>
-  	  Push an existing repository from the command line
-  	</h3>
-  	<%= markdown("```\ngit remote add origin #{ENV["GIT_PUSH_INSTRUCT"]+@current_repo_path+".git"}
-git push -u origin master\n ```") %>
-  </div>
+<div class="instructions">
+
+		<%= render "show"%>
+		
+		<div class="push-instruction-container">
+		  <div class="box-header">
+		  	<h3>Instructions</h3>
+		  </div>
+		  <div class="box-row">
+		  	<h4>
+		  	  Push an existing repository from the command line
+		  	</h4>
+			  	<%= markdown("```\ngit remote add origin #{ENV["GIT_PUSH_INSTRUCT"]+@current_repo_path+".git"}\ngit push -u origin master\n ``````") %>
+		  </div>
+		</div>
+
 </div>

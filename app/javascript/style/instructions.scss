@@ -1,0 +1,38 @@
+.instructions .push-instruction-container {
+	margin-top: 70px;
+}
+
+.instructions .box-header {
+  background-color: #606060;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border: none;
+  height: 55px; 
+  padding: 0;
+}
+
+.instructions h3 {
+	font-family: "微軟正黑體"!important;
+	font-weight: bolder;
+	font-size: 20px;
+  color: #fff;
+  padding: 15px 0px 15px 30px;
+}
+
+.instructions h4 {
+	font-family: "微軟正黑體"!important;
+	font-size: 16px;
+  color: #fff;
+  padding: 15px 0 15px 0;
+}
+
+.instructions .box-row {
+	border-color: #606060;
+}
+
+.instructions .highlight {
+	border-radius: 2px;
+	margin: 0;
+	padding: 8px;
+	background-color: #cacaca;
+}
