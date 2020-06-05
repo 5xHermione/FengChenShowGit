@@ -44,7 +44,7 @@
               <div class= "issue_description_active">
                 <p><%= form.text_area :description ,type: "text_area", class:"area form-control" %></p>
               </div> 
-              <h6><%= time_ago_in_words(@issue.created_at) %>ago</h6>
+              <h6><%= time_ago_in_words(@issue.created_at) %> ago</h6>
             </div>   
           </div>
         </div>
@@ -95,7 +95,7 @@
             <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
             <div class="media-body">
               <p><%= to_markdown(c.content)%></p>
-              <h6><%= time_ago_in_words(c.created_at) %>ago</h6>
+              <h6><%= time_ago_in_words(c.created_at) %> ago</h6>
             </div>
           </div>
         </blockquote>
@@ -170,7 +170,6 @@
 
     <div class="actions text-area-container">
       <div class="form-group">
-        <%= f.label :content, class: "m-0"%>
         <%= f.text_area :content, class: "area form-control"%>
         <div class="issue-comment-btn row">
           <button type="button" class="issue-status-change btn btn-secondary">
