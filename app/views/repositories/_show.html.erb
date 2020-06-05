@@ -42,7 +42,7 @@
             <p>Use a password protected SSH key.</p>
             <div class="row">
               <div class="collapse-title col-8">
-                <input id="copyLink" class="copyLink col-12" value= "root@128.199.107.166:<%= @repository.user.name %>/<%= @repository.title %>">
+                <input id="copyLink" class="copyLink col-12" value= "<%= ENV["GIT_PUSH_INSTRUCT"] %>/<%= @repository.user.name %>/<%= @repository.title %>">
               </div>
               <div class="collapse-btn col-3">
                 <button class="btn code-file-btn" type="button"data-clipboard-target="#copyLink">Copy</button>
