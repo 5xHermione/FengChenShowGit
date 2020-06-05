@@ -59,9 +59,9 @@ class DiffPullRequest
           diff[:code][f] = []
           block = f
         else
-          if f.match(/^+/)
+          if f.match(/^\+/)
             diff[:code][block] << ["add", f]
-          elsif f.match(/^-/)
+          elsif f.match(/^\-/)
             diff[:code][block] << ["del", f]
           else
             diff[:code][block] << ["org", f]
