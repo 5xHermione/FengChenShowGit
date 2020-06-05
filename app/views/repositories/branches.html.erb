@@ -1,36 +1,39 @@
-<%= render "shared/repo_navbar"%>
+<div class="your-branches public"> 
+  <%= render "shared/repo_navbar"%>
+  <div class="git-feature-bar col-12">
+      <ul class="nav">
+        <%= link_to branches_path(user_name: find_user.name, id: @repository.title), class: "nav-link mx-auto" do %>
+          <i class="fas fa-code-branch"></i> <span> Branches </span> <%= @branches.count %>
+        <% end %>
+        <%= link_to commits_path(user_name: find_user.name, id: @repository.title), class: "nav-link mx-auto" do %>
+          <i class="fas fa-dot-circle"></i> <span> Commits </span> <%= @commits %>
+        <% end %>
+        <div class="nav-link mx-auto">
+          <i class="fas fa-user-friends"></i> <span> Contributors </span> <%= @contributors %>
+        </div>
+      </ul>
+  </div>
 
-<div class="git-feature-bar col-12">
-  <ul class="nav">
-    <%= link_to branches_path(user_name: find_user.name, id: @repository.title), class: "nav-link mx-auto" do %>
-      <i class="fas fa-code-branch"></i> <span> Branches </span> <%= @branches.count %>
-    <% end %>
-    <%= link_to commits_path(user_name: find_user.name, id: @repository.title), class: "nav-link mx-auto" do %>
-      <i class="fas fa-dot-circle"></i> <span> Commits </span> <%= @commits %>
-    <% end %>
-    <div class="nav-link mx-auto">
-      <i class="fas fa-user-friends"></i> <span> Contributors </span> <%= @contributors %>
-    </div>
-  </ul>
-</div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Your branches</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @branches.sort_by{|b| b.gcommit.date}.reverse.each do |branch| %>
-      <tr>
-        <th scope="row"><%= link_to "#{branch.name}", checkout_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST"%></th>
-        <td>Update <%= time_ago_in_words(branch.gcommit.date) %> by <%= branch.gcommit.author.name %></td>
-          <td>
+  <table class="table">
+    <thead>
+          <th class="gray">Your branches</th>
+          <td class="gray"></td>
+          <td class="gray"></td>
+    </thead>
+    <tbody>
+      <% @branches.sort_by{|b| b.gcommit.date}.reverse.each do |branch| %>
+        <tr>
+          <th class="row pd">
+            <%= link_to "#{branch.name}", checkout_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST"%>
+          </th>
+          <td class="pd">Update <%= time_ago_in_words(branch.gcommit.date) %> by <%= branch.gcommit.author.name %></td>
+          <td class="pd">
             <%= link_to branch_delete_path(user_name: find_user.name, id: current_repository.title, branch: branch.name), method: "POST" do %>
               <i class="fas fa-trash"></i>
+            <% end %>
           </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
