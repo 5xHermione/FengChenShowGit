@@ -1,6 +1,6 @@
 class PullRequestsController < ApplicationController
-  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge, :close, :reopen]
-  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :merge]
+  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :files_changed, :merge, :close, :reopen]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :files_changed, :merge]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
@@ -113,6 +113,15 @@ class PullRequestsController < ApplicationController
     @pull_request.status = 'Open'
     @pull_request.save
     redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been opened."
+  end
+
+  def files_changed
+    diff_pr = DiffPullRequest.new(
+      "#{@base_path}#{@current_repo_path}.git", 
+      base_branch: @pull_request.base_branch, 
+      compare_branch: @pull_request.compare_branch
+    )
+    @diff_files = diff_pr.diff_in_files
   end
 
   private

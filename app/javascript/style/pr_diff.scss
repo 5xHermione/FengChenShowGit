@@ -4,11 +4,9 @@
 	color: #ffffff;
 	padding: 0.5px;
 	.file-header {
-		border-top: 1px solid #ffffff;
-		border-left: 1px solid #ffffff;
-		border-right: 1px solid #ffffff;
+		border: 1px solid #959699;
 	    padding: 5px 10px;
-	    background-color: #43454a;
+	    background-color: #22252a;
 	    border-top-left-radius: 3px;
 	    border-top-right-radius: 3px;
 	    .file-title{
@@ -18,9 +16,9 @@
 	    }
 	}
 	.file-content {
-		border-left: 1px solid #ffffff;
-		border-right: 1px solid #ffffff;
-		border-bottom: 1px solid #ffffff;
+		border-left: 1px solid #959699;
+		border-right: 1px solid #959699;
+		border-bottom: 1px solid #959699;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
 		.block-index{
