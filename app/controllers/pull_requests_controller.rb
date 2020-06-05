@@ -1,5 +1,5 @@
 class PullRequestsController < ApplicationController
-  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge]
+  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge, :close, :reopen]
   before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :merge]
 
   def index
@@ -68,7 +68,7 @@ class PullRequestsController < ApplicationController
     @pull_request.commits = @commits_sha
 
     `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.compare_branch}`
-    @have_conflicts = `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`
+    @have_conflicts = `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`.scan(/Automatic merge failed; fix conflicts and then commit the result./).present?
     `git -C #{@base_path}#{@current_repo_path} merge --abort`
     `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
   end
@@ -95,7 +95,19 @@ class PullRequestsController < ApplicationController
     @pull_request.status = "Merged"
     @pull_request.save
     `git -C #{@base_path}#{@current_repo_path} push origin #{@pull_request.base_branch}`
-    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been merged"
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been merged."
+  end
+
+  def close
+    @pull_request.status = 'Close'
+    @pull_request.save
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been closed."
+  end
+
+  def reopen
+    @pull_request.status = 'Open'
+    @pull_request.save
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been opened."
   end
 
   private

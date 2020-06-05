@@ -39,6 +39,8 @@ Rails.application.routes.draw do
         end
         member do
           post :merge
+          post :close
+          post :reopen
         end
       end
       resources :issues do
