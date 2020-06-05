@@ -18,8 +18,8 @@
 
     <div class=" my-5">
       <div class="issue-title row p-2 open">
-        <div class="status-title col-3"><%= @pull_requests.where(status: "open").length %> open</div>
-        <div class="description-title col-4">title</div>
+        <div class="status-title col-6"><%= @pull_requests.where(status: "Open").length %> open <%= link_to close_index_repository_pull_requests_path%></div>
+        <div class="description-title col-6">title</div>
       </div>
       <% if @pull_requests.any? %>
         <% @pull_requests.each do |pull_request| %>

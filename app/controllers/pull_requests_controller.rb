@@ -3,8 +3,12 @@ class PullRequestsController < ApplicationController
   before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :merge]
 
   def index
-    @pull_requests = current_repository.pull_requests.order("id DESC")
-    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && PullRequest.find_by(compare_branch: b).nil?}
+    @pull_requests = current_repository.pull_requests.where(status: "Open").order("id DESC")
+    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
+  end
+
+  def close_index
+    @pull_requests = current_repository.pull_requests.where(status: "Close" || "Merged").order("id DESC")
   end
 
   def compare

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         collection do
           get :compare
           get :diff
+          get :close_index
         end
         member do
           post :merge
