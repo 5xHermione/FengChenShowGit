@@ -13,7 +13,7 @@ import "./pull_request.scss";
 import "./pull_request_show.scss"
 import "./commits.scss";
 import "./commit_diff.scss";
-import "./commit-list.scss"
+import "./commit_list.scss"
 import "./public.scss";
 import "./project_setting.scss";
 import "./repo_new.scss";

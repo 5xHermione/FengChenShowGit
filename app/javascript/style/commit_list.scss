@@ -1,36 +1,34 @@
-h1,h2,h3,h4,h5,h6,p {
-  font-family: "微軟正黑體"; 
-}
-h4{
-  font-weight : 400;
-}
-h6{
-  font-weight : 200;
+.commit-list.table {
+  margin-bottom: 0rem;
 }
 
 
-.list-group {
-  padding-bottom: .5rem;
+.timeline-history.list-group {
+  padding-bottom: 0.5rem;
   li {
     .list-item{
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
-    .list-item p{
+    .list-item.title p{
       margin-bottom: 0rem;
       margin-left: 1rem;
       color: #ffffff ;
       opacity: 0.6;
+      font-size: 18px;
     }  
+  }
+  .list-item.number p:nth-child(2){
+    padding-left: 2rem;
   }
 }
 
 
 
-ul.timeline {
+ul.timeline-history {
   list-style-type: none;
   position: relative;
 }
-ul.timeline:before {
+ul.timeline-history:before {
   content: ' ';
   background: #d4d9df;
   display: inline-block;
@@ -40,12 +38,12 @@ ul.timeline:before {
   height: 100%;
   z-index: 9;
 }
-ul.timeline > li {
+ul.timeline-history > li {
   margin: 0;
   padding-left: 4rem;
   
 }
-ul.timeline > li:before {
+ul.timeline-history > li:before {
   content: ' ';
   background: white;
   display: inline-block;
@@ -57,6 +55,3 @@ ul.timeline > li:before {
   height: 16px;
   z-index: 400;
 }
-
-
-

@@ -5,27 +5,27 @@
       
 
 
-<% @commits.each do |commit|%>
-  <div class="container">
-    <table class="commit-list table table-dark">
-      <tbody> 
-        <tr>
-          <div class="row"> 
-            <div class="col-12">
-              <td><%= commit.committer.name %></td>
+
+  <% @commits.each do |commit|%>
+
+  <div class="timeline-container container">
+    <div class="row">
+      <div class="col-md-10">
+        <ul class="timeline-history list-group list-group-flush">
+          <li>
+            <div class="row list-item title">
+              <p><%= commit.committer.name %></p>
+              <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
             </div>
-            <div class="col-6">
-              <td><%= commit.message %></td>
+              <div class="row list-item number">
+                <p><%= commit.message %>這次的commit更改了markdown相關 這次的commit更改了markdown相關</p>
+                <p><%= commit.sha[0..7] %></p>
             </div>
-            <div class="col-3">
-              <td><%= time_ago_in_words(commit.date.utc) %></td>
-            </div>
-            <div class="col-2">
-              <td><%= commit.sha[0..7] %></td>
-            </div>
-          </div>
-        </tr>
-      </tbody>
-    </table>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-<% end %>
+
+
+  <% end %>
