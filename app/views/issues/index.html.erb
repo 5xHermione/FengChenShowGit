@@ -4,13 +4,13 @@
   </div>
   <br/>
   <div class="row"> 
-    <form class="form-inline my-2 my-lg-0 col-10">
+    <form class="form-inline my-2 my-lg-0 col-10 repo-search">
       <%= form_tag repository_issues_path, method: :get do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search issues" , class:"issue-search col-12" %>
       <% end %>
     </form>
 
-      <%= link_to "New issue", new_repository_issue_path , class:"btn btn-success col-2 "%>
+      <%= link_to "New issue",new_repository_issue_path , class:"btn btn-success col-2 "%>
     </div>
     <div class="issue-container my-5">
       <div class="issue-title row col-12 open">
@@ -30,12 +30,11 @@
         <% @issues.each do |issue| %>
           <div class="container item">
             <div class="row">
-              <div class="col-3 mt-3"><%= issue.status%></div>
-              <div class="row col-4"> 
+              <div class="col-6 mt-3"><%= issue.status%></div>
+              <div class="row col-6"> 
                 <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
                 <p class="col-12 ago">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
               </div>
-              <div class="col-3 description"><%= issue.description %></div>
             </div>
           </div>
         <% end %>

@@ -1,13 +1,13 @@
-<div class="pull-request">
+<div class="pull-request public">
   
     <div>
       <%= render "shared/repo_navbar"%>
     </div>
 
-    <div class="row col-12">
-      <form class="form-inline my-2 my-lg-0 col-10 issue-show">
+    <div class="row col-12 sele">
+      <form class="form-inline my-2 my-lg-0 col-10 issue-show repo-search">
         <input
-          class="form-control mr-sm-2 col-12"
+          class="form-control mr-sm-2 col-12 "
           type="search"
           placeholder="Search"
           aria-label="Search"
@@ -25,12 +25,11 @@
         <% @pull_requests.each do |pull_request| %>
         <div class="container">
           <div class="row the-tr">
-            <div class="col-3 mt-2"><%= pull_request.status%></div>
-            <div class="col-4 row"> 
+            <div class="col-6 mt-2"><%= pull_request.status%></div>
+            <div class="col-6 row"> 
             <%= link_to pull_request.name,repository_pull_request_path(id: pull_request.id),class:"col-12" %>        
               <p class="col-12 ago">#<%= pull_request.repository_pull_request_index %> opened <%= time_ago_in_words(pull_request.created_at) %> ago </p>
             </div>
-            <div class="col-4"><%= pull_request.description %></div>
           </div>
         </div>
         <% end %>

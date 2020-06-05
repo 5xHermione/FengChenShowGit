@@ -38,7 +38,7 @@
           <div class="row">
             <div class="col-12">
               <div class="issue_description_inactive">
-                <p><%= @issue.description %></p>  
+                <%= to_markdown(@issue.description)%>
               </div>
               <%= form_for([:repository, @issue],remote: true) do |form|%>
               <div class= "issue_description_active">
@@ -94,7 +94,7 @@
           <div class="media">
             <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
             <div class="media-body">
-              <p><%= c.content%></p>
+              <p><%= to_markdown(c.content)%></p>
               <h6><%= time_ago_in_words(c.created_at) %>ago</h6>
             </div>
           </div>

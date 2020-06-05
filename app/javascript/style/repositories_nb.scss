@@ -10,13 +10,6 @@
   color: #52e69e;
 }
 
-.logged-in-my-repo .col-10 div {
-/*font-size: 12px;
-  font-family: "微軟正黑體";
-  font-weight: lighter;
-  color: #fff;*/
-}
-
 .logged-in-my-repo .repositories-repository-wrap {
   margin-right: 0; 
 }
@@ -30,6 +23,10 @@
   margin: auto;
   position: relative;
 }
+.logged-in-my-repo .repo-search {
+	padding-left: 15px;
+	color: #fff;
+}
 
 .logged-in-my-repo .ml-5 {
   margin: 0!important;
@@ -37,9 +34,11 @@
   right: 0;
 }
 
+
 .logged-in-my-repo .repo-search {
   padding-left: 15px;
 }
+
 
 /*====================like====================*/
 .star-container {
