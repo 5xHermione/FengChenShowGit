@@ -167,6 +167,8 @@ class RepositoriesController < ApplicationController
 
   def branches
     @branches = @git_file.branches.remote
+    @commits = @git_file.log(99999).count
+    @contributors = @git_file.log(99999).map{|c| c.committer.name}.uniq.select{|n|n != "Github"}.count
   end
 
   def branch_delete
