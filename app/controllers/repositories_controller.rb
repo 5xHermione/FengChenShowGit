@@ -38,7 +38,7 @@ class RepositoriesController < ApplicationController
       @branches = git_file.branches.remote
       @commits = git_file.log(99999).count
       @contributors = git_file.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
-      @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && PullRequest.find_by(compare_branch: b).nil?}
+      @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
     end
 
     # get folder path from url
