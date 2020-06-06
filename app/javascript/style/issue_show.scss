@@ -109,6 +109,17 @@ h6{
   background-color: #52E69E;;
 }
 
+.media-avatar-wrap {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .card {
   border: none;
   .card-body {
