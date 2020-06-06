@@ -93,7 +93,7 @@
 }
 
 .pull-request .new-pr {
-	height: 42px;
+	height: 38px;
 	background-color: #3c3f44;
 	border-radius: 8px;
 	text-align: center;
@@ -101,7 +101,17 @@
 	right: 0;
 	color: #e3e3e4;
 	line-height: 3vw;
+	padding: 0;
 }
+
+.pull-request .new-pr .btn{
+	height: 38px;
+	line-height: 3vw;
+	padding: 0;
+	position: absolute;
+	right: 0;
+}
+
 
 .pull-request .content {
 	padding: 0!important;
