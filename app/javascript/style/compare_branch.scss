@@ -1,0 +1,32 @@
+.compare_branch label{
+	color: #fff ;
+	padding-right: 10px;
+	padding-top: 7px;
+}
+
+.compare_branch .btn {
+	background-color: #52e69e;
+	border: solid 1px #52e69e;
+	color: #292c32;
+	margin-top: 40px;
+}
+
+.compare_branch .btn:hover {
+	transition: 0.5s;
+	color: #fff;
+	background-color: rgba(82,230,158,0.1);
+}
+
+.compare_branch select {
+	color: #fff;
+	background-color: #292c32;
+	border-style: none;
+  border: solid 1px #606060;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.compare_branch select:focus {
+	outline: 0;
+	border-color: #52e69e;
+}

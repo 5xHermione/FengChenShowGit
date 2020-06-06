@@ -1,5 +1,5 @@
-<!-- compare.html.erb -->
-<div class="compare_branch">
+
+<div class="compare_branch public">
   <div>
     <%= render "shared/repo_navbar"%>
   </div>
@@ -14,7 +14,7 @@
       <%= select("pull_request", "compare_branch", @branches.collect {|b| b.name })%>
     </div>
     <div class="actions">
-      <%= form.submit "New pull request", class: "btn btn-primary mx-3"%>
+      <%= form.submit "New pull request", class: "btn mx-3"%>
     </div>
   <% end %>
 </div>
