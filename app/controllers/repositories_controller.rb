@@ -63,12 +63,16 @@ class RepositoriesController < ApplicationController
       render :file , locals: {file_data: file_data}
     else
       Dir.entries(path).each do |file|
+
+        last_commit_message = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{path}/#{file}`
+        last_commit_time = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{path}/#{file}`
+        
         if [".", "..", ".git"].include?"#{file}"
         #rule out ".", "..", ".git"
         elsif File.file?(path+"/"+file)
-          files << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          files << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", last_commit_message, last_commit_time]
         else
-          dirs << "#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}"
+          dirs << ["#{path.match(/^#{@base_path}#{@current_repo_path}\/(.+)/)[1]}/#{file}", last_commit_message, last_commit_time]
         end
       end
       render :dir, locals: {dirs: dirs, files: files, repository: @repository}
@@ -166,6 +170,8 @@ class RepositoriesController < ApplicationController
 
   def branches
     @branches = @git_file.branches.remote
+    @commits = @git_file.log(99999).count
+    @contributors = @git_file.log(99999).map{|c| c.committer.name}.uniq.select{|n|n != "Github"}.count
   end
 
   def branch_delete
