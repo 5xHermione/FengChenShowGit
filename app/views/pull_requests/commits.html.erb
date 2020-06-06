@@ -1,24 +1,31 @@
 <%= render "shared/repo_navbar"%>
 <%= render "shared/pull_request_bar"%>
 
-<% @commits.each do |commit|%>
-  <div class="container">
-    <div class="row"> 
-      <div class="col-12">
-        <%= commit.committer.name %>
-      </div>
-      <div class="col-1">
-        <i class="fas fa-dot-circle"></i>
-      </div>
-      <div class="col-6">
-        <%= commit.message %>
-      </div>
-      <div class="col-3">
-        <%= time_ago_in_words(commit.date.utc) %>
-      </div>
-      <div class="col-2">
-        <%= commit.sha[0..7] %>
+  
+      
+
+
+
+  <% @commits.each do |commit|%>
+
+  <div class="timeline-container container">
+    <div class="row">
+      <div class="col-md-10">
+        <ul class="timeline-history list-group list-group-flush">
+          <li>
+            <div class="row list-item title">
+              <p><%= commit.committer.name %></p>
+              <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
+            </div>
+              <div class="row list-item number">
+                <p><%= commit.message %>這次的commit更改了markdown相關 這次的commit更改了markdown相關</p>
+                <p><%= commit.sha[0..7] %></p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-<% end %>
+
+
+  <% end %>

@@ -1,10 +1,14 @@
 class PullRequestsController < ApplicationController
-  before_action :set_pull_request, only: [:show, :edit, :update, :commits]
-  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff]
+  before_action :set_pull_request, only: [:show, :edit, :update, :commits, :merge, :close, :reopen]
+  before_action :set_git_remote_path, only: [:new, :show, :create, :index, :commits, :compare, :diff, :merge]
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
-    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && PullRequest.find_by(compare_branch: b).nil?}
+    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
+  end
+
+  def close_index
+    @pull_requests = current_repository.pull_requests.order("id DESC")
   end
 
   def compare
@@ -50,7 +54,7 @@ class PullRequestsController < ApplicationController
     @pull_request = find_user.repositories.find_by(slug: params[:repository_id]).pull_requests.build(pull_request_params)
     @pull_request.user = current_user
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.scan(/\w+/).select{ |word| word.length == 40 }
     @pull_request.compare_branch = params[:compare_branch]
     @pull_request.base_branch = params[:base_branch]
 
@@ -62,9 +66,16 @@ class PullRequestsController < ApplicationController
   end
 
   def show
-    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+    @commits_sha = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
+    @commits = @commits_sha.map{ |sha| @git_file.gcommit(sha)}
     @comments = @pull_request.comments
     @comment = Comment.new
+    @pull_request.commits = @commits_sha
+
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.compare_branch}`
+    @have_conflicts = `git -C #{@base_path}#{@current_repo_path} merge --no-commit --no-ff #{@pull_request.base_branch}`.scan(/Automatic merge failed; fix conflicts and then commit the result./).present?
+    `git -C #{@base_path}#{@current_repo_path} merge --abort`
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
   end
 
   def edit
@@ -80,6 +91,28 @@ class PullRequestsController < ApplicationController
 
   def commits
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+  end
+
+  def merge
+    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
+    `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
+    `git -C #{@base_path}#{@current_repo_path} merge #{@pull_request.compare_branch}`
+    @pull_request.status = "Merged"
+    @pull_request.save
+    `git -C #{@base_path}#{@current_repo_path} push origin #{@pull_request.base_branch}`
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been merged."
+  end
+
+  def close
+    @pull_request.status = 'Close'
+    @pull_request.save
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been closed."
+  end
+
+  def reopen
+    @pull_request.status = 'Open'
+    @pull_request.save
+    redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been opened."
   end
 
   private
