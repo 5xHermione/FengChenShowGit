@@ -20,6 +20,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = ENV["SMTP_DOMAIN"]
 
+  config.omniauth :github, ENV["CLIENT_ID"], ENV["CLIENT_SECERT"], :scope => 'user:email'
   # Configure the class responsible to send e-mails.
   #  config.mailer = 'Devise::Mailer' 
 
