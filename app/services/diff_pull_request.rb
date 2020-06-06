@@ -37,18 +37,18 @@ class DiffPullRequest
   def diff_in_file(file_name)
     #compare branch first, base branch after
     file = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
-    diff = { :code => {} }
+    diff = { "code" => {} }
     #file name
-    diff[:file_name] = file[0].match(/^diff --git a\/(.+)\s/)[1]
+    diff["file_name"] = file[0].match(/^diff --git a\/(.+)\s/)[1]
     #mode
     if file[1].match(/^deleted file mode /)
-      diff[:mode] = "delete"
+      diff["mode"] = "delete"
       file.shift(5)
     elsif file[1].match(/^new file mode /)
-      diff[:mode] = "new"
+      diff["mode"] = "new"
       file.shift(5)
     else
-      diff[:mode] = "modify"
+      diff["mode"] = "modify"
       file.shift(4)
     end
     #code
@@ -56,15 +56,15 @@ class DiffPullRequest
     if file != []
       file.each do |f|
         if f.match(/^@@ (.+) @@/)
-          diff[:code][f] = []
+          diff["code"][f] = []
           block = f
         else
           if f.match(/^\+/)
-            diff[:code][block] << ["add", f]
+            diff["code"][block] << ["add", f]
           elsif f.match(/^\-/)
-            diff[:code][block] << ["del", f]
+            diff["code"][block] << ["del", f]
           else
-            diff[:code][block] << ["org", f]
+            diff["code"][block] << ["org", f]
           end
         end
       end
