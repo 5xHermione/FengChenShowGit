@@ -12,6 +12,7 @@
         <h4 class="my-2 user-name">Name：<%= find_user.name %></h4>
         <h4 class="my-2 user-id">ID：<%= find_user.id %></h4>
       </div>
+
       <div class="repositories-container col-12 col-md-9 row p-3">
         <div class="repositories-title col-12">
           <ul class="nav">
@@ -40,6 +41,7 @@
             <button class="btn repo-btn my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
+        
         <div class="col-12 my-followers">
           <% @followers.each do |user|%>
             <div class="followers-avatar project-block">

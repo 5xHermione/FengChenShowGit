@@ -10,10 +10,14 @@ import "./following.scss";
 import "./follower.scss";
 import "./code.scss";
 import "./pull_request.scss";
+import "./pull_request_show.scss"
 import "./commits.scss";
 import "./commit_diff.scss";
+import "./commit_list.scss"
 import "./public.scss";
 import "./project_setting.scss";
 import "./repo_new.scss";
 import "./issue_new.scss";
 import "./like.scss";
+import "./user_setting_edit.scss";
+import "./new_ssh_key.scss";

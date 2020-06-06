@@ -1,0 +1,134 @@
+.user-setting-edit .repositories-container {
+	padding-right: 0!important;
+	color: #fff;
+	font-family: "微軟正黑體";
+}
+
+.user-setting-edit h2 {
+	color: #52e69e;
+	margin: 40px 0 30px 0!important; 
+}
+
+.user-setting-edit p {
+	display: inline;
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+.user-setting-edit label {
+	margin: 5px 0 5px 0;
+	color: #52e69e;
+}
+
+.user-setting-edit .tab-content {
+	background-color: #3c3f44;
+	margin-left: 15px;
+	border-top-left-radius: 8px; 
+	border-top-right-radius: 8px; 
+	border-bottom-right-radius: 8px;  
+	border-bottom-left-radius: 8px;
+	padding-left: 20px; 
+	padding-bottom: 30px;
+}
+.user-setting-edit .avatar-wrap {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.user-setting-edit .user-setting-nav{
+	padding-left: 15px;
+}
+
+.user-setting-edit .form-control {
+  color: #fff;
+  background-color: #292c32;
+  border-color: #292c32;
+  outline: 0;
+  box-shadow: 0 0 0 0 ;
+}
+
+.user-setting-edit .form-control:focus {
+  border-color: #52e69e;
+  background-color: #292c32;
+}
+
+.user-setting-edit .btn {
+	background-color: #52e69e;
+  border-color:  #52e69e;
+  color: #292c32;
+}
+
+.user-setting-edit .btn:hover { 
+	background-color: rgba(82,230,158,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.user-setting-edit .card-body {
+	background-color: #3c3f44;
+	border: 1px solid #292c32;
+	display: flex;
+
+}
+
+.user-setting-edit .btn-danger {
+	margin: 0;
+	font-size: 16px; 
+	background-color: #e34c4c;
+  border-color:  #e34c4c;
+  color: #292c32;
+  z-index: 99;
+}
+
+.user-setting-edit .btn-danger:hover { 
+	background-color: rgba(227,76,76,0.1);
+	color: #fff;
+	transition: 0.4s;
+}
+
+.user-setting-edit .sshN {
+	margin-top: 13px; 
+}
+
+.user-setting-edit .nav-tabs {
+	background-color: #292c32;
+	border: none;
+}
+
+.user-setting-edit #sshkey-tab {
+	background-color: #292c32;
+	color: #fff;
+}
+.user-setting-edit #sshkey-tab:hover {
+	color: #52e69e;
+}
+.user-setting-edit #sshkey-tab:focus {
+	background-color: #3c3f44;
+	color: #52e69e;
+}
+
+.user-setting-edit #profile-tab {
+	background-color: #292c32;
+	color: #fff;
+	border-top-right-radius: 8px; 
+	border-top-left-radius: 8px; 
+}
+.user-setting-edit #profile-tab:hover {
+	color: #52e69e;
+}
+.user-setting-edit #profile-tab:focus {
+	background-color: #3c3f44;
+	color: #52e69e;
+}
+
+.user-setting-edit .field-avatar  {
+  padding-bottom: 60px; 
+}
+
+.user-setting-edit .btn-avatar {
+  left: 15px;
+  padding: 10px;
+  width: 220px;
+  height: 55px;
+  cursor: pointer;
+}
