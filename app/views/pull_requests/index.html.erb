@@ -19,7 +19,7 @@
     <div class=" my-5">
       <div class="issue-title row p-2 open">
         <div class="status-title col-6"><%= link_to "Open #{@pull_requests.where(status: "Open").length}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %>
-        <%= link_to "Close #{@pull_requests.where(status: "Close" || "Merged").length}", close_index_repository_pull_requests_path(user_name: find_user.name, id: current_repository.title)%></div>
+        <%= link_to "Close #{@pull_requests.where(status: ["Close", "Merged"]).length}", close_index_repository_pull_requests_path(user_name: find_user.name, id: current_repository.title)%></div>
         <div class="description-title col-6">title</div>
       </div>
       <% if @pull_requests.present? %>
