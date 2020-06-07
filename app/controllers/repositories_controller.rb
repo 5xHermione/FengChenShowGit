@@ -42,7 +42,7 @@ class RepositoriesController < ApplicationController
 
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
       project = Linguist::Repository.new(repo, repo.head.target_id)
-      @languages = project.languages      
+      @languages = project.languages.map{|lang| [lang[0], (lang[1].to_f / project.size * 100).round(2)]}
     end
 
     # get folder path from url
