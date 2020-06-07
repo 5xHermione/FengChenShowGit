@@ -34,6 +34,7 @@
 
 .pull-request .col-4 {
 	padding-top: 0;
+	padding-left: 15px;
 }
 
 .pull-request .ago {
@@ -110,11 +111,6 @@
 	padding: 0;
 	position: absolute;
 	right: 0;
-}
-
-
-.pull-request .content {
-	padding: 0!important;
 }
 
 .pull-request .repo-search {

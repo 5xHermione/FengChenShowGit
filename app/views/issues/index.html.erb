@@ -14,9 +14,9 @@
     </div>
     <div class="issue-container my-5">
       <div class="issue-title row col-12 open">
-        <div class="status-title col-3">
+        <div class="status-title col-4">
         <%= @issues.length %> records</div>
-         <div class="open-and-close col-5 status-title">
+         <div class="open-and-close col-6 status-title">
           <i class="fas fa-lock-open"></i> <%= link_to  'open', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "open"), class:"distance" %> <%= " |  " %>
@@ -29,9 +29,9 @@
         <% @issues.each do |issue| %>
           <div class="container item">
             <div class="row">
-              <div class="col-3 mt-3 open-colse"><%= issue.status%></div>
+              <div class="col-4 mt-3 open-colse"><%= issue.status%></div>
               <div class="row col-6"> 
-                <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
+                <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12 issue-name" %>        
                 <p class="col-12 ago">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
               </div>
             </div>
