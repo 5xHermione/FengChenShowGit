@@ -26,11 +26,6 @@
     <%= to_markdown(@pull_request.description)%>
   </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= to_markdown(@pull_request.description)%>
-</p>
-
   <% @commits.each do |commit|%>
     <div class="container">
       <div class="row">
@@ -41,9 +36,9 @@
                 <p><%= commit.committer.name %></p>
                 <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
               </div>
-                <div class="row list-item number">
-                  <p><%= commit.message %></p>
-                  <p><%= commit.sha[0..7] %></p>
+              <div class="row list-item number">
+                <p><%= commit.message %></p>
+                <p><%= commit.sha[0..7] %></p>
               </div>
             </li>
           </ul>
@@ -51,11 +46,6 @@
       </div>
     </div>
   <% end %>
-
-
-
-
-  
 
     <% @comments.each do |c| %>
       <div class="comment-info-container">

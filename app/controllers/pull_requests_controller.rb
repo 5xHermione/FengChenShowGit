@@ -31,10 +31,10 @@ class PullRequestsController < ApplicationController
     @branches = @git_file.branches.remote
     @pull_request = current_repository.pull_requests.new
     @pull_request.name = params[:compare_branch]
+    @commits =`git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}.map{ |sha| @git_file.gcommit(sha)}
     @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
     @base_branch = params[:base_branch] 
     @compare_branch = params[:compare_branch]
-    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
     @pull_request.diff = diff_in_files(@base_branch, @compare_branch)
   end
 
@@ -42,7 +42,6 @@ class PullRequestsController < ApplicationController
     @pull_request = find_user.repositories.find_by(slug: params[:repository_id]).pull_requests.build(pull_request_params)
     @pull_request.user = current_user
     @pull_request.repository_pull_request_index = current_repository.pull_requests.count + 1
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.repository.default_branch}..#{params[:compare_branch]}`.scan(/\w+/).select{ |word| word.length == 40 }
     @pull_request.compare_branch = params[:compare_branch]
     @pull_request.base_branch = params[:base_branch]
     @pull_request.diff = diff_in_files(@pull_request.base_branch, @pull_request.compare_branch)
@@ -55,8 +54,13 @@ class PullRequestsController < ApplicationController
   end
 
   def show
-    @commits_sha = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
-    @commits = @commits_sha.map{ |sha| @git_file.gcommit(sha)}
+    if @pull_request.commits.present?
+      @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+    else
+      @commits_sha = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
+      @commits = @commits_sha.map{ |sha| @git_file.gcommit(sha)}
+    end
+
     @comments = @pull_request.comments
     @comment = Comment.new
     @pull_request.commits = @commits_sha
@@ -79,7 +83,12 @@ class PullRequestsController < ApplicationController
   end
 
   def commits
-    @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+    if @pull_request.commits.present?
+      @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
+    else
+      @commits_sha = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
+      @commits = @commits_sha.map{ |sha| @git_file.gcommit(sha)}
+    end
   end
 
   def merge
