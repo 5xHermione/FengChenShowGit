@@ -20,7 +20,6 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = ENV["SMTP_DOMAIN"]
 
-  config.omniauth :github, ENV["CLIENT_ID"], ENV["CLIENT_SECERT"], :scope => 'user:email'
   # Configure the class responsible to send e-mails.
   #  config.mailer = 'Devise::Mailer' 
 
@@ -261,6 +260,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :github, ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECERT"], :scope => 'user,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

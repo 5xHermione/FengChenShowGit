@@ -8,6 +8,7 @@ gem 'redcarpet', '~> 3.5'
 gem 'rouge', '~> 3.19'
 gem 'git', '~> 1.7'
 
+gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'figaro', '~> 1.1.1'

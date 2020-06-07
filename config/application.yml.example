@@ -15,3 +15,6 @@ production:
   GIT_SERVER_PATH: "/git"
   GIT_PUSH_INSTRUCT: "git@157.230.43.10:/git"
   AUTHORIZED_KEYS_PATH: "/home/deploy/.ssh/authorized_keys"
+  # 請跟季霆拿，否則上線版無法註冊
+  CLIENT_ID: "CLIENT_ID"
+  CLIENT_SECERT: "CLIENT_SECERT"
