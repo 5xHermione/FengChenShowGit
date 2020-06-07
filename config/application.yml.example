@@ -8,13 +8,13 @@ development:
   GIT_PUSH_INSTRUCT: "/tmp/gitServer"
   # 請在自己電腦裡的 .ssh 資料夾中建立一個名叫 authorized_keys 的檔案，並把 AUTHORIZED_KEYS_PATH 換成該檔案的絕對路徑
   AUTHORIZED_KEYS_PATH: "/Users/godzillalabear/.ssh/authorized_keys"
-  CLIENT_ID: "cbec0050925c5aaf2e4e"
-  CLIENT_SECERT: "be8afb6c3c5e26af4f42ef3895f9631a4e43c3a9"
+  GITHUB_CLIENT_ID: "cbec0050925c5aaf2e4e"
+  GITHUB_CLIENT_SECERT: "be8afb6c3c5e26af4f42ef3895f9631a4e43c3a9"
   # 這是 locahost 的資料欄位，佈署版無法使用
 production:
   GIT_SERVER_PATH: "/git"
   GIT_PUSH_INSTRUCT: "git@157.230.43.10:/git"
   AUTHORIZED_KEYS_PATH: "/home/deploy/.ssh/authorized_keys"
   # 請跟季霆拿，否則上線版無法註冊
-  CLIENT_ID: "CLIENT_ID"
-  CLIENT_SECERT: "CLIENT_SECERT"
+  GITHUB_CLIENT_ID: "GITHUB_CLIENT_ID"
+  GITHUB_CLIENT_SECERT: "GITHUB_CLIENT_SECERT"
