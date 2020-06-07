@@ -58,10 +58,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_081303) do
     t.string "base_branch", default: "master"
     t.string "status", default: "Open"
     t.integer "user_id"
-<<<<<<< HEAD
-=======
     t.json "diff"
->>>>>>> feat: store diff in pull request
     t.index ["repository_id"], name: "index_pull_requests_on_repository_id"
     t.index ["user_id"], name: "index_pull_requests_on_user_id"
   end
