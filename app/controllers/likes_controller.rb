@@ -21,6 +21,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    # 如果 session[:repository_title] 有找到 repo 就刪除 repo 嗎？
     like_relationship = Like.find_by(repository_id: current_repository, user_id: current_user.id) || Like.find_by(repository_id: params[:repo_id], user_id: current_user.id)
 
     if like_relationship.destroy

@@ -1,5 +1,5 @@
 <div class="user-index public">
-  
+
       <div class="container my-5">
         <div class="row">
           <div class="user-info-container col-12 col-md-3">
@@ -49,7 +49,7 @@
               </div>
             <% end %>
           <div class="green-wrap col-12">
-            
+
           </div>
           <h2 class="col-12 popu">Other users</h2>
             <% @users.each do |user| %>
@@ -74,6 +74,7 @@
                       <% else %>
                         <p class="unfollow">
                           <i class="fas fa-star"></i>
+                          <%#  user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id 應該要放 controller %>
                           <%= link_to " Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
                         </p>
                       <% end %>

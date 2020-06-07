@@ -3,7 +3,7 @@
     <%= render "shared/repo_navbar"%>
   </div>
   <br/>
-  <div class="row"> 
+  <div class="row">
     <form class="form-inline my-2 my-lg-0 col-10 repo-search">
       <%= form_tag repository_issues_path, method: :get do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search issues" , class:"issue-search col-12" %>
@@ -20,7 +20,7 @@
           <%= link_to  'open', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "open"), class:"distance" %> |
-          
+
           <%= link_to  'close', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "close"),class:"distance" %>
@@ -31,8 +31,9 @@
           <div class="container item">
             <div class="row">
               <div class="col-6 mt-3"><%= issue.status%></div>
-              <div class="row col-6"> 
-                <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>        
+              <div class="row col-6">
+              <%# repository_issue_path(issue) %>
+                <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12" %>
                 <p class="col-12 ago">#<%= issue.repository_issue_index %> opened <%= time_ago_in_words(issue.created_at) %> ago </p>
               </div>
             </div>

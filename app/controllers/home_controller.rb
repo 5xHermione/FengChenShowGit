@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   helper_method :resource_name, :resource, :devise_mapping
-  
+
   def index
     if user_signed_in?
       @repositories = current_user.repositories.order("id DESC")
+
+      # RANDOM 怎麼會需要用 RANDOM？
       @users = User.all.order("RANDOM()").limit(5)
 
       redirect_to logged_in_path(current_user.name)
@@ -14,7 +16,7 @@ class HomeController < ApplicationController
     @verification = User.where(name: params[:name]).or(User.where(email: params[:email])).exists?
     respond_to do |format|
       format.json { render json: !@verification }
-    end 
+    end
   end
 
   def logged_in
