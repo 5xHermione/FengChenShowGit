@@ -16,12 +16,11 @@
       <div class="issue-title row col-12 open">
         <div class="status-title col-3">
         <%= @issues.length %> records</div>
-         <div class="open-and-close col-5">
-          <%= link_to  'open', repository_issues_path(user_name: find_user.name,
+         <div class="open-and-close col-5 status-title">
+          <i class="fas fa-lock-open"></i> <%= link_to  'open', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
-                                                      "status" => "open"), class:"distance" %> |
-          
-          <%= link_to  'close', repository_issues_path(user_name: find_user.name,
+                                                      "status" => "open"), class:"distance" %> <%= " |  " %>
+          <i class="fas fa-lock"></i> <%= link_to  'close', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "close"),class:"distance" %>
          </div>

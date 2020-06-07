@@ -233,11 +233,15 @@ body {
 }
 
 .public .status-title {
-  color: #52e69e;
+  color: #fff;
 }
 
 .public .status-title i {
   font-size: 12px;
+  color: #52e69e;
+}
+.public .status-title a {
+  color: #52e69e;
 }
 
 .public .code-file-btn {

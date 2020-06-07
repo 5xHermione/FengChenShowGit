@@ -52,7 +52,7 @@
 
 .pull-request a {
 	text-decoration: none;
-	color: #52e69e;
+	color: #fff;
 }
 
 .pull-request .form-control {
@@ -119,5 +119,9 @@
 
 .pull-request .repo-search {
 	margin-top: 50px!important;
+}
+
+.pull-request .description-title {
+	padding-left: 30px;
 }
 
