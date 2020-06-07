@@ -3,6 +3,8 @@
 }
 
 
+
+
 .timeline-history.list-group {
   padding-bottom: 0.5rem;
   li {
@@ -17,8 +19,12 @@
       font-size: 18px;
     }  
   }
+  .list-item.number {
+    position: relative;
+  }
   .list-item.number p:nth-child(2){
-    padding-left: 2rem;
+    position: absolute;
+    right: 0;
   }
 }
 
