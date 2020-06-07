@@ -23,7 +23,7 @@
       </div>
       <% @pull_request_able.each do |branch| %>
         <% if find_user == current_user%>
-          <div class="w-100">Create a pull request <%= link_to "#{branch}", new_repository_pull_request_path(repository_id: current_repository.title ,compare_branch: branch, base_branch: current_repository.default_branch) %> ? </div>
+          <div class="w-100 other-branch">Create a pull request <%= link_to "#{branch}", new_repository_pull_request_path(repository_id: current_repository.title ,compare_branch: branch, base_branch: current_repository.default_branch) %> ? </div>
         <% end %>
       <% end %>
       

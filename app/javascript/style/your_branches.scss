@@ -1,0 +1,45 @@
+
+.your-branches .table {
+	font-family: "微軟正黑體";
+	font-size: 16px;
+	font-weight: lighter!important;
+	margin-top: 50px;
+	border: none!important;
+}
+
+.your-branches .gray {
+	background-color: #22252a!important;
+}
+.your-branches th.gray {
+	padding-left: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top-left-radius: 8px!important;
+}
+.your-branches td.gray {
+	border-top-right-radius: 8px!important;
+}
+
+.your-branches tr {
+	border-spacing: 0!important;
+	border-bottom: 1px solid #606060;
+}
+
+.your-branches th {
+	border-style: none!important;
+	color: #fff;
+}
+
+.your-branches td {
+	border: none!important;
+	color: #fff;
+}
+
+.your-branches .pd {
+	padding: 22px 30px 22px 30px;
+}
+
+.your-branches a {
+	color: #52e69e;
+	text-decoration: none!important;
+}

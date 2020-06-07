@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-                        registrations: 'users/registrations'
-                     }, path: '', 
+                        registrations: 'users/registrations',
+                        omniauth_callbacks: "users/omniauth_callbacks"
+                     }, 
                      path_names: { 
                         sessions: "sessions", 
                         sign_up: 'register', 
                         sign_in: 'login', 
                         sign_out: 'logout'
                      }
+
   root "home#index" 
   resources :home , only: [:index] do
     collection do 
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
       resources :pull_requests do
         member do
           get "commits", to: "pull_requests#commits", as: "commits"
+          get "files_changed", to: "pull_requests#files_changed", as: "files_changed"
         end
         resources :comments, only:[:create, :update, :destroy]
         collection do
