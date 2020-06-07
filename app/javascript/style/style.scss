@@ -212,7 +212,8 @@
 }
 
 .other-user-avatar img{
-  width: 100%;
+  margin-left: 20px;
+  width: 90%;
   border-radius: 50%;
 }
 
@@ -222,8 +223,7 @@
 }
 
 .user-index .other-user-information p{
-  padding-right: 30px;
-  font-size: 16px;
+  padding: 5px;
   display:inline;
   font-weight: bold;
   color: #f1be3f;
@@ -231,16 +231,47 @@
 
 .user-index .other-user-information a{
   text-decoration: none;
-  color: #573c39;
 }
 
 .user-index .follow {
+  font-size: 16px;
+  border: solid 1px #52e69e;
+  background-color: #292c32;
   position: absolute;
   right: 19px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .user-index .unfollow {
+  font-size: 14px;
+  border: solid 1px #52e69e;
+  background-color: #292c32;
   position: absolute;
   right: 0;
 }
 
+.user-index .sbtn:hover {
+  transition: 0.5s;
+  background-color: rgba(82,230,158,0.1);
+}
+
+.user-index .sbtn .fa-star {
+  font-size: 14px;
+  color: #52e69e;
+}
+
+
+/*========== Othder User ==========*/
+
+.user-index #follower-block { 
+  padding-left: 0!important;
+  margin-left: 16px;
+} 
+
+
+.user-index .other-users {
+  margin-top: 20px;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+}

@@ -15,7 +15,7 @@
 .pull-request .open {
 	margin: 0; 
 	padding: 15px!important;
-	background-color: #22252a;
+	background-color: #606060;
 	color: #fff;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -27,19 +27,33 @@
 	color: #fff;
 }
 
-.pull-request .the-tr{
+.pull-request .the-tr {
 	padding: 12px 12px 0 12px;
 
 }
 
 .pull-request .col-4 {
 	padding-top: 0;
+	padding-left: 15px;
 }
 
 .pull-request .ago {
 	color: #999999;
 	font-size: 12px;
 	padding: 0;
+}
+
+.pull-request .col-12 {
+  padding-left: 0!important;
+}
+
+.pull-request .row {
+  padding-left: 0!important
+}
+
+.pull-request a {
+	text-decoration: none;
+	color: #fff;
 }
 
 .pull-request .form-control {
@@ -64,4 +78,46 @@
 	padding-left: 0;
 }
 
+.pull-request .text-center {
+	font-family: "微軟正黑體";
+	color: #fff;
+	border-bottom: 1px solid #606060;
+}
+
+.pull-request .text-center h3 {
+	font-size: 24px;
+	font-weight: lighter!important;
+}
+.pull-request .text-center h4 {
+	font-size: 20px;
+	font-weight: lighter!important;
+}
+
+.pull-request .new-pr {
+	height: 38px;
+	background-color: #3c3f44;
+	border-radius: 8px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	color: #e3e3e4;
+	line-height: 3vw;
+	padding: 0;
+}
+
+.pull-request .new-pr .btn{
+	height: 38px;
+	line-height: 3vw;
+	padding: 0;
+	position: absolute;
+	right: 0;
+}
+
+.pull-request .repo-search {
+	margin-top: 50px!important;
+}
+
+.pull-request .description-title {
+	padding-left: 30px;
+}
 
