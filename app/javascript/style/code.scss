@@ -7,10 +7,16 @@
 	background-color: #22252a;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
+	color: #fff;
+	font-family: "微軟正黑體";
 }
 
 .dir-container {
 	margin-top: 55px;
+}
+
+.dir-container .table {
+	margin-top: 70px;
 }
 
 .dir-container .table td {
@@ -21,20 +27,6 @@
 
 .this-is-share-repo-navebar .container {
 	position: relative;
-}
-
-.code-file-btn {
-	font-family: "微軟正黑體";
-	font-size: 14px;
-	color: #292c32;
-	height: 40px;
-	background-color: #52e69e;
-	border: solid 1px #52e69e;
-	padding: 8px 15px 8px 15px;
-	border-radius: 8px;
-	position: absolute;
-	right: 0;
-	margin-top: 10px;
 }
 
 .code-file-btn:hover {
@@ -104,3 +96,4 @@
 	font-family: "微軟正黑體";
 	font-weight: lighter;
 }
+

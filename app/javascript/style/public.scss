@@ -240,3 +240,24 @@ body {
   font-size: 12px;
 }
 
+.public .code-file-btn {
+  font-family: "微軟正黑體";
+  font-size: 14px;
+  color: #292c32;
+  height: 40px;
+  background-color: #52e69e;
+  border: solid 1px #52e69e;
+  padding: 8px 15px 8px 15px;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.public .code-file-btn:hover {
+  transition: 0.5s;
+  color: #fff;
+  background-color: rgba(82,230,158,0.1);
+}
+
