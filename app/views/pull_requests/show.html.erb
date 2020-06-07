@@ -22,9 +22,9 @@
 </div>
 
 
-<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-5 mb-5 mx-auto"> 
+<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-3 mb-5"> 
   <div class="row">
-    <div class="col-12">
+    <div class="col-2">
       <% if @pull_request.status == "Open" %>
         <span class="btn btn-success"><%= @pull_request.status %></span>
       <% elsif @pull_request.status == "Merged"%>
@@ -36,7 +36,7 @@
 
 
     <div class="mx-3">
-      <%= current_user.name %> want to merge <%= @commits.count %> commit into <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%> from <%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %>
+      <%= current_user.name %><p>want to merge</p><%= @commits.count %><p>commit into</p> <%= link_to @pull_request.base_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.base_branch)%><p>from</p><%= link_to @pull_request.compare_branch, checkout_path(find_user.name, id: current_repository.title, branch: @pull_request.compare_branch) %>
     </div>
   </div>
 
@@ -96,9 +96,8 @@
 
 
 
----------------------------------------------------------------------------------------------
 
-
+<div class="timeline-group mt-5">
   <% @commits.each do |commit|%>
     <div class="container">
       <div class="row">
@@ -107,7 +106,7 @@
             <li>
               <div class="row list-item title">
                 <p><%= commit.committer.name %></p>
-                <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
+                <p><%= time_ago_in_words(commit.date.utc) %> ago</p>
               </div>
               <div class="row list-item number">
                 <p><%= commit.message %></p>
@@ -119,8 +118,12 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="commit-line"></div> 
 
     <% @comments.each do |c| %>
+
       <div class="comment-info-container">
         <div class="card">
           <div class="card-header">
@@ -142,6 +145,7 @@
               </div>
             </div>      
           </div>
+          
 
           <div class="card-body">
             <blockquote class="blockquote mb-0">
@@ -223,7 +227,7 @@
 
         <div class="actions text-area-container">
           <div class="form-group">
-            <%= f.label :content, class: "m-0"%>
+
             <%= f.text_area :content, class: "area form-control"%>
             <div class="issue-comment-btn row">
               
