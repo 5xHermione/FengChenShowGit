@@ -8,6 +8,7 @@ gem 'redcarpet', '~> 3.5'
 gem 'rouge', '~> 3.19'
 gem 'git', '~> 1.7'
 
+gem 'github-linguist', '~> 7.5', '>= 7.5.1'
 gem 'figaro', '~> 1.1.1'
 gem 'foreman', '~> 0.87.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'

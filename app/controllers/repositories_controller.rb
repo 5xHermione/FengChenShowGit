@@ -39,6 +39,10 @@ class RepositoriesController < ApplicationController
       @commits = git_file.log(99999).count
       @contributors = git_file.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
       @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
+
+      repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
+      project = Linguist::Repository.new(repo, repo.head.target_id)
+      @languages = project.languages      
     end
 
     # get folder path from url
@@ -64,9 +68,11 @@ class RepositoriesController < ApplicationController
     else
       Dir.entries(path).each do |file|
 
-        last_commit_message = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s" #{path}/#{file}`
-        last_commit_time = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%cr" #{path}/#{file}`
-        
+        last_commit = `git -C #{@base_path}#{@current_repo_path} log -1 --pretty=format:"%s___FengChenShowGit___%cr" #{path}/#{file}`
+        commit_array = last_commit.split("___FengChenShowGit___")
+        last_commit_message = commit_array[0]
+        last_commit_time = commit_array[1]
+
         if [".", "..", ".git"].include?"#{file}"
         #rule out ".", "..", ".git"
         elsif File.file?(path+"/"+file)
@@ -77,7 +83,6 @@ class RepositoriesController < ApplicationController
       end
       render :dir, locals: {dirs: dirs, files: files, repository: @repository}
     end
-    
   end
 
   def new

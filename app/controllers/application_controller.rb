@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  require 'rugged'
+  require 'linguist'
+  
   include MarkdownHelper
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_repository, :find_user
