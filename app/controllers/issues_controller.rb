@@ -1,7 +1,7 @@
-class IssuesController < ApplicationController 
-  
+class IssuesController < ApplicationController
+
   before_action :set_issue, only: [:show, :edit, :update]
-  
+
   def index
     @issues = list_issues
     #資料來源kaminari: https://github.com/kaminari/kaminari  page(params[:page]).per(5)  25筆切換一頁
@@ -14,10 +14,12 @@ class IssuesController < ApplicationController
   def create
     @issue = find_user.repositories.find_by(slug: params[:repository_id]).issues.build(issue_params)
     @issue.user = current_user
+
+    # 這個應該猜到 before_create
     @issue.repository_issue_index = current_repository.issues.count + 1
-    
-    if @issue.save 
-      redirect_to repository_issues_path, notice: 'You have created an issue！' 
+
+    if @issue.save
+      redirect_to repository_issues_path, notice: 'You have created an issue！'
     else
       render :new
     end
@@ -25,6 +27,7 @@ class IssuesController < ApplicationController
   end
 
   def show
+    # 看起來沒 includes(:user) 會有 N+1 問題
     @comments = @issue.comments
     @comment = Comment.new
   end
@@ -34,14 +37,14 @@ class IssuesController < ApplicationController
   end
 
   def toggle_status
-    
+
     issue = Issue.find(params[:id])
     issue.toggle_status
     issue.save
 
     if issue.toggle_status == 'open'
       notice = {notice: "This issue has closed!"}
-    else 
+    else
       notice = {notice: "This issue has opened!"}
     end
     redirect_to repository_issue_path, flash: notice
@@ -53,11 +56,11 @@ class IssuesController < ApplicationController
     if @issue.update(issue_params)
 
     end
-    
+
   end
 
   private
-  
+
   def issue_params
     clean_params = params.require(:issue).permit(:name, :description)
   end
@@ -77,5 +80,3 @@ class IssuesController < ApplicationController
     issues_sql.page(params[:page]).per(5)
   end
 end
-
-

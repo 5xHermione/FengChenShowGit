@@ -14,6 +14,7 @@ class SshkeysController < ApplicationController
   end
 
   def destroy
+    # 需要判斷 destroy 失敗的情況
     Sshkey.find(params[:id]).destroy
     update_authorized_keys
     redirect_to edit_user_registration_path, notice: "The SSH key is deleted!"
@@ -28,6 +29,8 @@ class SshkeysController < ApplicationController
     #save ssh key to authorized keys
     authorized_keys_file = File.open(ENV["AUTHORIZED_KEYS_PATH"])
     File.write(authorized_keys_file, "", mode: "w")
+
+    #資料多會出問題，可以用 find_each
     Sshkey.all.each do |ssh|
       File.write(authorized_keys_file, "#{ssh.key}\n", mode: "a")
     end

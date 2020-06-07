@@ -4,7 +4,10 @@ class PullRequestsController < ApplicationController
 
   def index
     @pull_requests = current_repository.pull_requests.order("id DESC")
-    @pull_request_able = @git_file.branches.remote.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
+    @pull_request_able = @git_file.branches
+                                  .remote
+                                  .map{|b| b.name }
+                                  .select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
   end
 
   def close_index
@@ -25,10 +28,11 @@ class PullRequestsController < ApplicationController
       compare_branch: @compare_branch
     )
     @diff_files = diff_pr.diff_in_files
+    # @diff_files.present?
     if @diff_files == []
       redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has no difference, please choose other branches.'
     else
-      
+
     end
   end
 
@@ -37,14 +41,14 @@ class PullRequestsController < ApplicationController
     @pull_request = current_repository.pull_requests.new
     @pull_request.name = params[:compare_branch]
     @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
-    @pull_request.base_branch = params[:base_branch] 
+    @pull_request.base_branch = params[:base_branch]
     @pull_request.compare_branch = params[:compare_branch]
     @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
 
     #diff files
     diff_pr = DiffPullRequest.new(
-      "#{@base_path}#{@current_repo_path}.git", 
-      base_branch: @pull_request.base_branch, 
+      "#{@base_path}#{@current_repo_path}.git",
+      base_branch: @pull_request.base_branch,
       compare_branch: @pull_request.compare_branch
     )
     @diff_files = diff_pr.diff_in_files
@@ -58,8 +62,8 @@ class PullRequestsController < ApplicationController
     @pull_request.compare_branch = params[:compare_branch]
     @pull_request.base_branch = params[:base_branch]
 
-    if @pull_request.save 
-      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: 'You have created a pull request！' 
+    if @pull_request.save
+      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: 'You have created a pull request！'
     else
       render :new
     end
@@ -104,6 +108,7 @@ class PullRequestsController < ApplicationController
   end
 
   def close
+    # 有 enum 後可以用 close! 這種方法
     @pull_request.status = 'Close'
     @pull_request.save
     redirect_to repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), notice: "This pull request has been closed."
