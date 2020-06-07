@@ -9,7 +9,7 @@
 		  </div>
 		  <div class="box-row">
 		  	<h4>
-		  	  Push an existing repository from the command line. Please make sure you have add your SSH key.
+		  	  Push an existing repository from the command line. Please make sure you add your SSH key.
 		  	</h4>
 			  	<%= markdown("```\ngit remote add origin #{ENV["GIT_PUSH_INSTRUCT"]+@current_repo_path+".git"}\ngit push -u origin master\n ``````") %>
 		  </div>
