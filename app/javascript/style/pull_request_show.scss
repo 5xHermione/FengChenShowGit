@@ -10,6 +10,7 @@ h6{
 
 
 .list-group {
+  // position: relative;
   padding-bottom: .5rem;
   li {
     .list-item{
@@ -21,6 +22,13 @@ h6{
       color: #ffffff ;
       opacity: 0.6;
     }  
+  }
+  .list-item.number {
+    position: relative;
+  }
+  .list-item.number p:nth-child(2){
+    position: absolute;
+    right: 0;
   }
 }
 
@@ -62,4 +70,16 @@ ul.timeline > li:before {
 }
 
 
+.pr-message p {
+  color: #ffffff;
+  margin-bottom: 0;
+  line-height: 38px;
+  margin-left: 1rem;
+}
 
+@media (max-width: 768px){ 
+.pr-message.col-sm-12 p{
+  font-size: 24px;
+  margin-left: 0rem;
+}
+}
