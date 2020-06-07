@@ -1,21 +1,25 @@
-<div>
-  <%= render "shared/repo_navbar"%>
-</div>
+<div class="base-branch">  
 
-<div>
-  <div>
-    <p> Base branch: <%= @base_branch %> </p> 
-    <p> Compare branch: <%= @compare_branch %> <p>
-  </div>
-</div>
+    <div>
+      <%= render "shared/repo_navbar"%>
+    </div>
 
-<% if @pull_request.errors.any? %>
-  <ul>
-    <%  @pull_request.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+    <div>
+      <div>
+        <p> Base branch: <%= @base_branch %> </p> 
+        <p> Compare branch: <%= @compare_branch %> <p>
+      </div>
+    </div>
+
+
+    <% if @pull_request.errors.any? %>
+      <ul>
+        <%  @pull_request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+
 
 <%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
   <%= hidden_field_tag :base_branch, @base_branch %>
@@ -25,36 +29,49 @@
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, class:"form-control" %>
-  </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, class:"form-control" %>
+      </div>
+      
+      <div class="actions">
+        <%= form.submit %>
+      </div>
 
-  <% @commits.each do |commit|%>
-    <div class="container">
-      <div class="row"> 
-        <div class="col-12">
-          <%= commit.committer.name %>
+      <% @commits.each do |commit|%>
+        <div class="container">
+          <div class="row"> 
+            <div class="col-12">
+              <%= commit.committer.name %>
+            </div>
+            <div class="col-1">
+              <i class="fas fa-dot-circle"></i>
+            </div>
+            <div class="col-6">
+              <%= commit.message %>
+            </div>
+            <div class="col-3">
+              <%= time_ago_in_words(commit.date.utc) %>
+            </div>
+            <div class="col-2">
+              <%= commit.sha[0..7] %>
+            </div>
+          </div>
         </div>
-        <div class="col-1">
-          <i class="fas fa-dot-circle"></i>
-        </div>
-        <div class="col-6">
-          <%= commit.message %>
-        </div>
-        <div class="col-3">
-          <%= time_ago_in_words(commit.date.utc) %>
-        </div>
-        <div class="col-2">
-          <%= commit.sha[0..7] %>
+      <% end %>
+
+      <div>
+        <h3>File changes</h3>
+        <div>
+          <% @diff_files.each do |diff| %>
+            <% diff.each do |line| %>
+              <div class="<%= line[0] %>"> <%= line[1] %>  </div>
+            <% end %>
+            <br>
+          <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
+
 
   <div>
     <h3>File changes</h3>
@@ -62,4 +79,7 @@
     <%= render "diff_content", diff: @pull_request.diff %>
   </div>
 
-<% end %> 
+    <% end %> 
+
+
+</div>

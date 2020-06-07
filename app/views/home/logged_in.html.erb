@@ -51,9 +51,9 @@
           <div class="green-wrap col-12">
             
           </div>
-          <h2 class="col-12 popu">Other users</h2>
+          <h2 class="col-12 popu other-users">Other users</h2>
             <% @users.each do |user| %>
-              <div class="col-12 other-user-wrap project-block">
+              <div id= "follower-block" class="col-12 other-user-wrap project-block ">
                 <div class="other-user-information">
                   <div class="other-user-avatar">
                     <% if user.image_url.nil?%>
@@ -64,17 +64,17 @@
                   </div>
                   <div class="information">
                       <p>
-                        <%= link_to "User name: #{user.name}", logged_in_path(user_name: user.name)%>
+                        <%= link_to "#{user.name}", logged_in_path(user_name: user.name)%>
                       </p>
                       <% if user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.blank?  %>
-                        <p class="follow">
+                        <p class="follow sbtn">
                           <i class="far fa-star"></i>
                           <%= link_to " Follow", relationships_path(user_name: user.name), method: "POST"%>
                         </p>
                       <% else %>
-                        <p class="unfollow">
+                        <p class="follow sbtn">
                           <i class="fas fa-star"></i>
-                          <%= link_to " Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
+                          <%= link_to "Unfollow", relationship_path(user_name: user.name, id: user.passive_relationships.select{|follower| current_user.active_relationships.include?(follower)}.first.id), method: "DELETE" %>
                         </p>
                       <% end %>
                   </div>
