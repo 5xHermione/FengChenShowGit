@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :pull_requests do
         member do
           get "commits", to: "pull_requests#commits", as: "commits"
+          get "files_changed", to: "pull_requests#files_changed", as: "files_changed"
         end
         resources :comments, only:[:create, :update, :destroy]
         collection do

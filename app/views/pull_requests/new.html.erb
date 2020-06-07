@@ -6,10 +6,11 @@
 
     <div>
       <div>
-        <p> Base branch: <%= @pull_request.base_branch %> </p> 
-        <p> Compare branch: <%= @pull_request.compare_branch %> <p>
+        <p> Base branch: <%= @base_branch %> </p> 
+        <p> Compare branch: <%= @compare_branch %> <p>
       </div>
     </div>
+
 
     <% if @pull_request.errors.any? %>
       <ul>
@@ -19,13 +20,14 @@
       </ul>
     <% end %>
 
-    <%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
-      <%= hidden_field_tag :base_branch, @pull_request.base_branch %>
-      <%= hidden_field_tag :compare_branch, @pull_request.compare_branch %>
-      <div class="field">
-        <h1><%= form.label :name %></h1>
-        <%= form.text_field :name, class: "form-control"%>
-      </div>
+
+<%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
+  <%= hidden_field_tag :base_branch, @base_branch %>
+  <%= hidden_field_tag :compare_branch, @compare_branch %>
+  <div class="field">
+    <h1><%= form.label :name %></h1>
+    <%= form.text_field :name, class: "form-control"%>
+  </div>
 
       <div class="field">
         <%= form.label :description %>
@@ -70,6 +72,14 @@
         </div>
       </div>
 
+
+  <div>
+    <h3>File changes</h3>
+    <%= hidden_field_tag :diff, @pull_request.diff %>
+    <%= render "diff_content", diff: @pull_request.diff %>
+  </div>
+
     <% end %> 
+
 
 </div>
