@@ -265,3 +265,18 @@ body {
   background-color: rgba(82,230,158,0.1);
 }
 
+
+.public .issue-name {
+  padding: 0; 
+  color: #52e69e;
+  text-decoration: none;
+}
+
+
+/*====翻頁的====*/
+
+.pagination-contant { 
+  border-style: none;
+  border: solid 1px #606060 ;
+  border-radius: 8px;
+ }

@@ -19,10 +19,10 @@
          <div class="open-and-close col-6 status-title">
           <i class="fas fa-lock-open"></i> <%= link_to  'open', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
-                                                      "status" => "open"), class:"distance" %> <%= " |  " %>
+                                                      "status" => "open"), class:"distance issue-name" %> <%= " |  " %>
           <i class="fas fa-lock"></i> <%= link_to  'close', repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
-                                                      "status" => "close"),class:"distance" %>
+                                                      "status" => "close"),class:"distance issue-name" %>
          </div>
         </div>
       <% if @issues.length > 0 %>
@@ -47,7 +47,7 @@
 
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <%= paginate @issues, window: 2 %>
+        <%= paginate @issues, window: 2, class: "pagination-contant" %>
       </ul>
     </nav>
 

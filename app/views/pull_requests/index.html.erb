@@ -32,7 +32,7 @@
           <div class="row the-tr">
             <div class="col-4 mt-2 content"><%= pull_request.status%></div>
             <div class="col-6 row"> 
-            <%= link_to pull_request.name,repository_pull_request_path(id: pull_request.id),class:"col-12" %>        
+            <%= link_to pull_request.name,repository_pull_request_path(id: pull_request.id),class: "col-12 issue-name" %>        
               <p class="col-12 ago">#<%= pull_request.repository_pull_request_index %> opened <%= time_ago_in_words(pull_request.created_at) %> ago </p>
             </div>
           </div>
