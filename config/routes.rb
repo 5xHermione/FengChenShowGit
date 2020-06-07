@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-                        registrations: 'users/registrations'
-                     }, path: '', 
+                        registrations: 'users/registrations',
+                        omniauth_callbacks: "users/omniauth_callbacks"
+                     }, 
                      path_names: { 
                         sessions: "sessions", 
                         sign_up: 'register', 
                         sign_in: 'login', 
                         sign_out: 'logout'
                      }
+
   root "home#index" 
   resources :home , only: [:index] do
     collection do 
