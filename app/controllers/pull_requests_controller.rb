@@ -23,7 +23,9 @@ class PullRequestsController < ApplicationController
     if @diff_files == []
       redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has no difference, please choose other branches.'
     else
-      
+      if PullRequest.where("base_branch = ? AND compare_branch = ?", params[:pull_request][:base_branch], params[:pull_request][:compare_branch] ).present?
+          redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has already created a pull request, please choose other branches.'
+      end
     end
   end
 
