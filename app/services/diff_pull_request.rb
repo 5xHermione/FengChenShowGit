@@ -1,29 +1,17 @@
 class DiffPullRequest
+  attr_accessor :base_branch, :compare_branch
+  attr_reader :repo 
+
   def initialize(repo_path, opts = {})
     @repo = repo_path
-    set_base_branch(opts[:base_branch]) if opts[:base_branch]
-    set_compare_branch(opts[:compare_branch]) if opts[:compare_branch]
+
+    @base_branch = opts[:base_branch] if opts[:base_branch]
+    @compare_branch = opts[:compare_branch] if opts[:compare_branch]
+
+    @commit_parent_obj = Git.open(@repo).gcommit(opts[:sha]).parent if opts[:sha]
+    @commit_obj = Git.open(@repo).gcommit(opts[:sha]) if opts[:sha]
+
     changed_file_name
-  end
-
-  def set_base_branch(br)
-    @base_branch = br
-  end
-
-  def set_compare_branch(br)
-    @compare_branch = br
-  end
-
-  def repo
-    @repo
-  end
-
-  def base_branch
-    @base_branch
-  end
-
-  def compare_branch
-    @compare_branch
   end
 
   def all_branch
@@ -31,12 +19,20 @@ class DiffPullRequest
   end
 
   def changed_file_name
-    @changed_file_name = %x`git -C #{@repo} diff --name-only #{@compare_branch} #{@base_branch}`.split("\n")
+    if @base_branch.present?
+      @changed_file_name = %x`git -C #{@repo} diff --name-only #{@compare_branch} #{@base_branch}`.split("\n")
+    else
+      @changed_file_name = %x`git -C #{@repo} diff --name-only #{@commit_parent_obj.sha} #{@commit_obj.sha}`.split("\n")
+    end
   end
 
   def diff_in_file(file_name)
     #compare branch first, base branch after
-    file = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
+    if @base_branch.present?
+      file = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
+    else
+      file = %x`git -C #{@repo} diff #{@commit_parent_obj.sha}..#{@commit_obj.sha} -- #{file_name}`.split("\n")
+    end
     diff = { "code" => {} }
     #file name
     diff["file_name"] = file[0].match(/^diff --git a\/(.+)\s/)[1]
@@ -70,8 +66,6 @@ class DiffPullRequest
       end
     end
     
-
-
     diff
   end
 

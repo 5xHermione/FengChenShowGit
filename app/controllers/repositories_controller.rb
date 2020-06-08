@@ -159,10 +159,10 @@ class RepositoriesController < ApplicationController
   end
 
   def commit_diff
-    @commit = @git_file.gcommit("#{params[:sha]}")
-    @commit_parent = @commit.parent
-    @commit_diff_str = @commit.diff_parent.patch
-    @diff_status = @commit.diff_parent.stats
+    @commit_diff_files = diff_files_in_commit(params[:sha])
+    
+    
+
     @branches = @git_file.branches.remote
     @commits = @git_file.log(99999).count
     @contributors = @git_file.log(99999).map{|c| c.committer.name}.uniq.select{|n|n != "Github"}.count
@@ -198,5 +198,13 @@ class RepositoriesController < ApplicationController
 
   def set_request_format
     request.format = :html
+  end
+
+  def diff_files_in_commit(commit)
+    diff_commit = DiffPullRequest.new(
+      "#{@base_path}#{@current_repo_path}",
+      sha: commit
+    )
+    diff_commit.diff_in_files
   end
 end

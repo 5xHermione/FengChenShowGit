@@ -31,8 +31,8 @@ class PullRequestsController < ApplicationController
     @branches = @git_file.branches.remote
     @pull_request = current_repository.pull_requests.new
     @pull_request.name = params[:compare_branch]
-    @commits =`git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}.map{ |sha| @git_file.gcommit(sha)}
-    @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.split("commit").select{ |c| c.length > 1 }.map{ |c| c[1..40]}
+    @commits = `git -C #{@base_path}#{@current_repo_path}.git log #{params[:base_branch]}..#{params[:compare_branch]}`.scan(/\w+/).select{|word| word.length == 40}.map{ |sha| @git_file.gcommit(sha)}
+
     @base_branch = params[:base_branch] 
     @compare_branch = params[:compare_branch]
     @pull_request.diff = diff_in_files(@base_branch, @compare_branch)
@@ -137,4 +137,5 @@ class PullRequestsController < ApplicationController
     )
     diff_pr.diff_in_files
   end
+  
 end

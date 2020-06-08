@@ -14,7 +14,10 @@
     </ul>
   </div>
 
-  <h5><%= @commit_diff_str %></h5>
-  <h5><%= @diff_status %></h5>
+  <div>
+    <h3>File changes</h3>
+    <%= hidden_field_tag :diff, @commit_diff_files %>
+    <%= render "pull_requests/diff_content", diff: @commit_diff_files %>
+  </div>
   
 </div>
