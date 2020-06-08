@@ -160,8 +160,6 @@ class RepositoriesController < ApplicationController
 
   def commit_diff
     @commit_diff_files = diff_files_in_commit(params[:sha])
-    
-    
 
     @branches = @git_file.branches.remote
     @commits = @git_file.log(99999).count

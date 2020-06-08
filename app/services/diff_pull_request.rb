@@ -65,7 +65,6 @@ class DiffPullRequest
         end
       end
     end
-    
     diff
   end
 
