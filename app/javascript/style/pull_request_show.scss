@@ -10,6 +10,7 @@ h6{
 
 
 .list-group {
+  // position: relative;
   padding-bottom: .5rem;
   li {
     .list-item{
@@ -22,9 +23,19 @@ h6{
       opacity: 0.6;
     }  
   }
+  .list-item.number {
+    position: relative;
+  }
+  .list-item.number p:nth-child(2){
+    position: absolute;
+    right: 0;
+  }
 }
 
-
+.commit-line{
+  height: 1px;
+  background-color: #ffffff;
+}
 
 ul.timeline {
   list-style-type: none;
@@ -59,4 +70,31 @@ ul.timeline > li:before {
 }
 
 
+.pr-message {
+  p{
+    color: #ffffff;
+    margin-bottom: 0;
+    line-height: 38px;
+    margin-left: 1rem;
+  }
+  a {
+    color: #52e69e;
+  }
+}
 
+.issue_name_active {
+  h1{
+    margin-bottom: -0.5rem;
+  }
+  display: none;
+  #pull_request_name{
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px){ 
+.pr-message.col-sm-12 p{
+  font-size: 24px;
+  margin-left: 0rem;
+}
+}

@@ -1,4 +1,5 @@
 $(document).on("turbolinks:load", function(){
+
     $("#issue_edit").click(function(){
       $("#issue_update").show();
       $(".issue_name_active").show();
@@ -30,5 +31,7 @@ $(document).on("turbolinks:load", function(){
       $(".issue_description_active").hide();
       $(".developer-comment-cancel-btn").hide();
     });
+
+    $("#merge_pr_btn").appendTo(".merge_pr_place")
 
 });

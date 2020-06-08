@@ -20,10 +20,11 @@ class PullRequestsController < ApplicationController
     @base_branch = params[:pull_request][:base_branch]
     @compare_branch = params[:pull_request][:compare_branch]
     @diff_files = diff_in_files(@base_branch, @compare_branch)
-    if @diff_files == []
-      redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: 'These two branches has no difference, please choose other branches.'
+
+    ok, msg = check_pull_request_available(@base_branch, @compare_branch)
+    if ok
     else
-      
+      redirect_to compare_repository_pull_requests_path(user_name: find_user.name), notice: msg
     end
   end
 
@@ -54,6 +55,7 @@ class PullRequestsController < ApplicationController
   end
 
   def show
+    `git -C #{@base_path}#{@current_repo_path} pull`
     if @pull_request.commits.present?
       @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
     else
@@ -75,11 +77,7 @@ class PullRequestsController < ApplicationController
   end
 
   def update
-    if @pull_request.update(pull_request_params)
-      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: "This pull request has updated."
-    else
-      render :edit
-    end
+    @pull_request.update(pull_request_params)
   end
 
   def commits
@@ -127,6 +125,20 @@ class PullRequestsController < ApplicationController
 
   def set_pull_request
     @pull_request = PullRequest.find(params[:id])
+  end
+
+  def check_pull_request_available(base_branch, compare_branch)
+    msg = ""
+    if diff_in_files(base_branch, compare_branch).present?
+      if PullRequest.where("base_branch = ? AND compare_branch = ? AND status = ?", base_branch, compare_branch, "Open" ).present?
+        msg = "These two branches has already created a pull request, please choose other branches."
+        return [false, msg]
+      end 
+      return [true,msg]
+    else
+      msg = "These two branches has no difference, please choose other branches."
+      return [false, msg]
+    end
   end
 
   def diff_in_files(base_branch, compare_branch)

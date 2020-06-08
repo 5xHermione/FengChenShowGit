@@ -1,18 +1,24 @@
 .dir-container {
-	margin-top: 40px;
+	margin-top: 55x;
 	margin-bottom: 50px;
 }
 .dir-container .table .thead-light th{
 	border: none;
-	background-color: #22252a;
+	background-color: #606060;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	color: #fff;
 	font-family: "微軟正黑體";
 }
 
-.dir-container {
-	margin-top: 55px;
+.dir-container .thead-light {
+	width: 82vw;
+}
+
+.dir-container .highlight .plaintext {
+	width: 82vw;
+	background-color: #ddd;
+	padding: 10px;
 }
 
 .dir-container .table {
@@ -21,6 +27,8 @@
 
 .dir-container .table td {
 	border-bottom: 1px solid #606060;
+	border-left: 1px solid #606060;
+	border-right: 1px solid #606060;
 	border-color: #606060;
 	position: relative;
 }

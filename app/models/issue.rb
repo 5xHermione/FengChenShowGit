@@ -12,3 +12,4 @@ class Issue < ApplicationRecord
     end
   end
 end
+
