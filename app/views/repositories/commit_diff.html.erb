@@ -16,7 +16,6 @@
 
   <div>
     <h3 class="commit-diff-title m-4">File changes</h3>
-    <%= hidden_field_tag :diff, @commit_diff_files %>
     <%= render "pull_requests/diff_content", diff: @commit_diff_files %>
   </div>
   
