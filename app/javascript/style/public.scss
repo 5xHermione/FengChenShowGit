@@ -1,68 +1,68 @@
 /*可共用*/
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    background-color: rgba(41, 44, 50, 1) !important;
-    width: 100%;
-    height: 100%;
+  background-color: rgba(41, 44, 50, 1) !important;
+  width: 100%;
+  height: 100%;
 }
 
 .public .id-name {
-    font-family: "微軟正黑體";
-    font-weight: lighter;
-    font-size: 30px;
-    padding-top: 20px;
-    padding-left: 10px;
-    margin: 0 0 40px 0;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-left: 10px;
+  margin: 0 0 40px 0;
 }
 .repo-navbar .nav-tabs {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #505052;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #505052;
 }
 
 
 .public .userId {
-    font-family: "微軟正黑體";
-    font-weight: bolder;
-    display: inline;
-    color: #52e69e;
-    font-size: 30px;
+  font-family: "微軟正黑體";
+  font-weight: bolder;
+  display: inline;
+  color: #52e69e;
+  font-size: 30px;
 }
 
 .public .fileName {
-    color: #52e69e;
+  color: #52e69e;
 }
 
 .public .fileName {
-    display: inline;
-    color: #52e69e;
-    font-size: 18px;
+  display: inline;
+  color: #52e69e;
+  font-size: 18px;
 }
 
 .public .repo-navbar .nav-link { 
-    color: #fff;
-    font-family: "微軟正黑體";
-    font-weight: lighter;
-    font-size: 12px;
-    border-bottom: none;
+  color: #fff;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  font-size: 14px;
+  border-bottom: none;
 }
 
 .public .nav-tabs .nav-link {
-    font-family: "微軟正黑體";
-    font-weight: lighter;
-    border: none;
+  font-family: "微軟正黑體";
+  font-weight: lighter;
+  border: none;
 }
 
 .public .nav-tabs .nav-link:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .public .nav-link.active {
-    border-bottom: none;
-    border-color: #e0d7d2;
+  border-bottom: none;
+  border-color: #e0d7d2;
 }
 
 .public .fas .fa-code {
@@ -70,19 +70,19 @@ body {
 }
 
 .public .user-name {
-    font-family: "微軟正黑體";
-    font-size: 20px;
-    letter-spacing: 0px;
-    color: #fff;
-    margin-top: 15px!important;
+  font-family: "微軟正黑體";
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #fff;
+  margin-top: 15px!important;
 }
 
 .public .user-id {
-    font-family: "微軟正黑體";
-    font-size: 20px;
-    letter-spacing: 0px;
-    color: #fff;
-    margin-top: 0px!important;
+  font-family: "微軟正黑體";
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #fff;
+  margin-top: 0px!important;
 }
 
 
@@ -120,7 +120,7 @@ body {
 }
 
 .public .nav-link {
-    font-family: "微軟正黑體";
+  font-family: "微軟正黑體";
   font-weight: lighter;
   letter-spacing: 0px;
   font-size: 14px;
@@ -128,17 +128,17 @@ body {
 }
 
 .public .nav-link:hover {
-    transition: 0.5s;
+  transition: 0.5s;
   color: #52e69e;
 }
 
 .public .nav-link:active {
-    border-bottom: 1px solid #52e69e;
+  border-bottom: 1px solid #52e69e;
 }
 
 .public .popu {
-    margin-top: 25px !important;
-    margin-bottom: 0 !important;
+  margin-top: 60px !important;
+  margin-bottom: 0 !important;
   font-size: 20px;
   font-family: "微軟正黑體";
   font-weight: bolder;
@@ -164,7 +164,7 @@ body {
 }
 
 .public .row {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .public .project-block {
@@ -175,7 +175,7 @@ body {
 } 
 
 .public .project-block:hover {
-    transition: 0.5s;
+  transition: 0.5s;
   background-color: #30333a;
 }
 
@@ -197,31 +197,31 @@ body {
 }
 
 
-/* ===================Search 跟按鈕===================== */
+/* ==============Search 跟按鈕=============== */
 
 .public .repo-btn {
-    width: 40px;
-    border-radius: 8px;
-    color: #76787b;
-    background-color: #292c32;
-    border: 1px solid #76787b;
-    margin: 0!important;
+  width: 40px;
+  border-radius: 8px;
+  color: #76787b;
+  background-color: #292c32;
+  border: 1px solid #76787b;
+  margin: 0!important;
   position: absolute;
   right: 0;
 }
 
 .public .repo-btn:hover {
-    background-color: rgba(82,230,158,0.1);
-    transition: 0.4s;
+  background-color: rgba(82,230,158,0.1);
+  transition: 0.4s;
 }
 
 .public .repo-search input {
-    height: 38px;
-    border-radius: 8px;
-    border: 1px solid #76787b;
-    background-color: #292c32;
-    outline: 0;
-    box-shadow: none;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid #76787b;
+  background-color: #292c32;
+  outline: 0;
+  box-shadow: none;
 }
 
 .public .repo-search input:focus {
@@ -229,5 +229,54 @@ body {
 }
 
 .the-bottom {
-   border-bottom: solid 2px #52e69e;
+  border-bottom: solid 2px #52e69e;
 }
+
+.public .status-title {
+  color: #fff;
+}
+
+.public .status-title i {
+  font-size: 12px;
+  color: #52e69e;
+}
+.public .status-title a {
+  color: #52e69e;
+}
+
+.public .code-file-btn {
+  font-family: "微軟正黑體";
+  font-size: 14px;
+  color: #292c32;
+  height: 40px;
+  background-color: #52e69e;
+  border: solid 1px #52e69e;
+  padding: 8px 15px 8px 15px;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.public .code-file-btn:hover {
+  transition: 0.5s;
+  color: #fff;
+  background-color: rgba(82,230,158,0.1);
+}
+
+
+.public .issue-name {
+  padding: 0; 
+  color: #52e69e;
+  text-decoration: none;
+}
+
+
+/*====翻頁的====*/
+
+.pagination-contant { 
+  border-style: none;
+  border: solid 1px #606060 ;
+  border-radius: 8px;
+ }

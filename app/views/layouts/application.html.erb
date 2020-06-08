@@ -11,7 +11,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-turbolinks= <%=need_turbolinks?%>>
+
     <%= render "shared/navbar"%>
     <div class="<%= background_class %>", style="min-height: 100%;">
       <div class="<%= backcolor_class %>">

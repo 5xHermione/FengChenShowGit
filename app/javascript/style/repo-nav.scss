@@ -31,7 +31,6 @@
 .issue-show .form-control {
 	border: 1px solid #606060;
 	margin: 0;
-
 }
 
 .issue-show .btn {
@@ -40,6 +39,7 @@
 	color: #292c32;
 	border-radius: 8px;
 	padding: 8px;
+	line-height: 14px;
 }
 
 .issue-show .btn:hover {
@@ -75,7 +75,7 @@
 .issue-show .open {
 	margin: 0; 
 	padding: 15px;
-	background-color: #22252a;
+	background-color: #606060;
 	color: #fff;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -95,6 +95,7 @@
 
 .issue-show .ago {
 	font-size: 12px;
+	padding-left: 0;
 }
 
 .issue-show .distance{
@@ -102,7 +103,7 @@
 	text-decoration: none;
 }
 
-.issue-show a {
-	color: #52e69e;
+.issue-show .open-colse {
+	color: #fff;
 	text-decoration: none;
 }

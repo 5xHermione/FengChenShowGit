@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   blacklists = ["edit", "login", "logout", "password", "new", "cancel", "register", "confirmation", "repositories", "issues", "rails"]
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable, :registerable
-  
+  devise :database_authenticatable, :recoverable, :rememberable, :registerable, :omniauthable, omniauth_providers: %i[github]
+
   has_many :sshkeys
   has_many :pull_requests, dependent: :destroy
   has_many :issues, dependent: :destroy
@@ -25,4 +25,13 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def self.from_omniauth(auth)  
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user| # 在資料庫找不到使用者的話就創一個新的使用者
+      user.provider = auth.provider # 登入資訊1
+      user.uid = auth.uid           # 登入資訊2
+      user.email = auth.info.email
+      user.name = auth.info.name
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
 end

@@ -6,12 +6,5 @@
   <div>
   	<%= link_to "Create Pull Request", new_repository_pull_request_path(user_name: find_user.name, base_branch: @base_branch, compare_branch: @compare_branch), class: "btn btn-primary" %>
   </div>
-  <div>
-  	<% @diff_files.each do |diff| %>
-  	  <% diff.each do |line| %>
-        <div class="<%= line[0] %>"> <%= line[1] %>  </div>
-      <% end %>
-  	 <br>
-  	<% end %>
-  </div>
+  <%= render "diff_content", diff: @diff_files %>
 </div>

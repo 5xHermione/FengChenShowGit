@@ -36,28 +36,43 @@ class DiffPullRequest
 
   def diff_in_file(file_name)
     #compare branch first, base branch after
-    arr = []
-    files = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
-    files.each do |s|
-      if s.match(/^diff/)
-        arr << "file name"
-      elsif s.match(/^index/)
-        arr << "index"
-      elsif s.match(/^\-\-\- /) || s.match(/^\+\+\+ /)
-        arr << "add_or_delete"
-      elsif s.match(/^@@ /)
-        arr << "line"
-      elsif s.match(/^\s/)
-        arr << "origin code"
-      elsif s.match(/^\+ /)
-        arr << "addition"
-      elsif s.match(/^\- /) 
-        arr << "deletion"
-      else
-        arr << "unknown"
+    file = %x`git -C #{@repo} diff #{@base_branch}..#{@compare_branch} -- #{file_name}`.split("\n")
+    diff = { "code" => {} }
+    #file name
+    diff["file_name"] = file[0].match(/^diff --git a\/(.+)\s/)[1]
+    #mode
+    if file[1].match(/^deleted file mode /)
+      diff["mode"] = "delete"
+      file.shift(5)
+    elsif file[1].match(/^new file mode /)
+      diff["mode"] = "new"
+      file.shift(5)
+    else
+      diff["mode"] = "modify"
+      file.shift(4)
+    end
+    #code
+    block = ""
+    if file != []
+      file.each do |f|
+        if f.match(/^@@ (.+) @@/)
+          diff["code"][f] = []
+          block = f
+        else
+          if f.match(/^\+/)
+            diff["code"][block] << ["add", f]
+          elsif f.match(/^\-/)
+            diff["code"][block] << ["del", f]
+          else
+            diff["code"][block] << ["org", f]
+          end
+        end
       end
     end
-    diff = arr.zip(files)
+    
+
+
+    diff
   end
 
   def diff_in_files

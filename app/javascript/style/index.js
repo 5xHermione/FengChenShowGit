@@ -21,3 +21,7 @@ import "./issue_new.scss";
 import "./like.scss";
 import "./user_setting_edit.scss";
 import "./new_ssh_key.scss";
+import "./pr_diff.scss";
+import "./instructions.scss";
+import "./your_branches.scss";
+import "./compare_branch.scss";
