@@ -13,7 +13,6 @@ $(document).on("turbolinks:load", function(){
       $(".issue_name_inactive").show();
       $("#issue_update").hide();
       $(".issue_name_active").hide();
-      // debugger
     });
 
     $("#issue_description_edit").click(function(){
@@ -32,5 +31,7 @@ $(document).on("turbolinks:load", function(){
       $(".issue_description_active").hide();
       $(".developer-comment-cancel-btn").hide();
     });
+
+    $("#merge_pr_btn").appendTo(".merge_pr_place")
 
 });
