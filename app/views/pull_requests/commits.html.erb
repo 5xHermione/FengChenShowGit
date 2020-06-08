@@ -1,16 +1,13 @@
 <%= render "shared/repo_navbar"%>
 <%= render "shared/pull_request_bar"%>
 
-  
-      
 
 
-
+<div class="timeline-group mt-5">
   <% @commits.each do |commit|%>
-
   <div class="timeline-container container">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <ul class="timeline-history list-group list-group-flush">
           <li>
             <div class="row list-item title">
@@ -18,8 +15,8 @@
               <p><%= time_ago_in_words(commit.date.utc) %>ago</p>
             </div>
               <div class="row list-item number">
-                <p><%= commit.message %>這次的commit更改了markdown相關 這次的commit更改了markdown相關</p>
-                <p><%= commit.sha[0..7] %></p>
+                <p class="p-message col-10"><%= commit.message %></p>
+                <p class="p-commit col-2"><%= commit.sha[0..7] %></p>
             </div>
           </li>
         </ul>
@@ -29,3 +26,4 @@
 
 
   <% end %>
+</div>
