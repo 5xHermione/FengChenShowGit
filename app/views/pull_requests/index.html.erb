@@ -14,13 +14,13 @@
       </form>
 
       <div class="new-pr col-3">
-        <%= link_to "New pull request", compare_repository_pull_requests_path , class:"btn col-2"%>
+        <%= link_to "New pull request", compare_repository_pull_requests_path , class: "btn col-12" %>
       </div>
     </div>
 
     <div class="my-5">
       <div class="issue-title row p-2 open">
-        <div class="description-title col-4"><%= @pull_requests.where(status: "Open").length %> records</div>
+        <div class="description-title col-4"><%= @pull_requests.where(status: "Open").length %> Records</div>
         <div class="status-title col-6">
            <i class="fas fa-lock-open"></i> 
            <%= link_to "Open #{@pull_requests.where(status: "Open").length}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %> 
