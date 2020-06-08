@@ -60,18 +60,6 @@
         </div>
       <% end %>
 
-      <div>
-        <h3>File changes</h3>
-        <div>
-          <% @diff_files.each do |diff| %>
-            <% diff.each do |line| %>
-              <div class="<%= line[0] %>"> <%= line[1] %>  </div>
-            <% end %>
-            <br>
-          <% end %>
-        </div>
-      </div>
-
 
   <div>
     <h3>File changes</h3>

@@ -55,6 +55,7 @@ class PullRequestsController < ApplicationController
   end
 
   def show
+    `git -C #{@base_path}#{@current_repo_path} pull`
     if @pull_request.commits.present?
       @commits = @pull_request.commits.map{ |sha| @git_file.gcommit(sha)}
     else
