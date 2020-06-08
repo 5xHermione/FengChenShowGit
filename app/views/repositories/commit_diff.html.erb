@@ -14,7 +14,9 @@
     </ul>
   </div>
 
-  <h5><%= @commit_diff_str %></h5>
-  <h5><%= @diff_status %></h5>
+  <div>
+    <h3 class="commit-diff-title m-4">File changes</h3>
+    <%= render "pull_requests/diff_content", diff: @commit_diff_files %>
+  </div>
   
 </div>
