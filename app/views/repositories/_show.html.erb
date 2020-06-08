@@ -17,6 +17,16 @@
           </div>
         </ul>
       </div>
+
+      <div class="col-12 d-flex m-3 percentage-bar">
+        <% @languages.each do |lang|%>
+          <div class="m-auto">
+            <%= lang[0] %>
+            <%= lang[1] %> % 
+          </div>
+        <% end %>
+      </div>
+
       
       <div class="current-branch">
           <i class="fas fa-code-branch"></i> Current Branch : <%= @current_branch %>
