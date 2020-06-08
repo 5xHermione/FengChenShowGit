@@ -16,19 +16,19 @@
           <h4>
             <%= form.text_field :name%>
           </h4>
-        </div> 
-        <div class ="issue_button col-2">
-          <% if @issue.user == current_user%>
-            <%= form.button "update", id: "issue_update", class: "btn btn-secondary", type: "submit"%>
-            <button id = "issue_edit" class="issue_edit btn btn-secondary">Edit</button>   
-          <% end %>
-        </div>
-      <% end %> 
+        </div>    
     </div>
+    <div class ="issue_button col-2">
+      <% if @issue.user == current_user%>
+        <%= form.button "update", id: "issue_update", class: "btn btn-secondary", type: "submit"%>
+        <button id = "issue_edit" class="issue_edit btn btn-secondary">Edit</button>   
+      <% end %>
+    </div>
+    <% end %> 
   </div>
 </div>
 
-<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-5 mb-5 mx-auto">
+<div class="second-container col-lg-10 col-md-10 col-sm-12 mt-5 mb-5">
 <div class="issue_description comment-info-container card">
   <div class="card-header issue-comment-name">
     <% if @issue.user == current_user%>
@@ -43,7 +43,13 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <div class="media">
-        <img src="https://picsum.photos/60/60?random=1" class="mr-3" alt="...">
+        <div class="media-avatar-wrap">
+          <% if @issue.user.image? %>
+            <%= image_tag(find_user.image_url) %>
+          <% else %>
+            <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+          <% end %>
+        </div>
         <div class="media-body">
           <div class="row">
             <div class="col-12">

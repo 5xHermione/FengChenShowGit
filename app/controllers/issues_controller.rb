@@ -49,11 +49,7 @@ class IssuesController < ApplicationController
 
 
   def update
-
-    if @issue.update(issue_params)
-
-    end
-    
+    @issue.update(issue_params)
   end
 
   private

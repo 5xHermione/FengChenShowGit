@@ -1,4 +1,5 @@
 $(document).on("turbolinks:load", function(){
+
     $("#issue_edit").click(function(){
       $("#issue_update").show();
       $(".issue_name_active").show();
@@ -12,6 +13,7 @@ $(document).on("turbolinks:load", function(){
       $(".issue_name_inactive").show();
       $("#issue_update").hide();
       $(".issue_name_active").hide();
+      // debugger
     });
 
     $("#issue_description_edit").click(function(){

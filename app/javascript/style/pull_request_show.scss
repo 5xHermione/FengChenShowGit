@@ -70,11 +70,26 @@ ul.timeline > li:before {
 }
 
 
-.pr-message p {
-  color: #ffffff;
-  margin-bottom: 0;
-  line-height: 38px;
-  margin-left: 1rem;
+.pr-message {
+  p{
+    color: #ffffff;
+    margin-bottom: 0;
+    line-height: 38px;
+    margin-left: 1rem;
+  }
+  a {
+    color: #52e69e;
+  }
+}
+
+.issue_name_active {
+  h1{
+    margin-bottom: -0.5rem;
+  }
+  display: none;
+  #pull_request_name{
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px){ 

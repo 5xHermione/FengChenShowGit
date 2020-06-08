@@ -75,11 +75,7 @@ class PullRequestsController < ApplicationController
   end
 
   def update
-    if @pull_request.update(pull_request_params)
-      redirect_to repository_pull_requests_path(user_name: current_user.name), notice: "This pull request has updated."
-    else
-      render :edit
-    end
+    @pull_request.update(pull_request_params)
   end
 
   def commits
