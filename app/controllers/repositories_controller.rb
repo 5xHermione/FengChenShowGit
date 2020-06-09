@@ -25,12 +25,12 @@ class RepositoriesController < ApplicationController
     @contributors = []
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
-      is_new_repo = true 
+      @is_new_repo = true 
       @branches = []
       @commits = 0
       @pull_request_able = []
     else
-      is_new_repo = false
+      @is_new_repo = false
       git_file = Git.open("#{@base_path}#{@current_repo_path}")
 
       @default_branch = @repository.default_branch
@@ -58,9 +58,9 @@ class RepositoriesController < ApplicationController
 
     is_file = File.file?(path)
     
-    if is_new_repo && current_user == find_user
+    if @is_new_repo && current_user == find_user
       render :how_to_push
-    elsif is_new_repo && current_user != find_user
+    elsif @is_new_repo && current_user != find_user
       render :empty_repo
     elsif is_file
       file_data = File.read(path)

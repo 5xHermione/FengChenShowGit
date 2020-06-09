@@ -17,15 +17,18 @@
           </div>
         </ul>
       </div>
-
-      <div class="col-12 d-flex m-3 percentage-bar">
-        <% @languages.each do |lang|%>
-          <div class="m-auto">
-            <%= lang[0] %>
-            <%= lang[1] %> % 
-          </div>
-        <% end %>
-      </div>
+      <% if ! @is_new_repo %>
+        <div class="col-12 d-flex m-3 percentage-bar">
+          <% @languages.each do |lang|%>
+            <div class="m-auto">
+              <%= lang[0] %>
+              <%= lang[1] %> % 
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+      <% end %>
+      
 
       
       <div class="current-branch">
