@@ -22,7 +22,7 @@ class User < ApplicationRecord
                    uniqueness: true,
                    format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." },
                    exclusion: { in: blacklists, message: ": Please change another user name."},
-                   length: {maximum: 64}
+                   length: {maximum: 32}
 
   mount_uploader :image, ImageUploader
 
