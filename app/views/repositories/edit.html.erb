@@ -1,76 +1,44 @@
 <div class="projet-setting">
-
-    <div>
-      <%= render "shared/repo_navbar"%>
-    </div>
-    </br>
-    <div class="repoedit-container my-5">
-      <div class="col-12">
-        <h2 class="mt-5">Settings</h2>
-        <div class="title-bottom-line"></div>
-        <%= form_with(model: @repository, url: repository_path(user_name: find_user.name, id: current_repository.title), local: true, method: :put) do |form| %>
-          <% if @repository.errors.any? %>
+  <div>
+    <%= render "shared/repo_navbar"%>
+  </div>
+  <div class="repoedit-container my-5">
+    <div class="col-12">
+      <h2 class="mt-5">Settings</h2>
+      <div class="title-bottom-line"></div>
+      <%= form_with(model: @repository, url: repository_path(user_name: find_user.name, id: current_repository.title), local: true, method: :put) do |form| %>
+        <% if @repository.errors.any? %>
           <h2>There is something wrong!</h2>
-            <% @repository.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
+          <% @repository.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
           <% end %>
-
-          <div class="field row m-auto py-3">
-            <%= form.label :title , "Repository title", class: "col-4 settings-title" %>
-            <%= form.text_field :title, class: "form-control col-7"%>
-          </div>
-
-          <div class="field row m-auto py-3">
-            <%= form.label :description, "Repository description", class: "col-4 settings-title"  %>
-            <%= form.text_field :description, class: "form-control col-7"%>
-          </div>
-
-          <div class="field row m-auto py-3 settings-title sele-branch">
-            <%= form.label :default_branch, "Repostory default branch"%>
-            <%= select("repository", "default_branch", @branches.collect {|b| b.name }, class: "drop-down")%>
-          </div>
-
-          <div class="actions">
-            <%= form.submit "Update repository", class: "btn mx-3"%>
-          </div>
-          <div class="col-12 bottom-line"></div>
         <% end %>
 
-
-
-        <div class="repo-branch-wrap">
-          <h2 class="mt-5">Branches</h2>
-          <div class="title-bottom-line"></div>
-          <div class="repo-branch-info-wrap col-12">
-            <div class="row my-2">
-              <h4 class="col-4 col-md-4 settings-title">Default branch</h4>
-              <select name="" id="" class="mx-3 col-2">
-                <option value="111">預備欄位1</option>
-                <option value="222">預備欄位2</option>
-              </select>
-              <button class="btn col-2 btn-primary mx-3">Update
-              </button>
-            </div>
-
-            <div class="row my-2">
-
-              <h4 class="col-4 col-md-4 settings-title">Protect branch</h4>
-              <select name="" id="" class="mx-3 col-2">
-                <option value="111">預備欄位1</option>
-                <option value="222">預備欄位2</option>
-              </select>
-              <button class="btn mx-3 col-2">Update</button>
-            </div>
-          </div>
+        <div class="field row m-auto py-3">
+          <%= form.label :title , "Repository title", class: "col-4 settings-title" %>
+          <%= form.text_field :title, class: "form-control col-7"%>
         </div>
-              
-        <h2 class="mt-5">Delete repository</h2>
-        <div class="title-bottom-line"></div>
-        <p class="my-3">Once you delete a repository, there is no going back. Please be certain.</p>
-        <%= button_to "Delete this repository", repository_path, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger my-2 mx-1"%>
-      </div>
+
+        <div class="field row m-auto py-3">
+          <%= form.label :description, "Repository description", class: "col-4 settings-title"  %>
+          <%= form.text_field :description, class: "form-control col-7"%>
+        </div>
+
+        <div class="field row m-auto py-3 settings-title sele-branch">
+          <%= form.label :default_branch, "Repostory default branch"%>
+          <%= select("repository", "default_branch", @branches.collect {|b| b.name }, class: "drop-down")%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Update repository", class: "btn mx-3"%>
+        </div>
+        <div class="col-12 bottom-line"></div>
+      <% end %>
+            
+      <h2 class="mt-5">Delete repository</h2>
+      <div class="title-bottom-line"></div>
+      <p class="my-3">Once you delete a repository, there is no going back. Please be certain.</p>
+      <%= button_to "Delete this repository", repository_path, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger my-2 mx-1"%>
     </div>
-
-
+  </div>
 </div>
