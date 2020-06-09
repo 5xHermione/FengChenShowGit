@@ -25,7 +25,7 @@
         </div>
 
         <div class="field row m-auto py-3 settings-title sele-branch">
-          <%= form.label :default_branch, "Repostory default branch"%>
+          <%= form.label :default_branch, "Repository default branch"%>
           <%= select("repository", "default_branch", @branches.collect {|b| b.name }, class: "drop-down")%>
         </div>
 
