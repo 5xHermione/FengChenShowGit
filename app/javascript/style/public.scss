@@ -185,8 +185,8 @@ body {
 
 /* ===================頭貼===================== */
 .avatar-wrap img {
-  width: 100%;
-  height: 100%;
+  width: 94%;
+  height: 94%;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -280,3 +280,14 @@ body {
   border: solid 1px #606060 ;
   border-radius: 8px;
  }
+
+
+/* ==== cotainer ====*/
+
+.public .container {
+  padding-left: 0;
+}
+
+.public .repositories-container {
+  padding-left: 0!important;
+}

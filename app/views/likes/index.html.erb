@@ -5,9 +5,9 @@
           <div class="user-info-container col-12 col-md-3">
           <div class="avatar-wrap">
             <% if find_user.image? %>
-                <%= image_tag(find_user.image_url) %>
+              <%= image_tag(find_user.image_url) %>
             <% else %>
-                
+              <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
             <% end %>
           </div>
             <h4 class="my-2 user-name">Name：<%= find_user.name%></h4>
