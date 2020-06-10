@@ -4,3 +4,26 @@
 	border-radius: 8px;
 	border: 1px solid #606060;
 }
+
+.unlogin .btn {
+	border: 1px solid #52e69e;
+	background-color: #52e69e;
+	color: #292c32;
+}
+
+.unlogin .btn:hover {
+  background-color: rgba(82,230,158,0.1);
+  color: #fff;
+}
+
+.unlogin input {
+	background-color: #3C3F44;
+	border: 1px solid #606060;
+}
+
+.form-control:focus {
+	color: #fff; 
+	background-color: #3C3F44;
+	border: 1px solid #52e69e;
+	box-shadow: none;
+}
