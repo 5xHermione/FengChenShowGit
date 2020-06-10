@@ -132,8 +132,8 @@ class RepositoriesController < ApplicationController
       #update repo name in gitServer
       if old_repo_name != @repository.title
         set_repo_file_path
-        `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}#{@current_repo_path}.git`
-        `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}#{@current_repo_path}`
+        `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}/#{find_user.name}/#{@repository.title}.git`
+        `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}/#{find_user.name}/#{@repository.title}`
       end
       redirect_to repository_path(user_name: find_user.name, id: @repository.title), notice: 'This repository has updated.'
     else
