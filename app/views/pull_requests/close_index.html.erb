@@ -4,16 +4,19 @@
       <%= render "shared/repo_navbar"%>
     </div>
 
-    <div class="row col-12 sele">
-      <form class="form-inline my-2 my-lg-0 col-10 issue-show repo-search">
+    <div class="row sele">
+      <form class="form-inline my-2 my-lg-0 col-12 issue-show repo-search">
         <input
-          class="form-control mr-sm-2 col-12 "
+          class="form-control mr-sm-2 col-9 "
           type="search"
           placeholder="Search"
           aria-label="Search"
         />
+        <div class="npr col-3">
+        <%= link_to_if @pull_request_able.present?, "New pull request", compare_repository_pull_requests_path, class: "btn" %>
+         </div>
       </form>
-      <%= link_to_if @pull_request_able.present?, "New pull request", compare_repository_pull_requests_path , class:"btn btn-success col-2"%>
+     
     </div>
 
     <div class=" my-5">
