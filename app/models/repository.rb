@@ -4,7 +4,8 @@ class Repository < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :user,
                                                   message: ": This title already exitsts!" },
                     format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows alphabets, numbers and underscore." },
-                    exclusion: { in: blacklists, message: ": Please change another repository title."}
+                    exclusion: { in: blacklists, message: ": Please change another repository title."},
+                    length: {maximum: 64}
   belongs_to :user
   has_many :issues, dependent: :destroy
   has_many :pull_requests, dependent: :destroy
