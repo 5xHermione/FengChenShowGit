@@ -3,13 +3,17 @@
   <div>
     <%= render "shared/repo_navbar"%>
   </div>
-  
+
   <div class="container">
     <div id = "pr_new_branch">
       <div class="row">
-        <p id = "base_branch"> Base branch: <%= @base_branch %> </p> 
-        <i class="fas fa-arrow-circle-left"></i>
-        <p id = "compare_branch"> Compare branch: <%= @compare_branch %> <p>
+        <div class="p-class">
+          <p id = "base_branch"> Base branch: <%= @base_branch %> </p> 
+        </div>
+        <i class="fas fa-arrow-left"></i>
+        <div class="p-class">
+          <p id = "compare_branch"> Compare branch: <%= @compare_branch %> <p>
+        </div>
       </div>
     </div>
   </div>   

@@ -22,13 +22,11 @@ h3{
     padding-left: 1rem;
   }
 }
-.pr-message {
-  color: #52e69e;
-  font-size: 1.2rem;
-}
-.fas.fa-arrow-circle-left {
+
+.fas.fa-arrow-left {
   line-height: 26px;
 }
+
 
 .pr-new-name { 
   #pull_request_name {
@@ -71,4 +69,23 @@ h3{
 
 .change-file {
   margin-top: 2rem;
+}
+
+@media (max-width: 768px){ 
+  #pr_new_branch {
+    #compare_branch {
+      margin-left: 0;
+    }
+    i {
+      padding-left: 0rem;
+      margin: auto;
+      padding-bottom: 14px;
+    }
+  }
+  .p-class {
+    width: 100%;
+  }
+  .fas.fa-arrow-left {
+    display: none;
+  }
 }
