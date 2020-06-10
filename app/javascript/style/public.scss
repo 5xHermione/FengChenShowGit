@@ -281,8 +281,7 @@ body {
   border-radius: 8px;
  }
 
-
-/* ==== cotainer ====*/
+/* ==== container ====*/
 
 .public .container {
   padding-left: 0;
@@ -291,3 +290,16 @@ body {
 .public .repositories-container {
   padding-left: 0!important;
 }
+
+ /*====翻頁的====*/
+
+.notice {
+  margin: auto;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-family: "微軟正黑體";
+  color: #cccccc;
+  background-color: #632f33;
+ }
