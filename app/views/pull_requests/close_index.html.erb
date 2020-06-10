@@ -12,9 +12,9 @@
           placeholder="Search"
           aria-label="Search"
         />
-        <div class="npr col-3">
-        <%= link_to_if @pull_request_able.present?, "New pull request", compare_repository_pull_requests_path, class: "btn" %>
-         </div>
+      <div class="new-pr col-3">
+        <%= link_to "New pull request", compare_repository_pull_requests_path , class: "btn col-12" %>
+      </div>
       </form>
      
     </div>
