@@ -8,7 +8,9 @@
 			</tr>
 			<tr>
 				<td style="color: #ffffff;">
-					<%= markdown(file_data) %>
+					<% file_datas.each do |data|%>
+						<%= to_markdown(data) %>
+					<% end %>
 				</td>
 			</tr>
 		</thead>

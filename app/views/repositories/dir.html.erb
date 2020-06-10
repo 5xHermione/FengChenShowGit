@@ -47,7 +47,7 @@
   </table>
 
 	<% if @readme.present? %>
-		<%= render partial: 'README', locals: {file_data: @readme} %>
+		<%= render partial: 'README', locals: {file_datas: @lines} %>
 	<% end %>
 
 </div>
