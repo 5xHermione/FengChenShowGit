@@ -88,4 +88,10 @@ h3{
   .fas.fa-arrow-left {
     display: none;
   }
+  .timeline-group {
+    .list-item.number p:nth-child(2){
+      position: inherit;
+      word-break: break-all
+    }  
+  }
 }
