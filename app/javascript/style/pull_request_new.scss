@@ -1,0 +1,65 @@
+h3{
+  font-weight: 400;
+}
+
+
+
+#pr_new_branch {
+  color:#52e69e;
+  #base_branch {
+    padding-left: 1rem;
+  }
+  #compare_branch {
+    padding-left: 1rem;
+  }
+  i {
+    color: #ffffff;
+    padding-left: 1rem;
+  }
+}
+.fas.fa-arrow-circle-left {
+  line-height: 26px;
+}
+
+.pr-new-name { 
+  #pull_request_name {
+    background-color: #3C3F44;
+    color: #ffffff;
+  }
+  #pull_request_name:focus {
+    border-color: #52E69E;
+    box-shadow: 0 0 4px rgba(82, 230, 159, 0.502);
+  }
+}
+.branch-new.comment-edit-container{
+  margin-top: -30px;
+  .comment-info-container{
+    .card {
+      .newbranch.card-header{
+        padding: 2rem;    
+      }
+      .card-body {
+        padding: 0 2rem;
+          .pr_create{
+            padding: 1rem 0;
+          }
+        #pull_request_description{
+          min-height: 10rem;
+          max-height: 10rem;
+        }
+        .pr_create_group{
+          justify-content: flex-end;
+          padding-right:14px;
+          .btn-success {
+            background-color: #52e69e;
+            color: #292c32;
+          }
+        }
+      }
+    }
+  }
+}
+
+.change-file {
+  margin-top: 2rem;
+}

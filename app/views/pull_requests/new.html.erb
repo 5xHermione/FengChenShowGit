@@ -1,72 +1,89 @@
 <div class="base-branch">  
 
-    <div>
-      <%= render "shared/repo_navbar"%>
-    </div>
-
-    <div>
-      <div>
-        <p> Base branch: <%= @base_branch %> </p> 
-        <p> Compare branch: <%= @compare_branch %> <p>
-      </div>
-    </div>
-
-
-    <% if @pull_request.errors.any? %>
-      <ul>
-        <%  @pull_request.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-
-<%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
-  <%= hidden_field_tag :base_branch, @base_branch %>
-  <%= hidden_field_tag :compare_branch, @compare_branch %>
-  <div class="field">
-    <h1><%= form.label :name %></h1>
-    <%= form.text_field :name, class: "form-control"%>
+  <div>
+    <%= render "shared/repo_navbar"%>
   </div>
 
-      <div class="field">
-        <%= form.label :description %>
-        <%= form.text_area :description, class:"form-control" %>
+  <div class="container">
+    <div id = "pr_new_branch">
+      <p>Create a new pull request by comparing changes across two branches.</p>
+      <div class="row">
+        <p id = "base_branch"> Base branch: <%= @base_branch %> </p> 
+        <i class="fas fa-arrow-circle-left"></i>
+        <p id = "compare_branch"> Compare branch: <%= @compare_branch %> <p>
       </div>
-      
-      <div class="actions">
-        <%= form.submit %>
-      </div>
+    </div>
+  </div>   
 
+  <% if @pull_request.errors.any? %>
+    <ul>
+      <%  @pull_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="branch-new comment-edit-container">
+    <%= form_for(([:repository,  @pull_request]) , method: 'post') do |form|%>
+      <%= hidden_field_tag :base_branch, @base_branch %>
+      <%= hidden_field_tag :compare_branch, @compare_branch %>
+
+      <div class="comment-info-container">
+        <div class="card">
+          <div class="newbranch card-header">
+            <div class="row">
+              <div class="pr-new-name col-12">
+                <%= form.text_field :name, class: "form-control"%>
+              </div>       
+            </div>
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <div class="media">
+                <div class="media-body">
+                  <%= form.text_area :description, class: "area form-control"%>             
+                </div>
+              </div>
+            </blockquote>
+            <div class="pr_create_group row">
+              <div class="pr_create actions">            
+                <%= form.submit "create pull request", class: "btn btn-success" %>
+              </div>            
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="timeline-group mt-5 col-12 mx-auto">
       <% @commits.each do |commit|%>
         <div class="container">
-          <div class="row"> 
-            <div class="col-12">
-              <%= commit.committer.name %>
-            </div>
-            <div class="col-1">
-              <i class="fas fa-dot-circle"></i>
-            </div>
-            <div class="col-6">
-              <%= commit.message %>
-            </div>
-            <div class="col-3">
-              <%= time_ago_in_words(commit.date.utc) %>
-            </div>
-            <div class="col-2">
-              <%= commit.sha[0..7] %>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="timeline list-group list-group-flush">
+                <li>
+                  <div class="row list-item title">
+                    <p><%= commit.committer.name %></p>
+                    <p><%= time_ago_in_words(commit.date.utc) %> ago</p>
+                  </div>
+                  <div class="row list-item number">
+                    <p><%= commit.message %></p>
+                    <p><%= commit.sha[0..7] %></p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       <% end %>
+    </div>
 
-  <div>
-    <h3 class="branch-diff-title m-4">File changes</h3>
-    <%= hidden_field_tag :diff, @pull_request.diff %>
-    <%= render "diff_content", diff: @pull_request.diff %>
-  </div>
+    <div class="commit-line"></div>
 
-    <% end %> 
+    <div class="change-file">
+      <%= hidden_field_tag :diff, @pull_request.diff %>
+      <%= render "diff_content", diff: @pull_request.diff %>
+    </div>
 
-
+  <% end %> 
 </div>
