@@ -30,8 +30,8 @@
         </div>
 
         <div class="field row m-auto py-3 settings-title sele-branch">
-          <%= form.label :is_public, "Repository public?"%>
-          <%= select("repository", "is_public", [true, false], class: "drop-down")%>
+          <%= form.label :is_public, "Repository privacy option"%>
+          <%= select("repository", "is_public", ["Public", "Private"], class: "drop-down")%>
         </div>
 
         <div class="actions">

@@ -128,7 +128,14 @@ class RepositoriesController < ApplicationController
 
   def update
     old_repo_name = current_repository.title
+
     if @repository.update(repository_params)
+      if params[:repository][:is_public] == "Public"
+        @repository.is_public = true
+      else
+        @repository.is_public = false
+      end
+      @repository.save
       #update repo name in gitServer
       if old_repo_name != @repository.title
         set_repo_file_path
