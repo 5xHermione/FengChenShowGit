@@ -9,9 +9,11 @@
 	border: 1px solid #52e69e;
 	background-color: #52e69e;
 	color: #292c32;
+	margin-bottom: 15px;
 }
 
 .unlogin .btn:hover {
+	transition: 0.4s;
   background-color: rgba(82,230,158,0.1);
   color: #fff;
 }
@@ -22,8 +24,21 @@
 }
 
 .form-control:focus {
+	transition: 0.4s;
 	color: #fff; 
 	background-color: #3C3F44;
 	border: 1px solid #52e69e;
 	box-shadow: none;
+}
+
+.unlogin a {
+	text-decoration: none;
+	margin: 10px;
+	color: #52e69e;
+}
+
+.unlogin a:hover {
+	font-weight: bolder;
+	transition: 0.4s;
+  color: #fff;
 }
