@@ -29,6 +29,11 @@
           <%= select("repository", "default_branch", @branches.collect {|b| b.name }, class: "drop-down")%>
         </div>
 
+        <div class="field row m-auto py-3 settings-title sele-branch">
+          <%= form.label :is_public, "Repository privacy option"%>
+          <%= select("repository", "is_public", ["Public", "Private"], class: "drop-down")%>
+        </div>
+
         <div class="actions">
           <%= form.submit "Update repository", class: "btn mx-3"%>
         </div>
