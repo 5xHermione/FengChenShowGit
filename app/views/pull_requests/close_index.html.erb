@@ -1,4 +1,4 @@
-<div class="pull-request public">
+<div class="pull-request pull-request-close public">
   
     <div>
       <%= render "shared/repo_navbar"%>
@@ -18,16 +18,17 @@
 
     <div class=" my-5">
       <div class="issue-title row p-2 open">
-        <div class="status-title col-6"><%= link_to "Open #{@pull_requests.where(status: "Open").length}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %>
+        <div class="description-title col-4"> Records</div>
+         <div class="status-title col-7"><i class="fas fa-lock-open"></i> <%= link_to "Open #{@pull_requests.where(status: "Open").length}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %>  |
+          <i class="fas fa-lock"></i> 
         <%= link_to "Close #{@pull_requests.where(status: ["Close", "Merged"]).length}", close_index_repository_pull_requests_path(user_name: find_user.name, id: current_repository.title)%></div>
-        <div class="description-title col-6">title</div>
       </div>
       <% if @pull_requests.present? %>
         <% @pull_requests.where(status: ["Close", "Merged"]).each do |pull_request| %>
         <div class="container">
           <div class="row the-tr">
-            <div class="col-6 mt-2"><%= pull_request.status%></div>
-            <div class="col-6 row"> 
+            <div class="col-4 mt-2"><%= pull_request.status%></div>
+            <div class="col-7 row"> 
             <%= link_to pull_request.name,repository_pull_request_path(id: pull_request.id),class:"col-12" %>        
               <p class="col-12 ago">#<%= pull_request.repository_pull_request_index %> opened <%= time_ago_in_words(pull_request.created_at) %> ago </p>
             </div>
