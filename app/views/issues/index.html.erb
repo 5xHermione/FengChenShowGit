@@ -28,7 +28,7 @@
       <% if @issues.length > 0 %>
         <% @issues.each do |issue| %>
           <div class="container item">
-            <div class="row">
+            <div class="row issue-content">
               <div class="col-4 mt-3 open-colse"><%= issue.status%></div>
               <div class="row col-6"> 
                 <%= link_to issue.name, repository_issue_path(id: issue.id),class:"col-12 issue-name" %>        
@@ -45,8 +45,8 @@
       <% end %>
     </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
+    <nav aria-label="Page navigation example" class="pageA" >
+      <ul class="pagination">
         <%= paginate @issues, window: 2, class: "pagination-contant" %>
       </ul>
     </nav>

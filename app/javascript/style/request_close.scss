@@ -1,0 +1,32 @@
+.pull-request-close .form-control {
+	padding-left: 15px!important;
+}
+
+.pull-request-close .form-inline {
+	position: relative;
+}
+.pull-request-close .npr {
+	height: 38px;
+	position: absolute;
+	right: 0;
+	background-color: #46484e;
+	border-radius: 8px;
+	color: #22252a;
+	text-align: center;
+	line-height: 12px;
+	padding-top: 9px;
+	letter-spacing: -1px;
+} 
+
+.pull-request-close .btn {
+	padding: 5px;
+	background-color: #52e69e;
+	border: 1px solid #52e69e;
+	color: #292c32;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.pull-request-close .container a {
+	color: #52e69e;
+}

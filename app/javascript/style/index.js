@@ -25,3 +25,4 @@ import "./pr_diff.scss";
 import "./instructions.scss";
 import "./your_branches.scss";
 import "./compare_branch.scss";
+import "./request_close.scss";

@@ -72,6 +72,10 @@
 	margin: 5px 0 0 0; 
 }
 
+.issue-show .issue-content {
+	padding-left: 15px; 
+}
+
 .issue-show .open {
 	margin: 0; 
 	padding: 15px;
@@ -93,7 +97,8 @@
 	padding-top: 7px;
 }
 
-.issue-show .ago {
+.issue-show .ago 
+{
 	font-size: 12px;
 	padding-left: 0;
 }
@@ -106,4 +111,43 @@
 .issue-show .open-colse {
 	color: #fff;
 	text-decoration: none;
+}
+
+.issue-show .text-center {
+	border-bottom: 1px solid #606060;
+	border-left: 1px solid #606060;
+	border-right: 1px solid #606060;
+	color: #fff;
+}
+
+
+
+/*========翻頁的小nav========*/
+
+.pagination {
+	border-style: none;
+	justify-content: center;
+}
+
+.pageA .current {
+	border-style: none!important;
+	border: 1px solid #606060!important;
+	border-radius: 8px;
+	background-color: #292c32!important;
+  color: #52e69e;
+  margin: 5px;
+}
+.pageA .curren:hover {
+	background-color: rgba(82,230,158,0.1);
+}
+
+.pageA a {
+	margin: 5px;
+	color: #52e69e;
+	border: 1px solid #606060!important;
+	border-radius: 8px;
+	background-color: #292c32;
+}
+.pageA a:hover {
+	background-color: rgba(82,230,158,0.1);
 }

@@ -27,14 +27,18 @@
 	color: #fff;
 }
 
-.pull-request .the-tr {
-	padding: 12px 12px 0 12px;
-
+.pull-request .row {
+  padding-left: 0!important;
 }
 
-.pull-request .col-4 {
+.pull-request .the-tr {
+	padding: 12px 12px 0 15px!important;
+}
+
+.pull-request .content {
 	padding-top: 0;
 	padding-left: 15px;
+	padding-right: 25px;
 }
 
 .pull-request .ago {
@@ -47,9 +51,6 @@
   padding-left: 0!important;
 }
 
-.pull-request .row {
-  padding-left: 0!important
-}
 
 .pull-request a {
 	text-decoration: none;
@@ -107,10 +108,10 @@
 
 .pull-request .new-pr .btn{
 	height: 38px;
-	line-height: 3vw;
-	padding: 0;
+	padding: 9px 0 0 0;
 	position: absolute;
 	right: 0;
+	letter-spacing: -1px;
 }
 
 .pull-request .repo-search {
