@@ -229,21 +229,22 @@
         <div class="form-group">
 
           <%= f.text_area :content, class: "area form-control"%>
-          <div class="issue-comment-btn row">
-            <div class="status-container mr-2">
-              <% if @pull_request.status == 'Open' && @have_conflicts == false %>
-                <div id="merge_pr_btn"><%= link_to 'Merge pull request', merge_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST' %></div>
-                <%= link_to "Close pull request", close_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-danger', method: 'POST'%>
-              <% elsif @pull_request.status == 'Open' && @have_conflicts %>
-                <div class="btn btn-danger">There is conflict between two branch. Please resolve the conflict locally and try again.</div>
-                <%= link_to "Close pull request", close_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-danger', method: 'POST'%>
-              <% elsif @pull_request.status == 'Merged' %>
-                <div class="btn btn-primary">This pull request has been merged.</div>
-              <% else %>
-                <%= link_to "Reopen pull request", reopen_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST'%>
-              <% end %>
-            </div>
-            
+          <% if find_user == current_user%>
+            <div class="issue-comment-btn row">
+              <div class="status-container mr-2">
+                <% if @pull_request.status == 'Open' && @have_conflicts == false %>
+                  <div id="merge_pr_btn"><%= link_to 'Merge pull request', merge_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST' %></div>
+                  <%= link_to "Close pull request", close_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-danger', method: 'POST'%>
+                <% elsif @pull_request.status == 'Open' && @have_conflicts %>
+                  <div class="btn btn-danger">There is conflict between two branch. Please resolve the conflict locally and try again.</div>
+                  <%= link_to "Close pull request", close_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-danger', method: 'POST'%>
+                <% elsif @pull_request.status == 'Merged' %>
+                  <div class="btn btn-primary">This pull request has been merged.</div>
+                <% else %>
+                  <%= link_to "Reopen pull request", reopen_repository_pull_request_path(user_name: find_user.name, repository_id: current_repository.title, id: @pull_request), class: 'btn btn-success', method: 'POST'%>
+                <% end %>
+              </div>
+            <% end %>
             <%= f.submit "Create comment", class: "comment-submit btn btn-success" %>         
           </div>
         </div>
