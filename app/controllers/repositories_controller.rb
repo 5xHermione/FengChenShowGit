@@ -53,7 +53,6 @@ class RepositoriesController < ApplicationController
             @lines << line
           end
         end
-        byebug
       end
 
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
