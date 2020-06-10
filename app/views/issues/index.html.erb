@@ -15,12 +15,13 @@
     <div class="issue-container my-5">
       <div class="issue-title row col-12 open">
         <div class="status-title col-4">
-        <%= @issues.length %> Records</div>
-         <div class="open-and-close col-6 status-title">
-          <i class="fas fa-lock-open"></i> <%= link_to  'Open', repository_issues_path(user_name: find_user.name,
+          <%= current_repository.issues.where(status: "open").count %> Records
+        </div>
+        <div class="open-and-close col-6 status-title">
+          <i class="fas fa-lock-open"></i> <%= link_to "Open #{current_repository.issues.where(status: "open").count}", repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "open"), class:"distance issue-name" %> <%= " |  " %>
-          <i class="fas fa-lock"></i> <%= link_to  'Close', repository_issues_path(user_name: find_user.name,
+          <i class="fas fa-lock"></i> <%= link_to  "Close #{current_repository.issues.where(status: "close").count}", repository_issues_path(user_name: find_user.name,
                                                       repository_id: current_repository.title,
                                                       "status" => "close"),class:"distance issue-name" %>
          </div>
@@ -39,7 +40,7 @@
         <% end %>
       <% else %>
         <div class="text-center p-5">
-          <h3>There isn’t any open issue.</h3>
+          <h3>There isn't any open issue.</h3>
           <h4>Try to create a new issue?</h4>
         </div>
       <% end %>
