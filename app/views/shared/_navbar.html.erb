@@ -13,42 +13,44 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% if current_user%>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Home page", root_path, class: "nav-link"%> 
-        </li>
-        <li class="nav-item">
-          <%= link_to "New repository", new_repository_path(current_user.name), class: "nav-link"%>
-        </li>
+      <% if current_user%>
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-          <%= link_to "My repositories", repositories_path(current_user.name), class: "nav-link"%>
-        </li>
-      </ul>
-      <ul class="ul-inline my-2 my-lg-0 ">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="avatarsmall">
-              <% if current_user.image? %>
-                  <%= image_tag(current_user.image_url) %>
-              <% else %>
-                  <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
-              <% end %>
+            <%= link_to "Home page", root_path, class: "nav-link"%> 
+          </li>
+          <li class="nav-item">
+            <%= link_to "New repository", new_repository_path(current_user.name), class: "nav-link"%>
+          </li>
+            <li class="nav-item">
+            <%= link_to "My repositories", repositories_path(current_user.name), class: "nav-link"%>
+          </li>
+        </ul>
+        <ul class="ul-inline my-2 my-lg-0 ">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatarsmall">
+                <% if current_user.image? %>
+                    <%= image_tag(current_user.image_url) %>
+                <% else %>
+                    <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+                <% end %>
+              </div>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item user_set"%>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item user_set"%>
             </div>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item user_set"%>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item user_set"%>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
       <% else %>
-        <li class="nav-item sp">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
-        </li>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item sp">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link"%>
+          </li>
+        </ul>
       <% end %>   
     </div>
   </nav>
