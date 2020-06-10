@@ -40,6 +40,10 @@ class RepositoriesController < ApplicationController
       @contributors = git_file.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
       @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
 
+      if request.fullpath.split("/").length == 4 # 專案根目錄的路徑 split 後只會有四個字串，超過四個字的都是比較下層的路徑
+        @readme = File.read("#{@base_path}#{@current_repo_path}/README.md") if File.exist?("#{@base_path}#{@current_repo_path}/README.md")
+      end
+
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
       project = Linguist::Repository.new(repo, repo.head.target_id)
       @languages = project.languages.map{|lang| [lang[0], (lang[1].to_f / project.size * 100).round(2)]}
