@@ -53,7 +53,7 @@ $().ready(function(){
     })
 
     $(".username-signup").blur(function(){
-      let ruleUsername = /^\w+$/;
+      let ruleUsername = /^\w{1,32}$/;
       let data = { name: $(".username-signup").val()}
       $.ajax({
         url: `/home/verification?name=${data.name}`,   
@@ -67,7 +67,7 @@ $().ready(function(){
               $(".username-signup").css("border-color","")
               $(".noticeUserName").text("")      
             }else{
-              $(".noticeUserName").text('User name only allows numbers, English letters and underscore.')
+              $(".noticeUserName").text('User name only allows numbers, English letters and underscore. And max length is 32 characters')
               $(".username-signup").css("border-color","#FF5151")
               $(".noticeUserName").css("color","#FF5151")
             }               

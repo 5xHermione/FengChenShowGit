@@ -91,6 +91,7 @@ class PullRequestsController < ApplicationController
 
   def merge
     if find_user == current_user
+      `git -C #{@base_path}#{@current_repo_path} pull origin #{@pull_request.compare_branch}`
       @pull_request.commits = `git -C #{@base_path}#{@current_repo_path}.git log #{@pull_request.base_branch}..#{@pull_request.compare_branch}`.scan(/\w+/).select{|word| word.length == 40}
       `git -C #{@base_path}#{@current_repo_path} checkout #{@pull_request.base_branch}`
       `git -C #{@base_path}#{@current_repo_path} merge #{@pull_request.compare_branch}`
