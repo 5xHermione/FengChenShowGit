@@ -44,7 +44,6 @@ class RepositoriesController < ApplicationController
         @lines = []
         @readme = File.exist?("#{@base_path}#{@current_repo_path}/README.md")
         if @readme
-          # @readme_file = File.open("#{@base_path}#{@current_repo_path}/README.md").read
           File.readlines("#{@base_path}#{@current_repo_path}/README.md").each do |line|
             if line.match?(/^*/)
             else
