@@ -7,15 +7,24 @@ h3{
 #pr_new_branch {
   color:#52e69e;
   #base_branch {
-    padding-left: 1rem;
+    padding:0 1rem;
+    border: 1px solid;
+    border-color: #52e69e;
   }
   #compare_branch {
-    padding-left: 1rem;
+    padding: 0 1rem;
+    margin-left: 1rem;
+    border: 1px solid;
+    border-color: #52e69e;
   }
   i {
     color: #ffffff;
     padding-left: 1rem;
   }
+}
+.pr-message {
+  color: #52e69e;
+  font-size: 1.2rem;
 }
 .fas.fa-arrow-circle-left {
   line-height: 26px;
