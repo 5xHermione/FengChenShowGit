@@ -105,3 +105,26 @@
 	font-weight: lighter;
 }
 
+td {
+	p code {
+		background-color: rgba(82, 230, 158, 0.1);
+		padding: 0 3px;
+		margin: 0 3px;
+		color: #ffffff;
+	}
+	pre {
+		background-color: rgba(82, 230, 158, 0.1);
+		padding: 10px;
+		code {
+			color: #ffffff;
+		}
+	}
+}
+
+td ul li a {
+	color: #52e69e;
+}
+
+td ul li a:hover {
+	color: #ffffff;
+}
