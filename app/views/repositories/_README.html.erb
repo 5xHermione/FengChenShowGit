@@ -1,16 +1,18 @@
 <div class="dir-container" >
   <table class="table">
-		<thead class="thead-light col-12">
+		<thead class="thead-light">
 			<tr>
 				<th>
 					<i class="far fa-file-alt" style="color: rgba(255,255,255,.5)"></i> Readme
 				</th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr>
 				<td class="readme" style="color: #ffffff;">
 					<%= to_markdown(file_datas)%>
 				</td>
 			</tr>
-		</thead>
+		</tbody>
   </table>
 </div>

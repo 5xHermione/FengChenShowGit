@@ -106,12 +106,6 @@
 }
 
 .readme {
-	p code {
-		background-color: rgba(82, 230, 158, 0.1);
-		padding: 0 3px;
-		margin: 0 3px;
-		color: #ffffff;
-	}
 	pre {
 		background-color: rgba(82, 230, 158, 0.1);
 		padding: 10px;
@@ -119,12 +113,10 @@
 			color: #ffffff;
 		}
 	}
-}
-
-.readme ul li a {
-	color: #52e69e;
-}
-
-.readme ul li a:hover {
-	color: #ffffff;
+	a {
+		color: #52e69e;
+	}
+	a:hover {
+		color: #ffffff;
+	}
 }
