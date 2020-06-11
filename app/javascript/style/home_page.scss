@@ -1,0 +1,121 @@
+.unlogin .bg-light {
+	color: #fff;
+	font-family: "微軟正黑體";
+	border-radius: 8px;
+	border: 1px solid #606060;
+}
+
+.unlogin .btn {
+	border: 1px solid #52e69e;
+	background-color: #52e69e;
+	color: #292c32;
+	margin-bottom: 15px;
+}
+
+.unlogin .btn:hover {
+	transition: 0.4s;
+  background-color: rgba(82,230,158,0.1);
+  color: #fff;
+}
+
+.unlogin input {
+	background-color: #3C3F44;
+	border: 1px solid #606060;
+}
+
+.form-control:focus {
+	transition: 0.4s;
+	color: #fff; 
+	background-color: #3C3F44;
+	border: 1px solid #52e69e;
+	box-shadow: none;
+}
+
+.unlogin a {
+	text-decoration: none;
+	margin: 10px;
+	color: #52e69e;
+}
+
+.unlogin a:hover {
+	font-weight: bolder;
+	transition: 0.4s;
+  color: #fff;
+}
+
+
+/*====login====*/
+
+.login .card-header {
+	border-top: 1px solid #606060;
+	border-left: 1px solid #606060;
+	border-right: 1px solid #606060;
+}
+
+.login .card-body {
+	border-bottom: 1px solid #606060;
+	border-left: 1px solid #606060;
+	border-right: 1px solid #606060;
+}
+
+.login {
+  color: #fff;
+}
+
+.login input{
+	border: 1px solid #606060;
+	background-color: #3C3F44;
+}
+
+.login .form-control:focus {
+	transition: 0.4s;
+	color: #fff; 
+	background-color: #3C3F44;
+	border: 1px solid #52e69e;
+	box-shadow: none;
+}
+
+.login .btn {
+	border: 1px solid #52e69e;
+	background-color: #52e69e;
+	color: #292c32;
+	margin-bottom: 15px;
+}
+
+.login .btn:hover {
+	transition: 0.4s;
+  background-color: rgba(82,230,158,0.1);
+  color: #fff;
+}
+
+.login a {
+	text-decoration: none;
+	margin: 10px;
+	color: #52e69e;
+}
+
+.login a:hover {
+	transition: 0.4s;
+  color: #fff;
+}
+
+/*==== login第三方按鈕 ====*/
+.unlogin .btn:focus {
+	box-shadow: none;
+}
+
+.btn-github {
+ margin-left: 0!important; 
+ margin-top: 0!important; 
+}
+
+.btn-github .sign-in {
+ color: #292c32!important;
+ margin: 0;
+ z-index: 1;
+}
+
+.btn-github .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+ }
