@@ -210,8 +210,9 @@
 }
 
 .other-user-avatar img{
-  width: 60%;
+  width: 80%;
   border-radius: 50%;
+  margin-left: 10px;
 }
 
 .other-user-information .information p{
@@ -285,6 +286,7 @@
   .other-user-avatar img{
     width: 100%;
     border-radius: 50%;
+    margin-left: 0;
   }
   .other-user-information .information p{
     margin-bottom: 0;
