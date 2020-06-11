@@ -21,7 +21,8 @@ class RepositoriesController < ApplicationController
     set_repo_file_path
 
     # synchronize git working repo 
-    `git -C #{@base_path}#{@current_repo_path} pull`
+    logger.info `git -C #{@base_path}#{@current_repo_path} fetch`
+    logger.info `git -C #{@base_path}#{@current_repo_path} reset --hard origin/master`
     @contributors = []
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
@@ -32,7 +33,8 @@ class RepositoriesController < ApplicationController
     else
       @is_new_repo = false
       git_file = Git.open("#{@base_path}#{@current_repo_path}")
-
+      logger.info `git -C #{@base_path}#{@current_repo_path} fetch`
+      logger.info `git -C #{@base_path}#{@current_repo_path} reset --hard origin/#{git_file.current_branch}`
       @default_branch = @repository.default_branch
       @current_branch = git_file.current_branch
       @branches = git_file.branches.remote
