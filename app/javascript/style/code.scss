@@ -105,7 +105,7 @@
 	font-weight: lighter;
 }
 
-td {
+.readme {
 	p code {
 		background-color: rgba(82, 230, 158, 0.1);
 		padding: 0 3px;
@@ -121,10 +121,10 @@ td {
 	}
 }
 
-td ul li a {
+.readme ul li a {
 	color: #52e69e;
 }
 
-td ul li a:hover {
+.readme ul li a:hover {
 	color: #ffffff;
 }
