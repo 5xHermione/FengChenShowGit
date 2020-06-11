@@ -35,10 +35,3 @@ $(document).on("turbolinks:load", function(){
     $("#merge_pr_btn").appendTo(".merge_pr_place")
 
 });
-
-
-// $(document).ready(function(){
-//   $(".btn").hover(function(){
-//     $("a").css("color","#fff");
-//   });
-// });
