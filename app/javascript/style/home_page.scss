@@ -108,17 +108,39 @@
 }
 
 .btn-github {
- margin-left: 0!important; 
- margin-top: 0!important; 
+  margin-left: 0!important; 
+  margin-top: 0!important; 
+  max-width: 100%;
 }
 
 .btn-github .sign-in {
- color: #292c32!important;
- margin: 0;
- z-index: 1;
+  color: #292c32!important;
+  margin: 0;
+  z-index: 1;
 }
+
+
+.sign-up-btn {
+	max-width: 100%;
+}
+
+.login-btn {
+  max-width: 100%;
+}
+
+.unlogin .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+}
+
+.btn-github .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+}
+
 
 .sign-in:hover {
 	transition: 0.4s;
   color: #fff!important;
 }
+

@@ -205,16 +205,18 @@
 }
 
 .other-user-avatar{
-  padding-right: 20px; 
   width: 10vw;
   display: inline;
-
 }
 
 .other-user-avatar img{
-  margin-left: 20px;
-  width: 90%;
+  width: 80%;
   border-radius: 50%;
+  margin-left: 10px;
+}
+
+.other-user-information .information p{
+  margin-bottom: 0;
 }
 
 .user-index .information {
@@ -274,4 +276,20 @@
   margin-top: 20px;
   font-family: "微軟正黑體";
   font-weight: lighter;
+}
+
+
+
+/*========== RWD ==========*/
+
+@media (max-width: 768px){ 
+  .other-user-avatar img{
+    width: 100%;
+    border-radius: 50%;
+    margin-left: 0;
+  }
+  .other-user-information .information p{
+    margin-bottom: 0;
+    padding-left: 1rem;
+  }
 }
