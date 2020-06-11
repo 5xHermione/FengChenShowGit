@@ -43,7 +43,15 @@ class RepositoriesController < ApplicationController
       @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
 
       if request.fullpath.split("/").length == 4 # 專案根目錄的路徑 split 後只會有四個字串，超過四個字的都是比較下層的路徑
-        @readme = File.read("#{@base_path}#{@current_repo_path}/README.md") if File.exist?("#{@base_path}#{@current_repo_path}/README.md")
+        @lines = []
+        @readme = File.exist?("#{@base_path}#{@current_repo_path}/README.md")
+        if @readme
+          File.readlines("#{@base_path}#{@current_repo_path}/README.md").each do |line|
+            line += "\n" if ! line.match?(/^*/)
+            @lines << line
+          end
+        end
+        @lines = @lines.join("")
       end
 
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
@@ -224,3 +232,4 @@ class RepositoriesController < ApplicationController
     diff_commit.diff_in_files
   end
 end
+
