@@ -115,7 +115,14 @@
  z-index: 1;
 }
 
+
+.unlogin .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+}
+
 .btn-github .sign-in:hover {
 	transition: 0.4s;
   color: #fff!important;
  }
+
