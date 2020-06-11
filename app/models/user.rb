@@ -2,6 +2,8 @@ class User < ApplicationRecord
   blacklists = ["edit", "login", "logout", "password", "new", "cancel", "register", "confirmation", "repositories", "issues", "rails"]
   devise :database_authenticatable, :recoverable, :rememberable, :registerable, :omniauthable, omniauth_providers: %i[github]
 
+  before_create :create_relationship
+
   has_many :sshkeys
   has_many :pull_requests, dependent: :destroy
   has_many :issues, dependent: :destroy
@@ -25,6 +27,14 @@ class User < ApplicationRecord
                    length: {maximum: 32}
 
   mount_uploader :image, ImageUploader
+
+  def create_relationship
+    followed_user = User.find_by(id: 1)
+    if followed_user.present?
+      relationship = self.active_relationships.new(followed_id: followed_user.id)
+      relationship.save
+    end
+  end
 
   def self.from_omniauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user| # 在資料庫找不到使用者的話就創一個新的使用者
