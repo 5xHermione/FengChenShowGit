@@ -37,8 +37,24 @@
 	color: #52e69e;
 }
 
-.unlogin a:hover {
-	font-weight: bolder;
+/*==== 第三方按鈕 ====*/
+
+.unlogin .btn:focus {
+	box-shadow: none;
+}
+
+.btn-github {
+ margin-left: 0!important; 
+ margin-top: 0!important; 
+}
+
+.btn-github .sign-in {
+ color: #292c32!important;
+ margin: 0;
+ z-index: 1;
+}
+
+.unlogin .sign-in:hover {
 	transition: 0.4s;
-  color: #fff;
+  color: #fff!important;
 }
