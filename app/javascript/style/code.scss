@@ -16,8 +16,8 @@
 }
 
 .dir-container .highlight .plaintext {
-	width: 82vw;
-	background-color: #ddd;
+	color: #ffffff;
+	background-color: #292c32;
 	padding: 10px;
 }
 
@@ -105,6 +105,11 @@
 	font-weight: lighter;
 }
 
+
+.code-file pre{
+	color: #ffffff;
+}
+
 .readme {
 	pre {
 		background-color: rgba(82, 230, 158, 0.1);
@@ -119,4 +124,5 @@
 	a:hover {
 		color: #ffffff;
 	}
+
 }

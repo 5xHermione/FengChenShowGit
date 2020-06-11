@@ -2,10 +2,10 @@ module MarkdownHelper
  require 'redcarpet'
  require 'rouge'
  require 'rouge/plugins/redcarpet'
-
- class HTML < Redcarpet::Render::HTML
-   include Rouge::Plugins::Redcarpet
- end
+ 
+class HTMLWithPants < Redcarpet::Render::HTML
+  include Redcarpet::Render::SmartyPants
+end
 
  def markdown(text)
    render_options = {
@@ -14,7 +14,7 @@ module MarkdownHelper
      link_attributes: { rel: 'nofollow' },
      prettify: true
    }
-   renderer = HTML.new(render_options)
+   renderer = HTMLWithPants.new(render_options)
    extras = {
      autolink: true,
      no_intra_emphasis: true,
