@@ -28,3 +28,4 @@ import "./your_branches.scss";
 import "./compare_branch.scss";
 import "./request_close.scss";
 import "./home_page.scss";
+import "./overview"
