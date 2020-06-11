@@ -47,11 +47,10 @@ class RepositoriesController < ApplicationController
         @readme = File.exist?("#{@base_path}#{@current_repo_path}/README.md")
         if @readme
           File.readlines("#{@base_path}#{@current_repo_path}/README.md").each do |line|
-            line += "\n" if ! line.match?(/^*/)
             @lines << line
           end
         end
-        @lines = @lines.join("")
+        @lines = @lines.join("\n")
       end
 
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
