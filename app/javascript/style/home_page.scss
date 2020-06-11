@@ -38,7 +38,6 @@
 }
 
 .unlogin a:hover {
-	font-weight: bolder;
 	transition: 0.4s;
   color: #fff;
 }
@@ -104,6 +103,10 @@
 	box-shadow: none;
 }
 
+.login .btn:focus {
+	box-shadow: none;
+}
+
 .btn-github {
  margin-left: 0!important; 
  margin-top: 0!important; 
@@ -116,6 +119,7 @@
  z-index: 1;
 }
 
+
 .sign-up-btn {
 	max-width: 100%;
 }
@@ -126,6 +130,12 @@
 }
 
 .btn-github .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+}
+
+
+.sign-in:hover {
 	transition: 0.4s;
   color: #fff!important;
 }
