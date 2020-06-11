@@ -11,6 +11,7 @@ import "./follower.scss";
 import "./code.scss";
 import "./pull_request.scss";
 import "./pull_request_show.scss"
+import "./pull_request_new.scss"
 import "./commits.scss";
 import "./commit_diff.scss";
 import "./commit_list.scss"
@@ -26,3 +27,4 @@ import "./instructions.scss";
 import "./your_branches.scss";
 import "./compare_branch.scss";
 import "./request_close.scss";
+import "./home_page.scss";
