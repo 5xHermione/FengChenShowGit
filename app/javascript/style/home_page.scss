@@ -56,8 +56,6 @@
 	border-bottom: 1px solid #606060;
 	border-left: 1px solid #606060;
 	border-right: 1px solid #606060;
-/*	border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;*/
 }
 
 .login {
@@ -97,8 +95,27 @@
 }
 
 .login a:hover {
-	font-weight: bolder;
 	transition: 0.4s;
   color: #fff;
 }
 
+/*==== login第三方按鈕 ====*/
+.unlogin .btn:focus {
+	box-shadow: none;
+}
+
+.btn-github {
+ margin-left: 0!important; 
+ margin-top: 0!important; 
+}
+
+.btn-github .sign-in {
+ color: #292c32!important;
+ margin: 0;
+ z-index: 1;
+}
+
+.btn-github .sign-in:hover {
+	transition: 0.4s;
+  color: #fff!important;
+ }
