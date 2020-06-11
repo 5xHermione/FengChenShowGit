@@ -42,6 +42,26 @@
 	padding-left: 0;
 }
 
+/*==== empty_repo.html ====*/
+
+.instructions .logo {
+	width: 10%;
+	opacity: 0.5;
+}
+
+.instructions a {
+	color: #52e69e;
+	text-decoration: none;
+}
+.instructions a:hover {
+	color: #b1b2b4;
+}
+
+.empty .push-instruction-container {
+	margin-top: 70px!important; 
+	padding-bottom: 20px;
+}
+
 .push-instruction-container div pre{
 	color: #ffffff;
 }

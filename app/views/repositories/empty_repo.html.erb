@@ -1,16 +1,19 @@
-<!-- how_to_push.html.erb -->
-<%= render "show" %>
+<div class="instructions empty">
 
-<div class="push-instruction-container my-5 text-center">
-  <div class="box-header">
-  	<h3>This repository is empty.</h3>
-  </div>
-  <div class="box-row">
-    <div>
-      <i style="font-size: 48px" class="fab fa-github-alt"></i>
-    </div> 
-  	<h3>
-      Go back to <%= link_to "homepage", root_path%>
-  	</h3>
-  </div>
+    <%= render "show" %>
+
+    <div class="push-instruction-container my-5 text-center">
+      <div class="box-header">
+      	<h3>This repository is empty.</h3>
+      </div>
+      <div class="box-row">
+        <div>
+          <img class="logo" src="https://images.plurk.com/7pMfGcItilR0sQlOet3kUJ.png">
+        </div> 
+      	<h3>
+          Go back to <%= link_to "homepage", root_path%>
+      	</h3>
+      </div>
+    </div>
+
 </div>
