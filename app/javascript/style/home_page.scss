@@ -38,7 +38,6 @@
 }
 
 .unlogin a:hover {
-	font-weight: bolder;
 	transition: 0.4s;
   color: #fff;
 }
@@ -104,6 +103,10 @@
 	box-shadow: none;
 }
 
+.login .btn:focus {
+	box-shadow: none;
+}
+
 .btn-github {
  margin-left: 0!important; 
  margin-top: 0!important; 
@@ -115,14 +118,7 @@
  z-index: 1;
 }
 
-
-.unlogin .sign-in:hover {
+.sign-in:hover {
 	transition: 0.4s;
   color: #fff!important;
 }
-
-.btn-github .sign-in:hover {
-	transition: 0.4s;
-  color: #fff!important;
- }
-
