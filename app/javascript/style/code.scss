@@ -105,3 +105,18 @@
 	font-weight: lighter;
 }
 
+.readme {
+	pre {
+		background-color: rgba(82, 230, 158, 0.1);
+		padding: 10px;
+		code {
+			color: #ffffff;
+		}
+	}
+	a {
+		color: #52e69e;
+	}
+	a:hover {
+		color: #ffffff;
+	}
+}
