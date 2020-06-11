@@ -106,8 +106,11 @@
 }
 
 
-.code-file pre{
-	color: #ffffff;
+.code-file {
+	pre{
+		color: #ffffff;
+		white-space: pre-wrap;
+	}
 }
 
 .readme {
