@@ -21,10 +21,10 @@
 
     <div class=" my-5">
       <div class="issue-title row p-2 open">
-        <div class="description-title col-4"> Records</div>
-         <div class="status-title col-7"><i class="fas fa-lock-open"></i> <%= link_to "Open #{@pull_requests.where(status: "Open").length}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %>  |
+        <div class="description-title col-4"><%= current_repository.pull_requests.where(status: ["Close", "Merged"]).count %> Records</div>
+         <div class="status-title col-7"><i class="fas fa-lock-open"></i> <%= link_to "Open #{current_repository.pull_requests.where(status: "Open").count}", repository_pull_requests_path(user_name: find_user.name, id: current_repository.title) %>  |
           <i class="fas fa-lock"></i> 
-        <%= link_to "Close #{@pull_requests.where(status: ["Close", "Merged"]).length}", close_index_repository_pull_requests_path(user_name: find_user.name, id: current_repository.title)%></div>
+        <%= link_to "Close #{current_repository.pull_requests.where(status: ["Close", "Merged"]).count}", close_index_repository_pull_requests_path(user_name: find_user.name, id: current_repository.title)%></div>
       </div>
       <% if @pull_requests.present? %>
         <% @pull_requests.where(status: ["Close", "Merged"]).each do |pull_request| %>
@@ -40,10 +40,16 @@
         <% end %>
       <% else %>
         <div class="text-center p-5">
-          <h3>There aren’t any open pull requests.</h3>
+          <h3>There aren't any open pull requests.</h3>
           <h4>Try to create new pull requests.</h4>
         </div>
       <% end %>
     </div>
+
+  <nav aria-label="Page navigation example" class="pageA" >
+    <ul class="pagination">
+      <%= paginate @pull_requests, window: 2, class: "pagination-contant" %>
+    </ul>
+  </nav>
 
 </div>

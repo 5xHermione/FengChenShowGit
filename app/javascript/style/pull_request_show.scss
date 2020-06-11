@@ -92,9 +92,16 @@ ul.timeline > li:before {
   }
 }
 
-@media (max-width: 768px){ 
-.pr-message.col-sm-12 p{
-  font-size: 24px;
-  margin-left: 0rem;
+
+.this-is-share-repo-navebar .other-branch { 
+  font-size: 1.2rem;
 }
+
+
+
+@media (max-width: 768px){ 
+  .pr-message.col-sm-12 p{
+    font-size: 24px;
+    margin-left: 0rem;
+  }
 }

@@ -190,7 +190,13 @@
             <div class="card-body">
               <blockquote class="blockquote mb-0">
                 <div class="media">
-                  <img src="https://picsum.photos/60/60?random=2" class="mr-3" alt="...">
+                  <div class="media-avatar-wrap">
+                    <% if @pull_request.user.image? %>
+                      <%= image_tag(find_user.image_url) %>
+                    <% else %>
+                      <img src="https://images.plurk.com/43tXxZ1MP3bwW7lyZbunAy.png">
+                    <% end %>
+                  </div>
                   <div class="media-body">
                     <h6>
                       <%= f.text_area :content, class: "area form-control"%>

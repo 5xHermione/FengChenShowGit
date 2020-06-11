@@ -21,7 +21,8 @@ class RepositoriesController < ApplicationController
     set_repo_file_path
 
     # synchronize git working repo 
-    `git -C #{@base_path}#{@current_repo_path} pull`
+    logger.info `git -C #{@base_path}#{@current_repo_path} fetch`
+    logger.info `git -C #{@base_path}#{@current_repo_path} reset --hard origin/master`
     @contributors = []
 
     if Dir.entries("#{@base_path}#{@current_repo_path}") == [".", "..", ".git"]
@@ -32,13 +33,18 @@ class RepositoriesController < ApplicationController
     else
       @is_new_repo = false
       git_file = Git.open("#{@base_path}#{@current_repo_path}")
-
+      logger.info `git -C #{@base_path}#{@current_repo_path} fetch`
+      logger.info `git -C #{@base_path}#{@current_repo_path} reset --hard origin/#{git_file.current_branch}`
       @default_branch = @repository.default_branch
       @current_branch = git_file.current_branch
       @branches = git_file.branches.remote
       @commits = git_file.log(99999).count
       @contributors = git_file.log(99999).map{|commit| commit.committer.name}.uniq.select{|con| con != "GitHub"}
       @pull_request_able = @branches.map{|b| b.name }.select{|b| `git -C #{@base_path}#{@current_repo_path}.git diff #{@default_branch}...#{b}`.present? && current_repository.pull_requests.find_by(compare_branch: b).nil?}
+
+      if request.fullpath.split("/").length == 4 # 專案根目錄的路徑 split 後只會有四個字串，超過四個字的都是比較下層的路徑
+        @readme = File.read("#{@base_path}#{@current_repo_path}/README.md") if File.exist?("#{@base_path}#{@current_repo_path}/README.md")
+      end
 
       repo = Rugged::Repository.new("#{@base_path}#{@current_repo_path}")
       project = Linguist::Repository.new(repo, repo.head.target_id)
