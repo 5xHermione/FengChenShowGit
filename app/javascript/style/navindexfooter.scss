@@ -2,6 +2,7 @@
 .back { 
   background-image: url("https://github.com/images/modules/site/heroes/simple-codelines.svg");
   width: 100%;
+  height: 100px;
 }
 
 .this-is-navbar .navbar {
@@ -127,6 +128,7 @@
   width: 100%;
   background-color: #43454a;
   margin-bottom: 0;
+
 }
 
 .logo_name {
@@ -147,4 +149,19 @@
   height: 40px;
   width: 40px;
   background-image: url("../../../pic/logo_gray.png"); 
+}
+
+
+
+.back {
+  position: relative;
+}
+
+.this-is-navbar .foot {
+  position: absolute;
+  bottom: 0;
+}
+
+.homepage .p-5 {
+  margin: 20px 0 30px 0; 
 }
