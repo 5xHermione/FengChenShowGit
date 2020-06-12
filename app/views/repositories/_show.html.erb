@@ -44,7 +44,7 @@
       <div class="btn-copy file-btn">
 
           <button class="btn code-file-btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Clone or Download
+            Clone or download
           </button>
 
         <div class="collapse down" id="collapseExample">
@@ -53,7 +53,7 @@
             <p>Use a password protected SSH key.</p>
             <div class="row">
               <div class="collapse-title col-8">
-                <input id="copyLink" class="copyLink col-12" value= "<%= ENV["GIT_PUSH_INSTRUCT"] %>/<%= @repository.user.name %>/<%= @repository.title %>.git">
+                <input id="copyLink" class="copyLink col-12" value= "<%= ENV["GIT_PUSH_INSTRUCT"] %>/<%= @repository.user.name %>/<%= @repository.title %>.git" readonly="readonly">
               </div>
               <div class="collapse-btn col-3">
                 <button class="btn code-file-btn" type="button"data-clipboard-target="#copyLink">Copy</button>
