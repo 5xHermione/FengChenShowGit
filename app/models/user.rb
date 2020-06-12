@@ -29,7 +29,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def create_relationship
-    followed_user = User.find_by(email: "showgit@mail.com")
+    followed_user = User.unscoped.find_by(email: "showgit@mail.com")
     if followed_user.present?
       relationship = self.active_relationships.new(followed_id: followed_user.id)
       relationship.save
