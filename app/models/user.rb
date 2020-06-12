@@ -29,14 +29,14 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def create_relationship
-    followed_user = User.find_by(id: 1)
+    followed_user = User.find_by(email: "showgit@mail.com")
     if followed_user.present?
       relationship = self.active_relationships.new(followed_id: followed_user.id)
       relationship.save
     end
   end
 
-  def self.from_omniauth(auth)  
+  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user| # 在資料庫找不到使用者的話就創一個新的使用者
       user.provider = auth.provider # 登入資訊1
       user.uid = auth.uid           # 登入資訊2
