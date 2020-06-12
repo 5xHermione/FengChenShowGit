@@ -13,8 +13,8 @@
 
   <body data-turbolinks= <%=need_turbolinks?%>>
     <%= render "shared/navbar"%>
-    <div class="<%= background_class %>", style="min-height: 100%;">
-      <div class="<%= backcolor_class %>">
+    <div class="<%= background_class %>">
+      <div class="<%= backcolor_class %>" style="min-height: calc(100vh - 140px);">
         <% if flash[:notice] %>
           <div class="notice">
             <%= flash[:notice] %>
