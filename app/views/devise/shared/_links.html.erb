@@ -1,9 +1,8 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <div class="btn btn-github col-7 submitFrom">
-	    <i class="fab fa-github"></i>
-	    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "sign-in" %>
-    </div>
+    <%= link_to omniauth_authorize_path(resource_name, provider), class: "sign-ln btn btn-github col-7 submitFrom" do %>
+      <i class="fab fa-github"></i><span> Sign in with <%= OmniAuth::Utils.camelize(provider)%> </span>
+    <% end %>
   <% end %> <br>
 
 <%- if controller_name != 'sessions' %>
