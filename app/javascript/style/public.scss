@@ -33,13 +33,10 @@ body {
 }
 
 .public .fileName {
-  color: #52e69e;
-}
-
-.public .fileName {
   display: inline;
   color: #52e69e;
   font-size: 18px;
+  word-wrap: break-word;
 }
 
 .public .repo-navbar .nav-link { 
