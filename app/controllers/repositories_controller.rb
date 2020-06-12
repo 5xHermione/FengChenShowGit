@@ -152,8 +152,9 @@ class RepositoriesController < ApplicationController
       #update repo name in gitServer
       if old_repo_name != @repository.title
         set_repo_file_path
-        `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}/#{find_user.name}/#{@repository.title}.git`
-        `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}/#{find_user.name}/#{@repository.title}`
+        logger.info `mv #{@base_path}/#{find_user.name}/#{old_repo_name}.git #{@base_path}/#{find_user.name}/#{@repository.title}.git`
+        logger.info `mv #{@base_path}/#{find_user.name}/#{old_repo_name} #{@base_path}/#{find_user.name}/#{@repository.title}`
+        logger.info `git -C #{@base_path}/#{find_user.name}/#{@repository.title} remote set-url origin #{ENV["GIT_PUSH_INSTRUCT"]}/#{find_user.name}/#{@repository.title}.git`
       end
       redirect_to repository_path(user_name: find_user.name, id: @repository.title), notice: 'This repository has updated.'
     else
