@@ -92,12 +92,53 @@ ul.timeline > li:before {
   }
 }
 
-
 .this-is-share-repo-navebar .other-branch { 
   font-size: 1.2rem;
 }
 
+.merge-btn {
+  padding: 10px;
+  background-color: #52e69e;
+  color: #3C3F44;
+  border-radius: 8px;
+}
 
+.merged-btn {
+  padding: 10px;
+  background-color: #3C3F44;
+  border-radius: 8px;
+  color: #ffffff ;
+}
+
+.close-btn {
+  color: #ffffff;
+  background-color: #e34c4c;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.reopen-btn {
+  color: #52e69e;
+  border: 1px solid #52e69e;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.reopen-btn:hover {
+  color: #52e69e;
+}
+
+.conflict-info {
+  color: #52e69e;
+  padding: 10px;
+  span {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-size: 14px;
+    color: #ffffff;
+    word-wrap: normal;
+    white-space: pre;
+  }
+}
 
 @media (max-width: 768px){ 
   .pr-message.col-sm-12 p{
