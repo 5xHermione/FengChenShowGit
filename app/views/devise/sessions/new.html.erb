@@ -1,6 +1,6 @@
-  <div class="m-5 login">
+  <div class="m-5 login signin-group">
       <div class="card bg-light col-12 col-md-6 m-auto p-0">
-        <h4 class="card-header">Log in</h4>
+        <h4 class="card-header">Sign in</h4>
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field form-group">
@@ -14,7 +14,7 @@
             </div>
 
             <div class="actions">
-              <%= f.submit "Log in", class: "btn btn-primary col-7 login-btn" %>
+              <%= f.submit "Sign in", class: "btn btn-primary col-7 login-btn" %>
             </div>
           <% end %>
           <%= render "devise/shared/links" %>
