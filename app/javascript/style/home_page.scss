@@ -144,7 +144,6 @@
   color: #fff!important;
 }
 
-
 // ==============rwd====================
 
 @media (max-width: 768px){ 
@@ -156,6 +155,41 @@
 	}
 	.p-5.col-12.col-md-6{
 		padding:0 !important;
+		display: none;
+	}
+  .logo-container {
+		padding: 15% 0 ;
+	}
+	.logo-container h1 {
+		font-size: 32px;
+		margin: 20px 0 20px 0;
+	}
+	.logo-container h2 {
+	  font-size: 24px;
+	}
+  .navbar-toggler.collapsed {
+		display: none;
+		position: relative;
+	}
+	.navbar-collapse.collapse{
+		display: flex;
+		position: absolute;
+		right: 0;
+		margin-right: 2rem;
+		ul.navbar-nav.mr-auto {
+      display: contents;
+		}
+	}
+	.navbar-collapse {
+		flex-basis: 0;
+		.nav-item.sp {
+			order: 1;
+			margin: 0 0 0 10px;
+		}
+	}
+	.this-is-navbar .navbar {
+		padding: 15px 10px 15px 40px;
 	}
 }
+
 
