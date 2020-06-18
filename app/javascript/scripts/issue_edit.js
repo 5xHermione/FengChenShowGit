@@ -34,7 +34,6 @@ $(document).on("turbolinks:load", function(){
 
     $("#merge_pr_btn").appendTo(".merge_pr_place")
     $("#pull_request_description").focus();
-
     $(".conflict-info").appendTo(".merge_pr_place")
 
 });
