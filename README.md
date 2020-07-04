@@ -1,10 +1,13 @@
 # 豐臣秀Git
 這個專案是個復刻 GitHub 的練習專案，可以透過 SSH 連線 push repo，檢視專案內容，pull requests，以及合併分支。
 
-## 網站資訊
-### [FengChenShowGit](https://fengchenshowgit.gzllb.me/)
-#### 測試帳號：showgit
-#### 密碼：aaaaaaaa
+### 測試帳號
+[FengChenShowGit demo url](https://fengchenshowgit.gzllb.me/)
+```
+帳號內包含了六個各有特色的專案及一些測試專案，建議可查看 FengChenShowGit 這個專案可以得到較完整的測試資料
+
+測試帳號：showgit@mail.com | aaaaaaaa
+```
 
 * Ruby 版本：2.6.5
 * Rail 版本：6.0.2.2
