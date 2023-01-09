@@ -6,7 +6,7 @@ ruby '2.6.5'
 #syntax highlighting
 gem 'redcarpet', '~> 3.5'
 gem 'rouge', '~> 3.19'
-gem 'git', '~> 1.7'
+gem 'git', '~> 1.13'
 
 gem 'github-linguist', '~> 7.5', '>= 7.5.1'
 gem 'omniauth'
